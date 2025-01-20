@@ -59,6 +59,9 @@ spicePkgs: inputs:
       package = inputs.wezterm.packages.${pkgs.system}.default;
       extraConfig = builtins.readFile ./wezterm.lua;
     };
+    zed-editor = {
+      enable = true;
+    };
     nushell = {
       enable = true;
       configFile.source = ./config.nu;
