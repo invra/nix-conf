@@ -4,7 +4,7 @@ display-name = "InvraNet"
 initial-password = "123456"
 sudo = true
 shell = "nushell"
-de = "kde"
+de = ""
 
 [system]
 dm = "sddm"

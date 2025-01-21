@@ -1,6 +1,7 @@
 {
   inputs = {
     zen-browser.url = "gitlab:InvraNet/zen-browser-flake";
+    hyprland.url = "github:hyprwm/Hyprland";
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-24.11";
     home-manager = {
@@ -17,7 +18,7 @@
   };
 
   outputs = inputs@{ nixpkgs-stable, nixpkgs, home-manager, spicetify-nix
-    , stylix, ... }:
+    , stylix, hyprland, ... }:
     let
       system = "x86_64-linux";
       unstable = import nixpkgs {
@@ -36,7 +37,7 @@
       nixosConfigurations.${user.name} = nixpkgs.lib.nixosSystem {
         inherit system;
         modules = [
-          (import ./config/configuration.nix user config.system)
+          (import ./config/configuration.nix user config.system hyprland )
           home-manager.nixosModules.home-manager
           {
             home-manager = {
