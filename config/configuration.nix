@@ -1,7 +1,5 @@
-user: system: hyprland:
 { nixpkgs, pkgs, ... }: {
-  imports = [ ./hardware-configuration.nix ./stylix.nix ];
-
+  imports = [ ./hardware-configuration.nix ];
   nixpkgs.config.allowUnfree = true;
 
   nix.settings = {
@@ -13,7 +11,7 @@ user: system: hyprland:
     ];
   };
 
-  time.timeZone = system.time-zone;
+  time.timeZone = "Australia/Sydney";
 
   virtualisation.vmVariant.virtualisation = {
     memorySize = 8192;
@@ -37,63 +35,64 @@ user: system: hyprland:
         layout = "us";
         options = "eurosign:e,caps:escape";
       };
-      displayManager.gdm.enable = system.dm == "gdm";
     };
+
     displayManager.sddm = {
-      enable = system.dm == "sddm";
-      wayland.enable = system.dm == "sddm";
+      enable = true;
+      wayland.enable = true;
     };
+
     desktopManager.plasma6.enable = true;
     fwupd.enable = true;
-    printing.enable = true;
+
     pipewire = {
       enable = true;
+      alsa.enable = true;
       pulse.enable = true;
+      jack.enable = true;
     };
+
     libinput.enable = true;
     openssh.enable = true;
   };
 
   hardware = {
     graphics.enable = true;
-    bluetooth = {
-      enable = true;
-      powerOnBoot = true;
-    };
   };
 
   networking = {
-    hostName =
-      (if user.display-name == null then user.name else user.display-name);
+    hostName = "InvraNet";
     networkmanager.enable = true;
   };
 
-  i18n.defaultLocale = "en_US.UTF-8";
+  i18n.defaultLocale = "en_AU.UTF-8";
   environment.stub-ld.enable = true;
+
   programs = {
-  steam = {
-    enable = true;
-    remotePlay.openFirewall = true;
-    dedicatedServer.openFirewall = true;
-    localNetworkGameTransfers.openFirewall = true;
-    };
-    
+    nix-ld.enable = true;
     hyprland = {
       enable = true;
-      package = hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
-      portalPackage = hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
+      xwayland.enable = true;
     };
-    nix-ld.enable = true;
+    steam = {
+      enable = true;
+      remotePlay.openFirewall = true;
+      dedicatedServer.openFirewall = true;
+      localNetworkGameTransfers.openFirewall = true;
+    };
   };
+  
+  xdg.portal.enable = true;
+  xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
 
-  users.users.${user.name} = {
+
+  users.users.invra = {
     isNormalUser = true;
-    initialPassword = user.initial-password;
-    description = user.display-name;
-    shell = pkgs.${user.shell or "bash"};
-    extraGroups = [ "networkmanager" ]
-      ++ (if user.sudo or true then [ "wheel" ] else [ ]);
-    packages = with pkgs; [ brave kitty gcc clang-tools cmake gnumake ];
+    initialPassword = "123456";
+    description = "InvraNet";
+    shell = pkgs.nushell;
+    extraGroups = [ "networkmanager" "wheel" ];
+    packages = with pkgs; [ firefox kitty gcc clang-tools cmake gnumake ];
   };
 
   fonts = {

@@ -1,15 +1,16 @@
 spicePkgs: inputs:
-{ user, pkgs, ... }: {
+{ pkgs, stable, ... }: {
   imports = [
     ./fastfetch.nix
     (import ./spicetify.nix spicePkgs inputs)
-    ../config/stylix.nix
   ];
   home = {
-    username = user.name;
-    homeDirectory = "/home/" + user.name;
+    username = "invra";
+    homeDirectory = "/home/invra";
     stateVersion = "24.11";
     packages = with pkgs; [
+
+      # Developer
       lua-language-server
       luarocks
       lua
@@ -22,23 +23,21 @@ spicePkgs: inputs:
       fzf
       btop
       bash-language-server
-      kdePackages.qtstyleplugin-kvantum
-      kde-rounded-corners
-      element-desktop
-      element-web-unwrapped
       vesktop
       wl-clipboard
-      kdevelop
       nushellPlugins.polars
-      pandoc_3_5
-      texliveFull
+      waybar
+      rofi-wayland
+      wofi
+      mako
+      swww
+      libnotify
       inputs.zen-browser.packages."${system}".generic
+      pavucontrol
+      slurp
+      grim
     ];
     file = {
-      ".config/nvim" = {
-        source = ./nvim-config;
-        recursive = true;
-      };
       ".config/starship.toml" = {
         source = ./starship.toml;
       };
@@ -53,7 +52,15 @@ spicePkgs: inputs:
     lf.enable = true;
     ripgrep.enable = true;
     home-manager.enable = true;
-    git.enable = true;
+    git = {
+      enable = true;
+      userName  = "InvraNet";
+      userEmail = "identificationsucks@gmail.com";
+    };
+    gh = {
+      enable = true;
+      settings = { editor = "nvim"; };
+    };
     wezterm = {
       enable = true;
       package = inputs.wezterm.packages.${pkgs.system}.default;

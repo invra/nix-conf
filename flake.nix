@@ -1,7 +1,5 @@
 {
   inputs = {
-    zen-browser.url = "gitlab:InvraNet/zen-browser-flake";
-    hyprland.url = "github:hyprwm/Hyprland";
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-24.11";
     home-manager = {
@@ -14,11 +12,11 @@
     };
     wezterm.url = "github:wez/wezterm?dir=nix";
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
-    stylix.url = "github:danth/stylix";
+    zen-browser.url = "gitlab:InvraNet/zen-browser-flake";
   };
 
   outputs = inputs@{ nixpkgs-stable, nixpkgs, home-manager, spicetify-nix
-    , stylix, hyprland, ... }:
+    , ... }:
     let
       system = "x86_64-linux";
       unstable = import nixpkgs {
@@ -30,32 +28,28 @@
         config.allowUnfree = true;
       };
       pkgs = unstable;
-      config = (builtins.fromTOML (builtins.readFile ./config.toml));
-      user = config.user;
       spicePkgs = spicetify-nix.legacyPackages.${system};
     in {
-      nixosConfigurations.${user.name} = nixpkgs.lib.nixosSystem {
+      nixosConfigurations.invra = nixpkgs.lib.nixosSystem {
         inherit system;
         modules = [
-          (import ./config/configuration.nix user config.system hyprland )
+          ./config/configuration.nix
           home-manager.nixosModules.home-manager
           {
             home-manager = {
               useGlobalPkgs = true;
               useUserPackages = true;
               backupFileExtension = "backup";
-              users.${user.name} =
-                (import ./home-manager/home.nix spicePkgs inputs);
+              users.invra =
+                (import ./home/home.nix spicePkgs inputs);
               extraSpecialArgs = {
-                inherit pkgs user unstable stable;
-                username = user.name;
+                inherit pkgs unstable stable;
+                username = "invra";
               };
             };
           }
-          stylix.nixosModules.stylix
         ];
       };
-
       formatter.${system} = pkgs.nixfmt-classic;
     };
 }
