@@ -85,7 +85,6 @@
   xdg.portal.enable = true;
   xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
 
-
   users.users.invra = {
     isNormalUser = true;
     initialPassword = "123456";
@@ -96,7 +95,11 @@
   };
 
   fonts = {
-    packages = [ pkgs.nerd-fonts.jetbrains-mono ];
+    packages = with pkgs; [ 
+      nerd-fonts.jetbrains-mono
+      corefonts
+      vistafonts
+    ];
     fontconfig.defaultFonts.monospace = [ "JetBrainsMono" ];
   };
 
