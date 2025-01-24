@@ -99,6 +99,8 @@
       nerd-fonts.jetbrains-mono
       corefonts
       vistafonts
+      noto-fonts
+      noto-fonts-emoji
     ];
     fontconfig.defaultFonts.monospace = [ "JetBrainsMono" ];
   };
