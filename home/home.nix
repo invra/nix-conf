@@ -36,6 +36,7 @@ spicePkgs: inputs:
       pavucontrol
       slurp
       grim
+      killall
     ];
     file = {
       ".config/starship.toml" = {
