@@ -13,10 +13,14 @@
 
   time.timeZone = "Australia/Sydney";
 
-  virtualisation.vmVariant.virtualisation = {
-    memorySize = 8192;
-    cores = 8;
-    diskSize = 128 * 1024;
+  virtualisation = {
+    libvirtd.enable = true;
+    spiceUSBRedirection.enable = true;
+    vmVariant.virtualisation = {
+      memorySize = 8192;
+      cores = 8;
+      diskSize = 128 * 1024;
+    };
   };
 
   boot = {
@@ -28,6 +32,8 @@
   };
 
   services = {
+    qemuGuest.enable = true;
+    spice-vdagentd.enable = true;
     xserver = {
       enable = true;
       videoDrivers = [ "amdgpu" ];
@@ -80,6 +86,7 @@
       dedicatedServer.openFirewall = true;
       localNetworkGameTransfers.openFirewall = true;
     };
+    virt-manager.enable = true;
   };
   
   xdg.portal.enable = true;
@@ -90,7 +97,7 @@
     initialPassword = "123456";
     description = "InvraNet";
     shell = pkgs.nushell;
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "libvirtd" ];
     packages = with pkgs; [ kitty gcc clang-tools cmake gnumake ];
   };
 
