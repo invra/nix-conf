@@ -33,6 +33,7 @@ spicePkgs: inputs:
       swww
       libnotify
       inputs.zen-browser.packages."${system}".generic
+      signal-desktop
       pavucontrol
       slurp
       grim
