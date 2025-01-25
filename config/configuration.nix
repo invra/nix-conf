@@ -91,7 +91,7 @@
     description = "InvraNet";
     shell = pkgs.nushell;
     extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [ firefox kitty gcc clang-tools cmake gnumake ];
+    packages = with pkgs; [ kitty gcc clang-tools cmake gnumake ];
   };
 
   fonts = {
