@@ -37,6 +37,7 @@ spicePkgs: inputs:
       pavucontrol
       slurp
       grim
+      obsidian
       killall
     ];
     file = {
