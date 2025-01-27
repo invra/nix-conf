@@ -92,6 +92,10 @@ spicePkgs: inputs:
       defaultEditor = true;
       package = inputs.neovim-nightly-overlay.packages.${pkgs.system}.default;
     };
+    vscode = {
+      enable = true;
+      package = pkgs.vscode.fhs;
+    };
     zoxide = {
       enable = true;
       enableBashIntegration = true;
