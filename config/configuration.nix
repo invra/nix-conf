@@ -1,3 +1,4 @@
+user: system:
 { nixpkgs, pkgs, ... }: {
   imports = [ ./hardware-configuration.nix ];
   nixpkgs.config.allowUnfree = true;
@@ -11,10 +12,13 @@
     ];
   };
 
-  time.timeZone = "Australia/Sydney";
+  time.timeZone = system.timezone;
 
   virtualisation = {
-    libvirtd.enable = true;
+    libvirtd = {
+      enable = true;
+      qemu.ovmf.enable = true;
+    };
     spiceUSBRedirection.enable = true;
     vmVariant.virtualisation = {
       memorySize = 8192;
@@ -25,11 +29,19 @@
 
   boot = {
     kernelPackages = pkgs.linuxKernel.packages.linux_6_12;
+    kernelParams = [
+      "intel_iommu=on"
+      "iommu=pt"
+      "vfio-pci.ids=10de:2182,10de:1aeb,10de:1aec,10de:1aed"
+    ];
+    blacklistedKernelModules = [ "nouveau" "nvidia" ];
     loader = {
       systemd-boot.enable = true;
       efi.canTouchEfiVariables = true;
     };
   };
+
+  security.polkit.enable = true;
 
   services = {
     qemuGuest.enable = true;
@@ -67,7 +79,7 @@
   };
 
   networking = {
-    hostName = "InvraNet";
+    hostName = system.hostname;
     networkmanager.enable = true;
   };
 
@@ -80,29 +92,39 @@
       enable = true;
       xwayland.enable = true;
     };
+    sway = {
+      enable = true;
+      package = pkgs.swayfx;
+    };
+    river = {
+      enable = true;
+    };
     steam = {
       enable = true;
       remotePlay.openFirewall = true;
       dedicatedServer.openFirewall = true;
       localNetworkGameTransfers.openFirewall = true;
     };
+    thunar = {
+      enable = true;
+    };
     virt-manager.enable = true;
   };
-  
+
   xdg.portal.enable = true;
   xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
 
-  users.users.invra = {
+  users.users.${user.username} = {
     isNormalUser = true;
-    initialPassword = "123456";
-    description = "InvraNet";
+    initialPassword = user.initialPassword;
+    description = user.displayName;
     shell = pkgs.nushell;
     extraGroups = [ "networkmanager" "wheel" "libvirtd" ];
-    packages = with pkgs; [ kitty gcc clang-tools cmake gnumake ];
+    packages = with pkgs; [ jdk21 flatpak kitty gcc clang-tools cmake gnumake ];
   };
 
   fonts = {
-    packages = with pkgs; [ 
+    packages = with pkgs; [
       nerd-fonts.jetbrains-mono
       corefonts
       vistafonts
@@ -111,6 +133,10 @@
     ];
     fontconfig.defaultFonts.monospace = [ "JetBrainsMono" ];
   };
+
+  environment.systemPackages = with pkgs; [
+    river-bsp-layout
+  ];
 
   system.stateVersion = "24.11";
 }

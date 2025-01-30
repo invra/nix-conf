@@ -1,0 +1,14 @@
+[user]
+username = "invra"
+displayName = "InvraNet"
+initialPassword = "123456"
+
+[system]
+hostname = "NixOS"
+timezone = "Australia/Sydney"
+
+[development]
+[development.git]
+username = "InvraNet"
+email = "identificationsucks@gmail.com"
+defaultBranch = "main"

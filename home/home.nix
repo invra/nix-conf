@@ -1,12 +1,12 @@
 spicePkgs: inputs:
-{ pkgs, stable, ... }: {
+{ development, user, pkgs, stable, ... }: {
   imports = [
-    ./fastfetch.nix
+    ./system/fastfetch.nix
     (import ./spicetify.nix spicePkgs inputs)
   ];
   home = {
-    username = "invra";
-    homeDirectory = "/home/invra";
+    username = user.username;
+    homeDirectory = "/home/" + user.username;
     stateVersion = "24.11";
     packages = with pkgs; [
 
@@ -39,6 +39,8 @@ spicePkgs: inputs:
       grim
       obsidian
       killall
+      kde-rounded-corners
+      prismlauncher
     ];
     file = {
       ".config/starship.toml" = {
@@ -57,8 +59,12 @@ spicePkgs: inputs:
     home-manager.enable = true;
     git = {
       enable = true;
-      userName  = "InvraNet";
-      userEmail = "identificationsucks@gmail.com";
+      userName  = development.git.username;
+      userEmail = development.git.email;
+
+      extraConfig = {
+        init.defaultBranch = development.git.defaultBranch;
+      };
     };
     gh = {
       enable = true;
