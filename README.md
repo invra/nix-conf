@@ -7,14 +7,24 @@ Inside of the root of this directory, you have your ``config.toml``, which speci
 
 Your ``config.toml`` looks a like this from the start.
 ```toml
+[system]
+hostname = "InvraNet"
+timezone = "Australia/Sydney"
+
 [user]
 username = "invra"
 displayName = "InvraNet"
 initialPassword = "123456"
 
 [system]
-hostname = "InvraNet"
+hostname = "NixOS"
 timezone = "Australia/Sydney"
+
+[development]
+[development.git]
+username = "InvraNet"
+email = "identificationsucks@gmail.com"
+defaultBranch = "main"
 ```
 Your file needs to specify the right details. Here is a breakdown on what each property does in this configuration.
 
