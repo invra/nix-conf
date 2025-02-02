@@ -116,7 +116,7 @@ user: system:
     description = user.displayName;
     shell = pkgs.nushell;
     extraGroups = [ "networkmanager" "wheel" "libvirtd" ];
-    packages = with pkgs; [ jdk21 remmina flatpak kitty gcc clang-tools cmake gnumake ];
+    packages = with pkgs; [ jdk21 remmina flatpak gcc clang-tools cmake gnumake ];
   };
 
   fonts = {
