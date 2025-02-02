@@ -1,24 +1,38 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 
+let
+  # Read and parse the TOML configuration file
+  tomlConfig = builtins.fromTOML (builtins.readFile ../../config.toml);
+
+  # Extract Hyprland configuration
+  hyprland = tomlConfig.desktop.hyprland;
+
+  # Parse the monitors from the TOML file into a Nix-compatible format
+  monitors = builtins.map (monitor: {
+    name = monitor.name;
+    resolution = monitor.resolution;
+    refreshRate = monitor.refreshRate;
+    position = monitor.position;
+    scale = monitor.scale;
+  }) hyprland.monitors;
+in
 {
   wayland.windowManager.hyprland = {
-    enable = true;
+    enable = hyprland.enable;
 
     settings = {
-      # Monitors
-      monitor = [
-        "DP-4,2560x1440@180,0x0,1"
-        "DP-3,1920x1080@180,2560x0,1"
-      ];
-      
+      monitor = builtins.map (monitor: 
+        "${monitor.name},${monitor.resolution}@${builtins.toString monitor.refreshRate},${monitor.position},${builtins.toString monitor.scale}"
+      ) monitors;
+
       # Auto-launching
       exec = [
         "waybar &"
         "mako &"
         "swww-daemon &"
       ];
-      
-      # General
+
+      # General settings
       general = {
         gaps_in = 2;
         gaps_out = 5;
@@ -40,7 +54,7 @@
         enabled = true;
       };
 
-      # Inputs K & M
+      # Inputs (keyboard & mouse)
       input = {
         kb_layout = "us";
         follow_mouse = 1;
@@ -58,29 +72,20 @@
 
       # Keybinds
       bind = [
-        # Application based
         "SUPER, Return, exec, wezterm"
         "SUPER, T, exec, thunar"
         "SUPER, Space, exec, rofi -show drun"
         "SUPER, V, exec, clipman pick -t rofi"
         "SUPER, B, exec, zen"
-
-        # Function based
         "SUPER, Q, killactive"
         "SUPER ALT SHIFT, Q, exit"
-
-        # Media controls
         "ALT LSHIFT, F10, exec, playerctl previous"
         "ALT LSHIFT, F11, exec, playerctl play-pause"
         "ALT LSHIFT, F12, exec, playerctl next"
         "SUPER LSHIFT, S, exec, nu ~/.config/hypr/scripts/screenshot.nu"
-
-        # Window based
         "SUPER LSHIFT, Space, togglefloating"
         "SUPER, C, togglesplit"
         "ALT, Return, fullscreen"
-
-        # Workspace based
         "SUPER, 1, workspace, 1"
         "SUPER SHIFT, 1, movetoworkspace, 1"
         "SUPER, 2, workspace, 2"
@@ -93,13 +98,13 @@
         "SUPER SHIFT, 5, movetoworkspace, 5"
       ];
 
+      # Mouse bindings
       bindm = [
         "SUPER, mouse:272, movewindow"
         "SUPER, mouse:273, resizewindow"
       ];
     };
   };
-
   home.sessionVariables.NIXOS_OZONE_WL = "1";
 }
 

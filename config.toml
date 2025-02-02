@@ -7,6 +7,24 @@ initialPassword = "123456"
 hostname = "NixOS"
 timezone = "Australia/Sydney"
 
+[desktop]
+[desktop.hyprland]
+enable = true
+
+[[desktop.hyprland.monitors]]
+name = "DP-2"
+resolution = "2560x1440"
+refreshRate = 180
+position = "0x0"
+scale = 2
+
+[[desktop.hyprland.monitors]]
+name = "DP-3"
+resolution = "1920x1080"
+refreshRate = 180
+position = "2560x0"
+scale = 1
+
 [development]
 [development.git]
 username = "InvraNet"
