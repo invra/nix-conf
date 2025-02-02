@@ -2,6 +2,7 @@ spicePkgs: inputs:
 { development, user, pkgs, stable, ... }: {
   imports = [
     ./system/fastfetch.nix
+    ./system/hyprland.nix
     (import ./spicetify.nix spicePkgs inputs)
   ];
   home = {
@@ -44,7 +45,7 @@ spicePkgs: inputs:
     ];
     file = {
       ".config/starship.toml" = {
-        source = ./starship.toml;
+        source = ./system/config/starship.toml;
       };
     };
     sessionVariables = {
@@ -73,14 +74,14 @@ spicePkgs: inputs:
     wezterm = {
       enable = true;
       package = inputs.wezterm.packages.${pkgs.system}.default;
-      extraConfig = builtins.readFile ./wezterm.lua;
+      extraConfig = builtins.readFile ./system/config/wezterm.lua;
     };
     zed-editor = {
       enable = true;
     };
     nushell = {
       enable = true;
-      configFile.source = ./config.nu;
+      configFile.source = ./system/config/config.nu;
     };
     starship = {
       enable = true;

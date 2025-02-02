@@ -88,10 +88,6 @@ user: system:
 
   programs = {
     nix-ld.enable = true;
-    hyprland = {
-      enable = true;
-      xwayland.enable = true;
-    };
     sway = {
       enable = true;
       package = pkgs.swayfx;
@@ -120,7 +116,7 @@ user: system:
     description = user.displayName;
     shell = pkgs.nushell;
     extraGroups = [ "networkmanager" "wheel" "libvirtd" ];
-    packages = with pkgs; [ jdk21 flatpak kitty gcc clang-tools cmake gnumake ];
+    packages = with pkgs; [ jdk21 remmina flatpak kitty gcc clang-tools cmake gnumake ];
   };
 
   fonts = {
