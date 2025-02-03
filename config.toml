@@ -6,11 +6,38 @@ initialPassword = "123456"
 [system]
 hostname = "NixOS"
 timezone = "Australia/Sydney"
+locale = "en_AU.UTF-8"
+kernelParams = [
+    "intel_iommu=on",
+    "iommu=pt",
+    "vfio-pci.ids=10de:2182,10de:1aeb,10de:1aec,10de:1aed",
+]
+
+[system.graphics]
+blacklists = ["nouveau", "nvidia"]
+wanted = ["amdgpu"]
+
+[[system.graphics.processor]]
+type = "AMD"
+name = "Radeon RX 6700 XT"
+driver = "amdgpu"
+
+[[system.graphics.processor]]
+type = "NVDIA"
+name = "GeForce GTX 1660 Ti"
+driver = "nvidia"
+
+[system.services]
+ssh.enable = true
+mongodb.enable = true
 
 [desktop]
 [desktop.hyprland]
 enable = true
-wallpaper = ""
+wallpapers = [
+    "DP-3, /home/invra/.wallpapers/Catalina Coast.png",
+    "DP-2, /home/invra/.wallpapers/Catalina Coast.png",
+]
 
 [[desktop.hyprland.monitors]]
 name = "DP-2"
