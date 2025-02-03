@@ -1,5 +1,6 @@
 $env.config.show_banner = false;
 $env.config.use_kitty_protocol = true;
+$env.config.buffer_editor = "nvim"
 
 alias d = cd
 alias nv = nvim

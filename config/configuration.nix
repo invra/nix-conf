@@ -54,6 +54,13 @@ user: system:
         options = "eurosign:e,caps:escape";
       };
     };
+    mongodb = {
+      enable = true;
+      package = pkgs.mongodb-ce;
+      enableAuth = true;
+      initialRootPasswordFile = "/passcv";
+      bind_ip = "0.0.0.0";
+    };
 
     displayManager.sddm = {
       enable = true;

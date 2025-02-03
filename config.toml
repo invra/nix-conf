@@ -10,6 +10,7 @@ timezone = "Australia/Sydney"
 [desktop]
 [desktop.hyprland]
 enable = true
+wallpaper = ""
 
 [[desktop.hyprland.monitors]]
 name = "DP-2"
