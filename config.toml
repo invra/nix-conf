@@ -16,7 +16,7 @@ name = "DP-2"
 resolution = "2560x1440"
 refreshRate = 180
 position = "0x0"
-scale = 2
+scale = 1
 
 [[desktop.hyprland.monitors]]
 name = "DP-3"
