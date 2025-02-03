@@ -29,12 +29,8 @@ user: system:
 
   boot = {
     kernelPackages = pkgs.linuxKernel.packages.linux_6_12;
-    kernelParams = [
-      "intel_iommu=on"
-      "iommu=pt"
-      "vfio-pci.ids=10de:2182,10de:1aeb,10de:1aec,10de:1aed"
-    ];
-    blacklistedKernelModules = [ "nouveau" "nvidia" ];
+    kernelParams = system.kernelParams;
+    blacklistedKernelModules = system.graphics.blacklists;
     loader = {
       systemd-boot.enable = true;
       efi.canTouchEfiVariables = true;
@@ -48,35 +44,23 @@ user: system:
     spice-vdagentd.enable = true;
     xserver = {
       enable = true;
-      videoDrivers = [ "amdgpu" ];
+      videoDrivers = system.graphics.wanted;
       xkb = {
         layout = "us";
         options = "eurosign:e,caps:escape";
       };
     };
-    mongodb = {
-      enable = true;
-      package = pkgs.mongodb-ce;
-      enableAuth = true;
-      initialRootPasswordFile = "/passcv";
-      bind_ip = "0.0.0.0";
-    };
-
     displayManager.sddm = {
       enable = true;
       wayland.enable = true;
     };
-
-    desktopManager.plasma6.enable = true;
     fwupd.enable = true;
-
     pipewire = {
       enable = true;
       alsa.enable = true;
       pulse.enable = true;
       jack.enable = true;
     };
-
     libinput.enable = true;
     openssh.enable = true;
   };
@@ -95,13 +79,6 @@ user: system:
 
   programs = {
     nix-ld.enable = true;
-    sway = {
-      enable = true;
-      package = pkgs.swayfx;
-    };
-    river = {
-      enable = true;
-    };
     steam = {
       enable = true;
       remotePlay.openFirewall = true;
@@ -123,7 +100,7 @@ user: system:
     description = user.displayName;
     shell = pkgs.nushell;
     extraGroups = [ "networkmanager" "wheel" "libvirtd" ];
-    packages = with pkgs; [ jdk21 remmina flatpak gcc clang-tools cmake gnumake ];
+    packages = with pkgs; [ jdk21 remmina gcc clang-tools cmake gnumake ];
   };
 
   fonts = {
@@ -136,10 +113,6 @@ user: system:
     ];
     fontconfig.defaultFonts.monospace = [ "JetBrainsMono" ];
   };
-
-  environment.systemPackages = with pkgs; [
-    river-bsp-layout
-  ];
 
   system.stateVersion = "24.11";
 }

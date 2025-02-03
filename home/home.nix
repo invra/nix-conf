@@ -31,7 +31,6 @@ spicePkgs: inputs:
       rofi-wayland
       wofi
       mako
-      swww
       libnotify
       inputs.zen-browser.packages."${system}".generic
       signal-desktop
@@ -42,6 +41,7 @@ spicePkgs: inputs:
       killall
       kde-rounded-corners
       prismlauncher
+      swww
     ];
     file = {
       ".config/starship.toml" = {
