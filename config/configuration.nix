@@ -30,6 +30,7 @@ user: system:
   boot = {
     kernelPackages = pkgs.linuxKernel.packages.linux_6_12;
     kernelParams = system.kernelParams;
+    kernelModules = ["v4l2loopback" ];
     blacklistedKernelModules = system.graphics.blacklists;
     loader = {
       systemd-boot.enable = true;
@@ -54,6 +55,8 @@ user: system:
       enable = true;
       wayland.enable = true;
     };
+    
+    desktopManager.plasma6.enable = true;
     fwupd.enable = true;
     pipewire = {
       enable = true;
@@ -63,6 +66,32 @@ user: system:
     };
     libinput.enable = true;
     openssh.enable = true;
+
+    samba = {
+      enable = true;
+      securityType = "user";
+      openFirewall = true;
+      settings = {
+        global = {
+          "workgroup" = "IDALON";
+          "server string" = "Main SMB";
+          "netbios name" = "smbnix";
+          "security" = "user";
+          "guest account" = "nobody";
+          "map to guest" = "bad user";
+        };
+        "private" = {
+          "path" = "/srv/smb";
+          "browseable" = "yes";
+          "read only" = "no";
+          "guest ok" = "no";
+          "create mask" = "0644";
+          "directory mask" = "0755";
+          "force user" = "invra";
+          "force group" = "wheel";
+        };
+      };
+    };
   };
 
   hardware = {
@@ -71,12 +100,27 @@ user: system:
 
   networking = {
     hostName = system.hostname;
-    networkmanager.enable = true;
+    networkmanager.enable = system.networking.networkmanager;
+    useDHCP = system.networking.dhcpEnabled;
+
+    interfaces = builtins.listToAttrs (map (iface: {
+      name = iface.name;
+      value = if iface.type == "BRIDGE" then {
+        useDHCP = iface.dhcpEnabled or false;
+      } else {};
+    }) system.networking.interfaces);
+
+    bridges = builtins.listToAttrs (map (iface: {
+      name = iface.name;
+      value = {
+        interfaces = iface.interfaces or [];
+      };
+    }) (builtins.filter (iface: iface.type == "BRIDGE") system.networking.interfaces));
   };
 
   i18n.defaultLocale = system.locale;
   environment.stub-ld.enable = true;
-
+  
   programs = {
     nix-ld.enable = true;
     steam = {

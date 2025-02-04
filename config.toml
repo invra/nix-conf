@@ -8,14 +8,26 @@ hostname = "NixOS"
 timezone = "Australia/Sydney"
 locale = "en_AU.UTF-8"
 kernelParams = [
-    "intel_iommu=on",
-    "iommu=pt",
-    "vfio-pci.ids=10de:2182,10de:1aeb,10de:1aec,10de:1aed",
+  "intel_iommu=on",
+  "iommu=pt",
+  "vfio-pci.ids=10de:2182,10de:1aeb,10de:1aec,10de:1aed",
 ]
+
+[system.networking]
+networkmanager = false
+dhcpEnabled = false
+
+[[system.networking.interfaces]]
+type = "BRIDGE"
+name = "br0"
+interfaces = ["enp7s0"]
+dhcpEnabled = true
+
 
 [system.graphics]
 blacklists = ["nouveau", "nvidia"]
 wanted = ["amdgpu"]
+
 
 [[system.graphics.processor]]
 type = "AMD"
@@ -35,8 +47,8 @@ mongodb.enable = true
 [desktop.hyprland]
 enable = true
 wallpapers = [
-    "DP-3, /home/invra/.wallpapers/Catalina Coast.png",
-    "DP-2, /home/invra/.wallpapers/Catalina Coast.png",
+  "DP-3, /home/invra/.wallpapers/Catalina Coast.png",
+  "DP-2, /home/invra/.wallpapers/Catalina Coast.png",
 ]
 
 [[desktop.hyprland.monitors]]

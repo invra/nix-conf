@@ -22,14 +22,26 @@ hostname = "NixOS"
 timezone = "Australia/Sydney"
 locale = "en_AU.UTF-8"
 kernelParams = [
-    "intel_iommu=on",
-    "iommu=pt",
-    "vfio-pci.ids=10de:2182,10de:1aeb,10de:1aec,10de:1aed",
+  "intel_iommu=on",
+  "iommu=pt",
+  "vfio-pci.ids=10de:2182,10de:1aeb,10de:1aec,10de:1aed",
 ]
+
+[system.networking]
+networkmanager = false
+dhcpEnabled = false
+
+[[system.networking.interfaces]]
+type = "BRIDGE"
+name = "br0"
+interfaces = ["enp7s0"]
+dhcpEnabled = true
+
 
 [system.graphics]
 blacklists = ["nouveau", "nvidia"]
 wanted = ["amdgpu"]
+
 
 [[system.graphics.processor]]
 type = "AMD"
@@ -37,7 +49,7 @@ name = "Radeon RX 6700 XT"
 driver = "amdgpu"
 
 [[system.graphics.processor]]
-type = "NVIDIA"
+type = "NVDIA"
 name = "GeForce GTX 1660 Ti"
 driver = "nvidia"
 
@@ -49,8 +61,8 @@ mongodb.enable = true
 [desktop.hyprland]
 enable = true
 wallpapers = [
-    "DP-3, /home/invra/.wallpapers/Catalina Coast.png",
-    "DP-2, /home/invra/.wallpapers/Catalina Coast.png",
+  "DP-3, /home/invra/.wallpapers/Catalina Coast.png",
+  "DP-2, /home/invra/.wallpapers/Catalina Coast.png",
 ]
 
 [[desktop.hyprland.monitors]]
@@ -74,9 +86,6 @@ email = "identificationsucks@gmail.com"
 defaultBranch = "main"
 ```
 
-Your file needs to specify the correct details. Below is a breakdown of each section and its properties.
-
----
 
 ## `[user]` section
 This section contains user-related settings.
@@ -94,6 +103,18 @@ Configures system-wide settings.
 - `timezone`: Specifies the system's timezone. You can find your timezone using `timedatectl list-timezones`.
 - `locale`: Sets the system's default locale (e.g., `en_AU.UTF-8`).
 - `kernelParams`: A list of kernel parameters applied at boot.
+
+### [system.networking] section
+Configures networking settings.
+- `networkmanager`: Boolean to which if you want NetworkManager enabled.
+- `dhcpEnabled`: Boolean to which if you want network wide DHCP enabled.
+
+#### [[system.networking.interfaces]] (Multiple entries allowed)
+- `type`: Type of connection currently there's ONLY `BRIDGE`.
+- `name`: Name of new generated interface.
+- `interfaces`: List of interfaces to be slaves.
+- `dhcpEnabled`: Boolean to which if you want DHCP Enabled to this interfaces.
+
 
 ### `[system.graphics]` section
 Configures GPU settings.
