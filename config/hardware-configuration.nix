@@ -23,6 +23,10 @@
       fsType = "vfat";
       options = [ "fmask=0077" "dmask=0077" ];
     };
+  fileSystems."/home/invra/media/abb81f14-af39-47c6-9f74-1e8810491b10" = {
+    device = "/dev/sda";
+    fsType = "ext4";
+  };
 
   swapDevices =
     [ { device = "/dev/disk/by-uuid/82fee30c-a034-4e75-9a3f-2eeb74095a3f"; }
