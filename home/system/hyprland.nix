@@ -59,6 +59,9 @@ in
         kb_layout = "us";
         follow_mouse = 1;
         sensitivity = 0.5;
+	touchpad = {
+	  natural_scroll = true;
+	};
       };
 
       render = {
@@ -102,6 +105,13 @@ in
       bindm = [
         "SUPER, mouse:272, movewindow"
         "SUPER, mouse:273, resizewindow"
+      ];
+
+      windowrulev2 = [
+      	"pin, title:Picture-in-Picture"
+      	"float, title:Picture-in-Picture"
+      	"size 640 360, title:Picture-in-Picture"
+      	"pin, title:Picture-in-Picture"
       ];
     };
   };
