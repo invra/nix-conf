@@ -21,8 +21,10 @@ spicePkgs: inputs:
       lazygit
       markdownlint-cli2
       marksman
+      parsec-bin
       fzf
       btop
+      postman
       bash-language-server
       vesktop
       wl-clipboard
@@ -40,12 +42,21 @@ spicePkgs: inputs:
       obsidian
       killall
       kde-rounded-corners
+      pandoc
       prismlauncher
       swww
     ];
     file = {
       ".config/starship.toml" = {
         source = ./system/config/starship.toml;
+      };
+      ".config/waybar" = {
+	source = ./system/config/waybar;
+	recursive = true;
+      };
+      ".config/mako" = {
+	source = ./system/config/mako;
+	recursive = true;
       };
     };
     sessionVariables = {
