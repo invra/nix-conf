@@ -122,9 +122,6 @@ user: system:
       dedicatedServer.openFirewall = true;
       localNetworkGameTransfers.openFirewall = true;
     };
-    thunar = {
-      enable = true;
-    };
     virt-manager.enable = true;
   };
 
