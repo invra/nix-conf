@@ -51,6 +51,10 @@ spicePkgs: inputs:
       ".config/starship.toml" = {
         source = ./system/config/starship.toml;
       };
+      ".config/nvim" ={
+	source = ./system/config/neovim;
+	recursive = true;
+      };
       ".config/waybar" = {
 	source = ./system/config/waybar;
 	recursive = true;
@@ -61,6 +65,10 @@ spicePkgs: inputs:
       };
       ".config/btop/btop.conf" = {
 	source = ./system/config/btop/btop.conf;
+      };
+      ".wallpapers" = {
+        source = ./system/config/.wallpapers;
+        recursive = true;
       };
     };
     sessionVariables = {
