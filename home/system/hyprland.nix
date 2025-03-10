@@ -75,7 +75,7 @@ in
 
       # Keybinds
       bind = [
-        "SUPER, Return, exec, wezterm"
+        "SUPER, Return, exec, ghostty"
         "SUPER, T, exec, thunar"
         "SUPER, Space, exec, rofi -show drun"
         "SUPER, V, exec, clipman pick -t rofi"
