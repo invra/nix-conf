@@ -3,6 +3,19 @@
 My main operating system is NixOS, which means this flake will be updated often.
 This system is meant to be partially modular to allow for configuration and installation for your user.
 
+## Example
+This section shows what the flake will look like.
+![Demo 1](./.res/demo_1.png)
+This shows Spotify, Wezterm, and Waybar.
+
+![Demo 2](./res/demo_2.png)
+This shows [Zeditor](https://zed.dev) and Web browser paired in a active dev environment.
+
+![Demo 3](./res/demo_3.png)
+This shows Neovim with Mako Notification Manager.
+
+
+
 ## Configuration
 Inside of the root of this directory, you have your `config.toml`, which specifies how
 `home/home.nix`, `flake.nix`, etc handle and configure certain pieces of the system.
@@ -61,8 +74,7 @@ mongodb.enable = true
 [desktop.hyprland]
 enable = true
 wallpapers = [
-  "DP-3, /home/invra/.wallpapers/Catalina Coast.png",
-  "DP-2, /home/invra/.wallpapers/Catalina Coast.png",
+  "/home/invra/.wallpapers/Catalina Coast.png",
 ]
 
 [[desktop.hyprland.monitors]]
