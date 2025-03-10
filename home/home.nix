@@ -48,6 +48,7 @@ spicePkgs: inputs:
       prismlauncher
       swww
       ghostty
+      vlc
       viu
     ];
     file = {
@@ -71,6 +72,10 @@ spicePkgs: inputs:
       };
       ".wallpapers" = {
         source = ./system/config/.wallpapers;
+        recursive = true;
+      };
+      ".config/ghostty" = {
+        source = ./system/config/ghostty;
         recursive = true;
       };
     };
