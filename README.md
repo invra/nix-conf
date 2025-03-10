@@ -8,10 +8,10 @@ This section shows what the flake will look like.
 ![Demo 1](./.res/demo_1.png)
 This shows Spotify, Wezterm, and Waybar.
 
-![Demo 2](./res/demo_2.png)
+![Demo 2](./.res/demo_2.png)
 This shows [Zeditor](https://zed.dev) and Web browser paired in a active dev environment.
 
-![Demo 3](./res/demo_3.png)
+![Demo 3](./.res/demo_3.png)
 This shows Neovim with Mako Notification Manager.
 
 
