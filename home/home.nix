@@ -47,6 +47,8 @@ spicePkgs: inputs:
       superfile
       prismlauncher
       swww
+      ghostty
+      viu
     ];
     file = {
       ".config/starship.toml" = {
@@ -94,11 +96,6 @@ spicePkgs: inputs:
     gh = {
       enable = true;
       settings = { editor = "nvim"; };
-    };
-    wezterm = {
-      enable = true;
-      package = inputs.wezterm.packages.${pkgs.system}.default;
-      extraConfig = builtins.readFile ./system/config/wezterm.lua;
     };
     zed-editor = {
       enable = true;
