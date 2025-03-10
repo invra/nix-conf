@@ -5,15 +5,24 @@ This system is meant to be partially modular to allow for configuration and inst
 
 ## Example
 This section shows what the flake will look like.
+<br><br>
+<details open>
+<summary>Spotify + Wezterm + Waybar</summary>
+<br>
 ![Demo 1](./.res/demo_1.png)
-This shows Spotify, Wezterm, and Waybar.
+</details>
 
+<details>
+<summary>Development Envrionment</summary>
+<br>
 ![Demo 2](./.res/demo_2.png)
-This shows [Zeditor](https://zed.dev) and Web browser paired in a active dev environment.
+</details>
 
+<details>
+<summary>Neovim with Mako</summary>
+<br>
 ![Demo 3](./.res/demo_3.png)
-This shows Neovim with Mako Notification Manager.
-
+</details>
 
 
 ## Configuration
