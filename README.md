@@ -7,7 +7,7 @@ This system is meant to be partially modular to allow for configuration and inst
 This section shows what the flake will look like.
 <br><br>
 <details open>
-<summary>Spotify + Wezterm + Waybar</summary>
+<summary>Spotify + Ghostty + Waybar</summary>
 <br>
 ![Demo 1](./.res/demo_1.png)
 </details>
