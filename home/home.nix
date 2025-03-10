@@ -44,6 +44,7 @@ spicePkgs: inputs:
       killall
       kde-rounded-corners
       pandoc
+      superfile
       prismlauncher
       swww
     ];
@@ -52,19 +53,19 @@ spicePkgs: inputs:
         source = ./system/config/starship.toml;
       };
       ".config/nvim" ={
-	source = ./system/config/neovim;
-	recursive = true;
+        source = ./system/config/neovim;
+	      recursive = true;
       };
       ".config/waybar" = {
-	source = ./system/config/waybar;
-	recursive = true;
+        source = ./system/config/waybar;
+	      recursive = true;
       };
       ".config/mako" = {
-	source = ./system/config/mako;
-	recursive = true;
+        source = ./system/config/mako;
+	      recursive = true;
       };
       ".config/btop/btop.conf" = {
-	source = ./system/config/btop/btop.conf;
+        source = ./system/config/btop/btop.conf;
       };
       ".wallpapers" = {
         source = ./system/config/.wallpapers;
