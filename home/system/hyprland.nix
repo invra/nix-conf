@@ -21,7 +21,7 @@ in
     enable = hyprland.enable;
 
     settings = {
-      monitor = builtins.map (monitor: 
+      monitor = builtins.map (monitor:
         "${monitor.name},${monitor.resolution}@${builtins.toString monitor.refreshRate},${monitor.position},${builtins.toString monitor.scale}"
       ) monitors;
 
@@ -117,4 +117,3 @@ in
   };
   home.sessionVariables.NIXOS_OZONE_WL = "1";
 }
-
