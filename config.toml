@@ -1,6 +1,6 @@
 [user]
-username = "invra"
-displayName = "InvraNet"
+username = "user"
+displayName = "user"
 initialPassword = "123456"
 
 [system]
@@ -9,35 +9,17 @@ timezone = "Australia/Sydney"
 locale = "en_AU.UTF-8"
 kernelParams = [
   "intel_iommu=on",
-  "iommu=pt",
-  "vfio-pci.ids=10de:2182,10de:1aeb,10de:1aec,10de:1aed",
 ]
 
 [system.networking]
-networkmanager = false
-dhcpEnabled = false
-
-[[system.networking.interfaces]]
-type = "BRIDGE"
-name = "br0"
-interfaces = ["enp7s0"]
+networkmanager = true
 dhcpEnabled = true
 
+[system.interfaces]
 
 [system.graphics]
 blacklists = ["nouveau", "nvidia"]
-wanted = ["amdgpu"]
-
-
-[[system.graphics.processor]]
-type = "AMD"
-name = "Radeon RX 6700 XT"
-driver = "amdgpu"
-
-[[system.graphics.processor]]
-type = "NVDIA"
-name = "GeForce GTX 1660 Ti"
-driver = "nvidia"
+wanted = []
 
 [system.services]
 ssh.enable = true
@@ -47,22 +29,14 @@ mongodb.enable = true
 [desktop.hyprland]
 enable = true
 wallpapers = [
-  "DP-3, /home/invra/.wallpapers/Catalina Coast.png",
-  "DP-2, /home/invra/.wallpapers/Catalina Coast.png",
+  "eDP-1,/home/user/.wallpapers/nature.jpg",
 ]
 
 [[desktop.hyprland.monitors]]
-name = "DP-2"
-resolution = "2560x1440"
-refreshRate = 180
+name = "eDP-1"
+resolution = "1920x1200"
+refreshRate = 60
 position = "0x0"
-scale = 1
-
-[[desktop.hyprland.monitors]]
-name = "DP-3"
-resolution = "1920x1080"
-refreshRate = 180
-position = "2560x0"
 scale = 1
 
 [development]
