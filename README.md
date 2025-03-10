@@ -8,19 +8,16 @@ This section shows what the flake will look like.
 <br><br>
 <details open>
 <summary>Spotify + Ghostty + Waybar</summary>
-<br>
 ![Demo 1](./.res/demo_1.png)
 </details>
 
 <details>
 <summary>Development Envrionment</summary>
-<br>
 ![Demo 2](./.res/demo_2.png)
 </details>
 
 <details>
 <summary>Neovim with Mako</summary>
-<br>
 ![Demo 3](./.res/demo_3.png)
 </details>
 
