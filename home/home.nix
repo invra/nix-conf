@@ -13,6 +13,7 @@ spicePkgs: inputs:
 
       # Developer
       lua-language-server
+      python312
       luarocks
       lua
       nil
@@ -57,6 +58,9 @@ spicePkgs: inputs:
       ".config/mako" = {
 	source = ./system/config/mako;
 	recursive = true;
+      };
+      ".config/btop/btop.conf" = {
+	source = ./system/config/btop/btop.conf;
       };
     };
     sessionVariables = {
