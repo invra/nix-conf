@@ -15,6 +15,7 @@ user: system:
   time.timeZone = system.timezone;
 
   virtualisation = {
+    docker.enable = true;
     libvirtd = {
       enable = true;
       qemu.ovmf.enable = true;
@@ -94,6 +95,13 @@ user: system:
     };
   };
 
+  environment.plasma6.excludePackages = with pkgs.kdePackages; [
+    plasma-browser-integration
+    konsole
+    elisa
+    dolphin
+  ];
+
   hardware = {
     graphics.enable = true;
   };
@@ -101,21 +109,6 @@ user: system:
   networking = {
     hostName = system.hostname;
     networkmanager.enable = system.networking.networkmanager;
-    useDHCP = system.networking.dhcpEnabled;
-
-    interfaces = builtins.listToAttrs (map (iface: {
-      name = iface.name;
-      value = if iface.type == "BRIDGE" then {
-        useDHCP = iface.dhcpEnabled or false;
-      } else {};
-    }) system.networking.interfaces);
-
-    bridges = builtins.listToAttrs (map (iface: {
-      name = iface.name;
-      value = {
-        interfaces = iface.interfaces or [];
-      };
-    }) (builtins.filter (iface: iface.type == "BRIDGE") system.networking.interfaces));
   };
 
   i18n.defaultLocale = system.locale;
@@ -143,13 +136,14 @@ user: system:
     initialPassword = user.initialPassword;
     description = user.displayName;
     shell = pkgs.nushell;
-    extraGroups = [ "networkmanager" "wheel" "libvirtd" ];
-    packages = with pkgs; [ jdk21 remmina gcc clang-tools cmake gnumake ];
+    extraGroups = [ "networkmanager" "docker" "wheel" "libvirtd" ];
+    packages = with pkgs; [ jdk21 glib libreoffice-qt-fresh remmina gcc clang-tools cmake calibre gnumake ];
   };
 
   fonts = {
     packages = with pkgs; [
       nerd-fonts.jetbrains-mono
+      font-awesome
       corefonts
       vistafonts
       noto-fonts
