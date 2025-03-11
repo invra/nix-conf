@@ -22,7 +22,7 @@ return {
   },
   { "cdmill/focus.nvim",          opts = {} },
   { "meznaric/key-analyzer.nvim", opts = {} },
-  { "ShinKage/idris2-nvim",       dependencies = { "neovim/nvim-lspconfig", "MunifTanjim/nui.nvim" }, opts = {} },
+  { "ShinKage/idris2-nvim", dependencies = { "neovim/nvim-lspconfig", "MunifTanjim/nui.nvim" }, opts = {} },
   {
     "arminveres/md-pdf.nvim",
     branch = "main",
