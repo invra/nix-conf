@@ -1,4 +1,4 @@
-spicePkgs: inputs:
+spicePkgs: pkgs: inputs:
 { ... }: {
   imports = [ inputs.spicetify-nix.homeManagerModules.default ];
   programs.spicetify = {
@@ -8,11 +8,17 @@ spicePkgs: inputs:
 
     enabledExtensions = with spicePkgs.extensions; [
       powerBar
-      seekSong
       beautifulLyrics
-      volumeProfiles
       volumePercentage
+      ({
+        src = pkgs.fetchFromGitHub {
+          owner = "notPlancha";
+          repo = "volume-profiles-v2";
+          rev = "v2.2.0";
+          hash = "sha256-gbG/OnIPR/okeYgN8RDn9gwbQVISdnbdQe1fqfgkc6o=";
+        };
+        name = "dist/volume-profiles.js";
+      })
     ];
   };
 }
-
