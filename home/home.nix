@@ -1,55 +1,66 @@
-spicePkgs: inputs:
+spicePkgs: pkgs: inputs:
 { development, user, pkgs, stable, ... }: {
   imports = [
     ./system/fastfetch.nix
     ./system/hyprland.nix
-    (import ./spicetify.nix spicePkgs inputs)
+    (import ./spicetify.nix spicePkgs pkgs inputs)
   ];
   home = {
     username = user.username;
     homeDirectory = "/home/" + user.username;
     stateVersion = "24.11";
     packages = with pkgs; [
+        # Developer Tools
+        python312
+        lazygit
+        lua
+        postman
+        ghostty
+        pandoc
 
-      # Developer
-      lua-language-server
-      python312
-      luarocks
-      lua
-      nil
-      obs-studio
-      ffmpeg
-      lazygit
-      markdownlint-cli2
-      marksman
-      parsec-bin
-      fzf
-      btop
-      postman
-      bash-language-server
-      vesktop
-      wl-clipboard
-      nushellPlugins.polars
-      waybar
-      rofi-wayland
-      wofi
-      mako
-      libnotify
-      inputs.zen-browser.packages."${system}".generic
-      signal-desktop
-      pavucontrol
-      slurp
-      grim
-      obsidian
-      killall
-      kde-rounded-corners
-      pandoc
-      superfile
-      prismlauncher
-      swww
-      ghostty
-      vlc
-      viu
+        # Language Servers & Plugins
+        marksman
+        markdownlint-cli2
+        lua-language-server
+        bash-language-server
+        tailwindcss-language-server
+        vimPlugins.nvim-treesitter-parsers.fsharp
+        nushellPlugins.polars
+        kde-rounded-corners
+        luarocks
+        nil
+
+        # Multimedia Tools
+        viu
+        vlc
+        obs-studio
+        ffmpeg
+        fzf
+
+        # System Libraries & Utilities
+        wl-clipboard
+        waybar
+        rofi-wayland
+        wofi
+        mako
+        libnotify
+        pavucontrol
+        slurp
+        grim
+        killall
+        swww
+
+        # CLI Utilities
+        btop
+        superfile
+
+        # Day-to-Day Applications
+        inputs.zen-browser.packages."${system}".generic
+        vesktop
+        signal-desktop
+        parsec-bin
+        obsidian
+        prismlauncher
     ];
     file = {
       ".config/starship.toml" = {

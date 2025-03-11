@@ -43,7 +43,7 @@
               useUserPackages = true;
               backupFileExtension = "backup";
               users.${user.username} =
-                (import ./home/home.nix spicePkgs inputs);
+                (import ./home/home.nix spicePkgs pkgs inputs);
               extraSpecialArgs = {
                 inherit pkgs development user unstable stable;
                 username = user.username;
