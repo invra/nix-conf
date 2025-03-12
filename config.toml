@@ -7,9 +7,7 @@ initialPassword = "123456"
 hostname = "NixOS"
 timezone = "Australia/Sydney"
 locale = "en_AU.UTF-8"
-kernelParams = [
-  "intel_iommu=on",
-]
+kernelParams = ["intel_iommu=on"]
 
 [system.networking]
 networkmanager = true
@@ -28,9 +26,7 @@ mongodb.enable = true
 [desktop]
 [desktop.hyprland]
 enable = true
-wallpapers = [
-  "eDP-1,/home/user/.wallpapers/nature.jpg",
-]
+wallpapers = ["eDP-1,/home/user/.wallpapers/nature.jpg"]
 
 [[desktop.hyprland.monitors]]
 name = "eDP-1"
@@ -42,5 +38,6 @@ scale = 1
 [development]
 [development.git]
 username = "InvraNet"
+types = ["GitLab", "GitHub"]
 email = "identificationsucks@gmail.com"
 defaultBranch = "main"

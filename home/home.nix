@@ -1,7 +1,7 @@
 spicePkgs: pkgs: inputs:
 { development, user, pkgs, stable, ... }: {
   imports = [
-    ./system/fastfetch.nix
+    (import ./system/fastfetch.nix development)
     ./system/hyprland.nix
     (import ./spicetify.nix spicePkgs pkgs inputs)
   ];
@@ -88,6 +88,9 @@ spicePkgs: pkgs: inputs:
       ".config/ghostty" = {
         source = ./system/config/ghostty;
         recursive = true;
+      };
+      ".config/fastfetch/nixos.png" = {
+        source = ./system/config/fastfetch/nixos.png;
       };
     };
     sessionVariables = {
