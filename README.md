@@ -100,6 +100,7 @@ scale = 1
 [development]
 [development.git]
 username = "InvraNet"
+types = ["GitLab", "GitHub"]
 email = "identificationsucks@gmail.com"
 defaultBranch = "main"
 ```
@@ -182,6 +183,7 @@ Configures development tools.
 Configures Git settings.
 
 - `username`: Default Git username for commits.
+- `types`: List of what your git username appears on (eg. GitHub.)
 - `email`: Default Git email for commits.
 - `defaultBranch`: Default branch to use when running `git init`.
 
