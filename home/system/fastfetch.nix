@@ -100,7 +100,7 @@ development:
         }
         ] ++ (map (type: {
           type = "custom";
-          key = "   ${type}:";
+          key = "    ${type}:";
           format = "${development.git.username}";
         }) development.git.types) ++ [
         {
