@@ -67,13 +67,12 @@ user: system:
     };
     libinput.enable = true;
     openssh.enable = true;
-
     samba = {
       enable = true;
-      securityType = "user";
       openFirewall = true;
       settings = {
         global = {
+          securityType = "user";
           "workgroup" = "IDALON";
           "server string" = "Main SMB";
           "netbios name" = "smbnix";
@@ -134,7 +133,7 @@ user: system:
     description = user.displayName;
     shell = pkgs.nushell;
     extraGroups = [ "networkmanager" "docker" "wheel" "libvirtd" ];
-    packages = with pkgs; [ jdk21 glib libreoffice-qt-fresh remmina gcc clang-tools cmake calibre gnumake ];
+    packages = with pkgs; [ wget jdk21 glib libreoffice-qt-fresh remmina gcc clang-tools cmake calibre gnumake ];
   };
 
   fonts = {
