@@ -17,6 +17,8 @@ spicePkgs: pkgs: inputs:
         postman
         ghostty
         pandoc
+        pgadmin4-desktopmode
+        mongodb-compass
 
         # Language Servers & Plugins
         marksman
@@ -52,6 +54,7 @@ spicePkgs: pkgs: inputs:
 
         # CLI Utilities
         btop
+        yt-dlp
         superfile
 
         # Day-to-Day Applications
