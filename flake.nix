@@ -2,6 +2,7 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-24.11";
+    stylix.url = "github:danth/stylix";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -15,7 +16,7 @@
   };
 
   outputs = inputs@{ nixpkgs-stable, nixpkgs, home-manager, spicetify-nix
-    , ... }:
+    , stylix, ... }:
     let
       system = "x86_64-linux";
       unstable = import nixpkgs {
@@ -50,6 +51,7 @@
               };
             };
           }
+          stylix.nixosModules.stylix
         ];
       };
       formatter.${system} = pkgs.nixfmt-classic;

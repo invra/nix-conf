@@ -4,7 +4,14 @@ spicePkgs: pkgs: inputs:
     (import ./system/fastfetch.nix development)
     ./system/hyprland.nix
     (import ./spicetify.nix spicePkgs pkgs inputs)
+    ../config/stylix.nix
   ];
+  stylix.targets = {
+    starship.enable = false;
+    hyprland.enable = false;
+    zed.enable = false;
+    vscode.enable = false;
+  };
   home = {
     username = user.username;
     homeDirectory = "/home/" + user.username;
@@ -55,10 +62,12 @@ spicePkgs: pkgs: inputs:
         # CLI Utilities
         btop
         yt-dlp
+        wineWowPackages.stable
         superfile
 
         # Day-to-Day Applications
         inputs.zen-browser.packages."${system}".generic
+        chromium
         vesktop
         signal-desktop
         parsec-bin
@@ -84,16 +93,15 @@ spicePkgs: pkgs: inputs:
       ".config/btop/btop.conf" = {
         source = ./system/config/btop/btop.conf;
       };
-      ".wallpapers" = {
-        source = ./system/config/.wallpapers;
-        recursive = true;
-      };
       ".config/ghostty" = {
         source = ./system/config/ghostty;
         recursive = true;
       };
       ".config/fastfetch/nixos.png" = {
         source = ./system/config/fastfetch/nixos.png;
+      };
+      ".config/Code/User/settings.json" = {
+        source = ./system/config/vscode/settings.json;
       };
     };
     sessionVariables = {
@@ -145,6 +153,16 @@ spicePkgs: pkgs: inputs:
     vscode = {
       enable = true;
       package = pkgs.vscode.fhs;
+      extensions = with pkgs.vscode-extensions; [
+        pkief.material-icon-theme
+        bradlc.vscode-tailwindcss
+        vscodevim.vim
+        ms-vsliveshare.vsliveshare
+        ms-vscode.live-server
+        kamikillerto.vscode-colorize
+        bierner.github-markdown-preview
+        mvllow.rose-pine
+      ];
     };
     zoxide = {
       enable = true;
