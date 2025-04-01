@@ -19,6 +19,7 @@ spicePkgs: pkgs: inputs:
     packages = with pkgs; [
         # Developer Tools
         python312
+        nodejs
         lazygit
         lua
         postman

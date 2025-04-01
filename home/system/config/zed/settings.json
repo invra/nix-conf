@@ -11,8 +11,8 @@
   "buffer_font_size": 16,
   "theme": {
     "mode": "system",
-    "light": "Base16 Rosé Pine",
-    "dark": "Base16 Rosé Pine"
+    "light": "rose-pine",
+    "dark": "rose-pine"
   },
   "terminal": {
     "line_height": "standard",
