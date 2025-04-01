@@ -39,7 +39,18 @@ user: system:
     };
   };
 
-  security.polkit.enable = true;
+  security= {
+    doas = {
+      extraRules = [{
+        users = [user.username];
+
+        keepEnv = true;
+        persist = true;
+      }];
+      enable = true;
+    };
+    polkit.enable = true;
+  };
 
   services = {
     qemuGuest.enable = true;
