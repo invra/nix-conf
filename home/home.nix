@@ -156,7 +156,7 @@ spicePkgs: pkgs: inputs:
     vscode = {
       enable = true;
       package = pkgs.vscode.fhs;
-      extensions = with pkgs.vscode-extensions; [
+      profiles.default.extensions = with pkgs.vscode-extensions; [
         pkief.material-icon-theme
         bradlc.vscode-tailwindcss
         vscodevim.vim
