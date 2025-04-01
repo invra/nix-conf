@@ -103,6 +103,9 @@ spicePkgs: pkgs: inputs:
       ".config/Code/User/settings.json" = {
         source = ./system/config/vscode/settings.json;
       };
+      ".config/zed/settings.json" = {
+        source = ./system/config/zed/settings.json;
+      };
     };
     sessionVariables = {
       EDITOR = "nvim";
