@@ -42,7 +42,7 @@ user: system:
   security= {
     doas = {
       extraRules = [{
-        users = [user.username];
+        groups = [ "wheel" ];
 
         keepEnv = true;
         persist = true;
