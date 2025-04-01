@@ -1,15 +1,15 @@
 user: system:
 { nixpkgs, pkgs, ... }: {
-  imports = [ ./hardware-configuration.nix ];
+  imports = [ 
+    ./stylix.nix
+    ./hardware-configuration.nix
+  ];
   nixpkgs.config.allowUnfree = true;
 
   nix.settings = {
     experimental-features = [ "nix-command" "flakes" ];
-    substituters = [ "https://wezterm.cachix.org" "https://cache.iog.io" ];
-    trusted-public-keys = [
-      "wezterm.cachix.org-1:kAbhjYUC9qvblTE+s7S+kl5XM1zVa4skO+E/1IDWdH0="
-      "hydra.iohk.io:f/Ea+s+dFdN+3Y/G+FDgSq+a5NEWhJGzdjvKNGv0/EQ="
-    ];
+    substituters = [ "https://nix-community.cachix.org" ];
+    trusted-public-keys = [ "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs=" ];
   };
 
   time.timeZone = system.timezone;
