@@ -5,6 +5,7 @@
     image = ../home/system/config/.wallpapers/nature.jpg;
     targets = {
       spicetify.enable = false;
+      qt.enable = false;
     };
     fonts = {
       serif = {
