@@ -50,6 +50,7 @@ spicePkgs: pkgs: inputs:
 
         # System Libraries & Utilities
         wl-clipboard
+        tree
         waybar
         rofi-wayland
         wofi
