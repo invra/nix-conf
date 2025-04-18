@@ -1,10 +1,10 @@
 [user]
-username = "user"
-displayName = "user"
+username = "invra"
+displayName = "invra"
 initialPassword = "123456"
 
 [system]
-hostname = "NixOS"
+hostname = "NiuOS"
 timezone = "Australia/Sydney"
 locale = "en_AU.UTF-8"
 kernelParams = ["intel_iommu=on"]
@@ -30,8 +30,8 @@ wallpapers = ["eDP-1,/home/user/.wallpapers/nature.jpg"]
 
 [[desktop.hyprland.monitors]]
 name = "eDP-1"
-resolution = "1920x1200"
-refreshRate = 60
+resolution = "1920x1080"
+refreshRate = 120
 position = "0x0"
 scale = 1
 

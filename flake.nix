@@ -7,6 +7,11 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    plasma-manager = {
+      url = "github:nix-community/plasma-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.home-manager.follows = "home-manager";
+    };
     spicetify-nix = {
       url = "github:Gerg-L/spicetify-nix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -15,8 +20,16 @@
     zen-browser.url = "gitlab:InvraNet/zen-browser-flake";
   };
 
-  outputs = inputs@{ nixpkgs-stable, nixpkgs, home-manager, spicetify-nix
-    , stylix, ... }:
+  outputs =
+    inputs@{
+      nixpkgs-stable,
+      nixpkgs,
+      home-manager,
+      plasma-manager,
+      spicetify-nix,
+      stylix,
+      ...
+    }:
     let
       system = "x86_64-linux";
       unstable = import nixpkgs {
@@ -40,8 +53,10 @@
           home-manager.nixosModules.home-manager
           {
             home-manager = {
+              useGlobalPkgs = true;
               useUserPackages = true;
               backupFileExtension = "backup";
+              sharedModules = [ plasma-manager.homeManagerModules.plasma-manager ];
               users.${user.username} =
                 (import ./home/home.nix spicePkgs pkgs inputs);
               extraSpecialArgs = {
