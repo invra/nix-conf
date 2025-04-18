@@ -11,9 +11,10 @@
     };
 
     hotkeys.commands."launch-ghostty" = {
+      key = "Meta+Return";
       name = "Launch Ghostty";
-      key = "Meta+Alt+K";
       command = "ghostty";
+      comment = "Launch Ghostty terminal.";
     };
 
     panels = [
@@ -38,6 +39,10 @@
           "Screensaver"
           "Meta+L"
         ];
+      };
+
+      navigation = {
+        "Quit" = "Meta+Q";
       };
 
       kwin = {
