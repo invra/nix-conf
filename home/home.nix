@@ -35,7 +35,6 @@ spicePkgs: pkgs: inputs:
         lua-language-server
         bash-language-server
         tailwindcss-language-server
-        vimPlugins.nvim-treesitter-parsers.fsharp
         nushellPlugins.polars
         kde-rounded-corners
         luarocks
@@ -82,8 +81,8 @@ spicePkgs: pkgs: inputs:
         source = ./system/config/starship.toml;
       };
       ".config/nvim" ={
-        source = ./system/config/neovim;
-	      recursive = true;
+       source = ./system/config/neovim;
+	     recursive = true;
       };
       ".config/waybar" = {
         source = ./system/config/waybar;
@@ -151,10 +150,6 @@ spicePkgs: pkgs: inputs:
     };
     neovim = {
       enable = true;
-      viAlias = true;
-      vimAlias = true;
-      defaultEditor = true;
-      package = inputs.neovim-nightly-overlay.packages.${pkgs.system}.default;
     };
     vscode = {
       enable = true;
