@@ -1,8 +1,15 @@
 { pkgs, ... }:
 
+let
+  # Read and parse the TOML configuration file
+  tomlConfig = builtins.fromTOML (builtins.readFile ../../config.toml);
+
+  # Extract Plasma configuration
+  enable = tomlConfig.desktop.plasma.enable;
+in
 {
   programs.plasma = {
-    enable = true;
+    inherit enable;
 
     workspace = {
       clickItemTo = "select";

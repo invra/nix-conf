@@ -37,6 +37,7 @@ displayName = "InvraNet"
 initialPassword = "123456"
 
 [system]
+greeter = "gdm"
 hostname = "NixOS"
 timezone = "Australia/Sydney"
 locale = "en_AU.UTF-8"
@@ -118,6 +119,7 @@ This section contains user-related settings.
 ## `[system]` section
 Configures system-wide settings.
 
+- `greeter`: The display manager which is used when logged out.
 - `hostname`: The system's hostname, used in the network and shell (e.g., `[username]@[hostname]`).
 - `timezone`: Specifies the system's timezone. You can find your timezone using `timedatectl list-timezones`.
 - `locale`: Sets the system's default locale (e.g., `en_AU.UTF-8`).

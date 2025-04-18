@@ -49,7 +49,7 @@
       nixosConfigurations.${user.username} = nixpkgs.lib.nixosSystem {
         inherit system;
         modules = [
-          (import ./config/configuration.nix user config.system)
+          (import ./config/configuration.nix user config.system config.desktop)
           home-manager.nixosModules.home-manager
           {
             home-manager = {

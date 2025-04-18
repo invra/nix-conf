@@ -1,7 +1,8 @@
-user: system:
+user: system: desktop:
 { nixpkgs, pkgs, ... }: {
   imports = [
     ./stylix.nix
+    (import ./displayManager.nix system)
     ./hardware-configuration.nix
   ];
   nixpkgs.config.allowUnfree = true;
@@ -56,6 +57,7 @@ user: system:
     qemuGuest.enable = true;
     spice-vdagentd.enable = true;
     xserver = {
+
       enable = true;
       videoDrivers = system.graphics.wanted;
       xkb = {
@@ -64,11 +66,8 @@ user: system:
       };
     };
     
-    displayManager.sddm = {
-      enable = true;
-      wayland.enable = true;
-    };
-    desktopManager.plasma6.enable = true;
+
+    desktopManager.plasma6.enable = desktop.plasma.enable;
     
     fwupd.enable = true;
     pipewire = {

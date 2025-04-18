@@ -4,6 +4,7 @@ displayName = "invra"
 initialPassword = "123456"
 
 [system]
+greeter = "gdm"
 hostname = "NiuOS"
 timezone = "Australia/Sydney"
 locale = "en_AU.UTF-8"
@@ -24,9 +25,11 @@ ssh.enable = true
 mongodb.enable = true
 
 [desktop]
+[desktop.plasma]
+enable = true
+
 [desktop.hyprland]
 enable = true
-wallpapers = ["eDP-1,/home/user/.wallpapers/nature.jpg"]
 
 [[desktop.hyprland.monitors]]
 name = "eDP-1"
