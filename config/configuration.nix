@@ -125,6 +125,7 @@ user: system: desktop:
   environment.stub-ld.enable = true;
 
   programs = {
+    hyprland.enable = true;
     nix-ld.enable = true;
     steam = {
       enable = true;
