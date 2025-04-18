@@ -3,6 +3,7 @@ spicePkgs: pkgs: inputs:
   imports = [
     (import ./system/fastfetch.nix development)
     ./system/hyprland.nix
+    ./system/plasma.nix
     (import ./spicetify.nix spicePkgs pkgs inputs)
     ../config/stylix.nix
   ];
@@ -70,7 +71,7 @@ spicePkgs: pkgs: inputs:
         inputs.zen-browser.packages."${system}".generic
         chromium
         vesktop
-        signal-desktop
+        signal-desktop-bin
         parsec-bin
         obsidian
         prismlauncher

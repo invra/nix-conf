@@ -1,6 +1,6 @@
 user: system:
 { nixpkgs, pkgs, ... }: {
-  imports = [ 
+  imports = [
     ./stylix.nix
     ./hardware-configuration.nix
   ];
@@ -63,12 +63,13 @@ user: system:
         options = "eurosign:e,caps:escape";
       };
     };
+    
     displayManager.sddm = {
       enable = true;
       wayland.enable = true;
     };
-    
     desktopManager.plasma6.enable = true;
+    
     fwupd.enable = true;
     pipewire = {
       enable = true;
@@ -123,7 +124,7 @@ user: system:
 
   i18n.defaultLocale = system.locale;
   environment.stub-ld.enable = true;
-  
+
   programs = {
     nix-ld.enable = true;
     steam = {
