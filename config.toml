@@ -11,10 +11,15 @@ locale = "en_AU.UTF-8"
 kernelParams = ["intel_iommu=on"]
 
 [system.networking]
-networkmanager = true
-dhcpEnabled = true
+networkmanager = false
+firewallEnabled = false
+dhcpEnabled = false
 
-[system.interfaces]
+[[system.networking.interfaces]]
+type = "BRIDGE"
+name = "br0"
+interfaces = ["enp7s0"]
+dhcpEnabled = true
 
 [system.graphics]
 blacklists = ["nouveau", "nvidia"]
@@ -32,9 +37,9 @@ enable = true
 enable = true
 
 [[desktop.hyprland.monitors]]
-name = "eDP-1"
-resolution = "1920x1080"
-refreshRate = 120
+name = "DP-3"
+resolution = "2560x1440"
+refreshRate = 180
 position = "0x0"
 scale = 1
 
