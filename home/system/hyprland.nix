@@ -26,13 +26,10 @@ in
       ) monitors;
 
       # Auto-launching
-      exec = [
-        "mako &"
-        "swww-daemon &"
-      ];
-
       exec-once = [
         "waybar &"
+        "mako &"
+        "swww-daemon &"
       ];
 
       # General settings
