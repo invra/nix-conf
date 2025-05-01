@@ -3,6 +3,9 @@ $env.config.use_kitty_protocol = true;
 $env.config.buffer_editor = "nvim";
 $env.editor = "nvim";
 
+# ENV's
+$env.XDG_CONFIG_DIRS = $"($env.XDG_CONFIG_DIRS):($env.HOME)/.config"
+
 alias d = cd
 alias nv = nvim
 alias ncim = nvim
