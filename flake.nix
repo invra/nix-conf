@@ -24,6 +24,10 @@
       url = "github:Gerg-L/spicetify-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    hyprpanel = {
+      url = "github:Jas-SinghFSU/HyprPanel";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -32,6 +36,7 @@
       nixpkgs,
       home-manager,
       plasma-manager,
+      hyprpanel,
       spicetify-nix,
       nixcord,
       stylix,
@@ -39,19 +44,21 @@
     }:
     let
       system = "x86_64-linux";
+
+      overlays = [ inputs.hyprpanel.overlay ];
+
       unstable = import nixpkgs {
-        inherit system;
+        inherit system overlays;
         config.allowUnfree = true;
       };
       stable = import nixpkgs-stable {
-        inherit system;
+        inherit system overlays;
         config.allowUnfree = true;
       };
       pkgs = unstable;
       config = (builtins.fromTOML (builtins.readFile ./config.toml));
       user = config.user;
       development = config.development;
-      spicePkgs = spicetify-nix.legacyPackages.${system};
     in {
       nixosConfigurations.${user.username} = nixpkgs.lib.nixosSystem {
         inherit system;
@@ -63,14 +70,13 @@
               useGlobalPkgs = true;
               useUserPackages = true;
               backupFileExtension = "backup";
-              sharedModules = [ 
+              sharedModules = [
                 plasma-manager.homeManagerModules.plasma-manager
                 inputs.nixcord.homeModules.nixcord
               ];
-              users.${user.username} =
-                (import ./home/home.nix spicePkgs pkgs inputs);
+              users.${user.username} = ./home/home.nix;
               extraSpecialArgs = {
-                inherit pkgs development user unstable stable;
+                inherit pkgs development user unstable stable system inputs;
                 username = user.username;
               };
             };

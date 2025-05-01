@@ -17,6 +17,10 @@ let
   }) hyprland.monitors;
 in
 {
+  imports = [
+    ./hyprpanel.nix
+  ];
+
   wayland.windowManager.hyprland = {
     enable = hyprland.enable;
 
@@ -27,9 +31,8 @@ in
 
       # Auto-launching
       exec-once = [
-        "waybar &"
-        "mako &"
         "swww-daemon &"
+        "hyprpanel"
       ];
 
       # General settings

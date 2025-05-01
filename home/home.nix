@@ -1,9 +1,10 @@
-spicePkgs: pkgs: inputs:
-{ development, user, pkgs, stable, ... }: {
+{ development, user, pkgs, inputs, system, ... }:
+
+{
   imports = [
-    (import ./system/programs.nix development pkgs inputs)
-    (import ./spicetify.nix spicePkgs pkgs inputs)
-    (import ./system/fastfetch.nix development)
+    ./system/programs.nix
+    ./spicetify.nix
+    ./system/fastfetch.nix
     ./system/stylixTargets.nix
     ./system/hyprland.nix
     ./system/plasma.nix
@@ -14,7 +15,7 @@ spicePkgs: pkgs: inputs:
     username = user.username;
     homeDirectory = "/home/" + user.username;
     stateVersion = "24.11";
-       sessionVariables = {
+    sessionVariables = {
       EDITOR = "nvim";
       GIT_EDITOR = "nvim";
     };

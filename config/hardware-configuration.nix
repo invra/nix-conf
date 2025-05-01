@@ -18,6 +18,11 @@
       fsType = "ext4";
     };
 
+  fileSystems."/home/invra/media/abb81f14-af39-47c6-9f74-1e8810491b10" = 
+    { device = "/dev/sda";
+      fsType = "ext4";
+    };
+
   fileSystems."/boot" =
     { device = "/dev/disk/by-uuid/D1D7-BFA9";
       fsType = "vfat";
