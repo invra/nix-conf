@@ -3,6 +3,10 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-24.11";
     stylix.url = "github:danth/stylix";
+    neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
+    zen-browser.url = "gitlab:InvraNet/zen-flake";
+    nixcord.url = "github:kaylorben/nixcord";
+
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -20,8 +24,6 @@
       url = "github:Gerg-L/spicetify-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
-    zen-browser.url = "gitlab:InvraNet/zen-flake";
   };
 
   outputs =
@@ -31,6 +33,7 @@
       home-manager,
       plasma-manager,
       spicetify-nix,
+      nixcord,
       stylix,
       ...
     }:
@@ -60,7 +63,10 @@
               useGlobalPkgs = true;
               useUserPackages = true;
               backupFileExtension = "backup";
-              sharedModules = [ plasma-manager.homeManagerModules.plasma-manager ];
+              sharedModules = [ 
+                plasma-manager.homeManagerModules.plasma-manager
+                inputs.nixcord.homeModules.nixcord
+              ];
               users.${user.username} =
                 (import ./home/home.nix spicePkgs pkgs inputs);
               extraSpecialArgs = {

@@ -1,6 +1,7 @@
 development: pkgs: inputs:
-{ ... }: {
-   home.packages = with pkgs; [
+{ ... }: 
+  {
+    home.packages = with pkgs; [
       # Developer Tools
       python312
       nodejs
@@ -26,11 +27,10 @@ development: pkgs: inputs:
       # Multimedia Tools
       viu
       vlc
-      (wrapOBS {
-        plugins = with obs-studio-plugins; [
-          obs-websocket
-        ];
-      })
+      (wrapOBS 
+      {plugins = with obs-studio-plugins; [
+        obs-websocket
+      ];})
       wayvnc
       ffmpeg
       fzf
@@ -58,7 +58,6 @@ development: pkgs: inputs:
       # Day-to-Day Applications
       inputs.zen-browser.outputs.packages.${pkgs.system}.default
       chromium
-      vesktop
       signal-desktop-bin
       parsec-bin
       obsidian
@@ -128,6 +127,47 @@ development: pkgs: inputs:
       enableBashIntegration = true;
       enableNushellIntegration = true;
       options = [ "--cmd cd" ];
+    };
+
+    nixcord = {
+      enable = true;
+      discord.enable = false;
+      vesktop.enable = true;
+      quickCss = builtins.readFile ./config/vesktop/main.css;
+      config = {
+        useQuickCss = true;
+        themeLinks = [];
+        frameless = true;
+        plugins = {
+          betterSettings.enable = true;
+          callTimer.enable = true;
+          crashHandler.enable = true;
+          fixSpotifyEmbeds = {
+            enable = true;
+            volume = 9.0;
+          };
+          fixYoutubeEmbeds.enable = true;
+          imageZoom.enable = true;
+          noF1.enable = true;
+          onePingPerDM.enable = true;
+          openInApp.enable = true;
+          quickReply.enable = true;
+          spotifyControls.enable = true;
+          spotifyCrack.enable = true;
+          spotifyShareCommands.enable = true;
+          voiceChatDoubleClick.enable = true;
+          voiceDownload.enable = true;
+          voiceMessages.enable = true;
+          volumeBooster = {
+            enable = true;
+            multiplier = 5;
+          };
+          webKeybinds.enable = true;
+          webRichPresence.enable = true;
+          webScreenShareFixes.enable = true;
+          youtubeAdblock.enable = true;
+        };
+      };
     };
   };
 }
