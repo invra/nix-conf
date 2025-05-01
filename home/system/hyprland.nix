@@ -27,9 +27,12 @@ in
 
       # Auto-launching
       exec = [
-        "waybar &"
         "mako &"
         "swww-daemon &"
+      ];
+
+      exec-once = [
+        "waybar &"
       ];
 
       # General settings
