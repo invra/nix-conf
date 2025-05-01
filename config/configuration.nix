@@ -145,7 +145,7 @@ user: system: desktop:
     description = user.displayName;
     shell = pkgs.nushell;
     extraGroups = [ "networkmanager" "docker" "wheel" "libvirtd" ];
-    packages = with pkgs; [ wget jdk21 glib libreoffice-qt-fresh remmina gcc clang-tools cmake calibre gnumake ];
+    packages = with pkgs; [ wayvnc wget jdk21 glib libreoffice-qt-fresh remmina gcc clang-tools cmake calibre gnumake ];
   };
 
   fonts = {

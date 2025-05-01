@@ -51,7 +51,7 @@ development: pkgs: inputs:
       superfile
 
       # Day-to-Day Applications
-      inputs.zen-browser.packages."${system}".generic
+      inputs.zen-browser.outputs.packages.${pkgs.system}.default
       chromium
       vesktop
       signal-desktop-bin

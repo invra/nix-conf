@@ -21,7 +21,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
-    zen-browser.url = "gitlab:InvraNet/zen-browser-flake";
+    zen-browser.url = "gitlab:InvraNet/zen-flake";
   };
 
   outputs =
