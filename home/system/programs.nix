@@ -1,5 +1,4 @@
-development: pkgs: inputs:
-{ ... }: 
+{ development, pkgs, inputs, ... }: 
   {
     home.packages = with pkgs; [
       # Developer Tools
@@ -37,6 +36,7 @@ development: pkgs: inputs:
 
       # System Libraries & Utilities
       wl-clipboard
+      file
       tree
       waybar
       rofi-wayland

@@ -1,5 +1,8 @@
-spicePkgs: pkgs: inputs:
-{ ... }: {
+{ pkgs, inputs, system, ... }:
+let
+  spicePkgs = inputs.spicetify-nix.legacyPackages.${system};
+in
+{
   imports = [ inputs.spicetify-nix.homeManagerModules.default ];
   programs.spicetify = {
     enable = true;
