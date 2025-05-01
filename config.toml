@@ -5,7 +5,7 @@ initialPassword = "123456"
 
 [system]
 greeter = "gdm"
-hostname = "NiuOS"
+hostname = "NixOS"
 timezone = "Australia/Sydney"
 locale = "en_AU.UTF-8"
 kernelParams = ["intel_iommu=on"]
