@@ -15,25 +15,20 @@ let
     position = monitor.position;
     scale = monitor.scale;
   }) hyprland.monitors;
-in
-{
-  imports = [
-    ./hyprpanel.nix
-  ];
+in {
+  imports = [ ./hyprpanel.nix ];
 
   wayland.windowManager.hyprland = {
     enable = hyprland.enable;
 
     settings = {
       monitor = builtins.map (monitor:
-        "${monitor.name},${monitor.resolution}@${builtins.toString monitor.refreshRate},${monitor.position},${builtins.toString monitor.scale}"
-      ) monitors;
+        "${monitor.name},${monitor.resolution}@${
+          builtins.toString monitor.refreshRate
+        },${monitor.position},${builtins.toString monitor.scale}") monitors;
 
       # Auto-launching
-      exec-once = [
-        "swww-daemon &"
-        "hyprpanel"
-      ];
+      exec-once = [ "swww-daemon &" "hyprpanel" ];
 
       # General settings
       general = {
@@ -53,23 +48,17 @@ in
         };
       };
 
-      animations = {
-        enabled = true;
-      };
+      animations = { enabled = true; };
 
       # Inputs (keyboard & mouse)
       input = {
         kb_layout = "us";
         follow_mouse = 1;
         sensitivity = 0.5;
-	touchpad = {
-	  natural_scroll = true;
-	};
+        touchpad = { natural_scroll = true; };
       };
 
-      render = {
-        explicit_sync = false;
-      };
+      render = { explicit_sync = false; };
 
       dwindle = {
         pseudotile = true;
@@ -108,16 +97,14 @@ in
       ];
 
       # Mouse bindings
-      bindm = [
-        "SUPER, mouse:272, movewindow"
-        "SUPER, mouse:273, resizewindow"
-      ];
+      bindm =
+        [ "SUPER, mouse:272, movewindow" "SUPER, mouse:273, resizewindow" ];
 
       windowrulev2 = [
-      	"pin, title:Picture-in-Picture"
-      	"float, title:Picture-in-Picture"
-      	"size 640 360, title:Picture-in-Picture"
-      	"pin, title:Picture-in-Picture"
+        "pin, title:Picture-in-Picture"
+        "float, title:Picture-in-Picture"
+        "size 640 360, title:Picture-in-Picture"
+        "pin, title:Picture-in-Picture"
       ];
     };
   };

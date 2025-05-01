@@ -10,7 +10,9 @@ user: system: desktop:
   nix.settings = {
     experimental-features = [ "nix-command" "flakes" ];
     substituters = [ "https://nix-community.cachix.org" ];
-    trusted-public-keys = [ "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs=" ];
+    trusted-public-keys = [
+      "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+    ];
   };
 
   time.timeZone = system.timezone;
@@ -32,7 +34,7 @@ user: system: desktop:
   boot = {
     kernelPackages = pkgs.linuxKernel.packages.linux_6_12;
     kernelParams = system.kernelParams;
-    kernelModules = ["v4l2loopback" ];
+    kernelModules = [ "v4l2loopback" ];
     blacklistedKernelModules = system.graphics.blacklists;
     loader = {
       systemd-boot.enable = true;
@@ -40,7 +42,7 @@ user: system: desktop:
     };
   };
 
-  security= {
+  security = {
     doas = {
       extraRules = [{
         groups = [ "wheel" ];
@@ -65,10 +67,9 @@ user: system: desktop:
         options = "eurosign:e,caps:escape";
       };
     };
-    
 
     desktopManager.plasma6.enable = desktop.plasma.enable;
-    
+
     fwupd.enable = true;
     pipewire = {
       enable = true;
@@ -112,11 +113,9 @@ user: system: desktop:
     dolphin
   ];
 
-  hardware = {
-    graphics.enable = true;
-  };
+  hardware = { graphics.enable = true; };
 
-networking = {
+  networking = {
     hostName = system.hostname;
     networkmanager.enable = system.networking.networkmanager;
     firewall.enable = system.networking.firewallEnabled;
@@ -125,12 +124,13 @@ networking = {
     interfaces = builtins.listToAttrs (map (iface: {
       name = iface.name;
       value.useDHCP = (iface.dhcpEnabled or iface.type != "BRIDGE");
-    }) system.networking.interfaces or []);
+    }) system.networking.interfaces or [ ]);
 
     bridges = builtins.listToAttrs (map (iface: {
       name = iface.name;
-      value.interfaces = (iface.interfaces or []);
-    }) (builtins.filter (iface: iface.type == "BRIDGE") system.networking.interfaces or []));
+      value.interfaces = (iface.interfaces or [ ]);
+    }) (builtins.filter (iface: iface.type == "BRIDGE")
+      system.networking.interfaces or [ ]));
   };
 
   i18n.defaultLocale = system.locale;
@@ -157,7 +157,19 @@ networking = {
     description = user.displayName;
     shell = pkgs.nushell;
     extraGroups = [ "networkmanager" "docker" "wheel" "libvirtd" ];
-    packages = with pkgs; [ wayvnc wget jdk21 glib libreoffice-qt-fresh remmina gcc clang-tools cmake calibre gnumake ];
+    packages = with pkgs; [
+      wayvnc
+      wget
+      jdk21
+      glib
+      libreoffice-qt-fresh
+      remmina
+      gcc
+      clang-tools
+      cmake
+      calibre
+      gnumake
+    ];
   };
 
   fonts = {

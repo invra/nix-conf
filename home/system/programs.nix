@@ -1,67 +1,63 @@
-{ development, pkgs, inputs, ... }: 
-  {
-    home.packages = with pkgs; [
-      # Developer Tools
-      python312
-      nodejs
-      lazygit
-      lua
-      postman
-      ghostty
-      pandoc
-      pgadmin4-desktopmode
-      mongodb-compass
+{ development, pkgs, inputs, ... }: {
+  home.packages = with pkgs; [
+    # Developer Tools
+    python312
+    nodejs
+    lazygit
+    lua
+    postman
+    ghostty
+    pandoc
+    pgadmin4-desktopmode
+    mongodb-compass
 
-      # Language Servers & Plugins
-      marksman
-      markdownlint-cli2
-      lua-language-server
-      bash-language-server
-      tailwindcss-language-server
-      nushellPlugins.polars
-      kde-rounded-corners
-      luarocks
-      nil
+    # Language Servers & Plugins
+    marksman
+    markdownlint-cli2
+    lua-language-server
+    bash-language-server
+    tailwindcss-language-server
+    nushellPlugins.polars
+    kde-rounded-corners
+    luarocks
+    nil
 
-      # Multimedia Tools
-      viu
-      vlc
-      (wrapOBS 
-      {plugins = with obs-studio-plugins; [
-        obs-websocket
-      ];})
-      wayvnc
-      ffmpeg
-      fzf
+    # Multimedia Tools
+    viu
+    vlc
+    (wrapOBS { plugins = with obs-studio-plugins; [ obs-websocket ]; })
+    wayvnc
+    ffmpeg
+    fzf
 
-      # System Libraries & Utilities
-      wl-clipboard
-      file
-      tree
-      waybar
-      rofi-wayland
-      wofi
-      mako
-      libnotify
-      pavucontrol
-      slurp
-      grim
-      killall
-      swww
+    # System Libraries & Utilities
+    wl-clipboard
+    file
+    tree
+    waybar
+    rofi-wayland
+    wofi
+    mako
+    libnotify
+    pavucontrol
+    slurp
+    grim
+    killall
+    swww
 
-      # CLI Utilities
-      btop
-      yt-dlp
-      wineWowPackages.stable
-      superfile
+    # CLI Utilities
+    btop
+    yt-dlp
+    wineWowPackages.stable
+    superfile
 
-      # Day-to-Day Applications
-      inputs.zen-browser.outputs.packages.${pkgs.system}.default
-      chromium
-      signal-desktop-bin
-      parsec-bin
-      obsidian
-      prismlauncher
+    # Day-to-Day Applications
+    inputs.zen-browser.outputs.packages.${pkgs.system}.default
+    chromium
+    signal-desktop-bin
+    parsec-bin
+    obsidian
+    prismlauncher
   ];
 
   programs = {
@@ -71,12 +67,10 @@
 
     git = {
       enable = true;
-      userName  = development.git.username;
+      userName = development.git.username;
       userEmail = development.git.email;
 
-      extraConfig = {
-        init.defaultBranch = development.git.defaultBranch;
-      };
+      extraConfig = { init.defaultBranch = development.git.defaultBranch; };
     };
 
     gh = {
@@ -84,9 +78,7 @@
       settings = { editor = "nvim"; };
     };
 
-    zed-editor = {
-      enable = true;
-    };
+    zed-editor = { enable = true; };
 
     vscode = {
       enable = true;
@@ -103,9 +95,7 @@
       ];
     };
 
-    neovim = {
-      enable = true;
-    };
+    neovim = { enable = true; };
 
     nushell = {
       enable = true;
@@ -136,7 +126,7 @@
       quickCss = builtins.readFile ./config/vesktop/main.css;
       config = {
         useQuickCss = true;
-        themeLinks = [];
+        themeLinks = [ ];
         frameless = true;
         plugins = {
           betterSettings.enable = true;
