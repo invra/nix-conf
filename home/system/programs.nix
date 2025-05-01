@@ -26,7 +26,12 @@ development: pkgs: inputs:
       # Multimedia Tools
       viu
       vlc
-      obs-studio
+      (wrapOBS {
+        plugins = with obs-studio-plugins; [
+          obs-websocket
+        ];
+      })
+      wayvnc
       ffmpeg
       fzf
 
