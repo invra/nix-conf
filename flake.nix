@@ -30,18 +30,8 @@
     };
   };
 
-  outputs =
-    inputs@{
-      nixpkgs-stable,
-      nixpkgs,
-      home-manager,
-      plasma-manager,
-      hyprpanel,
-      spicetify-nix,
-      nixcord,
-      stylix,
-      ...
-    }:
+  outputs = inputs@{ nixpkgs-stable, nixpkgs, home-manager, plasma-manager
+    , hyprpanel, spicetify-nix, nixcord, stylix, ... }:
     let
       system = "x86_64-linux";
 
