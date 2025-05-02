@@ -11,7 +11,7 @@ locale = "en_AU.UTF-8"
 kernelParams = ["intel_iommu=on"]
 
 [system.networking]
-networkmanager = false
+networkmanager = true
 firewallEnabled = false
 dhcpEnabled = false
 
