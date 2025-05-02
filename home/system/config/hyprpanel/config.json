@@ -29,19 +29,10 @@
     "customModules": {
       "cava": {
         "autoSensitivity": true,
-        "barCharacters": [
-          "▁",
-          "▂",
-          "▃",
-          "▄",
-          "▅",
-          "▆",
-          "▇",
-          "█"
-        ],
+        "barCharacters": ["▁", "▂", "▃", "▄", "▅", "▆", "▇", "█"],
         "bars": 10,
         "channels": 2,
-        "framerate": 60,
+        "framerate": 320,
         "highCutoff": 10000,
         "icon": "",
         "leftClick": "",
@@ -222,15 +213,21 @@
         "showIcon": true,
         "showTime": true,
         "tz": [
-          "America/New_York",
-          "Europe/Paris",
-          "Asia/Tokyo"
+          "Australia/Sydney",
+          "Australia/John_Pork",
+          "Pacific/Auckland",
+          "Asia/Kathmandu",
+          "Asia/Jerusalem",
+          "Asia/Ho_Chi_Minh",
+          "America/Bogota",
+          "Australia/Eucla",
+          "Asia/Kolkata"
         ]
       }
     },
     "launcher": {
       "autoDetectIcon": true,
-      "icon": "󰣇",
+      "icon": "",
       "middleClick": "",
       "rightClick": "",
       "scrollDown": "",
@@ -509,51 +506,19 @@
   "bar.customModules.netstat.label": true,
   "bar.layouts": {
     "0": {
-      "left": [
-        "dashboard",
-        "workspaces",
-        "windowtitle"
-      ],
-      "middle": [
-        "media"
-      ],
-      "right": [
-        "volume",
-        "network",
-        "systray",
-        "clock",
-        "notifications"
-      ]
+      "left": ["dashboard", "workspaces", "windowtitle"],
+      "middle": ["media", "cava"],
+      "right": ["volume", "network", "systray", "clock", "notifications"]
     },
     "1": {
-      "left": [
-        "dashboard",
-        "workspaces",
-        "windowtitle"
-      ],
-      "middle": [
-        "media"
-      ],
-      "right": [
-        "volume",
-        "clock",
-        "notifications"
-      ]
+      "left": ["dashboard", "workspaces", "windowtitle"],
+      "middle": ["media"],
+      "right": ["volume", "clock", "notifications"]
     },
     "2": {
-      "left": [
-        "dashboard",
-        "workspaces",
-        "windowtitle"
-      ],
-      "middle": [
-        "media"
-      ],
-      "right": [
-        "volume",
-        "clock",
-        "notifications"
-      ]
+      "left": ["dashboard", "workspaces", "windowtitle"],
+      "middle": ["media", "cava"],
+      "right": ["volume", "clock", "notifications"]
     }
   },
   "menus.dashboard.stats.enable_gpu": false,
@@ -575,5 +540,20 @@
   "theme.notification.border_radius": "0.5em",
   "theme.notification.enableShadow": false,
   "theme.bar.menus.menu.notifications.height": "30em",
-  "notifications.timeout": 4000
+  "notifications.timeout": 4000,
+  "bar.workspaces.show_icons": false,
+  "bar.workspaces.showWsIcons": true,
+  "bar.workspaces.showApplicationIcons": true,
+  "theme.bar.buttons.workspaces.numbered_active_highlight_border": "0.25em",
+  "bar.workspaces.applicationIconOncePerWorkspace": true,
+  "bar.workspaces.numbered_active_indicator": "highlight",
+  "theme.bar.buttons.workspaces.numbered_active_highlight_padding": "0.5em",
+  "theme.bar.buttons.workspaces.numbered_inactive_padding": "0.5em",
+  "bar.workspaces.workspaceMask": false,
+  "bar.windowtitle.icon": true,
+  "bar.windowtitle.truncation": true,
+  "bar.windowtitle.class_name": true,
+  "bar.bluetooth.label": false,
+  "bar.media.truncation": true,
+  "bar.media.truncation_size": 50
 }
