@@ -5,21 +5,17 @@ initialPassword = "123456"
 
 [system]
 greeter = "gdm"
-hostname = "NixOS"
+hostname = "NiuOS"
 timezone = "Australia/Sydney"
 locale = "en_AU.UTF-8"
 kernelParams = ["intel_iommu=on"]
 
 [system.networking]
 networkmanager = true
-firewallEnabled = false
-dhcpEnabled = false
-
-[[system.networking.interfaces]]
-type = "BRIDGE"
-name = "br0"
-interfaces = ["enp7s0"]
 dhcpEnabled = true
+firewallEnabled = false
+
+[system.interfaces]
 
 [system.graphics]
 blacklists = ["nouveau", "nvidia"]
@@ -37,9 +33,9 @@ enable = true
 enable = true
 
 [[desktop.hyprland.monitors]]
-name = "DP-3"
-resolution = "2560x1440"
-refreshRate = 180
+name = "eDP-1"
+resolution = "1920x1080"
+refreshRate = 120
 position = "0x0"
 scale = 1
 
