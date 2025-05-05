@@ -30,12 +30,24 @@
     };
   };
 
-  outputs = inputs@{ nixpkgs-stable, nixpkgs, home-manager, plasma-manager
-    , hyprpanel, spicetify-nix, nixcord, stylix, ... }:
+  outputs =
+    {
+      nixpkgs-stable,
+      nixpkgs,
+      home-manager,
+      plasma-manager,
+      hyprpanel,
+      spicetify-nix,
+      nixcord,
+      stylix,
+      neovim-nightly-overlay,
+      zen-browser,
+      ...
+    }:
     let
       system = "x86_64-linux";
 
-      overlays = [ inputs.hyprpanel.overlay ];
+      overlays = [ hyprpanel.overlay ];
 
       unstable = import nixpkgs {
         inherit system overlays;
@@ -46,34 +58,42 @@
         config.allowUnfree = true;
       };
       pkgs = unstable;
-      config = (builtins.fromTOML (builtins.readFile ./config.toml));
-      user = config.user;
-      development = config.development;
-    in {
+      configTOML = (builtins.fromTOML (builtins.readFile ./config.toml));
+      user = configTOML.user;
+      development = configTOML.development;
+      desktop = configTOML.desktop;
+    in
+    {
       nixosConfigurations.${user.username} = nixpkgs.lib.nixosSystem {
         inherit system;
+        specialArgs = {
+          inherit
+            desktop
+            user
+            pkgs
+            home-manager
+            development
+            unstable
+            stable
+            nixpkgs-stable
+            nixpkgs
+            plasma-manager
+            hyprpanel
+            spicetify-nix
+            nixcord
+            stylix
+            neovim-nightly-overlay
+            zen-browser
+            ;
+          system = configTOML.system;
+          username = user.username;
+        };
         modules = [
-          (import ./config/configuration.nix user config.system config.desktop)
-          home-manager.nixosModules.home-manager
-          {
-            home-manager = {
-              useGlobalPkgs = true;
-              useUserPackages = true;
-              backupFileExtension = "backup";
-              sharedModules = [
-                plasma-manager.homeManagerModules.plasma-manager
-                inputs.nixcord.homeModules.nixcord
-              ];
-              users.${user.username} = ./home/home.nix;
-              extraSpecialArgs = {
-                inherit pkgs development user unstable stable system inputs;
-                username = user.username;
-              };
-            };
-          }
+          ./modules/config
+          ./modules/home
           stylix.nixosModules.stylix
         ];
       };
-      formatter.${system} = pkgs.nixfmt-classic;
+      formatter.${system} = pkgs.nixfmt-tree;
     };
 }
