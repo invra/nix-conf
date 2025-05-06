@@ -2,9 +2,10 @@
   lib,
   user,
   system,
+  unstable,
+  stable,
   desktop,
   nixpkgs,
-  pkgs,
   ...
 }:
 {
@@ -43,7 +44,7 @@
   };
 
   boot = {
-    kernelPackages = pkgs.linuxKernel.packages.linux_6_12;
+    kernelPackages = unstable.linuxKernel.packages.linux_6_12;
     kernelParams = system.kernelParams;
     kernelModules = [ "v4l2loopback" ];
     blacklistedKernelModules = system.graphics.blacklists;
@@ -119,7 +120,7 @@
     };
   };
 
-  environment.plasma6.excludePackages = with pkgs.kdePackages; [
+  environment.plasma6.excludePackages = with unstable.kdePackages; [
     plasma-browser-integration
     konsole
     elisa
@@ -167,20 +168,20 @@
   };
 
   xdg.portal.enable = true;
-  xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+  xdg.portal.extraPortals = [ unstable.xdg-desktop-portal-gtk ];
 
   users.users.${user.username} = {
     isNormalUser = true;
     initialPassword = user.initialPassword;
     description = user.displayName;
-    shell = pkgs.nushell;
+    shell = unstable.nushell;
     extraGroups = [
       "networkmanager"
       "docker"
       "wheel"
       "libvirtd"
     ];
-    packages = with pkgs; [
+    packages = with unstable; [
       wayvnc
       wget
       jdk21
@@ -196,7 +197,7 @@
   };
 
   fonts = {
-    packages = with pkgs; [
+    packages = with unstable; [
       nerd-fonts.jetbrains-mono
       font-awesome
       corefonts

@@ -1,13 +1,12 @@
 {
   development,
-  pkgs,
+  unstable,
   zen-browser,
   ...
 }:
 {
-  home.packages = with pkgs; [
+  home.packages = with unstable; [
     # Developer Tools
-    python312
     nodejs
     lazygit
     lua
@@ -52,13 +51,12 @@
     swww
 
     # CLI Utilities
-    btop
     yt-dlp
     wineWowPackages.stable
     superfile
 
     # Day-to-Day Applications
-    zen-browser.outputs.packages.${pkgs.system}.default
+    zen-browser.outputs.packages.${unstable.system}.default
     chromium
     signal-desktop-bin
     parsec-bin
@@ -70,42 +68,6 @@
     home-manager.enable = true;
 
     ripgrep.enable = true;
-
-    git = {
-      enable = true;
-      userName = development.git.username;
-      userEmail = development.git.email;
-
-      extraConfig = {
-        init.defaultBranch = development.git.defaultBranch;
-      };
-    };
-
-    gh = {
-      enable = true;
-      settings = {
-        editor = "nvim";
-      };
-    };
-
-    zed-editor = {
-      enable = true;
-    };
-
-    vscode = {
-      enable = true;
-      package = pkgs.vscode.fhs;
-      profiles.default.extensions = with pkgs.vscode-extensions; [
-        pkief.material-icon-theme
-        bradlc.vscode-tailwindcss
-        vscodevim.vim
-        ms-vsliveshare.vsliveshare
-        ms-vscode.live-server
-        kamikillerto.vscode-colorize
-        bierner.github-markdown-preview
-        mvllow.rose-pine
-      ];
-    };
 
     neovim = {
       enable = true;
@@ -133,45 +95,6 @@
       options = [ "--cmd cd" ];
     };
 
-    nixcord = {
-      enable = true;
-      discord.enable = false;
-      vesktop.enable = true;
-      quickCss = builtins.readFile ./config/vesktop/main.css;
-      config = {
-        useQuickCss = true;
-        themeLinks = [ ];
-        frameless = true;
-        plugins = {
-          betterSettings.enable = true;
-          callTimer.enable = true;
-          crashHandler.enable = true;
-          fixSpotifyEmbeds = {
-            enable = true;
-            volume = 9.0;
-          };
-          fixYoutubeEmbeds.enable = true;
-          imageZoom.enable = true;
-          noF1.enable = true;
-          onePingPerDM.enable = true;
-          openInApp.enable = true;
-          quickReply.enable = true;
-          spotifyControls.enable = true;
-          spotifyCrack.enable = true;
-          spotifyShareCommands.enable = true;
-          voiceChatDoubleClick.enable = true;
-          voiceDownload.enable = true;
-          voiceMessages.enable = true;
-          volumeBooster = {
-            enable = true;
-            multiplier = 5;
-          };
-          webKeybinds.enable = true;
-          webRichPresence.enable = true;
-          webScreenShareFixes.enable = true;
-          youtubeAdblock.enable = true;
-        };
-      };
-    };
+
   };
 }
