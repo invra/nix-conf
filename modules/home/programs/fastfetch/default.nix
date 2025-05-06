@@ -1,5 +1,7 @@
 { development, ... }:
 {
+  home.file.".config/fastfetch/nixos.png".source = ./art.png;
+
   programs.fastfetch = {
     enable = true;
     settings = {

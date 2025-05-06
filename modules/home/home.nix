@@ -1,20 +1,16 @@
 {
   development,
+  nixpkgs,
   user,
   pkgs,
   ...
 }:
+let
+  utils = import ./utils.nix {lib = nixpkgs.lib;};
 
+in
 {
-  imports = [
-    ./system/programs.nix
-    ./spicetify.nix
-    ./system/fastfetch.nix
-    ./system/stylixTargets.nix
-    ./system/hyprland.nix
-    ./system/plasma.nix
-    ./file.nix
-  ];
+  imports = utils.getModulesFromDirsRec [ ./system ./programs ];
 
   home = {
     username = user.username;

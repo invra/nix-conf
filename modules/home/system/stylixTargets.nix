@@ -9,11 +9,7 @@
       spicetify.enable = false;
       qt.enable = false;
       hyprland.enable = false;
-      zed.enable = false;
       vscode.enable = false;
-      vencord.enable = false;
-      vesktop.enable = false;
-      nixcord.enable = false;
     };
     fonts = {
       serif = {
