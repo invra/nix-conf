@@ -1,10 +1,15 @@
 { unstable, ... }:
 {
   stylix.targets.zed.enable = false;
-  
+
   programs.zed-editor = {
     enable = true;
-    extensions = ["rose-pine-theme" "html" "nix" "discord-presence"];
+    extensions = [
+      "rose-pine-theme"
+      "html"
+      "nix"
+      "discord-presence"
+    ];
     extraPackages = [ unstable.nixd ];
     userSettings = {
       telemetry = {

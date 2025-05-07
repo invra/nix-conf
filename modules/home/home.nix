@@ -6,11 +6,14 @@
   ...
 }:
 let
-  utils = import ./utils.nix {lib = nixpkgs.lib;};
+  utils = import ./utils.nix { lib = nixpkgs.lib; };
 
 in
 {
-  imports = utils.getModulesFromDirsRec [ ./system ./programs ];
+  imports = utils.getModulesFromDirsRec [
+    ./system
+    ./programs
+  ];
 
   home = {
     username = user.username;

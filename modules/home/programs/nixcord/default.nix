@@ -6,7 +6,6 @@
     vencord.enable = false;
   };
 
-
   programs.nixcord = {
     enable = true;
     discord.enable = false;

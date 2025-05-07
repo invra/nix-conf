@@ -1,8 +1,11 @@
 {
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    flake-utils.url = "github:numtide/flake-utils";
     nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-24.11";
     stylix.url = "github:danth/stylix";
+    darwin.url = "github:lnl7/nix-darwin";
+    darwin.inputs.nixpkgs.follows = "nixpkgs";
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
     zen-browser.url = "gitlab:InvraNet/zen-flake";
     nixcord.url = "github:kaylorben/nixcord";
@@ -33,6 +36,8 @@
   outputs =
     {
       nixpkgs-stable,
+      flake-utils,
+      darwin,
       nixpkgs,
       home-manager,
       plasma-manager,
@@ -45,27 +50,27 @@
       ...
     }:
     let
-      system = "x86_64-linux";
-
       overlays = [ hyprpanel.overlay ];
+      configTOML = (builtins.fromTOML (builtins.readFile ./config.toml));
 
       unstable = import nixpkgs {
-        inherit system overlays;
+        inherit overlays;
+        system = configTOML.system.arch;
         config.allowUnfree = true;
       };
       stable = import nixpkgs-stable {
-        inherit system overlays;
+        inherit overlays;
+        system = configTOML.system.arch;
         config.allowUnfree = true;
       };
       pkgs = unstable;
-      configTOML = (builtins.fromTOML (builtins.readFile ./config.toml));
       user = configTOML.user;
       development = configTOML.development;
       desktop = configTOML.desktop;
     in
     {
       nixosConfigurations.${user.username} = nixpkgs.lib.nixosSystem {
-        inherit system;
+        system = "x86_64-linux";
         specialArgs = {
           inherit
             desktop
@@ -94,6 +99,39 @@
           stylix.nixosModules.stylix
         ];
       };
-      formatter.${system} = pkgs.nixfmt-tree;
-    };
+      darwinConfigurations.${user.username} = darwin.lib.darwinSystem {
+        system = "aarch64-darwin";
+        specialArgs = {
+          inherit
+            desktop
+            user
+            pkgs
+            home-manager
+            development
+            unstable
+            stable
+            nixpkgs-stable
+            nixpkgs
+            plasma-manager
+            hyprpanel
+            spicetify-nix
+            nixcord
+            stylix
+            neovim-nightly-overlay
+            zen-browser
+            ;
+          system = configTOML.system;
+          username = user.username;
+        };
+        modules = [
+          ./modules/nix-darwin/config
+          ./modules/nix-darwin/home
+        ];
+      };
+    }
+    // flake-utils.lib.eachDefaultSystem (
+      system: with import nixpkgs { inherit system; }; {
+        formatter = nixfmt-tree;
+      }
+    );
 }
