@@ -4,11 +4,17 @@ displayName = "invra"
 initialPassword = "123456"
 
 [system]
+arch = "aarch64-darwin"
 greeter = "gdm"
 hostname = "NiuOS"
 timezone = "Australia/Sydney"
 locale = "en_AU.UTF-8"
 kernelParams = ["intel_iommu=on"]
+[system.dock]
+autohide = true
+autoHideDelay = 0.45
+orientation = "right"
+
 
 [system.networking]
 networkmanager = true
