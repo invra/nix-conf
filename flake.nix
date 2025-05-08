@@ -44,6 +44,7 @@
       hyprpanel,
       spicetify-nix,
       nixcord,
+      nixvim,
       stylix,
       neovim-nightly-overlay,
       zen-browser,
@@ -86,6 +87,7 @@
             hyprpanel
             spicetify-nix
             nixcord
+	    nixvim
             stylix
             neovim-nightly-overlay
             zen-browser
@@ -116,6 +118,7 @@
             hyprpanel
             spicetify-nix
             nixcord
+	    nixvim
             stylix
             neovim-nightly-overlay
             zen-browser
