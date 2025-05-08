@@ -38,7 +38,9 @@
     # System Libraries & Utilities
     wl-clipboard
     file
+    fd
     tree
+    unzip
     waybar
     rofi-wayland
     wofi
@@ -68,10 +70,6 @@
     home-manager.enable = true;
 
     ripgrep.enable = true;
-
-    neovim = {
-      enable = true;
-    };
 
     nushell = {
       enable = true;

@@ -4,10 +4,10 @@
     ".config/starship.toml" = {
       source = ./config/starship.toml;
     };
-    ".config/nvim" = {
-      source = ./config/neovim;
-      recursive = true;
-    };
+    # ".config/nvim" = {
+    #   source = ./config/neovim;
+    #   recursive = true;
+    # };
     ".config/waybar" = {
       source = ./config/waybar;
       recursive = true;
