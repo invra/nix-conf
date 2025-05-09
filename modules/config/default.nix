@@ -157,6 +157,7 @@
 
   programs = {
     hyprland.enable = true;
+    nano.enable = false;
     nix-ld.enable = true;
     steam = {
       enable = true;
