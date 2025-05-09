@@ -39,6 +39,7 @@
     wl-clipboard
     file
     fd
+    license-go
     tree
     unzip
     waybar
