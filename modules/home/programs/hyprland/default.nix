@@ -1,8 +1,4 @@
-{
-  desktop,
-  ...
-}:
-
+{ unstable, desktop, ... }:
 let
   hyprland = desktop.hyprland;
 
@@ -16,6 +12,39 @@ let
   }) hyprland.monitors;
 in
 {
+  stylix.targets.mako.enable = false;
+  stylix.targets.hyprland.enable = false;
+
+  home.packages = with unstable; [ playerctl ];
+
+  services.mako = {
+    enable = true;
+
+    settings = {
+      border-radius = 10;
+      border-size = 3;
+      default-timeout = 5000;
+      width = 350;
+      height = 250;
+      icons = 1;
+      text-color = "#e0def4";
+      max-icon-size = 64;
+      margin = "5,5,0,0";
+      border-color = "#ebbcba";
+      background-color = "#191724";
+      anchor = "top-right";
+    };
+
+    criteria."category=spotify" = {
+      default-timeout = 1000;
+      group-by = "category";
+    };
+  };
+
+  programs.waybar = {
+    enable = true;
+  };
+
   wayland.windowManager.hyprland = {
     enable = hyprland.enable;
 
@@ -28,24 +57,30 @@ in
       # Auto-launching
       exec-once = [
         "swww-daemon &"
-        "hyprpanel"
+        "waybar &"
+        "mako &"
       ];
 
       # General settings
       general = {
-        gaps_in = 2;
+        gaps_in = 5;
         gaps_out = 5;
-        "col.active_border" = "rgb(7800e3) rgb(c452e0) 45deg";
+        border_size = 3;
+        "col.active_border" = "rgb(ebbcba) rgb(ebbcba) 45deg";
         "col.inactive_border" = "rgba(00000000)";
       };
 
       decoration = {
-        rounding = 15;
+        rounding = 10;
+        active_opacity = 1;
+        inactive_opacity = 0.8;
+        shadow = {
+          enabled = false;
+        };
         blur = {
           enabled = true;
-          size = 10;
+          size = 5;
           passes = 2;
-          noise = 0.1;
         };
       };
 
@@ -61,6 +96,11 @@ in
         touchpad = {
           natural_scroll = true;
         };
+      };
+
+      gestures = {
+        workspace_swipe = true;
+        workspace_swipe_fingers = 3;
       };
 
       render = {
@@ -79,14 +119,10 @@ in
         "SUPER, Z, exec, zeditor"
         "SUPER, D, exec, vesktop"
         "SUPER, T, exec, thunar"
-        "SUPER, Space, exec, rofi -show drun"
         "SUPER, V, exec, clipman pick -t rofi"
         "SUPER, B, exec, zen"
         "SUPER, Q, killactive"
         "SUPER ALT SHIFT, Q, exit"
-        "ALT LSHIFT, F10, exec, playerctl previous"
-        "ALT LSHIFT, F11, exec, playerctl play-pause"
-        "ALT LSHIFT, F12, exec, playerctl next"
         "SUPER LSHIFT, S, exec, nu ~/.config/hypr/scripts/screenshot.nu"
         "SUPER LSHIFT, Space, togglefloating"
         "SUPER, C, togglesplit"
@@ -103,10 +139,28 @@ in
         "SUPER SHIFT, 5, movetoworkspace, 5"
       ];
 
+      bindl = [
+        " , XF86AudioPrev, exec, playerctl previous"
+        "ALT LSHIFT, F10, exec, playerctl previous"
+        " , XF86AudioPlay, exec, playerctl play-pause"
+        "ALT LSHIFT, F11, exec, playerctl play-pause"
+        " , XF86AudioNext, exec, playerctl next"
+        "ALT LSHIFT, F12, exec, playerctl next"
+      ];
+
+      bindr = [
+        "SUPER, Space, exec, bash -c 'pkill rofi  || rofi -show drun'"
+      ];
+
       # Mouse bindings
       bindm = [
         "SUPER, mouse:272, movewindow"
         "SUPER, mouse:273, resizewindow"
+      ];
+
+      binde = [
+        " , XF86AudioRaiseVolume, exec, wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 5%+"
+        " , XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
       ];
 
       windowrulev2 = [
