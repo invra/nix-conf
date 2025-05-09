@@ -4,15 +4,6 @@
     ".config/starship.toml" = {
       source = ./config/starship.toml;
     };
-    ".config/waybar" = {
-      source = ./config/waybar;
-      recursive = true;
-    };
-    ".config/mako" = {
-      source = ./config/mako;
-      recursive = true;
-    };
-
     ".config/Code/User/settings.json" = {
       source = ./config/vscode/settings.json;
     };

@@ -42,10 +42,8 @@
     license-go
     tree
     unzip
-    waybar
     rofi-wayland
     wofi
-    mako
     libnotify
     pavucontrol
     slurp
