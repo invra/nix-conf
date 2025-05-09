@@ -7,9 +7,5 @@
     ".config/Code/User/settings.json" = {
       source = ./config/vscode/settings.json;
     };
-    ".config/hyprpanel" = {
-      source = ./config/hyprpanel;
-      recursive = true;
-    };
   };
 }
