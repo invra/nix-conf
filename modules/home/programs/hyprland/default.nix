@@ -2,7 +2,6 @@
 let
   hyprland = desktop.hyprland;
 
-  # Parse the monitors from the TOML file into a Nix-compatible format
   monitors = builtins.map (monitor: {
     name = monitor.name;
     resolution = monitor.resolution;
@@ -12,38 +11,13 @@ let
   }) hyprland.monitors;
 in
 {
-  stylix.targets.mako.enable = false;
+  imports = [
+    ./mako/mako.nix
+    ./waybar/waybar.nix
+  ];
   stylix.targets.hyprland.enable = false;
 
   home.packages = with unstable; [ playerctl hyprshot ];
-
-  services.mako = {
-    enable = true;
-
-    settings = {
-      border-radius = 10;
-      border-size = 3;
-      default-timeout = 5000;
-      width = 350;
-      height = 250;
-      icons = 1;
-      text-color = "#e0def4";
-      max-icon-size = 64;
-      margin = "5,5,0,0";
-      border-color = "#ebbcba";
-      background-color = "#191724";
-      anchor = "top-right";
-    };
-
-    criteria."category=spotify" = {
-      default-timeout = 1000;
-      group-by = "category";
-    };
-  };
-
-  programs.waybar = {
-    enable = true;
-  };
 
   wayland.windowManager.hyprland = {
     enable = hyprland.enable;
