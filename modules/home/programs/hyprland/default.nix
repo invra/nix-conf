@@ -15,7 +15,7 @@ in
   stylix.targets.mako.enable = false;
   stylix.targets.hyprland.enable = false;
 
-  home.packages = with unstable; [ playerctl ];
+  home.packages = with unstable; [ playerctl hyprshot ];
 
   services.mako = {
     enable = true;
@@ -123,7 +123,7 @@ in
         "SUPER, B, exec, zen"
         "SUPER, Q, killactive"
         "SUPER ALT SHIFT, Q, exit"
-        "SUPER LSHIFT, S, exec, nu ~/.config/hypr/scripts/screenshot.nu"
+        "SUPER LSHIFT, S, exec, hyprshot -m region --clipboard-only"
         "SUPER LSHIFT, Space, togglefloating"
         "SUPER, C, togglesplit"
         "ALT, Return, fullscreen"
