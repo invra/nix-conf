@@ -3,7 +3,7 @@
 @define-color mantle #1f1d2e;
 @define-color crust #11111b;
 
-@define-color text #cdd6f4;
+@define-color text #e0def4;
 @define-color subtext0 #a6adc8;
 @define-color subtext1 #bac2de;
 
@@ -17,15 +17,15 @@
 @define-color overlay2 #9ba3c3;
 
 @define-color blue #89b4fa;
-@define-color lavender #b4befe;
+@define-color lavender #c4a7e7;
 @define-color sapphire #74c7ec;
-@define-color sky #89dceb;
+@define-color sky #ebbcba;
 @define-color teal #94e2d5;
-@define-color green #a6e3a1;
+@define-color green #9ccfd8;
 @define-color yellow #f9e2af;
 @define-color peach #fab387;
 @define-color maroon #eba0ac;
-@define-color red #f38ba8;
+@define-color red #eb6f92;
 @define-color mauve #cba6f7;
 @define-color pink #f5c2e7;
 @define-color flamingo #f2cdcd;
@@ -36,7 +36,7 @@
 * {
   border: none;
   border-radius: 0;
-  font-family: 'CaskaydiaCove Nerd Font', monospace;
+  font-family: 'JetBrains Mono Nerd Font';
   font-size: 13px;
   min-height: 0;
 }
@@ -96,7 +96,7 @@
 /* =============================== */
 /* Launcher Module */
 #custom-launcher {
-  color: @green;
+  color: #9ccfd8;
   font-size: 20px;
   padding-top: 0px;
   padding-bottom: 0px;
@@ -200,14 +200,6 @@
   border-radius: 0px;
 }
 
-/* Updates Module */
-#custom-updates {
-  color: @sky;
-}
-
-/* =============================== */
-
-
 /* =============================== */
 /* Clock Module */
 #clock {
@@ -227,16 +219,6 @@
 /* PulseAudio Module */
 #pulseaudio {
   color: @mauve;
-  border-radius: 0;
-}
-
-/* =============================== */
-
-
-/* =============================== */
-/* Backlight Module */
-#backlight {
-  color: @teal;
   border-radius: 0;
 }
 
