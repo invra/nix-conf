@@ -46,8 +46,6 @@
     wofi
     libnotify
     pavucontrol
-    slurp
-    grim
     killall
     swww
 
