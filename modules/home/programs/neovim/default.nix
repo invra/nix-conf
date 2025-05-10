@@ -8,7 +8,10 @@ in
   programs.nixvim = {
     enable = true;
 
+    viAlias = true;
+    vimAlias = true;
     enableMan = false;
+
     withPython3 = false;
     withRuby = false;
 
