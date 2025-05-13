@@ -1,8 +1,6 @@
 {
-  development,
   nixpkgs,
   user,
-  pkgs,
   ...
 }:
 let
