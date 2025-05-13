@@ -17,7 +17,10 @@ in
   ];
   stylix.targets.hyprland.enable = false;
 
-  home.packages = with unstable; [ playerctl hyprshot ];
+  home.packages = with unstable; [
+    playerctl
+    hyprshot
+  ];
 
   wayland.windowManager.hyprland = {
     enable = hyprland.enable;

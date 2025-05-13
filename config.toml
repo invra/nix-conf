@@ -4,7 +4,6 @@ displayName = "invra"
 initialPassword = "123456"
 
 [system]
-arch = "x86_64-linux"
 greeter = "gdm"
 hostname = "NixOS"
 timezone = "Australia/Sydney"
