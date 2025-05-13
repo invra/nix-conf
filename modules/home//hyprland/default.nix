@@ -22,7 +22,6 @@ unstable.lib.optionalAttrs desktop.hyprland.enable {
 
   wayland.windowManager.hyprland = {
     enable = true;
-
     settings = {
       monitor = builtins.map (
         {
