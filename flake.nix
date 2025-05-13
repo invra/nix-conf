@@ -68,11 +68,11 @@
               pkg:
               builtins.elem (nixpkgs.lib.getName pkg) [
                 "spotify"
-								"steam-unwrapped"
-								"steam"
-								"parsec-bin"
-								"mongodb-compass"
-								"postman"
+                "steam-unwrapped"
+                "steam"
+                "parsec-bin"
+                "mongodb-compass"
+                "postman"
               ];
             # config.allowUnfree = true;
           };
@@ -83,11 +83,11 @@
               pkg:
               builtins.elem (nixpkgs.lib.getName pkg) [
                 "spotify"
-								"steam-unwrapped"
-								"steam"
-								"parsec-bin"
-								"mongodb-compass"
-								"postman"
+                "steam-unwrapped"
+                "steam"
+                "parsec-bin"
+                "mongodb-compass"
+                "postman"
               ];
             # config.allowUnfree = true;
           };
@@ -134,11 +134,11 @@
               pkg:
               builtins.elem (nixpkgs.lib.getName pkg) [
                 "spotify"
-								"steam-unwrapped"
-								"steam"
-								"parsec-bin"
-								"mongodb-compass"
-								"postman"
+                "steam-unwrapped"
+                "steam"
+                "parsec-bin"
+                "mongodb-compass"
+                "postman"
               ];
             # config.allowUnfree = true;
           };
@@ -149,11 +149,11 @@
               pkg:
               builtins.elem (nixpkgs.lib.getName pkg) [
                 "spotify"
-								"steam-unwrapped"
-								"steam"
-								"parsec-bin"
-								"mongodb-compass"
-								"postman"
+                "steam-unwrapped"
+                "steam"
+                "parsec-bin"
+                "mongodb-compass"
+                "postman"
               ];
             # config.allowUnfree = true;
           };
