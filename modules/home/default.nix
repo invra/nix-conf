@@ -29,7 +29,7 @@
         sharedModules = [
           plasma-manager.homeManagerModules.plasma-manager
           nixcord.homeModules.nixcord
-	  nixvim.homeManagerModules.nixvim
+          nixvim.homeManagerModules.nixvim
         ];
         users.${user.username} = ./home.nix;
         extraSpecialArgs = {

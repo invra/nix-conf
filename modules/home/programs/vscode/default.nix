@@ -4,7 +4,7 @@
 
   programs.vscode = {
     enable = true;
-    package = unstable.vscode.fhs;
+    package = unstable.vscodium-fhs;
     profiles.default = {
       userSettings = {
         "chat.editor.fontFamily" = "JetBrains Mono Nerd Font";
@@ -39,8 +39,8 @@
         pkief.material-icon-theme
         bradlc.vscode-tailwindcss
         vscodevim.vim
-        ms-vsliveshare.vsliveshare
-        ms-vscode.live-server
+        # ms-vsliveshare.vsliveshare
+        # ms-vscode.live-server
         kamikillerto.vscode-colorize
         bierner.github-markdown-preview
         mvllow.rose-pine

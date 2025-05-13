@@ -201,8 +201,7 @@
     packages = with unstable; [
       nerd-fonts.jetbrains-mono
       font-awesome
-      corefonts
-      vistafonts
+      liberation_ttf
       noto-fonts
       noto-fonts-emoji
     ];

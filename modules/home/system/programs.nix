@@ -48,6 +48,7 @@
     pavucontrol
     killall
     swww
+    plasma-panel-colorizer
 
     # CLI Utilities
     yt-dlp
@@ -59,7 +60,7 @@
     chromium
     signal-desktop-bin
     parsec-bin
-    obsidian
+    # obsidian
     prismlauncher
   ];
 
