@@ -68,11 +68,11 @@
               pkg:
               builtins.elem (nixpkgs.lib.getName pkg) [
                 "spotify"
-								"steam-unwrapped"
-								"steam"
-								"parsec-bin"
-								"mongodb-compass"
-								"postman"
+                "steam-unwrapped"
+                "steam"
+                "parsec-bin"
+                "mongodb-compass"
+                "postman"
               ];
             # config.allowUnfree = true;
           };
@@ -83,11 +83,11 @@
               pkg:
               builtins.elem (nixpkgs.lib.getName pkg) [
                 "spotify"
-								"steam-unwrapped"
-								"steam"
-								"parsec-bin"
-								"mongodb-compass"
-								"postman"
+                "steam-unwrapped"
+                "steam"
+                "parsec-bin"
+                "mongodb-compass"
+                "postman"
               ];
             # config.allowUnfree = true;
           };
@@ -134,11 +134,11 @@
               pkg:
               builtins.elem (nixpkgs.lib.getName pkg) [
                 "spotify"
-								"steam-unwrapped"
-								"steam"
-								"parsec-bin"
-								"mongodb-compass"
-								"postman"
+                "steam-unwrapped"
+                "steam"
+                "parsec-bin"
+                "mongodb-compass"
+                "postman"
               ];
             # config.allowUnfree = true;
           };
@@ -149,11 +149,11 @@
               pkg:
               builtins.elem (nixpkgs.lib.getName pkg) [
                 "spotify"
-								"steam-unwrapped"
-								"steam"
-								"parsec-bin"
-								"mongodb-compass"
-								"postman"
+                "steam-unwrapped"
+                "steam"
+                "parsec-bin"
+                "mongodb-compass"
+                "postman"
               ];
             # config.allowUnfree = true;
           };
@@ -192,8 +192,26 @@
         };
     }
     // flake-utils.lib.eachDefaultSystem (
-      system: with import nixpkgs { inherit system; }; {
+      system:
+      let
+        pkgs = import nixpkgs { inherit system; };
+        configTOML = builtins.fromTOML (builtins.readFile ./config.toml);
+        user = configTOML.user;
+      in
+      with pkgs;
+      {
         formatter = nixfmt-tree;
+        legacyPackages.homeConfigurations.${user.username} = home-manager.lib.homeManagerConfiguration {
+          inherit pkgs;
+          extraSpecialArgs = {
+            inherit user;
+          };
+
+          modules =
+            [ ./common ]
+            ++ lib.optional stdenv.isLinux ./modules/home/linux
+            ++ lib.optional stdenv.isDarwin ./modules/home/darwin;
+        };
       }
     );
 }
