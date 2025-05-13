@@ -1,9 +1,15 @@
 { unstable, desktop, ... }:
 {
-  imports = [ ./mako ./waybar ];
+  imports = [
+    ./mako
+    ./waybar
+  ];
   stylix.targets.hyprland.enable = false;
 
-  home.packages = with unstable; [ playerctl hyprshot ];
+  home.packages = with unstable; [
+    playerctl
+    hyprshot
+  ];
 
   wayland.windowManager.hyprland = {
     inherit (desktop.hyprland) enable;
@@ -55,7 +61,7 @@
         kb_layout = "us";
         follow_mouse = 1;
         sensitivity = 0.5;
-        touchpad.natural_scroll = true; 
+        touchpad.natural_scroll = true;
       };
 
       gestures = {

@@ -1,27 +1,14 @@
- {
+{
   unstable,
-  development,
   neovim-nightly-overlay,
   ...
 }:
 let
-  userName = development.git.username;
-  userEmail = development.git.email;
-  initialBranch = development.git.defaultBranch;
   pkgs = unstable;
 in
 {
   programs = {
     home-manager.enable = true;
-    zoxide = {
-      enable = true;
-      enableZshIntegration = true;
-      enableNushellIntegration = true;
-      options = [ "--cmd cd" ];
-    };
-    gh = {
-      enable = true;
-    };
     zed-editor = {
       enable = true;
     };
@@ -45,13 +32,6 @@ in
       vimAlias = true;
       defaultEditor = true;
       package = neovim-nightly-overlay.packages.${pkgs.system}.default;
-    };
-    git = {
-      enable = true;
-      inherit userName userEmail;
-      extraConfig = {
-        init.defaultBranch = initialBranch;
-      };
     };
   };
 
