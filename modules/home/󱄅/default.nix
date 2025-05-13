@@ -1,13 +1,11 @@
 {
+  nixpkgs,
   unstable,
   development,
-  neovim-nightly-overlay,
   ...
 }:
 let
-  userName = development.git.username;
-  userEmail = development.git.email;
-  initialBranch = development.git.defaultBranch;
+  utils = import ./utils.nix { inherit (nixpkgs) lib; };
   pkgs = unstable;
 
   vencord-discord = pkgs.discord.override {
@@ -16,12 +14,13 @@ let
   };
 in
 {
-  imports = [
-    ./system/fastfetch.nix
-    ./spicetify.nix
-  ];
+  # imports = [
+  #   ./system/fastfetch.nix
+  #   ./spicetify.nix
+  # ];
+  imports = utils.getModulesFromDirsRec [./misc ./programs];
   home = {
-    stateVersion = "23.05";
+    stateVersion = "24.11";
 
     packages = with pkgs; [
       postman
@@ -45,51 +44,8 @@ in
 
     sessionVariables = {
       EDITOR = "nvim";
+      GIT_EDITOR = "nvim";
     };
   };
 
-  programs = {
-    home-manager.enable = true;
-    zoxide = {
-      enable = true;
-      enableZshIntegration = true;
-      enableNushellIntegration = true;
-      options = [ "--cmd cd" ];
-    };
-    gh = {
-      enable = true;
-    };
-    zed-editor = {
-      enable = true;
-    };
-    starship = {
-      enable = true;
-      enableNushellIntegration = true;
-    };
-    nushell = {
-      enable = true;
-      configFile.source = ./system/config/nushell/config.nu;
-    };
-    ripgrep.enable = true;
-    carapace = {
-      enable = true;
-      enableNushellIntegration = true;
-      enableBashIntegration = true;
-    };
-    neovim = {
-      enable = true;
-      viAlias = true;
-      vimAlias = true;
-      defaultEditor = true;
-      package = neovim-nightly-overlay.packages.${pkgs.system}.default;
-    };
-    git = {
-      enable = true;
-      inherit userName userEmail;
-
-      extraConfig = {
-        init.defaultBranch = initialBranch;
-      };
-    };
-  };
-}
+ }
