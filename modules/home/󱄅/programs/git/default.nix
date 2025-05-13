@@ -1,7 +1,11 @@
 { development, ... }:
 with development.git;
 {
-  imports = [./gh ./glab];
+  imports = [
+    ./gh
+    ./glab
+    ./lazygit
+  ];
   programs.git = {
     enable = true;
     userName = username;
