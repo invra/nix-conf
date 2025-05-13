@@ -1,7 +1,6 @@
 {
   nixpkgs,
   unstable,
-  development,
   ...
 }:
 let
@@ -18,7 +17,10 @@ in
   #   ./system/fastfetch.nix
   #   ./spicetify.nix
   # ];
-  imports = utils.getModulesFromDirsRec [./misc ./programs];
+  imports = utils.getModulesFromDirsRec [
+    ./misc
+    ./programs
+  ];
   home = {
     stateVersion = "24.11";
 
@@ -48,4 +50,4 @@ in
     };
   };
 
- }
+}
