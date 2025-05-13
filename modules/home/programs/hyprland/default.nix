@@ -78,7 +78,6 @@
 
       # Keybinds
       bind = [
-        # { mod = with keys; [SUPER B], exec = "zen" }
         "SUPER, B, exec, zen"
         "SUPER, Q, killactive"
         "SUPER, C, togglesplit"
