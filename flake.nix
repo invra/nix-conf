@@ -208,9 +208,9 @@
           };
 
           modules =
-            [ ./modules/home/common ]
-            ++ lib.optional stdenv.isLinux ./modules/home/linux
-            ++ lib.optional stdenv.isDarwin ./modules/home/darwin;
+            [ lib.paths.append(./modules/home "󱄅") ]
+            ++ lib.optionals stdenv.isLinux lib.paths.append(./modules/home "")
+            ++ lib.optional stdenv.isDarwin lib.paths.append(./modules/home "");
         };
       }
     );
