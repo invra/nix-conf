@@ -1,3 +1,4 @@
-{unstable, ...}: {
-  home.packages = [unstable.remmina];
+{ unstable, ... }:
+{
+  home.packages = [ unstable.remmina ];
 }

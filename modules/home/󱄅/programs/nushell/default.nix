@@ -7,6 +7,6 @@
   ];
   programs.nushell = {
     enable = true;
-    configFile.source = ./system/config/nushell/config.nu;
+    configFile.source = ./config.nu;
   };
 }

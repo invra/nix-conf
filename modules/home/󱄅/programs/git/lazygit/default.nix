@@ -1,3 +1,5 @@
-{unstable, ...}: with unstable; {
+{ unstable, ... }:
+with unstable;
+{
   home.packages = [ lazygit ];
 }

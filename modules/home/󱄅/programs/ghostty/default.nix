@@ -1,9 +1,9 @@
-{ ... }:
+{ unstable, ... }:
 {
   stylix.targets.ghostty.enable = false;
 
   programs.ghostty = {
-    enable = true;
+    enable = !unstable.ghostty.meta.broken;
     settings = {
       theme = "rose-pine";
       font-size = 10;
