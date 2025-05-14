@@ -21,5 +21,6 @@
     chromium
     signal-desktop-bin
     parsec-bin
+    remmina
   ];
 }

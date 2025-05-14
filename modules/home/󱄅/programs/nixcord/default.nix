@@ -1,4 +1,4 @@
-{ ... }:
+{ unstable, ... }:
 {
   stylix.targets = {
     nixcord.enable = false;
@@ -9,7 +9,10 @@
   programs.nixcord = {
     enable = true;
     discord.enable = false;
-    vesktop.enable = true;
+    vesktop = {
+      enable = true;
+      package = unstable.vesktop;
+    };
     quickCss = builtins.readFile ./quick.css;
     config = {
       useQuickCss = true;
