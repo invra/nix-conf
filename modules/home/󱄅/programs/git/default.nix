@@ -11,7 +11,7 @@ with development.git;
     userName = username;
     userEmail = email;
     extraConfig = {
-      init.defaultBranch = defaultBrach;
+      init.defaultBranch = defaultBranch;
     };
   };
 

@@ -51,7 +51,10 @@
       ...
     }:
     let
-      overlays = [ hyprpanel.overlay ];
+      overlays = [
+        hyprpanel.overlay
+        (super: _: { zen = zen-browser.outputs.packages.${super.system}.default; })
+      ];
       configTOML = (builtins.fromTOML (builtins.readFile ./config.toml));
 
       user = configTOML.user;
@@ -121,7 +124,6 @@
           };
           modules = [
             ./modules/config
-            ./modules/home
             stylix.nixosModules.stylix
           ];
         };
@@ -187,14 +189,43 @@
           };
           modules = [
             ./modules/nix-darwin/config
-            ./modules/nix-darwin/home
           ];
         };
     }
-    // flake-utils.lib.eachDefaultSystem (
+    // flake-utils.lib.eachSystem [ "x86_64-linux" "aarch64-darwin" ] (
       system:
       let
-        pkgs = import nixpkgs { inherit system; };
+        overlays = [
+          hyprpanel.overlay
+          (super: _: { zen = zen-browser.outputs.packages.${super.system}.default; })
+        ];
+        unstable = import nixpkgs {
+          inherit system overlays;
+          config.allowUnfreePredicate =
+            pkg:
+            builtins.elem (nixpkgs.lib.getName pkg) [
+              "spotify"
+              "steam-unwrapped"
+              "steam"
+              "parsec-bin"
+              "mongodb-compass"
+              "postman"
+            ];
+        };
+        stable = import nixpkgs-stable {
+          inherit system overlays;
+          config.allowUnfreePredicate =
+            pkg:
+            builtins.elem (nixpkgs.lib.getName pkg) [
+              "spotify"
+              "steam-unwrapped"
+              "steam"
+              "parsec-bin"
+              "mongodb-compass"
+              "postman"
+            ];
+        };
+        pkgs = unstable;
         configTOML = builtins.fromTOML (builtins.readFile ./config.toml);
         user = configTOML.user;
       in
@@ -204,10 +235,35 @@
         legacyPackages.homeConfigurations.${user.username} = home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
           extraSpecialArgs = {
-            inherit user;
+            inherit
+              desktop
+              user
+              pkgs
+              home-manager
+              unstable
+              stable
+              nixpkgs-stable
+              nixpkgs
+              plasma-manager
+              hyprpanel
+              spicetify-nix
+              nixcord
+              nixvim
+              stylix
+              neovim-nightly-overlay
+              zen-browser
+              ;
+            system = configTOML.system;
+            development = configTOML.development;
+            username = user.username;
           };
-
-          modules = [./modules/home];
+          modules = [
+            plasma-manager.homeManagerModules.plasma-manager
+            nixcord.homeModules.nixcord
+            nixvim.homeManagerModules.nixvim
+            stylix.homeManagerModules.stylix
+            ./modules/home
+          ];
         };
       }
     );

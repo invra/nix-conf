@@ -1,7 +1,6 @@
-{ developement, unstable, ... }:
-with unstable developement.git;
+{  unstable, ... }:
 {
-  home.packages = [ glab ];
+  home.packages = with unstable; [ glab ];
   # Left here for future reference
   # home = {
   # packages = [ glab ];

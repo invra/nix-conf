@@ -16,9 +16,16 @@ in
     withRuby = false;
 
     extraPackages = with unstable; [
+      marksman
+      markdownlint-cli2
       lua-language-server
+      bash-language-server
+      tailwindcss-language-server
+      lua
+      luarocks
+      nil
       stylua
-      ripgrep
+      fzf
     ];
 
     extraPlugins = with unstable.vimPlugins; [ lazy-nvim ];
@@ -237,4 +244,3 @@ in
     };
   };
 }
-
