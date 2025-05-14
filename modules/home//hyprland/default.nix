@@ -1,18 +1,27 @@
 { unstable, desktop, ... }:
-{
+unstable.lib.optionalAttrs desktop.hyprland.enable {
   imports = [
     ./mako
     ./waybar
   ];
   stylix.targets.hyprland.enable = false;
 
-  home.packages = with unstable; [
-    playerctl
-    hyprshot
-  ];
+  home = {
+    packages = with unstable; [
+      playerctl
+      hyprshot
+      rofi-wayland
+      wofi
+      libnotify
+      pavucontrol
+      killall
+      swww
+    ];
+    sessionVariables.NIXOS_OZONE_WL = "1";
+  };
 
   wayland.windowManager.hyprland = {
-    inherit (desktop.hyprland) enable;
+    enable = true;
 
     settings = {
       monitor = builtins.map (
@@ -24,7 +33,7 @@
           scale,
         }:
         "${name},${resolution}@${refreshRate},${position},${scale}"
-      ) (builtins.mapAttrs (_: builtins.toString) desktop.hyprland.monitors);
+      ) (builtins.map (builtins.mapAttrs (_: builtins.toString)) desktop.hyprland.monitors);
 
       # Auto-launching
       exec-once = [
@@ -133,5 +142,4 @@
       ];
     };
   };
-  home.sessionVariables.NIXOS_OZONE_WL = "1";
 }

@@ -1,6 +1,6 @@
 { user, nixpkgs, ... }:
 let
-  utils = import ./utils.nix { inherit (nixpkgs) lib; };
+  utils = import ../utils.nix { inherit (nixpkgs) lib; };
 in
 {
   imports = utils.getModulesFromDirRec ./programs;

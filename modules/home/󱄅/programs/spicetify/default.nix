@@ -8,6 +8,7 @@ let
 in
 {
   imports = [ spicetify-nix.homeManagerModules.default ];
+  stylix.targets.spicetify.enable = false;
   programs.spicetify = {
     enable = true;
     theme = spicePkgs.themes.sleek;

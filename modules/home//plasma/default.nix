@@ -4,7 +4,14 @@ let
   enable = desktop.plasma.enable;
 in
 {
-  home.packages = unstable.lib.optionals enable (with unstable; [ plasma-panel-colorizer kdePackages.krohnkite ]);
+  home.packages = unstable.lib.optionals enable (
+    with unstable;
+    [
+      plasma-panel-colorizer
+      kdePackages.krohnkite
+      kde-rounded-corners
+    ]
+  );
   programs.plasma = {
     inherit enable;
 
@@ -38,7 +45,10 @@ in
     ];
 
     shortcuts = {
-      ksmserver."Lock Session" = [ "Screensaver" "Meta+L" ];
+      ksmserver."Lock Session" = [
+        "Screensaver"
+        "Meta+L"
+      ];
       navigation."Quit" = "Meta+Q";
 
       kwin = {
