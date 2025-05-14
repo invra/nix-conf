@@ -1,3 +1,4 @@
-{unstable, ...}:{
-  home.packages = [unstable.postman];
+{ unstable, ... }:
+{
+  home.packages = [ unstable.postman ];
 }

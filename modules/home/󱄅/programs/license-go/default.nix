@@ -1,3 +1,4 @@
-{unstable, ...}: {
-  home.packages =  [unstable.license-go];
+{ unstable, ... }:
+{
+  home.packages = [ unstable.license-go ];
 }
