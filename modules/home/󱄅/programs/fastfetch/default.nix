@@ -5,7 +5,7 @@
   programs.fastfetch = {
     enable = true;
     settings = {
-      logo.source = "~/.config/fastfetch/nixos.png";
+      # logo.source = "~/.config/fastfetch/nixos.png";
       logo.width = 54;
       display.separator = " ";
       modules =
