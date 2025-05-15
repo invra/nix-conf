@@ -3,7 +3,7 @@
   stylix.targets.vscode.enable = false;
 
   programs.vscode = {
-    enable = true;
+    enable = false;
     package = unstable.vscodium-fhs;
     profiles.default = {
       userSettings = {

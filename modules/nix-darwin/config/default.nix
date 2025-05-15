@@ -118,7 +118,6 @@
       "steam"
       "roblox"
       "alt-tab"
-      "zen-browser"
       "utm"
       "linearmouse"
       "raycast"
