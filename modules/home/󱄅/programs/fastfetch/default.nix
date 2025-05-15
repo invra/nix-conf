@@ -62,7 +62,6 @@ in {
             key = "  󰏓  Packages:";
             keyColor = "green";
           }
-          # ⬇️ Conditional WM module inserted here
           wmModule
           {
             type = "shell";
