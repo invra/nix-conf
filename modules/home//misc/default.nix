@@ -1,10 +1,12 @@
 {
+  user,
   config,
   unstable,
   ...
 }:
 {
   home = {
+    homeDirectory = "/Users/${user.username}";
     packages = with unstable; [
       aerospace
       jankyborders
