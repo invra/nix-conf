@@ -1,4 +1,4 @@
-{  unstable, ... }:
+{ unstable, ... }:
 {
   home.packages = with unstable; [ glab ];
   # Left here for future reference
