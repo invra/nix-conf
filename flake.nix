@@ -131,7 +131,7 @@
         let
           unstable = import nixpkgs {
             inherit overlays;
-            system = "x86_64-linux";
+            system = "aarch64-darwin";
             config.allowUnfreePredicate =
               pkg:
               builtins.elem (nixpkgs.lib.getName pkg) [
