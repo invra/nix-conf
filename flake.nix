@@ -55,7 +55,6 @@
     let
       overlays = [
         hyprpanel.overlay
-        ghostty.overlay
         (super: _: { zen = zen-browser.outputs.packages.${super.system}.default; })
       ];
       configTOML = (builtins.fromTOML (builtins.readFile ./config.toml));
@@ -200,6 +199,7 @@
       let
         overlays = [
           hyprpanel.overlay
+          ghostty.overlay
           (super: _: { zen = zen-browser.outputs.packages.${super.system}.default; })
         ];
         unstable = import nixpkgs {
