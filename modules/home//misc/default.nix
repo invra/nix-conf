@@ -1,6 +1,7 @@
 {
   user,
   config,
+  ghostty,
   unstable,
   ...
 }:
@@ -8,8 +9,9 @@
   home = {
     homeDirectory = "/Users/${user.username}";
     packages = with unstable; [
-      aerospace
       jankyborders
+      ghostty
+      alacritty
       sketchybar
     ];
 

@@ -8,6 +8,7 @@
     darwin.inputs.nixpkgs.follows = "nixpkgs";
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
     zen-browser.url = "gitlab:InvraNet/zen-flake";
+    ghostty.url = "gitlab:Hiten-Tandon/ghostty-darwin";
     nixcord.url = "github:kaylorben/nixcord";
 
     home-manager = {
@@ -42,6 +43,7 @@
       home-manager,
       plasma-manager,
       hyprpanel,
+      ghostty,
       spicetify-nix,
       nixcord,
       nixvim,
@@ -53,6 +55,7 @@
     let
       overlays = [
         hyprpanel.overlay
+        ghostty.overlay
         (super: _: { zen = zen-browser.outputs.packages.${super.system}.default; })
       ];
       configTOML = (builtins.fromTOML (builtins.readFile ./config.toml));
@@ -249,6 +252,7 @@
               spicetify-nix
               nixcord
               nixvim
+              ghostty
               stylix
               neovim-nightly-overlay
               zen-browser

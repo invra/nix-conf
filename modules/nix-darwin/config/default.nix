@@ -122,7 +122,6 @@
       "linearmouse"
       "raycast"
       "betterdisplay"
-      "ghostty"
     ];
   };
 }
