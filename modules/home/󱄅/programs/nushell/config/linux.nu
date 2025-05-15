@@ -29,3 +29,6 @@ $env.x = true
 export def dev [] {
   nix develop --command nu
 }
+
+mkdir ($nu.data-dir | path join "vendor/autoload")
+starship init nu | save -f ($nu.data-dir | path join "vendor/autoload/starship.nu")

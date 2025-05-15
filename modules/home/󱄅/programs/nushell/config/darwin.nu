@@ -12,7 +12,6 @@ alias ncim = nvim
 alias vim = nvim
 alias vi = nvim
 alias gc = git clone
-alias spf = superfile
 
 if not ("x" in $env) {
   fastfetch # Flex your OS.
@@ -23,7 +22,6 @@ $env.x = true
 export def dev [] {
   nix develop --command nu
 }
-
 
 mkdir ($nu.data-dir | path join "vendor/autoload")
 starship init nu | save -f ($nu.data-dir | path join "vendor/autoload/starship.nu")
