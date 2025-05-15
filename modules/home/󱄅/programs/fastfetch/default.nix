@@ -1,12 +1,34 @@
-{ development, ... }:
-{
+{ development, unstable, lib, ... }:
+let
+  isDarwin = unstable.stdenv.isDarwin;
+  wmModule =
+    if isDarwin then
+      {
+        type = "command";
+        key = "    WM:";
+        keyColor = "yellow";
+        text = ''
+          if pgrep AeroSpace &> /dev/null; then echo AeroSpace; else echo Quartz Compositor; fi
+        '';
+      }
+    else
+      {
+        type = "wm";
+        key = "    WM:";
+        keyColor = "yellow";
+      };
+in {
   home.file.".config/fastfetch/nixos.png".source = ./art.png;
 
   programs.fastfetch = {
     enable = true;
     settings = {
-      # logo.source = "~/.config/fastfetch/nixos.png";
-      logo.width = 54;
+      logo = {
+        # source = "~/.config/fastfetch/nixos.png";
+        width = 54;
+        height = 45;
+        type = "kitty-direct";
+      };
       display.separator = " ";
       modules =
         [
@@ -40,11 +62,8 @@
             key = "  󰏓  Packages:";
             keyColor = "green";
           }
-          {
-            type = "wm";
-            key = "    WM:";
-            keyColor = "yellow";
-          }
+          # ⬇️ Conditional WM module inserted here
+          wmModule
           {
             type = "shell";
             key = "    Shell:";
@@ -117,3 +136,4 @@
     };
   };
 }
+
