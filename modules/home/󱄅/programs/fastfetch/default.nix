@@ -5,7 +5,7 @@ let
     if isDarwin then
       {
         type = "command";
-        key = "    WM:";
+        key = "    WM:";
         keyColor = "yellow";
         text = ''
           if pgrep AeroSpace &> /dev/null; then echo AeroSpace; else echo Quartz Compositor; fi
