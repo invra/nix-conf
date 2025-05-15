@@ -1,60 +1,17 @@
 {
-  desktop,
-  user,
-  pkgs,
-  home-manager,
-  development,
-  unstable,
-  stable,
-  nixpkgs-stable,
   nixpkgs,
-  plasma-manager,
-  hyprpanel,
-  spicetify-nix,
-  nixcord,
-  nixvim,
-  stylix,
-  neovim-nightly-overlay,
-  zen-browser,
+  unstable,
   ...
 }:
+let
+  utils = import ./utils.nix { lib = nixpkgs.lib; };
+  lib = nixpkgs.lib;
+  stdenv = unstable.stdenv;
+in
 {
-  imports = [
-    home-manager.nixosModules.home-manager
-    {
-      home-manager = {
-        useGlobalPkgs = true;
-        useUserPackages = true;
-        backupFileExtension = "backup";
-        sharedModules = [
-          plasma-manager.homeManagerModules.plasma-manager
-          nixcord.homeModules.nixcord
-          nixvim.homeManagerModules.nixvim
-        ];
-        users.${user.username} = ./home.nix;
-        extraSpecialArgs = {
-          inherit
-            desktop
-            user
-            pkgs
-            home-manager
-            development
-            unstable
-            stable
-            nixpkgs-stable
-            nixpkgs
-            plasma-manager
-            hyprpanel
-            spicetify-nix
-            nixcord
-            stylix
-            neovim-nightly-overlay
-            zen-browser
-            ;
-          username = user.username;
-        };
-      };
-    }
-
-  ];
+  imports = utils.getModulesFromDirsRec (
+    lib.lists.toList (lib.path.append ./."󱄅")
+    ++ (lib.optional stdenv.isLinux (lib.path.append ./. ""))
+    ++ (lib.optional stdenv.isDarwin (lib.path.append ./. ""))
+  );
 }

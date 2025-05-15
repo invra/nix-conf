@@ -1,6 +1,6 @@
 [user]
-username = "invra"
-displayName = "invra"
+username = "peter"
+displayName = "peter"
 initialPassword = "123456"
 
 [system]
@@ -13,7 +13,7 @@ kernelParams = ["intel_iommu=on"]
 [system.dock]
 autohide = true
 autoHideDelay = 0.45
-orientation = "right"
+orientation = "bottom"
 
 [system.networking]
 networkmanager = true

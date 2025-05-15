@@ -1,0 +1,20 @@
+{
+  unstable,
+  ...
+}:
+{
+  home.packages = with unstable; [
+    postman
+    pgadmin4-desktopmode
+    mongodb-compass
+    viu
+    ffmpeg
+    file
+    fd
+    tree
+    unzip
+    yt-dlp
+    zen
+    remmina
+  ];
+}
