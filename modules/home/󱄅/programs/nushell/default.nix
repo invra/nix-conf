@@ -1,4 +1,9 @@
-{ pkgs, lib, config, ... }:
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}:
 
 let
   isDarwin = pkgs.stdenv.isDarwin;
@@ -18,4 +23,3 @@ in
     configFile.source = configPath;
   };
 }
-

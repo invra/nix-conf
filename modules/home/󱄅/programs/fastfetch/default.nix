@@ -1,4 +1,9 @@
-{ development, unstable, lib, ... }:
+{
+  development,
+  unstable,
+  lib,
+  ...
+}:
 let
   isDarwin = unstable.stdenv.isDarwin;
   wmModule =
@@ -17,7 +22,8 @@ let
         key = "    WM:";
         keyColor = "yellow";
       };
-in {
+in
+{
   home.file.".config/fastfetch/nixos.png".source = ./art.png;
 
   programs.fastfetch = {
@@ -135,4 +141,3 @@ in {
     };
   };
 }
-

@@ -1,4 +1,5 @@
-{unstable, user, ...}: {
+{ unstable, user, ... }:
+{
   home = {
     homeDirectory = "/home/${user.username}";
     packages = with unstable; [

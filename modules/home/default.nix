@@ -10,7 +10,7 @@ let
 in
 {
   imports = utils.getModulesFromDirsRec (
-    lib.lists.toList (lib.path.append ./."󱄅")
+    lib.lists.toList (lib.path.append ./. "󱄅")
     ++ (lib.optional stdenv.isLinux (lib.path.append ./. ""))
     ++ (lib.optional stdenv.isDarwin (lib.path.append ./. ""))
   );
