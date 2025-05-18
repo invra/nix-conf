@@ -15,6 +15,7 @@
     unzip
     yt-dlp
     zen
+    tldr
     remmina
   ];
 }
