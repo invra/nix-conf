@@ -79,7 +79,6 @@
                 "mongodb-compass"
                 "postman"
               ];
-            # config.allowUnfree = true;
           };
           stable = import nixpkgs-stable {
             inherit overlays;
@@ -94,7 +93,6 @@
                 "mongodb-compass"
                 "postman"
               ];
-            # config.allowUnfree = true;
           };
           pkgs = unstable;
 
@@ -144,7 +142,6 @@
                 "mongodb-compass"
                 "postman"
               ];
-            # config.allowUnfree = true;
           };
           stable = import nixpkgs-stable {
             inherit overlays;
@@ -159,7 +156,6 @@
                 "mongodb-compass"
                 "postman"
               ];
-            # config.allowUnfree = true;
           };
           pkgs = unstable;
 
