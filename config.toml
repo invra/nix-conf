@@ -1,6 +1,6 @@
 [user]
-username = "peter"
-displayName = "peter"
+username = "invra"
+displayName = "InvraNet"
 initialPassword = "123456"
 
 [system]
@@ -38,9 +38,9 @@ enable = true
 enable = true
 
 [[desktop.hyprland.monitors]]
-name = "eDP-1"
-resolution = "1920x1080"
-refreshRate = 120
+name = "DP-1"
+resolution = "2560x1440"
+refreshRate = 180
 position = "0x0"
 scale = 1
 
