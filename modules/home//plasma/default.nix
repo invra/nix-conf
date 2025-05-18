@@ -36,10 +36,19 @@ in
 
         widgets = [
           "org.kde.plasma.kickoff"
-          "org.kde.plasma.icontasks"
           "org.kde.plasma.marginsseparator"
           "org.kde.plasma.systemtray"
           "org.kde.plasma.digitalclock"
+        ];
+      }
+      {
+        location = "right";
+        hiding = "autohide";
+        lengthMode = "fit";
+        floating = true;
+
+        widgets = [
+          "org.kde.plasma.icontasks"
         ];
       }
     ];
