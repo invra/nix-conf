@@ -44,9 +44,9 @@
 
   boot = {
     kernelPackages = unstable.linuxKernel.packages.linux_6_14;
-    extraModulePackages = with unstable; [ linuxKernel.packages.linux_6_14.v4l2loopback.out ];
-    kernelParams = system.kernelParams;
+    extraModulePackages = with config.boot.kernelPackages; [ v4l2loopback ];
     kernelModules = [ "v4l2loopback" ];
+    kernelParams = system.kernelParams;
     blacklistedKernelModules = system.graphics.blacklists;
 
     loader = {
