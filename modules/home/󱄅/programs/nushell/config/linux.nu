@@ -6,9 +6,13 @@ $env.editor = "nvim";
 # ENV's
 $env.XDG_CONFIG_DIRS = $"($env.XDG_CONFIG_DIRS):($env.HOME)/.config"
 
+alias la = ls -a
+alias fuckoff = exit
 alias d = cd
 alias nv = nvim
 alias ncim = nvim
+alias vim = nvim
+alias vi = nvim
 alias gc = git clone
 
 export def nixos-rbld [] {
