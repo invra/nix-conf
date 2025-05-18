@@ -7,8 +7,8 @@
       signal-desktop-bin
       parsec-bin
       vlc
-      (wrapOBS { plugins = with obs-studio-plugins; [ obs-websocket ]; })
       wayvnc
     ];
   };
+
 }
