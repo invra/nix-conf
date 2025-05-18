@@ -1,10 +1,10 @@
 {
-  pkgs,
+  unstable,
   spicetify-nix,
   ...
 }:
 let
-  spicePkgs = spicetify-nix.legacyPackages.${pkgs.system};
+  spicePkgs = spicetify-nix.legacyPackages.${unstable.system};
 in
 {
   imports = [ spicetify-nix.homeManagerModules.default ];

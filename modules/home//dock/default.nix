@@ -1,7 +1,7 @@
 {
   config,
   lib,
-  pkgs,
+  unstable,
   ...
 }:
 
@@ -9,7 +9,7 @@ with lib;
 
 let
   cfg = config.local.dock;
-  inherit (pkgs) dockutil;
+  inherit (unstable) dockutil;
 in
 {
   options = {
@@ -48,10 +48,10 @@ in
   config = mkIf cfg.enable {
     home.activation.dockSetup = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
       echo "Setting up the Dock..."
-      haveURIs="$(${dockutil}/bin/dockutil --list | ${pkgs.coreutils}/bin/cut -f2)"
+      haveURIs="$(${dockutil}/bin/dockutil --list | ${unstable.coreutils}/bin/cut -f2)"
       wantURIs="$(
         ${lib.concatMapStringsSep "\n" (
-          entry: "echo file://$(${pkgs.coreutils}/bin/realpath '${entry.path}' | sed 's/ /%20/g')"
+          entry: "echo file://$(${unstable.coreutils}/bin/realpath '${entry.path}' | sed 's/ /%20/g')"
         ) cfg.entries}
       )"
 
@@ -62,7 +62,7 @@ in
           entry:
           "${dockutil}/bin/dockutil --no-restart --add '${entry.path}' --section ${entry.section} ${entry.options}"
         ) cfg.entries}
-        ${pkgs.killall}/bin/killall Dock
+        ${unstable.killall}/bin/killall Dock
       else
         echo "Dock already correct, skipping."
       fi

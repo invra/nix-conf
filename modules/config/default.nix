@@ -14,7 +14,6 @@
     ./displayManager.nix
     ./hardware-configuration.nix
   ];
-  nixpkgs.config.allowUnfree = true;
 
   nix.settings = {
     experimental-features = [
@@ -44,13 +43,19 @@
   };
 
   boot = {
-    kernelPackages = unstable.linuxKernel.packages.linux_6_12;
+    kernelPackages = unstable.linuxKernel.packages.linux_6_14;
+    extraModulePackages = with unstable; [ linuxKernel.packages.linux_6_14.v4l2loopback.out ];
     kernelParams = system.kernelParams;
     kernelModules = [ "v4l2loopback" ];
     blacklistedKernelModules = system.graphics.blacklists;
+
     loader = {
       systemd-boot.enable = true;
       efi.canTouchEfiVariables = true;
+    };
+
+    kernel.sysctl = {
+      "vm.swappiness" = 1;
     };
   };
 
