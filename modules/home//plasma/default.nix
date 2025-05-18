@@ -90,5 +90,9 @@ in
         };
       };
     };
+
+    krunner = {
+      position = "center";
+    };
   };
 }

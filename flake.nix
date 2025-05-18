@@ -195,7 +195,7 @@
       let
         overlays = [
           hyprpanel.overlay
-          ghostty.overlay
+          # ghostty.overlay
           (super: _: { zen = zen-browser.outputs.packages.${super.system}.default; })
         ];
         unstable = import nixpkgs {
@@ -261,7 +261,7 @@
             plasma-manager.homeManagerModules.plasma-manager
             nixcord.homeModules.nixcord
             nixvim.homeManagerModules.nixvim
-            stylix.homeManagerModules.stylix
+            stylix.homeModules.stylix
             ./modules/home
           ];
         };
