@@ -41,7 +41,6 @@ in
         cmd-7 = "workspace 7";
         cmd-8 = "workspace 8";
         cmd-9 = "workspace 9";
-        cmd-0 = "workspace 10";
 
         cmd-shift-1 = [
           "move-node-to-workspace 1"
@@ -78,10 +77,6 @@ in
         cmd-shift-9 = [
           "move-node-to-workspace 9"
           "workspace 9"
-        ];
-        cmd-shift-0 = [
-          "move-node-to-workspace 10"
-          "workspace 10"
         ];
 
         alt-enter = "macos-native-fullscreen";
