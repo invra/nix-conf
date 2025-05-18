@@ -18,11 +18,11 @@
       border-color = "#ebbcba";
       background-color = "#191724";
       anchor = "top-right";
-    };
 
-    criteria."category=spotify" = {
-      default-timeout = 1000;
-      group-by = "category";
+      "category=spotify" = {
+        default-timeout = 1000;
+        group-by = "category";
+      };
     };
   };
 }
