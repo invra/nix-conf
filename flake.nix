@@ -196,7 +196,7 @@
       let
         overlays = [
           hyprpanel.overlay
-          # ghostty.overlay
+          ghostty.overlay
           (super: _: { zen = zen-browser.outputs.packages.${super.system}.default; })
         ];
         unstable = import nixpkgs {

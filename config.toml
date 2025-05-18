@@ -38,7 +38,7 @@ enable = true
 enable = true
 
 [[desktop.hyprland.monitors]]
-name = "DP-1"
+name = "DP-3"
 resolution = "2560x1440"
 refreshRate = 180
 position = "0x0"
