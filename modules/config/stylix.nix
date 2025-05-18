@@ -1,8 +1,8 @@
-{ pkgs, ... }:
+{ unstable, ... }:
 {
   stylix = {
     enable = true;
-    base16Scheme = "${pkgs.base16-schemes}/share/themes/rose-pine.yaml";
+    base16Scheme = "${unstable.base16-schemes}/share/themes/rose-pine.yaml";
     image = ../home/system/config/.wallpapers/flake.png;
     targets = {
       spicetify.enable = false;
@@ -10,17 +10,17 @@
     };
     fonts = {
       serif = {
-        package = pkgs.dejavu_fonts;
+        package = unstable.dejavu_fonts;
         name = "DejaVu Serif";
       };
 
       sansSerif = {
-        package = pkgs.dejavu_fonts;
+        package = unstable.dejavu_fonts;
         name = "DejaVu Sans";
       };
 
       monospace = {
-        package = pkgs.nerd-fonts.jetbrains-mono;
+        package = unstable.nerd-fonts.jetbrains-mono;
         name = "JetBrains Mono Nerd Font";
       };
     };

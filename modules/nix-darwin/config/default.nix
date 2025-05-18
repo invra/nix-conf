@@ -1,12 +1,12 @@
 {
-  pkgs,
+  unstable,
   user,
   system,
   ...
 }:
 
 {
-  environment.systemPackages = with pkgs; [
+  environment.systemPackages = with unstable; [
     btop
     git
     jq
@@ -22,23 +22,21 @@
   ];
 
   nix.enable = false;
-  nixpkgs.config.allowUnfree = true;
   nix.settings.experimental-features = "nix-command flakes";
 
   programs.zsh.enable = true;
   system.stateVersion = 4;
   security.pam.services.sudo_local.touchIdAuth = true;
   environment.shells = [
-    pkgs.bashInteractive
-    pkgs.zsh
-    pkgs.fish
-    pkgs.nushell
+    unstable.bashInteractive
+    unstable.zsh
+    unstable.fish
+    unstable.nushell
   ];
 
   nixpkgs.hostPlatform = "aarch64-darwin";
 
   nix.extraOptions = ''
-    auto-optimise-store = true
     experimental-features = nix-command flakes
     extra-platforms = x86_64-darwin aarch64-darwin
   '';
@@ -48,7 +46,7 @@
     name = user.username;
     home = "/Users/${user.username}";
     uid = 501;
-    shell = pkgs.nushell;
+    shell = unstable.nushell;
   };
 
   system = {
