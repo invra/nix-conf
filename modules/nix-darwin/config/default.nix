@@ -26,6 +26,7 @@
 
   programs.zsh.enable = true;
   system.stateVersion = 4;
+  system.primaryUser = user.username;
   security.pam.services.sudo_local.touchIdAuth = true;
   environment.shells = [
     unstable.bashInteractive

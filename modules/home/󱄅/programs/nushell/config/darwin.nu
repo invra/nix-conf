@@ -1,4 +1,12 @@
-$env.PATH = $env.PATH | append [ "/Users/peter/.nix-profile/bin" "/nix/var/nix/profiles/default/bin" "/etc/profiles/per-user/peter/bin" "/run/current-system/sw/bin" "/opt/homebrew/bin" "/opt/homebrew/sbin" "~/.bun/bin" "~/.deno/bin" "~/.spicetify"]
+$env.PATH = $env.PATH
+  | append [
+    "~/.nix-profile/bin"
+    "/nix/var/nix/profiles/default/bin"
+    ($"/etc/profiles/per-user/(whoami)/bin")
+    "/run/current-system/sw/bin"
+    "/opt/homebrew/bin"
+    "/opt/homebrew/sbin"
+  ]
 $env.config.buffer_editor = "nvim"
 $env.EDITOR = "nvim"
 $env.config.show_banner = false
