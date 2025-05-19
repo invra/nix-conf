@@ -7,16 +7,10 @@
 
 {
   environment.systemPackages = with unstable; [
-    btop
-    git
-    jq
-    nil
     nodejs
     cargo
     lua
-    ripgrep
     nushell
-    zed-editor
     switchaudio-osx
     nowplaying-cli
   ];
@@ -26,6 +20,7 @@
 
   programs.zsh.enable = true;
   system.stateVersion = 4;
+  system.primaryUser = user.username;
   security.pam.services.sudo_local.touchIdAuth = true;
   environment.shells = [
     unstable.bashInteractive
@@ -38,6 +33,7 @@
 
   nix.extraOptions = ''
     experimental-features = nix-command flakes
+    extra-experimental-features = pipe-operators
     extra-platforms = x86_64-darwin aarch64-darwin
   '';
 
