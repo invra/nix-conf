@@ -3,7 +3,7 @@
 My main operating system is NixOS, which means this flake will be updated frequently.
 This system is designed to be partially modular, allowing for configuration and installation tailored to your user setup.
 
-> \[!IMPORTANT]
+> [!IMPORTANT]
 > If you're a current user of this flake, note that as of commit [4352d6a8](https://gitlab.com/InvraNet/nix-conf/-/commit/4352d6a803fc61e224faf7d0b92e5bcf7ec0edc0), your config will **NOT** build unless converted to the new Nix configuration format. Please refer to the section **Making a Configuration of Your Own** for instructions.
 
 ---
