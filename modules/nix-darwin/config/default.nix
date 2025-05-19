@@ -7,16 +7,10 @@
 
 {
   environment.systemPackages = with unstable; [
-    btop
-    git
-    jq
-    nil
     nodejs
     cargo
     lua
-    ripgrep
     nushell
-    zed-editor
     switchaudio-osx
     nowplaying-cli
   ];
@@ -39,6 +33,7 @@
 
   nix.extraOptions = ''
     experimental-features = nix-command flakes
+    extra-experimental-features = pipe-operators
     extra-platforms = x86_64-darwin aarch64-darwin
   '';
 
