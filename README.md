@@ -13,18 +13,23 @@ This system is designed to be partially modular, allowing for configuration and 
 This section shows example configurations using this flake.
 
 <details open>
-<summary>Spotify + Ghostty + Waybar</summary>
+<summary>NixOS - Spotify + Ghostty + Hyprland</summary>
 <img src="./.res/demo_1.png" alt="Demo 1">
 </details>
 
 <details>
-<summary>Development Environment</summary>
+<summary>Nix-darwin - Development Environment</summary>
 <img src="./.res/demo_2.png" alt="Demo 2">
 </details>
 
 <details>
-<summary>Neovim with Mako</summary>
+<summary>NixOS - Neovim with Mako</summary>
 <img src="./.res/demo_3.png" alt="Demo 3">
+</details>
+
+<details>
+<summary>Nix-darwin - Neovim + Spotify</summary>
+<img src="./.res/demo_4.png" alt="Demo 4">
 </details>
 
 ---
