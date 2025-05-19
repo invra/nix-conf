@@ -1,56 +1,79 @@
-# InvraNet's NixOS Flake
+# Invra's Nix Configuration
 
-My main operating system is NixOS, which means this flake will be updated often.
-This system is meant to be partially modular to allow for configuration and installation for your user.
+My main operating system is NixOS, which means this flake will be updated frequently.
+This system is designed to be partially modular, allowing for configuration and installation tailored to your user setup.
 
-> [!important]
-> If your a current user of this, since commit [4352d6a8](https://gitlab.com/InvraNet/nix-conf/-/commit/4352d6a803fc61e224faf7d0b92e5bcf7ec0edc0) your config will **NOT** build until converting to a Nix config. Please follow from **Making configuration of your own**.
+> \[!IMPORTANT]
+> If you're a current user of this flake, note that as of commit [4352d6a8](https://gitlab.com/InvraNet/nix-conf/-/commit/4352d6a803fc61e224faf7d0b92e5bcf7ec0edc0), your config will **NOT** build unless converted to the new Nix configuration format. Please refer to the section **Making a Configuration of Your Own** for instructions.
+
+---
 
 ## Example
-This section shows what the flake will look like.
-<br>
+
+This section shows example configurations using this flake.
+
 <details open>
 <summary>Spotify + Ghostty + Waybar</summary>
-![Demo 1](./.res/demo_1.png)
+<img src="./.res/demo_1.png" alt="Demo 1">
 </details>
 
 <details>
-<summary>Development Envrionment</summary>
-![Demo 2](./.res/demo_2.png)
+<summary>Development Environment</summary>
+<img src="./.res/demo_2.png" alt="Demo 2">
 </details>
 
 <details>
 <summary>Neovim with Mako</summary>
-![Demo 3](./.res/demo_3.png)
+<img src="./.res/demo_3.png" alt="Demo 3">
 </details>
 
+---
 
-## Making a Configuration of your own
-This is highly recommended to do, as it is what is needed for your system to be <u>*yours*</u>
+## Making a Configuration of Your Own
+
+It’s highly recommended to create your own configuration — this is what makes the system truly <u>*yours*</u>.
 
 ### File Structure
-The file structure for your configurations are inside of ``./configurations/``.
-Already configurations (mine), are found in there you may follow off of that.
-The use of a directory with the nix file, is there to tell the build system that this is the name of your flake. So folder ``gary`` will correspond with commands ``sudo nixos-rebuild switch --flake .#gary``, ``darwin-rebuild switch --flake .#gary`` or ``home-manager rebuild switch --flake .#gary``.
 
+Your configurations should live inside the `./configurations/` directory.
+You’ll find my personal configurations there as examples to follow.
 
-### Your configuration is still in TOML?
-The current commit you are viewing has completely removed the support for TOML. Please follow this to be caught up to date.
+Each configuration resides in a directory named after the profile, which informs the flake system of its identifier.
+For example, a folder named `gary` corresponds to the following commands:
 
-#### Prerequisites
-  - Nix Repl
-  - Your old TOML.
-
-#### Instructions
-Firstly, enter the nix repl using:
-```shell
-nix repl
+```sh
+sudo nixos-rebuild switch --flake .#gary
+darwin-rebuild switch --flake .#gary
+home-manager rebuild switch --flake .#gary
 ```
 
-Then enter this, but editing it to your config file name.
-```nix
-:p builtins.fromTOML (builtins.readFile ./configFile.toml)
-```
+---
 
-The output should be copied to your clipboard, for you to paste into a new file.
-This new configuration system is dynamic. Follow the steps from making a configuration, and apply this nix file to that file.
+## Still Using TOML?
+
+This version of the flake has **completely removed support for TOML** configuration.
+Please follow the instructions below to migrate your setup.
+
+### Prerequisites
+
+* Nix REPL
+* Your old TOML configuration file
+
+### Instructions
+
+1. Open the Nix REPL:
+
+   ```sh
+   nix repl
+   ```
+
+2. Load your TOML configuration (replace `configFile.toml` with your actual filename):
+
+   ```nix
+   :p builtins.fromTOML (builtins.readFile ./configFile.toml)
+   ```
+
+3. Copy the output to your clipboard.
+   Paste it into a new `.nix` file following the dynamic configuration format.
+
+4. Place the new `.nix` file in your appropriate `./configurations/` subdirectory.
