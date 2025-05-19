@@ -12,7 +12,9 @@
         }
       ];
     };
-    plasma = { enable = true; };
+    plasma = {
+      enable = true;
+    };
   };
   development = {
     git = {
@@ -49,8 +51,12 @@
       networkmanager = true;
     };
     services = {
-      mongodb = { enable = true; };
-      ssh = { enable = true; };
+      mongodb = {
+        enable = true;
+      };
+      ssh = {
+        enable = true;
+      };
     };
     timezone = "Australia/Sydney";
   };
