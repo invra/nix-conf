@@ -4,11 +4,11 @@ My main operating system is NixOS, which means this flake will be updated often.
 This system is meant to be partially modular to allow for configuration and installation for your user.
 
 > [!important]
-> If your a current user of this, since commit [4352d6a8](https://gitlab.com/InvraNet/nix-conf/-/commit/4352d6a803fc61e224faf7d0b92e5bcf7ec0edc0) you're config will **NOT** build until converting to a Nix config. Please follow from **Making configuration of your own**.
+> If your a current user of this, since commit [4352d6a8](https://gitlab.com/InvraNet/nix-conf/-/commit/4352d6a803fc61e224faf7d0b92e5bcf7ec0edc0) your config will **NOT** build until converting to a Nix config. Please follow from **Making configuration of your own**.
 
 ## Example
 This section shows what the flake will look like.
-<br><br>
+<br>
 <details open>
 <summary>Spotify + Ghostty + Waybar</summary>
 ![Demo 1](./.res/demo_1.png)
