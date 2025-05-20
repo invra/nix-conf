@@ -20,7 +20,6 @@
 
   programs.zsh.enable = true;
   system.stateVersion = 4;
-  system.primaryUser = user.username;
   security.pam.services.sudo_local.touchIdAuth = true;
   environment.shells = [
     unstable.bashInteractive
@@ -39,13 +38,16 @@
 
   users.knownUsers = [ user.username ];
   users.users.${user.username} = {
+
     name = user.username;
     home = "/Users/${user.username}";
     uid = 501;
     shell = unstable.nushell;
+
   };
 
   system = {
+    primaryUser = user.username;
     defaults = {
       dock = {
         autohide = system.dock.autohide;
@@ -102,7 +104,6 @@
 
     startup.chime = true;
   };
-
   homebrew = {
     enable = true;
 
