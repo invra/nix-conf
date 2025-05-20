@@ -12,7 +12,7 @@
   imports = [
     ./stylix.nix
     ./displayManager.nix
-    ./hardware-configuration.nix
+    ../hardware-configuration.nix
   ];
 
   time.timeZone = system.timezone;
