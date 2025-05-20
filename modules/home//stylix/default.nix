@@ -1,7 +1,7 @@
 { unstable, ... }:
 {
   stylix = {
-    enable = false;
+    enable = true;
     base16Scheme = "${unstable.base16-schemes}/share/themes/rose-pine.yaml";
     image = ./wallpapers/flake.png;
     fonts = {
