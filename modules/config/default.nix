@@ -1,4 +1,4 @@
-{ unstable, ... }:
+{ user, unstable, ... }:
 {
   imports = if unstable.stdenv.isLinux then [ ./linux ] else [ ./darwin ];
 
@@ -18,4 +18,17 @@
       ];
     };
   };
+
+  programs = {
+  };
+
+  users.users = {
+    ${user.username} = {
+      name = user.username;
+      description = user.displayName;
+      shell = unstable.nushell;
+    };
+  };
+
+  system.stateVersion = "24.11";
 }
