@@ -38,12 +38,10 @@
 
   users.knownUsers = [ user.username ];
   users.users.${user.username} = {
-
     name = user.username;
     home = "/Users/${user.username}";
     uid = 501;
     shell = unstable.nushell;
-
   };
 
   system = {
@@ -101,9 +99,9 @@
       swapLeftCommandAndLeftAlt = true;
       swapLeftCtrlAndFn = true;
     };
-
     startup.chime = true;
   };
+
   homebrew = {
     enable = true;
 
