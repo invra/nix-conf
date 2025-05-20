@@ -28,6 +28,7 @@
     };
   };
   system = {
+    hardware-module = ./hardware-configuration.nix;
     dock = {
       autoHideDelay = 0.45;
       autohide = true;
