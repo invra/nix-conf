@@ -1,4 +1,4 @@
-{ unstable, ... }:
+{ user, unstable, ... }:
 {
   users.users.${user.username} = {
     inherit (user) initialPassword;

@@ -1,4 +1,4 @@
-{ ... }:
+{ unstable, system, ... }:
 {
   boot = {
     kernelPackages = unstable.linuxKernel.packages.linux_6_14;
