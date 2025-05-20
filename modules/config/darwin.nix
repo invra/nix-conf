@@ -30,12 +30,6 @@
 
   nixpkgs.hostPlatform = "aarch64-darwin";
 
-  nix.extraOptions = ''
-    experimental-features = nix-command flakes
-    extra-experimental-features = pipe-operators
-    extra-platforms = x86_64-darwin aarch64-darwin
-  '';
-
   users.knownUsers = [ user.username ];
   users.users.${user.username} = {
     name = user.username;
