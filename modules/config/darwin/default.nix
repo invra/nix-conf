@@ -1,35 +1,22 @@
 {
-  unstable,
+  lib,
   user,
   system,
+  unstable,
+  stable,
+  desktop,
   ...
 }:
-
 {
-  environment.systemPackages = with unstable; [
-    nodejs
-    cargo
-    lua
-    nushell
-    switchaudio-osx
-    nowplaying-cli
+  imports = [
+    ./options/defaults.nix
+    ./options/envrionment.nix
+    ./options/programs.nix
   ];
 
   nix.enable = false;
   nix.settings.experimental-features = "nix-command flakes";
-
-  programs.zsh.enable = true;
-  system.stateVersion = 4;
   security.pam.services.sudo_local.touchIdAuth = true;
-  environment.shells = [
-    unstable.bashInteractive
-    unstable.zsh
-    unstable.fish
-    unstable.nushell
-  ];
-
-  nixpkgs.hostPlatform = "aarch64-darwin";
-
   users.knownUsers = [ user.username ];
   users.users.${user.username} = {
     home = "/Users/${user.username}";
@@ -38,75 +25,11 @@
 
   system = {
     primaryUser = user.username;
-    defaults = {
-      dock = {
-        autohide = system.dock.autohide;
-        orientation = system.dock.orientation;
-        tilesize = 35;
-        minimize-to-application = true;
-        show-recents = false;
-        wvous-br-corner = 1;
-      };
-
-      NSGlobalDomain = {
-        AppleShowAllExtensions = false;
-        NSAutomaticSpellingCorrectionEnabled = false;
-        NSAutomaticQuoteSubstitutionEnabled = false;
-        NSAutomaticPeriodSubstitutionEnabled = false;
-        NSAutomaticDashSubstitutionEnabled = false;
-        NSAutomaticInlinePredictionEnabled = false;
-        NSAutomaticCapitalizationEnabled = false;
-        AppleICUForce24HourTime = true;
-        "com.apple.keyboard.fnState" = true;
-        AppleTemperatureUnit = "Celsius";
-        AppleMeasurementUnits = "Centimeters";
-        AppleMetricUnits = 1;
-        _HIHideMenuBar = true;
-      };
-
-      finder = {
-        AppleShowAllExtensions = true;
-        CreateDesktop = false;
-        QuitMenuItem = true;
-        NewWindowTarget = "Home";
-      };
-
-      loginwindow = {
-        DisableConsoleAccess = true;
-      };
-
-      WindowManager = {
-        EnableStandardClickToShowDesktop = false;
-        GloballyEnabled = false;
-      };
-
-      menuExtraClock = {
-        Show24Hour = true;
-        ShowSeconds = true;
-      };
-    };
-
     keyboard = {
       enableKeyMapping = true;
       swapLeftCommandAndLeftAlt = true;
       swapLeftCtrlAndFn = true;
     };
     startup.chime = true;
-  };
-
-  homebrew = {
-    enable = true;
-
-    casks = [
-      "tailscale"
-      "pika"
-      "steam"
-      "roblox"
-      "alt-tab"
-      "utm"
-      "linearmouse"
-      "raycast"
-      "betterdisplay"
-    ];
   };
 }
