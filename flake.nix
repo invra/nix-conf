@@ -191,7 +191,7 @@
                     username = user.username;
                   };
                   modules = [
-                    ./modules/nix-darwin/config
+                    ./modules/config/darwin.nix
                   ];
                 };
             }
