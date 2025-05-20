@@ -27,8 +27,8 @@
     primaryUser = user.username;
     keyboard = {
       enableKeyMapping = true;
-      swapLeftCommandAndLeftAlt = true;
-      swapLeftCtrlAndFn = true;
+      swapLeftCommandAndLeftAlt = system.normaliseKbd or false;
+      swapLeftCtrlAndFn = system.normaliseKbd or false;
     };
     startup.chime = true;
   };
