@@ -3,13 +3,18 @@
   stylix.targets.zed.enable = false;
   programs.zed-editor = {
     enable = true;
+
     extensions = [
       "rose-pine-theme"
       "html"
       "nix"
       "discord-presence"
     ];
-    extraPackages = [ unstable.nixd ];
+    extraPackages = with unstable; [
+      nixd
+      nil
+    ];
+
     userSettings = {
       telemetry.metrics = false;
       ui_font_size = 16;
