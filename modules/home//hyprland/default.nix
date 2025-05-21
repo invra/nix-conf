@@ -14,6 +14,7 @@ in
   imports = [
     ./mako
     ./waybar
+    ./rofi
   ];
   stylix.targets.hyprland.enable = false;
 

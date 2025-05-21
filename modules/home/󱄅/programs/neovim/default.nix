@@ -135,9 +135,24 @@ in
               end,
             },
             { "nvim-telescope/telescope-fzf-native.nvim", enabled = true },
-            { "williamboman/mason-lspconfig.nvim", enabled = false },
-            { "williamboman/mason.nvim", enabled = false },
-            { "nvim-treesitter/nvim-treesitter", opts = function(_, opts) opts.ensure_installed = {} end },
+            { "williamboman/mason-lspconfig.nvim", enabled = true },
+            { "williamboman/mason.nvim", enabled = true },
+            {
+              "nvim-treesitter/nvim-treesitter",
+              opts = function(_, opts)
+                opts.ensure_installed = {
+                  "lua",
+                  "bash",
+                  "markdown",
+                  "html",
+                  "css",
+                  "json",
+                  "typescript",
+                  "tsx",
+                  "nix",
+                }
+              end,
+            },
             {
               "folke/snacks.nvim",
               optional = true,
