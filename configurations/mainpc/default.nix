@@ -62,15 +62,7 @@
     timezone = "Australia/Sydney";
   };
   user = {
-<<<<<<< HEAD
-<<<<<<< Updated upstream
     displayName = "Invraa (>.<)";
-=======
-    displayName = "Invra";
->>>>>>> Stashed changes
-=======
-    displayName = "Invraa (>.<)";
->>>>>>> change-images-for-readme
     initialPassword = "123456";
     username = "invra";
   };
