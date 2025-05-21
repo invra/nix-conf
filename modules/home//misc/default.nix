@@ -5,8 +5,11 @@
     packages = with unstable; [
       vlc
       wayvnc
+      helvum
       chromium
       parsec-bin
+      easyeffects
+      pavucontrol
       signal-desktop-bin
     ];
   };
