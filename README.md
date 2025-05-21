@@ -18,7 +18,7 @@ This section shows example configurations using this flake.
 </details>
 
 <details>
-<summary>Nix-darwin - Development Environment</summary>
+<summary>NixOS - Vesktop + Browsing + PiP</summary>
 <img src="./.res/demo_2.png" alt="Demo 2">
 </details>
 
