@@ -149,6 +149,7 @@ in
         "pin, title:Picture-in-Picture"
         "float, title:Picture-in-Picture"
         "size 640 360, title:Picture-in-Picture"
+        "opaque, title:Picture-in-Picture"
         "pin, title:Picture-in-Picture"
       ];
     };
