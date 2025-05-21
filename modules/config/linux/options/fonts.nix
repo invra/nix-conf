@@ -1,4 +1,5 @@
-{ unstable, ... }: {
+{ unstable, ... }:
+{
   fonts = {
     packages = with unstable; [
       nerd-fonts.jetbrains-mono
