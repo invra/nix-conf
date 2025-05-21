@@ -66,6 +66,7 @@ in
           telescope-nvim
           todo-comments-nvim
           tokyonight-nvim
+          rose-pine
           trouble-nvim
           ts-comments-nvim
           which-key-nvim
