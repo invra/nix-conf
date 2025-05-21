@@ -8,6 +8,7 @@
       "rose-pine-theme"
       "html"
       "nix"
+      "nu"
       "discord-presence"
     ];
     extraPackages = with unstable; [
