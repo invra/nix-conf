@@ -1,6 +1,7 @@
 { desktop, system, ... }:
 {
   services = {
+    flatpak.enable = true;
     qemuGuest.enable = true;
     spice-vdagentd.enable = true;
     xserver = {
