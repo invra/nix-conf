@@ -32,6 +32,9 @@ in
         "${monitor.name},${monitor.resolution}@${builtins.toString monitor.refreshRate},${monitor.position},${builtins.toString monitor.scale}"
       ) monitors;
 
+      # Disable Updated to * toast.
+      ecosystem.no_update_news = true;
+
       # Auto-launching
       exec-once = [
         "swww-daemon &"
