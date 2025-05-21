@@ -62,7 +62,11 @@
     timezone = "Australia/Sydney";
   };
   user = {
+<<<<<<< Updated upstream
     displayName = "Invraa (>.<)";
+=======
+    displayName = "Invra";
+>>>>>>> Stashed changes
     initialPassword = "123456";
     username = "invra";
   };
