@@ -18,6 +18,7 @@ in
   stylix.targets.hyprland.enable = false;
 
   home.packages = with unstable; [
+    swww
     playerctl
     hyprshot
   ];
