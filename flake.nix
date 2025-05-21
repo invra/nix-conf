@@ -60,7 +60,7 @@
             let
               overlays = [
                 hyprpanel.overlay
-                (super: _: { zen = zen-browser.outputs.packages.${super.system}.default; })
+                zen-browser.overlay
               ];
 
               user = configTOML.user;
@@ -201,7 +201,7 @@
                 overlays = [
                   hyprpanel.overlay
                   ghostty.overlay
-                  (super: _: { zen = zen-browser.outputs.packages.${super.system}.default; })
+                  zen-browser.overlay
                 ];
                 unstable = import nixpkgs {
                   inherit system overlays;
