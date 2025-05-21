@@ -13,6 +13,7 @@
     userSettings = {
       telemetry.metrics = false;
       ui_font_size = 16;
+      tab_size = 2;
       buffer_font_size = 16;
       vim_mode = true;
       theme = {
