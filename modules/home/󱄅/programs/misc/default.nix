@@ -16,6 +16,7 @@
     yt-dlp
     zen
     tldr
+    yazi
     remmina
   ];
 }

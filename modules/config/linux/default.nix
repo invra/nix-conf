@@ -25,7 +25,12 @@
 
   i18n.defaultLocale = system.locale;
   time.timeZone = system.timezone;
-  hardware.graphics.enable = true;
+  hardware = {
+    graphics.enable = true;
+
+    amdgpu.opencl.enable =
+      lib.mkForce (builtins.elem "amdgpu" (system.graphics.wanted or []));
+  };
   environment.stub-ld.enable = true;
   xdg.portal.enable = true;
   xdg.portal.extraPortals = [ unstable.xdg-desktop-portal-gtk ];
