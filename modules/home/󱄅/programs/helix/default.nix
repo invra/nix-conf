@@ -1,4 +1,7 @@
 { unstable, ... }:
+let
+  pkgs = unstable;
+in
 {
   stylix.targets.helix.enable = false;
 
@@ -29,7 +32,7 @@
         };
       };
     };
-    extraPackages = with unstable; [
+    extraPackages = with pkgs; [
       nil
       nixd
       marksman
