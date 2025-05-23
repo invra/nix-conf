@@ -47,9 +47,17 @@
     kernelParams = [ "intel_iommu=on" ];
     locale = "en_AU.UTF-8";
     networking = {
-      dhcpEnabled = true;
+      dhcpEnabled = false;
       firewallEnabled = false;
       networkmanager = true;
+      interfaces = [
+        {
+          type = "BRIDGE";
+          name = "br0";
+          interfaces = ["enp6s0"];
+          dhcpEnabled = true;
+        }
+      ];
     };
     services = {
       mongodb = {
