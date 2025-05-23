@@ -8,8 +8,7 @@ in
     username = user.username;
     stateVersion = "24.11";
     sessionVariables = {
-      EDITOR = "nvim";
-      GIT_EDITOR = "nvim";
+      # EDITOR = "nvim";
     };
   };
 }
