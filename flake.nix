@@ -4,13 +4,15 @@
     flake-utils.url = "github:numtide/flake-utils";
     nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-24.11";
     stylix.url = "github:danth/stylix";
-    darwin.url = "github:lnl7/nix-darwin";
-    darwin.inputs.nixpkgs.follows = "nixpkgs";
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
     zen-browser.url = "gitlab:InvraNet/zen-flake";
     ghostty.url = "gitlab:Hiten-Tandon/ghostty-darwin";
     nixcord.url = "github:kaylorben/nixcord";
 
+    darwin = {
+      url = "github:lnl7/nix-darwin";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
