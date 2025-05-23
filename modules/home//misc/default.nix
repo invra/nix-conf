@@ -1,7 +1,6 @@
 {
   user,
   config,
-  ghostty,
   unstable,
   ...
 }:
@@ -10,8 +9,6 @@
     homeDirectory = "/Users/${user.username}";
     packages = with unstable; [
       jankyborders
-      ghostty
-      alacritty
       sketchybar
     ];
 
@@ -21,9 +18,9 @@
   local.dock = {
     enable = true;
     entries = [
-      { path = "/Applications/Zen.app"; }
+      { path = "${config.home.homeDirectory}/Applications/Home Manager Apps/Zen.app"; }
       { path = "${unstable.zed-editor}/Applications/Zed.app"; }
-      { path = "/Applications/Ghostty.app"; }
+      { path = "${config.home.homeDirectory}/Applications/Home Manager Apps/Vesktop.app"; }
       { path = "${unstable.vesktop}/Applications/Vesktop.app"; }
       { path = "${config.home.homeDirectory}/Applications/Home Manager Apps/Spotify.app"; }
     ];
