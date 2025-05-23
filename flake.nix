@@ -22,10 +22,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.home-manager.follows = "home-manager";
     };
-    nixvim = {
-      url = "github:nix-community/nixvim";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     spicetify-nix = {
       url = "github:Gerg-L/spicetify-nix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -48,7 +44,6 @@
       ghostty,
       spicetify-nix,
       nixcord,
-      nixvim,
       stylix,
       neovim-nightly-overlay,
       zen-browser,
@@ -122,7 +117,6 @@
                       hyprpanel
                       spicetify-nix
                       nixcord
-                      nixvim
                       stylix
                       neovim-nightly-overlay
                       zen-browser
@@ -188,7 +182,6 @@
                       hyprpanel
                       spicetify-nix
                       nixcord
-                      nixvim
                       stylix
                       neovim-nightly-overlay
                       zen-browser
@@ -259,7 +252,6 @@
                       hyprpanel
                       spicetify-nix
                       nixcord
-                      nixvim
                       ghostty
                       stylix
                       neovim-nightly-overlay
@@ -272,7 +264,6 @@
                   modules = [
                     plasma-manager.homeManagerModules.plasma-manager
                     nixcord.homeModules.nixcord
-                    nixvim.homeManagerModules.nixvim
                     stylix.homeModules.stylix
                     ./modules/home
                   ];
