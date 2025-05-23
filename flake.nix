@@ -77,7 +77,7 @@
                       pkg:
                       builtins.elem (nixpkgs.lib.getName pkg) [
                         "spotify"
-												"davinci-resolve"
+                        "davinci-resolve"
                         "steam-unwrapped"
                         "steam"
                         "parsec-bin"
@@ -92,7 +92,7 @@
                       pkg:
                       builtins.elem (nixpkgs.lib.getName pkg) [
                         "spotify"
-												"davinci-resolve"
+                        "davinci-resolve"
                         "steam-unwrapped"
                         "steam"
                         "parsec-bin"
@@ -143,7 +143,7 @@
                       pkg:
                       builtins.elem (nixpkgs.lib.getName pkg) [
                         "spotify"
-												"davinci-resolve"
+                        "davinci-resolve"
                         "steam-unwrapped"
                         "steam"
                         "parsec-bin"
@@ -158,7 +158,7 @@
                       pkg:
                       builtins.elem (nixpkgs.lib.getName pkg) [
                         "spotify"
-												"davinci-resolve"
+                        "davinci-resolve"
                         "steam-unwrapped"
                         "steam"
                         "parsec-bin"
@@ -227,7 +227,7 @@
                     pkg:
                     builtins.elem (nixpkgs.lib.getName pkg) [
                       "spotify"
-											"davinci-resolve"
+                      "davinci-resolve"
                       "steam-unwrapped"
                       "steam"
                       "parsec-bin"

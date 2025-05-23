@@ -15,5 +15,4 @@ with development.git;
       core.quotepath = "off";
     };
   };
-
 }
