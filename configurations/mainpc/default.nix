@@ -54,7 +54,7 @@
         {
           type = "BRIDGE";
           name = "br0";
-          interfaces = ["enp6s0"];
+          interfaces = [ "enp6s0" ];
           dhcpEnabled = true;
         }
       ];

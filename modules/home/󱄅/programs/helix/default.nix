@@ -24,9 +24,17 @@ in
         inline-diagnostics.cursor-line = "warning";
         insert-final-newline = false;
         statusline = {
-          left = ["mode" "spinner"];
-          center = ["file-name"];
-          right = ["diagnostics" "file-type" "file-encoding" "file-line-ending"];
+          left = [
+            "mode"
+            "spinner"
+          ];
+          center = [ "file-name" ];
+          right = [
+            "diagnostics"
+            "file-type"
+            "file-encoding"
+            "file-line-ending"
+          ];
           separator = "│";
           mode = {
             normal = "NORMAL";
