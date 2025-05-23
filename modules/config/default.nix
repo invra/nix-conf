@@ -19,7 +19,10 @@
     };
   };
 
-  nixpkgs.hostPlatform = unstable.hostPlatform.system;
+  nixpkgs = {
+    hostPlatform = unstable.hostPlatform.system;
+    pkgs = unstable;
+  };
 
   programs = {
   };

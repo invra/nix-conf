@@ -28,8 +28,7 @@
   hardware = {
     graphics.enable = true;
 
-    amdgpu.opencl.enable =
-      lib.mkForce (builtins.elem "amdgpu" (system.graphics.wanted or []));
+    amdgpu.opencl.enable = lib.mkForce (builtins.elem "amdgpu" (system.graphics.wanted or [ ]));
   };
   environment.stub-ld.enable = true;
   xdg.portal.enable = true;

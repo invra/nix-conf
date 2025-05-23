@@ -49,161 +49,26 @@
       zen-browser,
       ...
     }:
-    (
-      (builtins.foldl' nixpkgs.lib.attrsets.recursiveUpdate { } (
-        builtins.attrValues (
-          builtins.mapAttrs (
-            name: configTOML:
-            let
-              overlays = [
-                hyprpanel.overlay
-                zen-browser.overlay
-              ];
+    (builtins.foldl' nixpkgs.lib.attrsets.recursiveUpdate { } (
+      builtins.attrValues (
+        builtins.mapAttrs (
+          name: configTOML:
+          let
+            overlays = [
+              hyprpanel.overlay
+              zen-browser.overlay
+            ];
 
-              user = configTOML.user;
-              development = configTOML.development;
-              desktop = configTOML.desktop;
-            in
-            {
-              nixosConfigurations.${name} =
-                let
-                  unstable = import nixpkgs {
-                    inherit overlays;
-                    system = "x86_64-linux";
-                    config.allowUnfreePredicate =
-                      pkg:
-                      builtins.elem (nixpkgs.lib.getName pkg) [
-                        "spotify"
-                        "davinci-resolve"
-                        "steam-unwrapped"
-                        "steam"
-                        "parsec-bin"
-                        "mongodb-compass"
-                        "postman"
-                      ];
-                  };
-                  stable = import nixpkgs-stable {
-                    inherit overlays;
-                    system = "x86_64-linux";
-                    config.allowUnfreePredicate =
-                      pkg:
-                      builtins.elem (nixpkgs.lib.getName pkg) [
-                        "spotify"
-                        "davinci-resolve"
-                        "steam-unwrapped"
-                        "steam"
-                        "parsec-bin"
-                        "mongodb-compass"
-                        "postman"
-                      ];
-                  };
-                  pkgs = unstable;
-                in
-                nixpkgs.lib.nixosSystem {
-                  system = "x86_64-linux";
-
-                  specialArgs = {
-                    inherit
-                      desktop
-                      user
-                      pkgs
-                      home-manager
-                      development
-                      unstable
-                      stable
-                      nixpkgs-stable
-                      nixpkgs
-                      plasma-manager
-                      hyprpanel
-                      spicetify-nix
-                      nixcord
-                      stylix
-                      neovim-nightly-overlay
-                      zen-browser
-                      ;
-                    system = configTOML.system;
-                    username = user.username;
-
-                  };
-                  modules = [
-                    ./modules/config
-                    stylix.nixosModules.stylix
-                  ];
-                };
-              darwinConfigurations.${name} =
-                let
-                  unstable = import nixpkgs {
-                    inherit overlays;
-                    system = "aarch64-darwin";
-                    config.allowUnfreePredicate =
-                      pkg:
-                      builtins.elem (nixpkgs.lib.getName pkg) [
-                        "spotify"
-                        "davinci-resolve"
-                        "steam-unwrapped"
-                        "steam"
-                        "parsec-bin"
-                        "mongodb-compass"
-                        "postman"
-                      ];
-                  };
-                  stable = import nixpkgs-stable {
-                    inherit overlays;
-                    system = "x86_64-linux";
-                    config.allowUnfreePredicate =
-                      pkg:
-                      builtins.elem (nixpkgs.lib.getName pkg) [
-                        "spotify"
-                        "davinci-resolve"
-                        "steam-unwrapped"
-                        "steam"
-                        "parsec-bin"
-                        "mongodb-compass"
-                        "postman"
-                      ];
-                  };
-                  pkgs = unstable;
-
-                in
-                darwin.lib.darwinSystem {
-                  system = "aarch64-darwin";
-                  specialArgs = {
-                    inherit
-                      desktop
-                      user
-                      pkgs
-                      home-manager
-                      development
-                      unstable
-                      stable
-                      nixpkgs-stable
-                      nixpkgs
-                      plasma-manager
-                      hyprpanel
-                      spicetify-nix
-                      nixcord
-                      stylix
-                      neovim-nightly-overlay
-                      zen-browser
-                      ;
-                    system = configTOML.system;
-                    username = user.username;
-                  };
-                  modules = [
-                    ./modules/config
-                  ];
-                };
-            }
-            // flake-utils.lib.eachSystem [ "x86_64-linux" "aarch64-darwin" ] (
-              system:
+            user = configTOML.user;
+            development = configTOML.development;
+            desktop = configTOML.desktop;
+          in
+          {
+            nixosConfigurations.${name} =
               let
-                overlays = [
-                  hyprpanel.overlay
-                  ghostty.overlay
-                  zen-browser.overlay
-                ];
                 unstable = import nixpkgs {
-                  inherit system overlays;
+                  inherit overlays;
+                  system = "x86_64-linux";
                   config.allowUnfreePredicate =
                     pkg:
                     builtins.elem (nixpkgs.lib.getName pkg) [
@@ -217,7 +82,8 @@
                     ];
                 };
                 stable = import nixpkgs-stable {
-                  inherit system overlays;
+                  inherit overlays;
+                  system = "x86_64-linux";
                   config.allowUnfreePredicate =
                     pkg:
                     builtins.elem (nixpkgs.lib.getName pkg) [
@@ -230,48 +96,175 @@
                       "postman"
                     ];
                 };
-                pkgs = unstable;
-                user = configTOML.user;
               in
-              with pkgs;
-              {
-                formatter = nixfmt-tree;
-                legacyPackages.homeConfigurations.${name} = home-manager.lib.homeManagerConfiguration {
-                  inherit pkgs;
-                  extraSpecialArgs = {
-                    inherit
-                      desktop
-                      user
-                      pkgs
-                      home-manager
-                      unstable
-                      stable
-                      nixpkgs-stable
-                      nixpkgs
-                      plasma-manager
-                      hyprpanel
-                      spicetify-nix
-                      nixcord
-                      ghostty
-                      stylix
-                      neovim-nightly-overlay
-                      zen-browser
-                      ;
-                    system = configTOML.system;
-                    development = configTOML.development;
-                    username = user.username;
-                  };
-                  modules = [
-                    plasma-manager.homeManagerModules.plasma-manager
-                    nixcord.homeModules.nixcord
-                    stylix.homeModules.stylix
-                    ./modules/home
-                  ];
+              nixpkgs.lib.nixosSystem {
+                system = "x86_64-linux";
+
+                specialArgs = {
+                  inherit
+                    desktop
+                    user
+                    home-manager
+                    development
+                    unstable
+                    stable
+                    nixpkgs-stable
+                    nixpkgs
+                    plasma-manager
+                    hyprpanel
+                    spicetify-nix
+                    nixcord
+                    stylix
+                    neovim-nightly-overlay
+                    zen-browser
+                    ;
+                  system = configTOML.system;
+                  username = user.username;
+
                 };
-              }
-            )
-          ) (builtins.mapAttrs (name: _: import ./configurations/${name}) (builtins.readDir ./configurations))
-        )
-      ))
-    );
+                modules = [
+                  ./modules/config
+                  stylix.nixosModules.stylix
+                ];
+              };
+            darwinConfigurations.${name} =
+              let
+                unstable = import nixpkgs {
+                  inherit overlays;
+                  system = "aarch64-darwin";
+                  config.allowUnfreePredicate =
+                    pkg:
+                    builtins.elem (nixpkgs.lib.getName pkg) [
+                      "spotify"
+                      "davinci-resolve"
+                      "steam-unwrapped"
+                      "steam"
+                      "parsec-bin"
+                      "mongodb-compass"
+                      "postman"
+                    ];
+                };
+                stable = import nixpkgs-stable {
+                  inherit overlays;
+                  system = "x86_64-linux";
+                  config.allowUnfreePredicate =
+                    pkg:
+                    builtins.elem (nixpkgs.lib.getName pkg) [
+                      "spotify"
+                      "davinci-resolve"
+                      "steam-unwrapped"
+                      "steam"
+                      "parsec-bin"
+                      "mongodb-compass"
+                      "postman"
+                    ];
+                };
+
+              in
+              darwin.lib.darwinSystem {
+                system = "aarch64-darwin";
+                specialArgs = {
+                  inherit
+                    desktop
+                    user
+                    home-manager
+                    development
+                    unstable
+                    stable
+                    nixpkgs-stable
+                    nixpkgs
+                    plasma-manager
+                    hyprpanel
+                    spicetify-nix
+                    nixcord
+                    stylix
+                    neovim-nightly-overlay
+                    zen-browser
+                    ;
+                  system = configTOML.system;
+                  username = user.username;
+                };
+                modules = [
+                  ./modules/config
+                ];
+              };
+          }
+          // flake-utils.lib.eachSystem [ "x86_64-linux" "aarch64-darwin" ] (
+            system:
+            let
+              overlays = [
+                hyprpanel.overlay
+                ghostty.overlay
+                zen-browser.overlay
+              ];
+              unstable = import nixpkgs {
+                inherit system overlays;
+                config.allowUnfreePredicate =
+                  pkg:
+                  builtins.elem (nixpkgs.lib.getName pkg) [
+                    "spotify"
+                    "davinci-resolve"
+                    "steam-unwrapped"
+                    "steam"
+                    "parsec-bin"
+                    "mongodb-compass"
+                    "postman"
+                  ];
+              };
+              stable = import nixpkgs-stable {
+                inherit system overlays;
+                config.allowUnfreePredicate =
+                  pkg:
+                  builtins.elem (nixpkgs.lib.getName pkg) [
+                    "spotify"
+                    "davinci-resolve"
+                    "steam-unwrapped"
+                    "steam"
+                    "parsec-bin"
+                    "mongodb-compass"
+                    "postman"
+                  ];
+              };
+              user = configTOML.user;
+            in
+            with unstable;
+            {
+              formatter = nixfmt-tree;
+              legacyPackages.homeConfigurations.${name} = home-manager.lib.homeManagerConfiguration {
+                pkgs = unstable;
+                extraSpecialArgs = {
+                  inherit
+                    desktop
+                    user
+                    home-manager
+                    unstable
+                    stable
+                    nixpkgs-stable
+                    nixpkgs
+                    plasma-manager
+                    hyprpanel
+                    spicetify-nix
+                    nixcord
+                    ghostty
+                    stylix
+                    neovim-nightly-overlay
+                    zen-browser
+                    ;
+                  pkgs = unstable;
+                  system = configTOML.system;
+                  development = configTOML.development;
+                  username = user.username;
+                };
+                modules = [
+                  plasma-manager.homeManagerModules.plasma-manager
+                  nixcord.homeModules.nixcord
+                  stylix.homeModules.stylix
+                  ./modules/home
+                ];
+              };
+            }
+          )
+        ) (builtins.mapAttrs (name: _: import ./configurations/${name}) (builtins.readDir ./configurations))
+      )
+    ));
 }
