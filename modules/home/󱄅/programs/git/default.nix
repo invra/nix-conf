@@ -12,6 +12,7 @@ with development.git;
     userEmail = email;
     extraConfig = {
       init.defaultBranch = defaultBranch;
+      core.quotepath = "off";
     };
   };
 
