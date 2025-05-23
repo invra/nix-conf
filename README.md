@@ -1,15 +1,26 @@
-# Invra's Nix Configuration
+# Invra's Nix Flake.
+This is a flake for NixOS, and also supports Nix-darwin! This is designed to me modular for other people to use. This <i>is</i> more for <u>advanced users</u> so if you are up for the
+task to do this, this flake might be for you.
 
-My main operating system is NixOS, which means this flake will be updated frequently.
-This system is designed to be partially modular, allowing for configuration and installation tailored to your user setup.
+## Use
+This flake is tailored for my use, it may align with yours, so here a list below.
+* Open source contribution with GitLab, and GitHub
+* Web Development with Bun.js
+* Native programming with C, C++, Rust, Zig
+* Vim centric (pretty much no mouse)
+* Terminal centric (Terminal when helpful. You will find mostly no file manager)
+* Minimalism where wanted, but complexity for certain tasks. (Audio patch software, advanced networking support)
+* Declarative, convenient, reproducible setup (1-5 commands and your good to go to be setup)
+* Networking (docker, network manager, advanced interface configs for bridging.)
 
-> [!IMPORTANT]
-> If you're a current user of this flake, note that as of commit [4352d6a8](https://gitlab.com/InvraNet/nix-conf/-/commit/4352d6a803fc61e224faf7d0b92e5bcf7ec0edc0), your config will **NOT** build unless converted to the new Nix configuration format. Please refer to the section **Making a Configuration of Your Own** for instructions.
+## Support
+* ``aarch64-darwin``
+* ``x86_64-darwin``
 
----
+> [!note]
+> The support for ``aarch64-linux`` is planned. No date so far.
 
 ## Example
-
 This section shows example configurations using this flake.
 
 <details open>
@@ -31,8 +42,6 @@ This section shows example configurations using this flake.
 <summary>Nix-darwin - Neovim + Spotify</summary>
 <img src="./.res/demo_4.png" alt="Demo 4">
 </details>
-
----
 
 ## Making a Configuration of Your Own
 
