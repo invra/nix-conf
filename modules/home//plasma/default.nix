@@ -21,11 +21,11 @@ in
       enableMiddleClickPaste = false;
     };
 
-    hotkeys.commands."launch-ghostty" = {
+    hotkeys.commands."launch-wezterm" = {
       key = "Meta+Return";
-      name = "Launch Ghostty";
-      command = "ghostty";
-      comment = "Launch Ghostty terminal.";
+      name = "Launch Wezterm";
+      command = "wezterm";
+      comment = "Launch Wez's terminal emulator.";
     };
 
     panels = [

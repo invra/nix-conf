@@ -30,10 +30,10 @@ in
     enable = true;
     settings = {
       logo = {
-        # source = "~/.config/fastfetch/nixos.png";
+        source = ./art.png;
         width = 54;
-        height = 45;
-        type = "kitty-direct";
+        height = 22;
+        type = "kitty";
       };
       display.separator = " ";
       modules =

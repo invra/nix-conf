@@ -96,7 +96,7 @@ in
 
       # Keybinds
       bind = [
-        "SUPER, Return, exec, ghostty"
+        "SUPER, Return, exec, wezterm"
         "SUPER, S, exec, spotify"
         "SUPER, Z, exec, zeditor"
         "SUPER, D, exec, vesktop"

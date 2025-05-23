@@ -80,7 +80,7 @@ in
         ];
 
         alt-enter = "macos-native-fullscreen";
-        cmd-enter = "exec-and-forget ghostty";
+        cmd-enter = "exec-and-forget wezterm";
       };
     };
   };
