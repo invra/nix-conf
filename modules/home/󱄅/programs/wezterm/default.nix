@@ -9,7 +9,6 @@
       local config = wezterm.config_builder()
       config.term = "wezterm"
       config.color_scheme = 'Rosé Pine (base16)'
-      config.font = wezterm.font_with_fallback({ "JetBrains Mono Nerd Font" })
       config.window_background_opacity = 0.95
       config.font_size = 15
       config.enable_wayland = true

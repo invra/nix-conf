@@ -8,9 +8,13 @@
 
   programs.nixcord = {
     enable = true;
-    discord.enable = false;
+    discord = {
+      enable = unstable.stdenv.isDarwin;
+      # package = unstable.discord;
+    };
+
     vesktop = {
-      enable = true;
+      enable = unstable.stdenv.isLinux;
       package = unstable.vesktop;
     };
     quickCss = builtins.readFile ./quick.css;

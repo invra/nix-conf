@@ -8,6 +8,7 @@
     zen-browser.url = "gitlab:InvraNet/zen-flake";
     ghostty.url = "gitlab:Hiten-Tandon/ghostty-darwin";
     nixcord.url = "github:kaylorben/nixcord";
+    ip.url = "gitlab:hiten-tandon/ghostty-darwin";
 
     darwin = {
       url = "github:lnl7/nix-darwin";
@@ -37,6 +38,7 @@
       home-manager,
       plasma-manager,
       hyprpanel,
+      ip,
       ghostty,
       nixcord,
       stylix,
@@ -52,6 +54,7 @@
             overlays = [
               hyprpanel.overlay
               zen-browser.overlay
+              ip.overlay
             ];
 
             user = configTOML.user;
@@ -70,6 +73,10 @@
                       "spotify"
                       "davinci-resolve"
                       "steam-unwrapped"
+                      "steam_osx"
+                      "discord"
+                      "betterdisplay"
+                      "raycast"
                       "steam"
                       "parsec-bin"
                       "mongodb-compass"
@@ -86,6 +93,10 @@
                       "davinci-resolve"
                       "steam-unwrapped"
                       "steam"
+                      "steam_osx"
+                      "discord"
+                      "betterdisplay"
+                      "raycast"
                       "parsec-bin"
                       "mongodb-compass"
                       "postman"
@@ -133,6 +144,10 @@
                       "davinci-resolve"
                       "steam-unwrapped"
                       "steam"
+                      "steam_osx"
+                      "discord"
+                      "betterdisplay"
+                      "raycast"
                       "parsec-bin"
                       "mongodb-compass"
                       "postman"
@@ -147,6 +162,10 @@
                       "spotify"
                       "davinci-resolve"
                       "steam-unwrapped"
+                      "steam_osx"
+                      "discord"
+                      "betterdisplay"
+                      "raycast"
                       "steam"
                       "parsec-bin"
                       "mongodb-compass"
@@ -189,6 +208,7 @@
                 hyprpanel.overlay
                 ghostty.overlay
                 zen-browser.overlay
+                ip.overlay
               ];
               unstable = import nixpkgs {
                 inherit system overlays;
@@ -198,6 +218,10 @@
                     "spotify"
                     "davinci-resolve"
                     "steam-unwrapped"
+                    "steam_osx"
+                    "discord"
+                    "betterdisplay"
+                    "raycast"
                     "steam"
                     "parsec-bin"
                     "mongodb-compass"
@@ -212,6 +236,10 @@
                     "spotify"
                     "davinci-resolve"
                     "steam-unwrapped"
+                    "steam_osx"
+                    "discord"
+                    "betterdisplay"
+                    "raycast"
                     "steam"
                     "parsec-bin"
                     "mongodb-compass"

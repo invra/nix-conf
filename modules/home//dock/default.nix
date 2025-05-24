@@ -60,7 +60,7 @@ in
         ${dockutil}/bin/dockutil --no-restart --remove all
         ${lib.concatMapStringsSep "\n" (
           entry:
-          "${dockutil}/bin/dockutil --no-restart --add '${entry.path}' --section ${entry.section} ${entry.options}"
+          "${dockutil}/bin/dockutil --replacing 'Vesktop' --no-restart --add '${entry.path}' --section ${entry.section} ${entry.options}"
         ) cfg.entries}
         ${unstable.killall}/bin/killall Dock
       else

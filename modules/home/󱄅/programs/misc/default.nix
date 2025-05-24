@@ -15,6 +15,15 @@
     unzip
     yt-dlp
     zen
+    alt-tab
+    raycast
+    blender
+    linearmouse
+    obs-studio
+    steam
+    betterdisplay
+    pika
+    utm
     tldr
     yazi
     remmina
