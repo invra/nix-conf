@@ -18,11 +18,10 @@
   local.dock = {
     enable = true;
     entries = [
-      { path = "${config.home.homeDirectory}/Applications/Home Manager Apps/Zen.app"; }
+      { path = "${unstable.zen}/Applications/Zen.app"; }
       { path = "${unstable.zed-editor}/Applications/Zed.app"; }
-      { path = "${config.home.homeDirectory}/Applications/Home Manager Apps/Vesktop.app"; }
-      { path = "${unstable.vesktop}/Applications/Vesktop.app"; }
-      { path = "${config.home.homeDirectory}/Applications/Home Manager Apps/Spotify.app"; }
+      { path = "${config.home.homeDirectory}/Applications/Home Manager Apps/Discord.app"; }
+      { path = "${unstable.wezterm}/Applications/WezTerm.app"; }
     ];
   };
 }
