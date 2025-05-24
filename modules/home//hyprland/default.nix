@@ -97,7 +97,7 @@ in
       # Keybinds
       bind = [
         "SUPER, Return, exec, wezterm"
-        "SUPER, S, exec, spotify"
+        "SUPER, S, exec, wezterm start -- spotify_player"
         "SUPER, Z, exec, zeditor"
         "SUPER, D, exec, vesktop"
         "SUPER, T, exec, thunar"
