@@ -1,11 +1,15 @@
 { ... }:
 {
-  stylix.targets.spotify-player.enable = true;
+  stylix.targets.spotify-player.enable = false;
+
+  home.file.".config/spotify-player/theme.toml".source = ./theme.toml;
 
   programs.spotify-player = {
     enable = true;
 
     settings = {
+      theme = "rose-pine";
+
       device = {
         volume = 40;
         bitrate = 320;
