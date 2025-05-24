@@ -22,10 +22,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.home-manager.follows = "home-manager";
     };
-    spicetify-nix = {
-      url = "github:Gerg-L/spicetify-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     hyprpanel = {
       url = "github:Jas-SinghFSU/HyprPanel";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -42,7 +38,6 @@
       plasma-manager,
       hyprpanel,
       ghostty,
-      spicetify-nix,
       nixcord,
       stylix,
       neovim-nightly-overlay,
@@ -112,7 +107,6 @@
                     nixpkgs
                     plasma-manager
                     hyprpanel
-                    spicetify-nix
                     nixcord
                     stylix
                     neovim-nightly-overlay
@@ -175,7 +169,6 @@
                     nixpkgs
                     plasma-manager
                     hyprpanel
-                    spicetify-nix
                     nixcord
                     stylix
                     neovim-nightly-overlay
@@ -243,7 +236,6 @@
                     nixpkgs
                     plasma-manager
                     hyprpanel
-                    spicetify-nix
                     nixcord
                     ghostty
                     stylix
