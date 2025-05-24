@@ -118,11 +118,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1748004251,
-        "narHash": "sha256-XodjkVWTth3A2JpBqGBkdLD9kkWn94rnv98l3xwKukg=",
+        "lastModified": 1748065210,
+        "narHash": "sha256-dFqlLNW6UW19m0vg5FHWLH2G2LGkqYyPs/4YqfoZMoM=",
         "owner": "lnl7",
         "repo": "nix-darwin",
-        "rev": "33220d4791784e4dd4739edd3f6c028020082f91",
+        "rev": "acd6aa5a9065c6695212be313e06f08f7184cb25",
         "type": "github"
       },
       "original": {
@@ -134,13 +134,13 @@
     "darwin-src": {
       "flake": false,
       "locked": {
-        "narHash": "sha256-BHt7M7EF1pwnQr2IWXWdG9ihkVG8Xr0a7eo3AF1Y6WI=",
+        "narHash": "sha256-9Juqg0xHqv5XpY1FBapaqsOv9GUMYUyNdzM4gCYTFpI=",
         "type": "file",
-        "url": "https://github.com/zen-browser/desktop/releases/download/1.12.5b/zen.macos-universal.dmg"
+        "url": "https://github.com/zen-browser/desktop/releases/download/1.12.8b/zen.macos-universal.dmg"
       },
       "original": {
         "type": "file",
-        "url": "https://github.com/zen-browser/desktop/releases/download/1.12.5b/zen.macos-universal.dmg"
+        "url": "https://github.com/zen-browser/desktop/releases/download/1.12.8b/zen.macos-universal.dmg"
       }
     },
     "firefox-gnome-theme": {
@@ -545,14 +545,14 @@
     "linux-src": {
       "flake": false,
       "locked": {
-        "lastModified": 1747245843,
-        "narHash": "sha256-jyssrCWPlNdxcXQ8ZjhF4vJxSLfLztC5cNRtdEwcJ2s=",
+        "lastModified": 1747948295,
+        "narHash": "sha256-exEj4FL1KYtyGiJHAycm5oIzsWE5FcXVzqYlZOIUDqo=",
         "type": "tarball",
-        "url": "https://github.com/zen-browser/desktop/releases/download/1.12.5b/zen.linux-x86_64.tar.xz"
+        "url": "https://github.com/zen-browser/desktop/releases/download/1.12.8b/zen.linux-x86_64.tar.xz"
       },
       "original": {
         "type": "tarball",
-        "url": "https://github.com/zen-browser/desktop/releases/download/1.12.5b/zen.linux-x86_64.tar.xz"
+        "url": "https://github.com/zen-browser/desktop/releases/download/1.12.8b/zen.linux-x86_64.tar.xz"
       }
     },
     "neovim-nightly-overlay": {
@@ -1024,11 +1024,11 @@
         "nixpkgs": "nixpkgs_6"
       },
       "locked": {
-        "lastModified": 1747553556,
-        "narHash": "sha256-2I6gaMZf0svWLStzfmjZugo9V4v/CBYOQyxIB/+KkPw=",
+        "lastModified": 1748066818,
+        "narHash": "sha256-eu5fJ2w0LnY0RQQ0BQ4GcE4B8gQJXWPaGqTsRHu4jEU=",
         "owner": "InvraNet",
         "repo": "zen-flake",
-        "rev": "344d4b6ff3374b662fa385a353a16e70cba2e41d",
+        "rev": "b293d1439fa82f7ef771e69371bd0cbd24f8ec6d",
         "type": "gitlab"
       },
       "original": {
