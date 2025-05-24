@@ -10,5 +10,7 @@
       localNetworkGameTransfers.openFirewall = true;
     };
     virt-manager.enable = true;
+    dconf.enable = true;
+    thunar.enable = true;
   };
 }
