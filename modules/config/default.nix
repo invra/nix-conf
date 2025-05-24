@@ -24,9 +24,6 @@
     pkgs = unstable;
   };
 
-  programs = {
-  };
-
   users.users = {
     ${user.username} = {
       name = user.username;
