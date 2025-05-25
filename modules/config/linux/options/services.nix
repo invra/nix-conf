@@ -1,5 +1,7 @@
 { desktop, system, ... }:
 {
+  hardware.pulseaudio.daemon.config.flat-volumes = "no";
+
   services = {
     flatpak.enable = true;
     qemuGuest.enable = true;
