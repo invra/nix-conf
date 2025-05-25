@@ -65,6 +65,6 @@ Add more customisation options & features:
 ## Port over to new Nix-darwin configuration
 (Re)Move the nix options:
 - [x] ``hombrew`` [^0]
-- [ ] ``
+- [ ] ``system.defaults`` - More to be added later to list.
 
 [^0]: All homebrew packages were either ported or removed from this repo. - 24-05-2025 [7a432fdf](https://gitlab.com/InvraNet/nix-conf/-/commit/7a432fdf93fef3db93c72a42d3e8c6880f67e0c2)
