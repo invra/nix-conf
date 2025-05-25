@@ -8,7 +8,7 @@ in
     username = user.username;
     stateVersion = "24.11";
     sessionVariables = {
-      # EDITOR = "nvim";
+      EDITOR = "hx";
     };
   };
 }
