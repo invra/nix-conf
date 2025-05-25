@@ -10,6 +10,15 @@
     packages = with unstable; [
       jankyborders
       sketchybar
+      alt-tab
+      raycast
+      blender
+      linearmouse
+      obs-studio
+      steam
+      betterdisplay
+      pika
+      utm
     ];
 
     file.".hushlogin".text = "";
