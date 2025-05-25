@@ -9,6 +9,11 @@
 
     settings = {
       theme = "rose-pine";
+      notify_format = {
+        summary = "{track}";
+        body = "{artists} - {album}";
+      };
+      playback_refresh_duration_in_ms = 500;
 
       device = {
         volume = 40;
