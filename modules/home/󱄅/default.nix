@@ -1,10 +1,10 @@
 {
   user,
-  utils,
+  custils,
   ...
 }:
 {
-  imports = utils.getModulesFromDirRec ./programs;
+  imports = custils.getModulesFromDirRec ./programs;
   home = {
     username = user.username;
     stateVersion = "24.11";

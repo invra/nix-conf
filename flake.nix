@@ -58,7 +58,7 @@
               ip.overlay
             ];
 
-            utils = import ./utils {inherit (nixpkgs)lib;};
+            custils = import ./utils {inherit (nixpkgs)lib;};
 
             user = configTOML.user;
             development = configTOML.development;
@@ -125,7 +125,7 @@
                     stylix
                     neovim-nightly-overlay
                     zen-browser
-                    utils
+                    custils
                     ;
                   system = configTOML.system;
                   username = user.username;
@@ -196,7 +196,7 @@
                     stylix
                     neovim-nightly-overlay
                     zen-browser
-                    utils
+                    custils
                     ;
                   system = configTOML.system;
                   username = user.username;
@@ -275,7 +275,7 @@
                     stylix
                     neovim-nightly-overlay
                     zen-browser
-                    utils
+                    custils
                     ;
                   pkgs = unstable;
                   system = configTOML.system;
@@ -293,5 +293,5 @@
           )
         ) (builtins.mapAttrs (name: _: import ./configurations/${name}) (builtins.readDir ./configurations))
       )
-    )) // { utils = import ./utils { inherit (nixpkgs)lib; }; };
+    )) // { custils = import ./utils { inherit (nixpkgs)lib; }; };
 }
