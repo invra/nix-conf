@@ -16,6 +16,11 @@
       show_banner = false;
       use_kitty_protocol = true;
       buffer_editor = "hx";
+
+      completions.external = {
+        enable = true;
+        max_results = 200;
+      };
     };
 
     shellAliases = {
