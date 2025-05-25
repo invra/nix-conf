@@ -60,34 +60,3 @@ sudo nixos-rebuild switch --flake .#gary
 darwin-rebuild switch --flake .#gary
 home-manager rebuild switch --flake .#gary
 ```
-
----
-
-## Still Using TOML?
-
-This version of the flake has **completely removed support for TOML** configuration.
-Please follow the instructions below to migrate your setup.
-
-### Prerequisites
-
-* Nix REPL
-* Your old TOML configuration file
-
-### Instructions
-
-1. Open the Nix REPL:
-
-   ```sh
-   nix repl
-   ```
-
-2. Load your TOML configuration (replace `configFile.toml` with your actual filename):
-
-   ```nix
-   :p builtins.fromTOML (builtins.readFile ./configFile.toml)
-   ```
-
-3. Copy the output to your clipboard.
-   Paste it into a new `.nix` file following the dynamic configuration format.
-
-4. Place the new `.nix` file in your appropriate `./configurations/` subdirectory.
