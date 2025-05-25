@@ -2,6 +2,7 @@
   user,
   config,
   unstable,
+  utils,
   ...
 }:
 {

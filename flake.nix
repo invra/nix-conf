@@ -58,6 +58,8 @@
               ip.overlay
             ];
 
+            utils = import ./utils {inherit nixpkgs;};
+
             user = configTOML.user;
             development = configTOML.development;
             desktop = configTOML.desktop;
@@ -123,6 +125,7 @@
                     stylix
                     neovim-nightly-overlay
                     zen-browser
+                    utils
                     ;
                   system = configTOML.system;
                   username = user.username;
@@ -193,6 +196,7 @@
                     stylix
                     neovim-nightly-overlay
                     zen-browser
+                    utils
                     ;
                   system = configTOML.system;
                   username = user.username;
@@ -271,6 +275,7 @@
                     stylix
                     neovim-nightly-overlay
                     zen-browser
+                    utils
                     ;
                   pkgs = unstable;
                   system = configTOML.system;
