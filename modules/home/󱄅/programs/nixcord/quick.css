@@ -36,8 +36,9 @@
   --modal-footer-background: #1a1927 !important;
   --modal-background: #161622 !important;
 
-  --notice-background-positive: rgba(0,195,0, 0.15) !important;
-  --notice-background-critical: rgba(255,0,0, 0.15) !important;
+  --notice-background-positive: #9ccfd822 !important;
+  --notice-background-critical: #eb6f9222 !important;
+  --notice-background-warning: #f6c17722 !important;
   --background-mod-subtle: !important;
 
   --text-normal: #e8e5f8 !important;
@@ -72,6 +73,12 @@
   --button-filled-brand-background-hover: #c4a7e733 !important;
   --button-filled-brand-text: #c4a7e7 !important;
   --button-filled-brand-text-hover: var(--button-outline-danger-text) !important;
+}
+
+div.stack_dbd263 > .title__3e443, div.stack_dbd263 > div > div  > h3, 
+div.stack_dbd263 > div > div > div > div[role="radiogroup"],
+div.stack_dbd263 > div > div > div > div.divider__46c3b.divider_fbfab6 {
+    display: none !important;
 }
 
 .avatar__68617.speaking__68617 {
