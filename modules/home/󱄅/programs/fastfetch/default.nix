@@ -1,7 +1,6 @@
 {
   development,
   unstable,
-  lib,
   ...
 }:
 let
@@ -24,16 +23,14 @@ let
       };
 in
 {
-  home.file.".config/fastfetch/nixos.png".source = ./art.png;
-
   programs.fastfetch = {
     enable = true;
     settings = {
       logo = {
-        source = ./art.png;
+        source = ./art.bin;
         width = 54;
         height = 22;
-        type = "kitty";
+        type = "raw";
       };
       display.separator = " ";
       modules =

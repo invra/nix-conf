@@ -9,6 +9,7 @@
     ghostty.url = "gitlab:Hiten-Tandon/ghostty-darwin";
     nixcord.url = "github:kaylorben/nixcord";
     ip.url = "gitlab:hiten-tandon/ghostty-darwin";
+    wezterm.url = "github:wez/wezterm?dir=nix";
 
     darwin = {
       url = "github:lnl7/nix-darwin";
@@ -39,7 +40,7 @@
       plasma-manager,
       hyprpanel,
       ip,
-      ghostty,
+      wezterm,
       nixcord,
       stylix,
       neovim-nightly-overlay,
@@ -206,8 +207,10 @@
             let
               overlays = [
                 hyprpanel.overlay
-                ghostty.overlay
                 zen-browser.overlay
+                (_:s:{
+                  wezterm = wezterm.outputs.packages.${s.system}.default;
+                })
                 ip.overlay
               ];
               unstable = import nixpkgs {
@@ -265,7 +268,6 @@
                     plasma-manager
                     hyprpanel
                     nixcord
-                    ghostty
                     stylix
                     neovim-nightly-overlay
                     zen-browser
