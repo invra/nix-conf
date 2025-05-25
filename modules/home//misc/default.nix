@@ -7,12 +7,12 @@
       gimp3
       wayvnc
       helvum
-      chromium
       parsec-bin
       easyeffects
       pavucontrol
       davinci-resolve
       signal-desktop-bin
+      ungoogled-chromium
     ];
   };
 }
