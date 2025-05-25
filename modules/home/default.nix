@@ -1,7 +1,7 @@
 {
   nixpkgs,
   unstable,
-  utils,
+  custils,
   ...
 }:
 let
@@ -9,7 +9,7 @@ let
   stdenv = unstable.stdenv;
 in
 {
-  imports = utils.getModulesFromDirsRec (
+  imports = custils.getModulesFromDirsRec (
     lib.lists.toList (lib.path.append ./. "󱄅")
     ++ (lib.optional stdenv.isLinux (lib.path.append ./. ""))
     ++ (lib.optional stdenv.isDarwin (lib.path.append ./. ""))
