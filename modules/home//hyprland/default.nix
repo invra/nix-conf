@@ -55,7 +55,7 @@ in
       decoration = {
         rounding = 10;
         active_opacity = 1;
-        inactive_opacity = 0.8;
+        inactive_opacity = 0.9;
         shadow = {
           enabled = false;
         };
@@ -69,6 +69,15 @@ in
       animations = {
         enabled = true;
       };
+
+      bezier = [
+        "click, 0.78, 0.79, 0.95, 0.81"
+      ];
+      
+      animation = [
+        "windows, 1, 4, default, slidefade 10%"      
+        "workspaces, 1, 3, click, slidefade 30%"
+      ];
 
       # Inputs (keyboard & mouse)
       input = {
