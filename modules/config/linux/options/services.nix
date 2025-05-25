@@ -5,7 +5,6 @@
     qemuGuest.enable = true;
     spice-vdagentd.enable = true;
     xserver = {
-
       enable = true;
       videoDrivers = system.graphics.wanted;
       xkb = {
