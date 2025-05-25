@@ -160,6 +160,8 @@ in
         "size 640 360, title:Picture-in-Picture"
         "opaque, title:Picture-in-Picture"
         "pin, title:Picture-in-Picture"
+        "keepaspectratio, title:Picture-in-Picture"
+        "move 100%-w-9, title:Picture-in-Picture"
       ];
     };
   };
