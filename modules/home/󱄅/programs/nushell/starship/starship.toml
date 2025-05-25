@@ -1,13 +1,13 @@
 format = """
-[](fg:#6c5964)\
-[ 󱄅  ](bg:#6c5964 fg:#ebbcba)\
+[](fg:#443943)\
+[ 󱄅  ](bg:#443943 fg:#ebbcba)\
 $username\
-[](bg:#5e5174 fg:#6c5964 )\
+[](bg:#3c354c fg:#443943)\
 $directory\
-[](fg:#5e5174 bg:#705b4b)\
+[](fg:#3c354c bg:#463a36)\
 $git_branch\
 $git_status\
-[](fg:#705b4b bg:#26233a)\
+[](fg:#463a36 bg:#26233a)\
 $nodejs\
 $rust\
 $golang\
@@ -24,12 +24,12 @@ error_symbol = "[ 󱞪](bold red)"
 [username]
 show_always = true
 style_root = "red bold"
-style_user = "bg:#6c5964 fg:#ebbcba bold"
+style_user = "bg:#443943 fg:#ebbcba bold"
 format = '[$user ]($style)'
 disabled = false
 
 [directory]
-style = "fg:#c4a7e7 bg:#5e5174"
+style = "fg:#c4a7e7 bg:#3c354c"
 format = "[ $path ]($style)"
 truncation_length = 30
 truncation_symbol = "…/"
@@ -49,11 +49,11 @@ truncation_symbol = "…/"
 
 [git_branch]
 symbol = ""
-format = '[[ $symbol $branch ](fg:#f6c177 bg:#705b4b)]($style)'
+format = '[[ $symbol $branch ](fg:#f6c177 bg:#463a36)]($style)'
 
 [git_status]
 style = "bg:#394260"
-format = '[[($all_status$ahead_behind )](fg:#f6c177 bg:#705b4b)]($style)'
+format = '[[($all_status$ahead_behind )](fg:#f6c177 bg:#463a36)]($style)'
 
 [nodejs]
 symbol = ""
