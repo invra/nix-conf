@@ -24,7 +24,7 @@ This flake is tailored for my use, it may align with yours, so here a list below
 This section shows example configurations using this flake.
 
 <details open>
-<summary>NixOS - Spotify + Ghostty + Hyprland</summary>
+<summary>NixOS - Spotify + WezTerm + Hyprland</summary>
 <img src="./.res/demo_1.png" alt="Demo 1">
 </details>
 
