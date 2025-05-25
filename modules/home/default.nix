@@ -1,10 +1,10 @@
 {
   nixpkgs,
   unstable,
+  utils,
   ...
 }:
 let
-  utils = import ./utils.nix { lib = nixpkgs.lib; };
   lib = nixpkgs.lib;
   stdenv = unstable.stdenv;
 in

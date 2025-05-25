@@ -1,7 +1,8 @@
-{ user, nixpkgs, ... }:
-let
-  utils = import ../utils.nix { inherit (nixpkgs) lib; };
-in
+{
+  user,
+  utils,
+  ...
+}:
 {
   imports = utils.getModulesFromDirRec ./programs;
   home = {

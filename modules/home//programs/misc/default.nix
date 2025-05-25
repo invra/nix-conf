@@ -2,10 +2,13 @@
   user,
   config,
   unstable,
-  utils,
   ...
 }:
 {
+  imports = [
+    ../../../modules/dock
+  ]
+
   home = {
     homeDirectory = "/Users/${user.username}";
     packages = with unstable; [

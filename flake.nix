@@ -58,7 +58,7 @@
               ip.overlay
             ];
 
-            utils = import ./utils {inherit nixpkgs;};
+            utils = import ./utils {inherit (nixpkgs)lib;};
 
             user = configTOML.user;
             development = configTOML.development;
@@ -293,5 +293,5 @@
           )
         ) (builtins.mapAttrs (name: _: import ./configurations/${name}) (builtins.readDir ./configurations))
       )
-    ));
+    )) // { utils = import ./utils { inherit (nixpkgs)lib; }; };
 }
