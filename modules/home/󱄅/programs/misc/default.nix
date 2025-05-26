@@ -13,6 +13,8 @@
     fd
     tree
     unzip
+    nil
+    nixd
     yt-dlp
     zen
     tldr

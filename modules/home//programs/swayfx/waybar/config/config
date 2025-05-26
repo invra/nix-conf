@@ -8,10 +8,10 @@
     "margin-right": 0,
     "modules-left": [
         "custom/launcher",
-        "hyprland/workspaces",
+        "sway/workspaces",
     ],
     "modules-center": [
-      "hyprland/window"
+      "sway/window"
     ],
     "modules-right": [
         "network",
@@ -28,14 +28,12 @@
         "on-click": "bash -c 'pkill rofi  || rofi -show drun'",
         "on-click-right": "bash -c 'pkill rofi  || rofi -show drun'",
     },
-    "hyprland/workspaces": {
+    "sway/workspaces": {
         "format": "",
         "format-icons": {
             "active": "",
             "default": ""
         },
-        "on-scroll-up": "hyprctl dispatch workspace e-1",
-        "on-scroll-down": "hyprctl dispatch workspace e+1",
         "on-click": "activate"
     },
     "cpu": {
@@ -65,7 +63,7 @@
         "tooltip": true,
         "interval": 2
     },
-    "hyprland/window": {
+    "sway/window": {
         "format": "{}",
         "separate-outputs": true,
         "max-length": 35

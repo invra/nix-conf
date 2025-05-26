@@ -35,7 +35,6 @@ in
             "file-encoding"
             "file-line-ending"
           ];
-          character = "¦";
           mode = {
             normal = "NORMAL";
             insert = "INSERT";
