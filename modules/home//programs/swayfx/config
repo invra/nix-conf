@@ -3,10 +3,10 @@ font pango:iosevka nerd font regular 12
 output * bg $HOME/.config/sway/wallpaper.png fill
 
 gaps inner 5
-gaps outer 5
+gaps outer 2
 
-default_border pixel 2
-default_floating_border pixel 2
+default_border pixel 3
+default_floating_border pixel 3
 
 # class					         border   backgr.   text indicator child_border
 client.focused           #ebbcba #ebbcba #ebbcba #ebbcba #ebbcba
@@ -19,6 +19,15 @@ blur enable
 blur_passes 2
 blur_radius 5
 corner_radius 15
+
+for_window {
+  	[shell="xwayland"] title_format "%title [XWayland]"
+  	[window_role="pop-up"] floating enable
+  	[window_role="bubble"] floating enable
+  	[window_role="dialog"] floating enable
+  	[window_type="dialog"] floating enable
+	[title="Picture-in-Picture"] floating enable, sticky enable, resize set width 640 height 360
+}
 
 bar {
 	swaybar_command waybar
@@ -37,8 +46,12 @@ bindsym $mod+Shift+c reload
 bindsym $mod+Shift+E exec $HOME/.config/sway/exit_sway.sh
 bindsym $mod+Shift+S exec nu $HOME/.config/sway/screenshot.nu
 
+bindsym Mod1+Shift+F10 exec playerctl previous
+bindsym Mod1+Shift+F11 exec playerctl play-pause
+bindsym Mod1+Shift+F12 exec playerctl next
+
 bindsym $mod+Shift+space floating toggle
-bindsym $mod+space exec rofi -show drun
+bindsym $mod+space exec bash -c 'pkill rofi  || rofi -show drun'
 
 bindsym $mod+D exec vesktop
 bindsym $mod+Z exec zeditor
