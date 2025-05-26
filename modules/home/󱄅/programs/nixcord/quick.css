@@ -16,7 +16,7 @@
   --background-base-low: #1f1d2e !important;
   --background-primary: #1f1d2b !important;
   --background-secondary: #191822 !important;
-  --background-tertiary: #14131b !important;
+  --background-tertiary: #1f1d2c !important;
   --bg-base-tertiary: #191724 !important;
   --bg-base-secondary: #1d1b2b !important;
   --bg-surface-overlay: #171524 !important;
@@ -28,6 +28,7 @@
   --background-floating: #19162b !important;
   --card-primary-bg: #191724 !important;
   --custom-channel-members-bg: !important;
+  --user-profile-overlay-background: #ffffff05 !important;
 
   --chat-background-default: #1f1d2e !important;
 
@@ -64,6 +65,7 @@
   --green-330: #9ccfd877 !important;
   --green-360: #6c8b96 !important;
   --red-400: #eb6f92;
+  --opacity-blurple-16: #eb6f9216;
 
   --button-outline-danger-background: #eb6f9222 !important;
   --button-outline-danger-background-hover: #eb6f9233 !important;
@@ -73,6 +75,83 @@
   --button-filled-brand-background-hover: #c4a7e733 !important;
   --button-filled-brand-text: #c4a7e7 !important;
   --button-filled-brand-text-hover: var(--button-outline-danger-text) !important;
+}
+
+.visual-refresh .tabBar__133bf .addFriend__133bf.addFriend__133bf.addFriend__133bf:hover {
+  background-color: #c4a7e722;
+}
+
+.visual-refresh .tabBar__133bf .addFriend__133bf.addFriend__133bf.addFriend__133bf:active {
+  background-color: #c4a7e733;
+}
+
+.visual-refresh .tabBar__133bf .addFriend__133bf.addFriend__133bf.addFriend__133bf {
+  color: #c4a7e7;
+  background: none;
+}
+
+.visual-refresh .tabBar__133bf .addFriend__133bf.addFriend__133bf.addFriend__133bf[aria-selected=true] {
+  background-color: #c4a7e716;
+  color: #c4a7e7;
+}
+
+img[aria-label="Domain"],
+img[alt="GitHub Logo"],
+img[alt="Steam Logo"],
+img[alt="X Logo"] {
+  filter: invert() !important;
+}
+
+.container_a99829 {
+  background: #ffffff10 !important;
+}
+
+.outer_c0bea0.user-profile-popout,
+:root .user-profile-modal, 
+:root .user-profile-popout {
+  background: #1f1d2e !important;
+  padding: 0 !important;
+}
+
+.custom-user-profile-theme .container_a99829 {
+  border: 2px solid var(--input-border) !important;
+}
+
+.custom-user-profile-theme .themeColor_fb7f94.primary_fb7f94 {
+  background: #2b293d;
+}
+
+.wrapper__44b0c[role="img"] > svg > circle {
+  fill: none;
+}
+
+.custom-user-profile-theme .inner_c0bea0 {
+  --profile-gradient-start: #2b293d !important;
+  --profile-gradient-end: #2b293d !important;
+  background: none !important;
+}
+
+#vc-spotify-progress-bar>[class^=slider]:hover [class^=barFill] {
+  background-color: #ebbcba !important;
+}
+
+.vc-spotify-repeat-context,
+.vc-spotify-repeat-track,
+.vc-spotify-shuffle-on {
+  background-color: #ebbcba22 !important;
+}
+
+.vc-spotify-repeat-context svg,
+.vc-spotify-repeat-track svg,
+.vc-spotify-shuffle-on svg {
+  color: #ebbcba !important;
+  fill: #ebbcba !important;
+  stroke: #ebbcba !important;
+}
+
+.vcd-screen-picker-option-radio[data-checked=true] {
+  background-color: var(--button-filled-brand-background) !important;
+  color: var(--button-filled-brand-text) !important;
 }
 
 div.stack_dbd263 > .title__3e443, div.stack_dbd263 > div > div  > h3, 
@@ -132,7 +211,7 @@ button.button__67645.redGlow__67645 svg path {
 }
 
 .callContainer_cb9592.theme-dark.theme-midnight {
-  background: #191822;
+  background: #191822 !important;
 }
 
 rect[mask="url(#svg-mask-status-online)"] {
