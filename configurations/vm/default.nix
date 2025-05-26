@@ -49,7 +49,7 @@
     networking = {
       dhcpEnabled = true;
       firewallEnabled = false;
-      networkmanager = true;
+      networkmanager = false;
       # interfaces = [
       #   {
       #     type = "BRIDGE";
