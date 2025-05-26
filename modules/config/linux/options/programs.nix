@@ -1,4 +1,7 @@
-{ ... }:
+{ unstable, ... }:
+let
+  pkgs = unstable;
+in
 {
   programs = {
     nix-ld.enable = true;
@@ -12,4 +15,9 @@
     dconf.enable = true;
     thunar.enable = true;
   };
+
+  environment.systemPackages = with pkgs; [
+    git
+    home-manager
+  ];
 }
