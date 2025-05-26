@@ -8,7 +8,7 @@
     };
     spiceUSBRedirection.enable = true;
     vmVariant.virtualisation = {
-      memorySize = 8192;
+      memorySize = 1024 * 32;
       cores = 8;
       diskSize = 128 * 1024;
     };
