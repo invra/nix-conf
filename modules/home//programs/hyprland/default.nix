@@ -81,7 +81,9 @@ in
 
       # Inputs (keyboard & mouse)
       input = {
-        kb_layout = "us";
+        kb_layout = "us,us";
+        kb_variant = ",workman";
+        kb_options = "grp:alt_space_toggle";
         follow_mouse = 1;
         sensitivity = 0.5;
         touchpad = {

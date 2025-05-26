@@ -1,8 +1,8 @@
 { desktop, system, ... }:
 {
-  hardware.pulseaudio.daemon.config.flat-volumes = "no";
 
   services = {
+    pulseaudio.daemon.config.flat-volumes = "no";
     flatpak.enable = true;
     qemuGuest.enable = true;
     spice-vdagentd.enable = true;
@@ -10,8 +10,9 @@
       enable = true;
       videoDrivers = system.graphics.wanted;
       xkb = {
-        layout = "us";
-        options = "eurosign:e,caps:escape";
+        layout = "us,us";
+        options = "grp:alt_shift_toggle,eurosign:e,caps:escape";
+        variant = ",workman";
       };
     };
 
