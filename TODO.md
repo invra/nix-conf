@@ -46,7 +46,7 @@ Required to simplify common workflows:
 
 ### Other Enhancements
 
-- [ ] Switch to the official Helix binary (currently using `evil-helix`)  
+- [x] Switch to the official Helix binary (currently using `evil-helix`) [^1] 
 - [ ] Add (or create) a Discord RPC client to share buffer status  
 
 ---
@@ -67,4 +67,5 @@ Add more customisation options & features:
 - [x] ``hombrew`` [^0]
 - [ ] ``system.defaults`` - More to be added later to list.
 
-[^0]: All homebrew packages were either ported or removed from this repo. - 24-05-2025 [7a432fdf](https://gitlab.com/InvraNet/nix-conf/-/commit/7a432fdf93fef3db93c72a42d3e8c6880f67e0c2)
+[^0]: All homebrew packages were either ported or removed from this repo. - 24-05-2025 7a432fdf93fef3db93c72a42d3e8c6880f67e0c2
+[^1]: Evil helix -> plain helix. - 26-05-2025 27cb2bef657b266c7b68182bde470c4f185c1ba4
