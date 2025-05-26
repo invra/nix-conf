@@ -10,7 +10,7 @@ default_floating_border pixel 3
 
 # class					         border   backgr.   text indicator child_border
 client.focused           #ebbcba #ebbcba #ebbcba #ebbcba #ebbcba
-client.focused_inactive  #ebbcba #ebbcba #ebbcba #ebbcba #ebbcba
+client.focused_inactive  #282828 #282828 #ddc7a1 #282828 #282828
 client.unfocused		 #282828 #282828 #ddc7a1 #282828 #282828
 client.urgent			 #d8a657 #d8a657 #1d2021 #d8a657 #d8a657
 client.placeholder		 #7daea3 #7daea3 #1d2021 #7daea3 #7daea3
