@@ -11,9 +11,9 @@ default_floating_border pixel 2
 # class					         border   backgr.   text indicator child_border
 client.focused           #ebbcba #ebbcba #ebbcba #ebbcba #ebbcba
 client.focused_inactive  #ebbcba #ebbcba #ebbcba #ebbcba #ebbcba
-client.unfocused		     #282828 #282828 #ddc7a1 #282828 #282828
-client.urgent			       #d8a657 #d8a657 #1d2021 #d8a657 #d8a657
-client.placeholder		   #7daea3 #7daea3 #1d2021 #7daea3 #7daea3
+client.unfocused		 #282828 #282828 #ddc7a1 #282828 #282828
+client.urgent			 #d8a657 #d8a657 #1d2021 #d8a657 #d8a657
+client.placeholder		 #7daea3 #7daea3 #1d2021 #7daea3 #7daea3
 
 blur enable
 blur_passes 2
@@ -34,7 +34,8 @@ set $term wezterm
 bindsym $mod+Return exec $term
 bindsym $mod+q kill
 bindsym $mod+Shift+c reload
-bindsym $mod+Shift+e exec $HOME/.config/sway/exit_sway.sh
+bindsym $mod+Shift+E exec $HOME/.config/sway/exit_sway.sh
+bindsym $mod+Shift+S exec nu $HOME/.config/sway/screenshot.nu
 
 bindsym $mod+Shift+space floating toggle
 bindsym $mod+space exec rofi -show drun
