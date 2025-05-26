@@ -25,6 +25,7 @@ in
         statusline = {
           left = [
             "mode"
+            "file-modification-indicator"
             "spinner"
           ];
           center = [ "file-name" ];
@@ -34,7 +35,7 @@ in
             "file-encoding"
             "file-line-ending"
           ];
-          separator = "|";
+          character = "¦";
           mode = {
             normal = "NORMAL";
             insert = "INSERT";
