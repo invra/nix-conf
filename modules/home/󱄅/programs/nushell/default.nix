@@ -26,10 +26,10 @@
     shellAliases = {
       fuckoff = "exit";
       la = "ls - a";
-      nvim = "${unstable.evil-helix}/bin/hx";
-      vim = "${unstable.evil-helix}/bin/hx";
-      vi = "${unstable.evil-helix}/bin/hx";
-      ncim = "${unstable.evil-helix}/bin/hx";
+      nvim = "${unstable.helix}/bin/hx";
+      vim = "${unstable.helix}/bin/hx";
+      vi = "${unstable.helix}/bin/hx";
+      ncim = "${unstable.helix}/bin/hx";
     };
 
     extraEnv = ''

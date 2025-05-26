@@ -34,7 +34,7 @@ in
             "file-encoding"
             "file-line-ending"
           ];
-          separator = "│";
+          separator = "|";
           mode = {
             normal = "NORMAL";
             insert = "INSERT";
