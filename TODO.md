@@ -14,16 +14,14 @@ Swapping from Hyprland is key. I have already tried the following:
 - BSPWM  
 
 ### Requirements for the Replacement
-
-Find a window manager that meets the following criteria:
-
-- High Wayland compatibility/compliance  
-- Manual-ish tiling (where I hover, the window goes there)  
-- BSP (Binary Space Partitioning) support  
-- Rounded corners  
-- Active window borders  
-- Transparency support  
-- Fully FOSS  
+- [x] Find a window manager that meets the following criteria[^3]:
+  - High Wayland compatibility/compliance  
+  - Manual-ish tiling (where I hover, the window goes there)  
+  - BSP (Binary Space Partitioning) support  
+  - Rounded corners  
+  - Active window borders  
+  - Transparency support  
+  - Fully FOSS  
 
 ---
 
@@ -69,3 +67,4 @@ Add more customisation options & features:
 
 [^1]: All homebrew packages were either ported or removed from this repo. - 24-05-2025 7a432fdf93fef3db93c72a42d3e8c6880f67e0c2
 [^2]: Evil helix -> plain helix. - 26-05-2025 be5f4ed6d88afc270d636a4cc0a794be0ce22c0d
+[^3]: Hyprland was torn out for in replacement, SwayFX. - 26-05-2025 543a7f5fa6f74ebfa70f6eddb9f1c08ecd90eeed
