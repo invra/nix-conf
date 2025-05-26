@@ -46,7 +46,7 @@ Required to simplify common workflows:
 
 ### Other Enhancements
 
-- [x] Switch to the official Helix binary (currently using `evil-helix`) [^1] 
+- [x] Switch to the official Helix binary (currently using `evil-helix`) [^2] 
 - [ ] Add (or create) a Discord RPC client to share buffer status  
 
 ---
@@ -64,8 +64,8 @@ Add more customisation options & features:
 
 ## Port over to new Nix-darwin configuration
 (Re)Move the nix options:
-- [x] ``hombrew`` [^0]
+- [x] ``hombrew`` [^1]
 - [ ] ``system.defaults`` - More to be added later to list.
 
-[^0]: All homebrew packages were either ported or removed from this repo. - 24-05-2025 7a432fdf93fef3db93c72a42d3e8c6880f67e0c2
-[^1]: Evil helix -> plain helix. - 26-05-2025 27cb2bef657b266c7b68182bde470c4f185c1ba4
+[^1]: All homebrew packages were either ported or removed from this repo. - 24-05-2025 7a432fdf93fef3db93c72a42d3e8c6880f67e0c2
+[^2]: Evil helix -> plain helix. - 26-05-2025 be5f4ed6d88afc270d636a4cc0a794be0ce22c0d
