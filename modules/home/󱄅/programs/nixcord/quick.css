@@ -151,6 +151,7 @@ img[alt="X Logo"] {
 
 .vcd-screen-picker-option-radio[data-checked=true] {
   background-color: var(--button-filled-brand-background) !important;
+  border-color: var(--button-filled-brand-background) !important;
   color: var(--button-filled-brand-text) !important;
 }
 
