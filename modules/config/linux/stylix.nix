@@ -3,7 +3,7 @@
   stylix = {
     enable = true;
     base16Scheme = "${unstable.base16-schemes}/share/themes/rose-pine.yaml";
-    image = unstable.lib.paths.append ../../home "/programs/stylix/wallpapers/flake.png";
+    image = unstable.lib.path.append ../../home "/programs/stylix/wallpapers/flake.png";
     fonts = {
       serif = {
         package = unstable.dejavu_fonts;
