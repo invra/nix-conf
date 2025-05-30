@@ -73,11 +73,11 @@
                   config.allowUnfreePredicate =
                     pkg:
                     builtins.elem (nixpkgs.lib.getName pkg) [
-                      "spotify"
                       "davinci-resolve"
                       "steam-unwrapped"
                       "steam_osx"
                       "discord"
+                      "parsecd"
                       "betterdisplay"
                       "raycast"
                       "steam"
@@ -92,12 +92,12 @@
                   config.allowUnfreePredicate =
                     pkg:
                     builtins.elem (nixpkgs.lib.getName pkg) [
-                      "spotify"
                       "davinci-resolve"
                       "steam-unwrapped"
                       "steam"
                       "steam_osx"
                       "discord"
+                      "parsecd"
                       "betterdisplay"
                       "raycast"
                       "parsec-bin"
@@ -144,12 +144,12 @@
                   config.allowUnfreePredicate =
                     pkg:
                     builtins.elem (nixpkgs.lib.getName pkg) [
-                      "spotify"
                       "davinci-resolve"
                       "steam-unwrapped"
                       "steam"
                       "steam_osx"
                       "discord"
+                      "parsecd"
                       "betterdisplay"
                       "raycast"
                       "parsec-bin"
@@ -163,11 +163,11 @@
                   config.allowUnfreePredicate =
                     pkg:
                     builtins.elem (nixpkgs.lib.getName pkg) [
-                      "spotify"
                       "davinci-resolve"
                       "steam-unwrapped"
                       "steam_osx"
                       "discord"
+                      "parsecd"
                       "betterdisplay"
                       "raycast"
                       "steam"
@@ -212,7 +212,8 @@
               overlays = [
                 hyprpanel.overlay
                 zen-browser.overlay
-                (_:s:{
+                (_: s:
+                nixpkgs.lib.attrsets.optionalAttrs s.stdenv.isLinux {
                   wezterm = wezterm.outputs.packages.${s.system}.default;
                 })
                 ip.overlay
@@ -222,11 +223,11 @@
                 config.allowUnfreePredicate =
                   pkg:
                   builtins.elem (nixpkgs.lib.getName pkg) [
-                    "spotify"
                     "davinci-resolve"
                     "steam-unwrapped"
                     "steam_osx"
                     "discord"
+                    "parsecd"
                     "betterdisplay"
                     "raycast"
                     "steam"
@@ -240,11 +241,11 @@
                 config.allowUnfreePredicate =
                   pkg:
                   builtins.elem (nixpkgs.lib.getName pkg) [
-                    "spotify"
                     "davinci-resolve"
                     "steam-unwrapped"
                     "steam_osx"
                     "discord"
+                    "parsecd"
                     "betterdisplay"
                     "raycast"
                     "steam"

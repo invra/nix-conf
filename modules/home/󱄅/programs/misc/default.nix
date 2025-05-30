@@ -5,6 +5,7 @@
 {
   home.packages = with unstable; [
     postman
+    parsec-bin
     pgadmin4-desktopmode
     mongodb-compass
     viu
