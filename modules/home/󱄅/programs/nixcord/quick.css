@@ -8,7 +8,7 @@
  * @authorId 488590546873483276
  * @discord invra.net
  **/
-
+  
  .visual-refresh, .visual-refresh .theme-midnight, .visual-refresh .theme-dark, .visual-refresh .theme-ash, .visual-refresh .theme-light {
   --bg-brand: #cc9a99 !important;
   --background-base-lower: #181624 !important;
@@ -77,6 +77,8 @@
   --button-filled-brand-text-hover: var(--button-outline-danger-text) !important;
 }
 
+
+
 .visual-refresh .tabBar__133bf .addFriend__133bf.addFriend__133bf.addFriend__133bf:hover {
   background-color: #c4a7e722;
 }
@@ -95,10 +97,10 @@
   color: #c4a7e7;
 }
 
-img[aria-label="Domain"],
-img[alt="GitHub Logo"],
-img[alt="Steam Logo"],
-img[alt="X Logo"] {
+.dark img[aria-label="Domain"],
+.dark img[alt="GitHub Logo"]
+.dark img[alt="Steam Logo"],
+.dark img[alt="X Logo"] {
   filter: invert() !important;
 }
 
@@ -108,9 +110,23 @@ img[alt="X Logo"] {
 
 .outer_c0bea0.user-profile-popout,
 :root .user-profile-modal, 
-:root .user-profile-popout {
+:root .user-profile-popout,
+.outer_c0bea0.user-profile-sidebar {
   background: #1f1d2e !important;
+  --profile-gradient-start: #2b293d !important;
+  --profile-gradient-end: #2b293d !important;
   padding: 0 !important;
+  --profile-gradient-primary-color: #2b293d !important;
+  --profile-gradient-secondary-color: #2b293d !important;
+  --profile-gradient-overlay-color: #2b293d !important;
+  --profile-gradient-primary-color: #e0def4 !important;
+  --profile-gradient-primary-color: #2b293d !important;
+  --profile-gradient-primary-color: #2b293d !important;
+  --profile-gradient-primary-color: #2b293d !important;
+}
+
+.footerButtonColor__7f9c0 {
+  color: #908caa;
 }
 
 .custom-user-profile-theme .container_a99829 {
