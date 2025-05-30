@@ -7,7 +7,6 @@
       gimp3
       wayvnc
       helvum
-      parsec-bin
       easyeffects
       pavucontrol
       davinci-resolve
