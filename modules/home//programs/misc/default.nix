@@ -7,7 +7,7 @@
 {
   imports = [
     ../../../modules/dock
-  ]
+  ];
 
   home = {
     homeDirectory = "/Users/${user.username}";
