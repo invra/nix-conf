@@ -27,9 +27,14 @@
   time.timeZone = system.timezone;
   hardware = {
     graphics.enable = true;
-
     amdgpu.opencl.enable = lib.mkForce (builtins.elem "amdgpu" (system.graphics.wanted or [ ]));
   };
+
+    documentation.man = {
+    man-db.enable = false;
+    mandoc.enable = true;
+  };
+
   environment.stub-ld.enable = true;
   xdg.portal.enable = true;
   xdg.portal.extraPortals = [ unstable.xdg-desktop-portal-gtk ];

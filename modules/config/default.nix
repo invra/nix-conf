@@ -26,11 +26,6 @@
     pkgs = unstable;
   };
 
-  documentation.man = {
-    man-db.enable = false;
-    mandoc.enable = true;
-  };
-
   users.users = {
     ${user.username} = {
       name = user.username;
