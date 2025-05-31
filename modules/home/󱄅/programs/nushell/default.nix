@@ -9,6 +9,10 @@
     ./zoxide
   ];
 
+  home.packages = with unstable; [
+    vivid
+  ];
+
   programs.nushell = {
     enable = true;
 
@@ -25,7 +29,7 @@
 
     shellAliases = {
       fuckoff = "exit";
-      la = "ls - a";
+      la = "ls -a";
       nvim = "${unstable.helix}/bin/hx";
       vim = "${unstable.helix}/bin/hx";
       vi = "${unstable.helix}/bin/hx";
@@ -46,6 +50,8 @@
 
     extraConfig = ''
       #!/bin/nu
+      $env.LS_COLORS = (vivid generate rose-pine)
+      
       export def --env gc [
           source: string, # Repository to clone (e.g gitlab:invra/nix-conf or ssh:gitlab:invra/nix-conf)
           target?: string, # Location to clone to.
