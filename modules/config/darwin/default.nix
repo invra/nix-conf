@@ -14,8 +14,6 @@
     ./options/programs.nix
   ];
 
-  nix.enable = false;
-  nix.settings.experimental-features = "nix-command flakes";
   security.pam.services.sudo_local.touchIdAuth = true;
   users.knownUsers = [ user.username ];
   users.users.${user.username} = {
