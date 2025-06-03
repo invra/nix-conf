@@ -33,5 +33,4 @@
       shell = unstable.nushell;
     };
   };
-  system.stateVersion = 6;
 }

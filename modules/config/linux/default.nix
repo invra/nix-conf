@@ -1,10 +1,7 @@
 {
   lib,
-  user,
   system,
   unstable,
-  stable,
-  desktop,
   ...
 }:
 {
@@ -30,12 +27,16 @@
     amdgpu.opencl.enable = lib.mkForce (builtins.elem "amdgpu" (system.graphics.wanted or [ ]));
   };
 
-    documentation.man = {
+  documentation.man = {
     man-db.enable = false;
     mandoc.enable = true;
   };
 
   environment.stub-ld.enable = true;
-  xdg.portal.enable = true;
-  xdg.portal.extraPortals = [ unstable.xdg-desktop-portal-gtk ];
+  xdg = {
+    portal.enable = true;
+    portal.extraPortals = [ unstable.xdg-desktop-portal-gtk ];
+  };
+
+  system.stateVersion = "25.11";
 }

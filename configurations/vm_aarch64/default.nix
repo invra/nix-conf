@@ -24,7 +24,7 @@
         "GitLab"
         "GitHub"
       ];
-      username = "deracul";
+      username = "InvraNet";
     };
   };
   system = {
@@ -49,7 +49,15 @@
     networking = {
       dhcpEnabled = true;
       firewallEnabled = false;
-      networkmanager = true;
+      networkmanager = false;
+      # interfaces = [
+      #   {
+      #     type = "BRIDGE";
+      #     name = "br0";
+      #     interfaces = [ "enp6s0" ];
+      #     dhcpEnabled = true;
+      #   }
+      # ];
     };
     services = {
       mongodb = {
@@ -62,8 +70,8 @@
     timezone = "Australia/Sydney";
   };
   user = {
-    displayName = "dera is a wannabe femboy";
-    initialPassword = "111111";
-    username = "deracul";
+    displayName = "Invra";
+    initialPassword = "123456";
+    username = "invra";
   };
 }
