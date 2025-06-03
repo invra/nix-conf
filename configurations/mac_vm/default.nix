@@ -12,9 +12,7 @@
         }
       ];
     };
-    plasma = {
-      enable = true;
-    };
+    plasma.enable = true;
   };
   development = {
     git = {
@@ -35,16 +33,13 @@
       orientation = "right";
     };
     graphics = {
-      blacklists = [
-        "nouveau"
-        "nvidia"
-      ];
-      wanted = [ "amdgpu" ];
+      blacklists = [ ];
+      wanted = [ ];
     };
     greeter = "gdm";
     hostname = "NixOS";
     interfaces = { };
-    kernelParams = [ "intel_iommu=on" ];
+    kernelParams = [ ];
     locale = "en_AU.UTF-8";
     networking = {
       dhcpEnabled = true;
@@ -52,12 +47,8 @@
       networkmanager = true;
     };
     services = {
-      mongodb = {
-        enable = true;
-      };
-      ssh = {
-        enable = true;
-      };
+      mongodb.enable = true;
+      ssh.enable = true;
     };
     timezone = "Australia/Sydney";
   };

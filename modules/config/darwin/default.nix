@@ -29,5 +29,6 @@
       swapLeftCtrlAndFn = system.normaliseKbd or false;
     };
     startup.chime = true;
+    stateVersion = "6";
   };
 }

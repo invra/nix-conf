@@ -6,12 +6,11 @@
     ./rofi
   ];
 
-
   home = {
     file = {
-      ".config/sway/config".source = ./config;      
-      ".config/sway/screenshot.nu".source = ./screenshot.nu;      
-      ".config/sway/wallpaper.png".source = ../stylix/wallpapers/flake.png;      
+      ".config/sway/config".source = ./config;
+      ".config/sway/screenshot.nu".source = ./screenshot.nu;
+      ".config/sway/wallpaper.png".source = ../stylix/wallpapers/flake.png;
     };
 
     packages = with unstable; [

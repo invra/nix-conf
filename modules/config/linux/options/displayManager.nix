@@ -7,5 +7,5 @@
   programs.sway = {
     enable = true;
     package = unstable.swayfx;
-  }; 
+  };
 }

@@ -58,82 +58,13 @@
               ip.overlay
             ];
 
-            custils = import ./utils {inherit (nixpkgs)lib;};
+            custils = import ./utils { inherit (nixpkgs) lib; };
 
             user = configTOML.user;
             development = configTOML.development;
             desktop = configTOML.desktop;
           in
           {
-            nixosConfigurations.${name} =
-              let
-                unstable = import nixpkgs {
-                  inherit overlays;
-                  system = "x86_64-linux";
-                  config.allowUnfreePredicate =
-                    pkg:
-                    builtins.elem (nixpkgs.lib.getName pkg) [
-                      "davinci-resolve"
-                      "steam-unwrapped"
-                      "steam_osx"
-                      "discord"
-                      "betterdisplay"
-                      "raycast"
-                      "steam"
-                      "parsec-bin"
-                      "mongodb-compass"
-                      "postman"
-                    ];
-                };
-                stable = import nixpkgs-stable {
-                  inherit overlays;
-                  system = "x86_64-linux";
-                  config.allowUnfreePredicate =
-                    pkg:
-                    builtins.elem (nixpkgs.lib.getName pkg) [
-                      "davinci-resolve"
-                      "steam-unwrapped"
-                      "steam"
-                      "steam_osx"
-                      "discord"
-                      "betterdisplay"
-                      "raycast"
-                      "parsec-bin"
-                      "mongodb-compass"
-                      "postman"
-                    ];
-                };
-              in
-              nixpkgs.lib.nixosSystem {
-                system = "x86_64-linux";
-
-                specialArgs = {
-                  inherit
-                    desktop
-                    user
-                    home-manager
-                    development
-                    unstable
-                    stable
-                    nixpkgs-stable
-                    nixpkgs
-                    plasma-manager
-                    hyprpanel
-                    nixcord
-                    stylix
-                    neovim-nightly-overlay
-                    zen-browser
-                    custils
-                    ;
-                  system = configTOML.system;
-                  username = user.username;
-
-                };
-                modules = [
-                  ./modules/config
-                  stylix.nixosModules.stylix
-                ];
-              };
             darwinConfigurations.${name} =
               let
                 unstable = import nixpkgs {
@@ -156,7 +87,7 @@
                 };
                 stable = import nixpkgs-stable {
                   inherit overlays;
-                  system = "x86_64-linux";
+                  system = "aarch64-darwin";
                   config.allowUnfreePredicate =
                     pkg:
                     builtins.elem (nixpkgs.lib.getName pkg) [
@@ -202,16 +133,18 @@
                 ];
               };
           }
-          // flake-utils.lib.eachSystem [ "x86_64-linux" "aarch64-darwin" ] (
+          // (flake-utils.lib.eachSystem [ "aarch64-linux" "x86_64-linux" "aarch64-darwin" ] (
             system:
             let
               overlays = [
                 hyprpanel.overlay
                 zen-browser.overlay
-                (_: s:
-                nixpkgs.lib.attrsets.optionalAttrs s.stdenv.isLinux {
-                  wezterm = wezterm.outputs.packages.${s.system}.default;
-                })
+                (
+                  _: s:
+                  nixpkgs.lib.attrsets.optionalAttrs s.stdenv.isLinux {
+                    wezterm = wezterm.outputs.packages.${s.system}.default;
+                  }
+                )
                 ip.overlay
               ];
               unstable = import nixpkgs {
@@ -248,10 +181,41 @@
                     "postman"
                   ];
               };
-              user = configTOML.user;
+              inherit (configTOML) user;
             in
             with unstable;
             {
+
+              legacyPackages.nixosConfigurations.${name} =
+                unstable.lib.attrsets.optionalAttrs (!unstable.stdenv.isDarwin) nixpkgs.lib.nixosSystem
+                  {
+                    inherit system;
+                    specialArgs = {
+                      inherit
+                        desktop
+                        user
+                        home-manager
+                        development
+                        unstable
+                        stable
+                        nixpkgs-stable
+                        nixpkgs
+                        plasma-manager
+                        hyprpanel
+                        nixcord
+                        stylix
+                        neovim-nightly-overlay
+                        zen-browser
+                        custils
+                        ;
+                      inherit (configTOML) system;
+                      inherit (user) username;
+                    };
+                    modules = [
+                      ./modules/config
+                      stylix.nixosModules.stylix
+                    ];
+                  };
               formatter = nixfmt-tree;
               legacyPackages.homeConfigurations.${name} = home-manager.lib.homeManagerConfiguration {
                 pkgs = unstable;
@@ -273,9 +237,8 @@
                     custils
                     ;
                   pkgs = unstable;
-                  system = configTOML.system;
-                  development = configTOML.development;
-                  username = user.username;
+                  inherit (configTOML) system development;
+                  inherit (user) username;
                 };
                 modules = [
                   plasma-manager.homeManagerModules.plasma-manager
@@ -285,8 +248,11 @@
                 ];
               };
             }
-          )
+          ))
         ) (builtins.mapAttrs (name: _: import ./configurations/${name}) (builtins.readDir ./configurations))
       )
-    )) // { custils = import ./utils { inherit (nixpkgs)lib; }; };
+    ))
+    // {
+      custils = import ./utils { inherit (nixpkgs) lib; };
+    };
 }

@@ -17,4 +17,4 @@ rec {
 
   getModulesFromDirsRec =
     dirs: lib.lists.unique (lib.lists.flatten (builtins.map getModulesFromDirRec dirs));
-}  
+}
