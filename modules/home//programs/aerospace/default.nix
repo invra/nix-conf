@@ -1,6 +1,7 @@
-{ ... }:
+{ unstable, ... }:
 let
   gaps = 6;
+  pkgs = unstable;
 in
 {
   programs.aerospace = {
@@ -80,7 +81,7 @@ in
         ];
 
         alt-enter = "macos-native-fullscreen";
-        cmd-enter = "exec-and-forget wezterm";
+        cmd-enter = "exec-and-forget ${pkgs.wezterm}/bin/wezterm start";
       };
     };
   };
