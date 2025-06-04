@@ -14,7 +14,7 @@
     packages = with unstable; [
       jankyborders
       sketchybar
-      alt-tab
+      alt-tab-macos
       raycast
       blender
       linearmouse

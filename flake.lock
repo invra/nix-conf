@@ -22,32 +22,6 @@
         "type": "github"
       }
     },
-    "alt-tab": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1746439637,
-        "narHash": "sha256-8ll2iTZoLeSeofSekR1rtnGxrZgWjHp3vN+CT7rSILE=",
-        "type": "tarball",
-        "url": "https://github.com/lwouis/alt-tab-macos/releases/download/v7.24.0/AltTab-7.24.0.zip"
-      },
-      "original": {
-        "type": "tarball",
-        "url": "https://github.com/lwouis/alt-tab-macos/releases/download/v7.24.0/AltTab-7.24.0.zip"
-      }
-    },
-    "alt-tab_2": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1746439637,
-        "narHash": "sha256-8ll2iTZoLeSeofSekR1rtnGxrZgWjHp3vN+CT7rSILE=",
-        "type": "tarball",
-        "url": "https://github.com/lwouis/alt-tab-macos/releases/download/v7.24.0/AltTab-7.24.0.zip"
-      },
-      "original": {
-        "type": "tarball",
-        "url": "https://github.com/lwouis/alt-tab-macos/releases/download/v7.24.0/AltTab-7.24.0.zip"
-      }
-    },
     "astal": {
       "inputs": {
         "nixpkgs": [
@@ -156,30 +130,6 @@
         "repo": "base16-vim",
         "rev": "577fe8125d74ff456cf942c733a85d769afe58b7",
         "type": "github"
-      }
-    },
-    "betterdisplay": {
-      "flake": false,
-      "locked": {
-        "narHash": "sha256-0HSthWk0j4PnSySTODzBG7vdJIyn0GqIv0liIP3t8Yw=",
-        "type": "file",
-        "url": "https://github.com/waydabber/BetterDisplay/releases/download/v3.5.5/BetterDisplay-v3.5.5.dmg"
-      },
-      "original": {
-        "type": "file",
-        "url": "https://github.com/waydabber/BetterDisplay/releases/download/v3.5.5/BetterDisplay-v3.5.5.dmg"
-      }
-    },
-    "betterdisplay_2": {
-      "flake": false,
-      "locked": {
-        "narHash": "sha256-0HSthWk0j4PnSySTODzBG7vdJIyn0GqIv0liIP3t8Yw=",
-        "type": "file",
-        "url": "https://github.com/waydabber/BetterDisplay/releases/download/v3.5.5/BetterDisplay-v3.5.5.dmg"
-      },
-      "original": {
-        "type": "file",
-        "url": "https://github.com/waydabber/BetterDisplay/releases/download/v3.5.5/BetterDisplay-v3.5.5.dmg"
       }
     },
     "damage-control": {
@@ -473,26 +423,21 @@
     },
     "ghostty": {
       "inputs": {
-        "alt-tab": "alt-tab",
-        "betterdisplay": "betterdisplay",
         "damage-control": "damage-control",
         "ghostty": "ghostty_2",
         "linearmouse": "linearmouse",
         "nixpkgs": "nixpkgs",
         "obs-studio": "obs-studio",
         "parsec": "parsec",
-        "pika": "pika",
-        "raycast": "raycast",
         "steam": "steam",
-        "utm": "utm",
         "wezterm": "wezterm"
       },
       "locked": {
-        "lastModified": 1749029655,
-        "narHash": "sha256-XUpi6Mrn43rqBYvWk/8+GJRAxqFcbMV57gXvuxvcR/A=",
+        "lastModified": 1749034708,
+        "narHash": "sha256-tsbuLIS1xIQgX8JJYvGLpl9i6mJ2hg7EC+DpGmNrtx4=",
         "owner": "Hiten-Tandon",
         "repo": "ghostty-darwin",
-        "rev": "55b945c865eac0318b10aef112149907ac67abaa",
+        "rev": "794af605a27328aec21da25a8986ba2cb99f95d9",
         "type": "gitlab"
       },
       "original": {
@@ -739,26 +684,21 @@
     },
     "ip": {
       "inputs": {
-        "alt-tab": "alt-tab_2",
-        "betterdisplay": "betterdisplay_2",
         "damage-control": "damage-control_2",
         "ghostty": "ghostty_3",
         "linearmouse": "linearmouse_2",
         "nixpkgs": "nixpkgs_2",
         "obs-studio": "obs-studio_2",
         "parsec": "parsec_2",
-        "pika": "pika_2",
-        "raycast": "raycast_2",
         "steam": "steam_2",
-        "utm": "utm_2",
         "wezterm": "wezterm_2"
       },
       "locked": {
-        "lastModified": 1749029655,
-        "narHash": "sha256-XUpi6Mrn43rqBYvWk/8+GJRAxqFcbMV57gXvuxvcR/A=",
+        "lastModified": 1749034708,
+        "narHash": "sha256-tsbuLIS1xIQgX8JJYvGLpl9i6mJ2hg7EC+DpGmNrtx4=",
         "owner": "hiten-tandon",
         "repo": "ghostty-darwin",
-        "rev": "55b945c865eac0318b10aef112149907ac67abaa",
+        "rev": "794af605a27328aec21da25a8986ba2cb99f95d9",
         "type": "gitlab"
       },
       "original": {
@@ -1114,30 +1054,6 @@
         "url": "https://builds.parsec.app/package/parsec-macos.pkg"
       }
     },
-    "pika": {
-      "flake": false,
-      "locked": {
-        "narHash": "sha256-aCHktGpK7tnM5nJQqHK8oqoI0x7YjrxgNfML7mTSrVY=",
-        "type": "file",
-        "url": "https://github.com/superhighfives/pika/releases/download/1.0.2/Pika-1.0.2.dmg"
-      },
-      "original": {
-        "type": "file",
-        "url": "https://github.com/superhighfives/pika/releases/download/1.0.2/Pika-1.0.2.dmg"
-      }
-    },
-    "pika_2": {
-      "flake": false,
-      "locked": {
-        "narHash": "sha256-aCHktGpK7tnM5nJQqHK8oqoI0x7YjrxgNfML7mTSrVY=",
-        "type": "file",
-        "url": "https://github.com/superhighfives/pika/releases/download/1.0.2/Pika-1.0.2.dmg"
-      },
-      "original": {
-        "type": "file",
-        "url": "https://github.com/superhighfives/pika/releases/download/1.0.2/Pika-1.0.2.dmg"
-      }
-    },
     "plasma-manager": {
       "inputs": {
         "home-manager": [
@@ -1159,30 +1075,6 @@
         "owner": "nix-community",
         "repo": "plasma-manager",
         "type": "github"
-      }
-    },
-    "raycast": {
-      "flake": false,
-      "locked": {
-        "narHash": "sha256-LPPmgoUOH8maH07dpD6EDQNTfIuKHInBCCQZIuTL4UQ=",
-        "type": "file",
-        "url": "https://releases.raycast.com/releases/1.99.2/download?build=arm"
-      },
-      "original": {
-        "type": "file",
-        "url": "https://releases.raycast.com/releases/1.99.2/download?build=arm"
-      }
-    },
-    "raycast_2": {
-      "flake": false,
-      "locked": {
-        "narHash": "sha256-LPPmgoUOH8maH07dpD6EDQNTfIuKHInBCCQZIuTL4UQ=",
-        "type": "file",
-        "url": "https://releases.raycast.com/releases/1.99.2/download?build=arm"
-      },
-      "original": {
-        "type": "file",
-        "url": "https://releases.raycast.com/releases/1.99.2/download?build=arm"
       }
     },
     "root": {
@@ -1450,30 +1342,6 @@
         "owner": "numtide",
         "repo": "treefmt-nix",
         "type": "github"
-      }
-    },
-    "utm": {
-      "flake": false,
-      "locked": {
-        "narHash": "sha256-YyM18Cv9pAec+SF004hmJKUkjbslIR4ecvY8hzqkxhs=",
-        "type": "file",
-        "url": "https://github.com/utmapp/UTM/releases/download/v4.6.5/UTM.dmg"
-      },
-      "original": {
-        "type": "file",
-        "url": "https://github.com/utmapp/UTM/releases/download/v4.6.5/UTM.dmg"
-      }
-    },
-    "utm_2": {
-      "flake": false,
-      "locked": {
-        "narHash": "sha256-YyM18Cv9pAec+SF004hmJKUkjbslIR4ecvY8hzqkxhs=",
-        "type": "file",
-        "url": "https://github.com/utmapp/UTM/releases/download/v4.6.5/UTM.dmg"
-      },
-      "original": {
-        "type": "file",
-        "url": "https://github.com/utmapp/UTM/releases/download/v4.6.5/UTM.dmg"
       }
     },
     "wezterm": {
