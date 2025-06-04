@@ -39,6 +39,10 @@
     extraEnv = ''
       $env.config.buffer_editor = "hx";
       $env.editor = "hx";
+      $env.NH_FLAKE = $"($env.HOME)/.nix";
+      $env.NH_OS_FLAKE = $"($env.HOME)/.nix";
+      $env.NH_DARWIN_FLAKE = $"($env.HOME)/.nix";
+      $env.NH_HOME_FLAKE = $"($env.HOME)/.nix";
       $env.PATH = $env.PATH
       | append [
         "~/.nix-profile/bin"
@@ -104,28 +108,6 @@
           }
       }
 
-      export def nix-rbld [
-          --update (-u)                # To update flake before building (off by default)
-          --target (-T): string = "default"   # Your configuration flake (e.g. mainpc)
-          --flake (-f): string = "~/.nix"    # Location of flake (default $env.HOME/.nix)
-      ] {
-          mut flakeTarget: string = ""
-
-          $flakeTarget = ($flake | str replace "~" $env.HOME) + "#" + $"($target | str replace '#' \'\')";
-
-          if $update {
-              print $"nix flake update --flake ($flake | path expand)"
-              nix flake update --flake ($flake | path expand)
-          }
-
-
-          print $"sudo nixos-rebuild switch --flake ($flakeTarget)"
-          sudo nixos-rebuild switch --flake $flakeTarget
-
-          print $"home-manager switch --flake ($flakeTarget) -b backup"
-          home-manager switch --flake $flakeTarget -b backup
-      }
-
       export def dev [] {
         nix develop --command nu
       }
@@ -135,8 +117,6 @@
       }
 
       $env.x = true
-
-
 
       mkdir ($nu.data-dir | path join "vendor/autoload")
       starship init nu | save -f ($nu.data-dir | path join "vendor/autoload/starship.nu")
