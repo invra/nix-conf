@@ -1,4 +1,7 @@
 { user, unstable, ... }:
+let
+  pkgs = unstable;
+in
 {
   imports = if unstable.stdenv.isLinux then [ ./linux ] else [ ./darwin ];
 
@@ -33,4 +36,7 @@
       shell = unstable.nushell;
     };
   };
+  environment.systemPackages = with pkgs; [
+    home-manager
+  ];
 }

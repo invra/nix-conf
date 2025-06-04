@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/zsh
 
 while getopts "f:" opt; do
   case $opt in
@@ -21,7 +21,7 @@ fi
 if ! command -v nix &>/dev/null; then
   echo "Nix is not installed. Installing Nix..."
   sh <(curl --proto '=https' --tlsv1.2 -L https://nixos.org/nix/install)
-  source /etc/bashrc  # Reload the shell configuration
+  source /etc/zshrc  # Reload the shell configuration
 else
   echo "Nix is already installed. Skipping installation."
 fi
@@ -37,7 +37,7 @@ fi
 
 if ! command -v hx &>/dev/null; then
   echo "The home-manager isn't applied, I will apply it now..."
-  home-manager switch --flake ".#$flake"
+  home-manager switch --flake ".#$flake" -b backup
 else
   echo "The config has already been installed. Use darwin-manager from now on to rebuild."
 fi
