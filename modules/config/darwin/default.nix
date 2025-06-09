@@ -26,7 +26,7 @@ in
   };
 
   system = {
-    # primaryUser = user.username;
+    primaryUser = user.username;
     keyboard = {
       enableKeyMapping = true;
       swapLeftCommandAndLeftAlt = system.normaliseKbd or false;
