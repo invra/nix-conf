@@ -81,7 +81,7 @@ in
         ];
 
         alt-enter = "macos-native-fullscreen";
-        cmd-enter = "exec-and-forget ${pkgs.wezterm}/bin/wezterm start";
+        cmd-enter = "exec-and-forget ${pkgs.alacritty}/bin/alacritty";
       };
     };
   };
