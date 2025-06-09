@@ -1,15 +1,6 @@
 { system, ... }:
 {
   system.defaults = {
-    dock = {
-      autohide = system.dock.autohide;
-      orientation = system.dock.orientation;
-      tilesize = 35;
-      minimize-to-application = true;
-      show-recents = false;
-      wvous-br-corner = 1;
-    };
-
     NSGlobalDomain = {
       AppleShowAllExtensions = false;
       NSAutomaticSpellingCorrectionEnabled = false;
@@ -52,5 +43,10 @@
       Show24Hour = true;
       ShowSeconds = true;
     };
+
+    # "NSGlobalDomain" = {
+    #   AppleHighlightColor = "0.968627 0.831373 1.000000 Purple";
+    #   AppleAccentColor = 5;
+    # };
   };
 }

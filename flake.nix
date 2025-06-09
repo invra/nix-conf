@@ -4,12 +4,9 @@
     flake-utils.url = "github:numtide/flake-utils";
     nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-25.05";
     stylix.url = "github:danth/stylix";
-    neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
     zen-browser.url = "gitlab:InvraNet/zen-flake";
-    ghostty.url = "gitlab:Hiten-Tandon/ghostty-darwin";
     nixcord.url = "github:kaylorben/nixcord";
-    ip.url = "gitlab:hiten-tandon/ghostty-darwin";
-    wezterm.url = "github:wez/wezterm?dir=nix";
+    ip.url = "gitlab:hiten-tandon/some-nix-darwin-packages";
 
     darwin = {
       url = "github:lnl7/nix-darwin";
@@ -24,10 +21,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.home-manager.follows = "home-manager";
     };
-    hyprpanel = {
-      url = "github:Jas-SinghFSU/HyprPanel";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
 
   outputs =
@@ -38,12 +31,9 @@
       nixpkgs,
       home-manager,
       plasma-manager,
-      hyprpanel,
       ip,
-      wezterm,
       nixcord,
       stylix,
-      neovim-nightly-overlay,
       zen-browser,
       ...
     }:
@@ -53,7 +43,6 @@
           name: configTOML:
           let
             overlays = [
-              hyprpanel.overlay
               zen-browser.overlay
               ip.overlay
             ];
@@ -118,10 +107,8 @@
                     nixpkgs-stable
                     nixpkgs
                     plasma-manager
-                    hyprpanel
                     nixcord
                     stylix
-                    neovim-nightly-overlay
                     zen-browser
                     custils
                     ;
@@ -137,14 +124,7 @@
             system:
             let
               overlays = [
-                hyprpanel.overlay
                 zen-browser.overlay
-                (
-                  _: s:
-                  nixpkgs.lib.attrsets.optionalAttrs s.stdenv.isLinux {
-                    wezterm = wezterm.outputs.packages.${s.system}.default;
-                  }
-                )
                 ip.overlay
               ];
               unstable = import nixpkgs {
@@ -202,10 +182,8 @@
                         nixpkgs-stable
                         nixpkgs
                         plasma-manager
-                        hyprpanel
                         nixcord
                         stylix
-                        neovim-nightly-overlay
                         zen-browser
                         custils
                         ;
@@ -235,10 +213,8 @@
                     nixpkgs-stable
                     nixpkgs
                     plasma-manager
-                    hyprpanel
                     nixcord
                     stylix
-                    neovim-nightly-overlay
                     zen-browser
                     custils
                     ;
