@@ -14,7 +14,6 @@
       AppleTemperatureUnit = "Celsius";
       AppleMeasurementUnits = "Centimeters";
       AppleMetricUnits = 1;
-      _HIHideMenuBar = true;
     };
 
     finder = {

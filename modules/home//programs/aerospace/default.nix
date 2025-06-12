@@ -81,7 +81,8 @@ in
         ];
 
         alt-enter = "macos-native-fullscreen";
-        cmd-enter = "exec-and-forget ${pkgs.alacritty}/bin/alacritty";
+        cmd-enter = "exec-and-forget ${pkgs.kitty}/bin/kitty";
+        cmd-t = "exec-and-forget open -na /System/Library/CoreServices/Finder.app";
       };
     };
   };
