@@ -30,7 +30,7 @@ in
         source = ./art.bin;
         width = 54;
         height = 22;
-        type = "raw";
+        type = "kitty-direct";
       };
       display.separator = " ";
       modules =
