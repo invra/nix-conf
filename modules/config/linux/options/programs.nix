@@ -5,12 +5,12 @@ in
 {
   programs = {
     nix-ld.enable = true;
-    steam = {
-      enable = true;
-      remotePlay.openFirewall = true;
-      dedicatedServer.openFirewall = true;
-      localNetworkGameTransfers.openFirewall = true;
-    };
+    # steam = {
+    #   enable = true;
+    #   remotePlay.openFirewall = true;
+    #   dedicatedServer.openFirewall = true;
+    #   localNetworkGameTransfers.openFirewall = true;
+    # };
     virt-manager.enable = true;
     dconf.enable = true;
     thunar.enable = true;
@@ -18,6 +18,8 @@ in
 
   environment.systemPackages = with pkgs; [
     git
-    homesmanager
+    alacritty
+    # firefox-esr
+    home-manager
   ];
 }

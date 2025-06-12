@@ -102,7 +102,7 @@
         "type": "github"
       }
     },
-    "darwin-src": {
+    "darwin-universal-src": {
       "flake": false,
       "locked": {
         "narHash": "sha256-pUDZCUeous6G4YvV3jlzuuWbTP+e3NM0EY38peZF+ZM=",
@@ -316,11 +316,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1749483884,
-        "narHash": "sha256-HdyfdVx0NbgrVtLY4lXdX9X/YE3PZjGZFnSyoAy1GJc=",
+        "lastModified": 1749657191,
+        "narHash": "sha256-QLilaHuhGxiwhgceDWESj9gFcKIdEp7+9lRqNGpN8S4=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "74d196c9943a67908d1883f61154e594d03863e5",
+        "rev": "faeab32528a9360e9577ff4082de2d35c6bbe1ce",
         "type": "github"
       },
       "original": {
@@ -387,7 +387,20 @@
         "url": "https://github.com/linearmouse/linearmouse/releases/latest/download/LinearMouse.dmg"
       }
     },
-    "linux-src": {
+    "linux-aarch-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1748790764,
+        "narHash": "sha256-4tbKColtqQPrS1su/S6J3mV+fIW8GgarOVj2pXtWRH4=",
+        "type": "tarball",
+        "url": "https://github.com/zen-browser/desktop/releases/download/1.12.10b/zen.linux-aarch64.tar.xz"
+      },
+      "original": {
+        "type": "tarball",
+        "url": "https://github.com/zen-browser/desktop/releases/download/1.12.10b/zen.linux-aarch64.tar.xz"
+      }
+    },
+    "linux-x86-src": {
       "flake": false,
       "locked": {
         "lastModified": 1748796643,
@@ -407,11 +420,11 @@
         "nixpkgs": "nixpkgs_2"
       },
       "locked": {
-        "lastModified": 1749261009,
-        "narHash": "sha256-CT1pMFGOxLEIDdW0qiYY2xukjL9UMKMfkgoyhjI97DQ=",
+        "lastModified": 1749689057,
+        "narHash": "sha256-ImtsMizk/hY4Jhhg3RjIvv6nYoHrp3KgJOqG/VY+2ts=",
         "owner": "kaylorben",
         "repo": "nixcord",
-        "rev": "1d205ce174e00f90a2bd66e1fb63996e328d1802",
+        "rev": "7b6ec5168faafa0260e9a6e9f7147ad8bdf928f6",
         "type": "github"
       },
       "original": {
@@ -453,11 +466,11 @@
     },
     "nixpkgs-stable": {
       "locked": {
-        "lastModified": 1749237914,
-        "narHash": "sha256-N5waoqWt8aMr/MykZjSErOokYH6rOsMMXu3UOVH5kiw=",
+        "lastModified": 1749494155,
+        "narHash": "sha256-FG4DEYBpROupu758beabUk9lhrblSf5hnv84v1TLqMc=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "70c74b02eac46f4e4aa071e45a6189ce0f6d9265",
+        "rev": "88331c17ba434359491e8d5889cce872464052c2",
         "type": "github"
       },
       "original": {
@@ -517,11 +530,11 @@
     },
     "nixpkgs_5": {
       "locked": {
-        "lastModified": 1748929857,
-        "narHash": "sha256-lcZQ8RhsmhsK8u7LIFsJhsLh/pzR9yZ8yqpTzyGdj+Q=",
+        "lastModified": 1746328495,
+        "narHash": "sha256-uKCfuDs7ZM3QpCE/jnfubTg459CnKnJG/LwqEVEdEiw=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "c2a03962b8e24e669fb37b7df10e7c79531ff1a4",
+        "rev": "979daf34c8cacebcd917d540070b52a3c2b9b16e",
         "type": "github"
       },
       "original": {
@@ -652,11 +665,11 @@
         "tinted-zed": "tinted-zed"
       },
       "locked": {
-        "lastModified": 1749481862,
-        "narHash": "sha256-CXZL1Kt4rP1SAQhT4wCM207pcjkTeZMza9iIVFKV71c=",
+        "lastModified": 1749670558,
+        "narHash": "sha256-luB+SFNy+etZK3PVznJSLps1DPYsGya6o/67Emcrtb0=",
         "owner": "danth",
         "repo": "stylix",
-        "rev": "d73d8f6a4834716496bf8930a492b115cc3d7d17",
+        "rev": "e7fa0e5cc2336b6b25310d5e49c149f14fdbc1bb",
         "type": "github"
       },
       "original": {
@@ -813,16 +826,17 @@
     },
     "zen-browser": {
       "inputs": {
-        "darwin-src": "darwin-src",
-        "linux-src": "linux-src",
+        "darwin-universal-src": "darwin-universal-src",
+        "linux-aarch-src": "linux-aarch-src",
+        "linux-x86-src": "linux-x86-src",
         "nixpkgs": "nixpkgs_5"
       },
       "locked": {
-        "lastModified": 1749037993,
-        "narHash": "sha256-5KUZDP91PpbU5uWPVzuEqbvsM4EQ1hc8t2pDyUKRTZE=",
+        "lastModified": 1749683327,
+        "narHash": "sha256-lMV2PBdNkdD/nZ4We20H3wPUQoYBoxGNfktZWMXAyWk=",
         "owner": "InvraNet",
         "repo": "zen-flake",
-        "rev": "b493d25e44243dc2153b2984a3351670dbeaf11f",
+        "rev": "24d2f6c24ccf3f177d7ecf3f35ce978c51ac4808",
         "type": "gitlab"
       },
       "original": {

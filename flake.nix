@@ -165,41 +165,32 @@
             in
             with unstable;
             {
-              legacyPackages.nixosConfigurations.${name} =
-                (nixpkgs.lib.attrsets.filterAttrsRecursive (_: v: v != null)
-                (nixpkgs.lib.attrsets.recursiveUpdate 
-                (nixpkgs.lib.attrsets.optionalAttrs (!unstable.stdenv.isDarwin) nixpkgs.lib.nixosSystem
-                  {
-                    inherit system;
-                    specialArgs = {
-                      inherit
-                        desktop
-                        user
-                        home-manager
-                        development
-                        unstable
-                        stable
-                        nixpkgs-stable
-                        nixpkgs
-                        plasma-manager
-                        nixcord
-                        stylix
-                        zen-browser
-                        custils
-                        ;
-                      inherit (configTOML) system;
-                      inherit (user) username;
-                    };
-                    modules = [
-                      ./modules/config
-                      stylix.nixosModules.stylix
-                    ];
-                  }) (nixpkgs.lib.attrsets.optionalAttrs (stdenv.isAarch64 && stdenv.isLinux) {
-                    options.hardware.graphics = {
-                      enable32Bit = null;
-                      package32 = null;
-                    };
-                  })));
+              legacyPackages.nixosConfigurations.${name} = nixpkgs.lib.nixosSystem {
+                inherit system;
+                specialArgs = {
+                  inherit
+                    desktop
+                    user
+                    home-manager
+                    development
+                    unstable
+                    stable
+                    nixpkgs-stable
+                    nixpkgs
+                    plasma-manager
+                    nixcord
+                    stylix
+                    zen-browser
+                    custils
+                    ;
+                  inherit (configTOML) system;
+                  inherit (user) username;
+                };
+                modules = [
+                  ./modules/config
+                  stylix.nixosModules.stylix
+                ];
+              };
               formatter = nixfmt-tree;
               legacyPackages.homeConfigurations.${name} = home-manager.lib.homeManagerConfiguration {
                 pkgs = unstable;
