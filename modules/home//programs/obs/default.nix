@@ -1,10 +1,10 @@
 { unstable, ... }:
+let
+  pkgs = unstable;
+in
 {
   programs.obs-studio = {
     enable = true;
-
-    plugins = with unstable.obs-studio-plugins; [
-      obs-pipewire-audio-capture
-    ];
+    package = pkgs.obs-studio;
   };
 }
