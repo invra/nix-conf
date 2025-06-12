@@ -11,15 +11,15 @@ in
   programs.kitty = {
     package = pkgs.kitty;
     enable = true;
-  
+
     settings = {
       font_size = 18;
       disable_ligatures = "never";
-      cursor_shape  = "beam";
+      cursor_shape = "beam";
       cursor_shape_unfocused = "hollow";
       cursor_trail = 1;
       scrollback_lines = 100000;
-      detect_urls  = "yes";
+      detect_urls = "yes";
       underline_hyperlinks = "hover";
       copy_on_select = "no";
       enable_audio_bell = "no";
