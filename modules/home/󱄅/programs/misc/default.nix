@@ -7,7 +7,7 @@
     postman
     parsec-bin
     pgadmin4-desktopmode
-    mongodb-compass
+    # mongodb-compass
     viu
     ffmpeg
     file

@@ -9,7 +9,7 @@
       helvum
       easyeffects
       pavucontrol
-      davinci-resolve
+      # davinci-resolve
       signal-desktop-bin
       ungoogled-chromium
     ];
