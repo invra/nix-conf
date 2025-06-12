@@ -38,8 +38,9 @@
       blacklists = [
         "nouveau"
         "nvidia"
+        "amdgpu"
       ];
-      wanted = [ "amdgpu" ];
+      wanted = [ ];
     };
     greeter = "gdm";
     hostname = "NixOS";
