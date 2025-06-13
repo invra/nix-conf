@@ -59,5 +59,10 @@ in
       color7 = "#e0def4";
       color15 = "#e0def4";
     };
+
+    extraConfig = ''
+      map ctrl+minus change_font_size all -2.0
+      map ctrl+= change_font_size all +2.0
+    '';
   };
 }
