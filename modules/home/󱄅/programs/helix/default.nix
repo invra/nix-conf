@@ -45,10 +45,6 @@ in
           display-inlay-hints = true;
           display-progress-messages = true;
         };
-        auto-save = {
-          focus-lost = true;
-          after-delay.enable = true;
-        };
         indent-guides = {
           render = true;
           character = "╎";
