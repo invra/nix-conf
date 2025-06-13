@@ -21,11 +21,11 @@ in
       enableMiddleClickPaste = false;
     };
 
-    hotkeys.commands."launch-wezterm" = {
+    hotkeys.commands."launch-kitty" = {
       key = "Meta+Return";
-      name = "Launch Wezterm";
-      command = "wezterm";
-      comment = "Launch Wez's terminal emulator.";
+      name = "Launch Kitty";
+      command = "kitty";
+      comment = "Launch kitty terminal emulator.";
     };
 
     panels = [
