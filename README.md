@@ -14,11 +14,15 @@ This flake is tailored for my use, it may align with yours, so here a list below
 * Networking (docker, network manager, advanced interface configs for bridging.)
 
 ## Support
-* ``aarch64-darwin``
-* ``x86_64-darwin``
+* `aarch64-darwin`
+* `x86_64-darwin`
+* `aarch64-linux`
 
 > [!note]
-> The support for ``aarch64-linux`` is planned. No date so far.
+> The support for ``aarch64-linux`` is now in heavy experimental.
+> When I mean heavy, it does evaluate, and build, but your device
+> will NOT turn on again and boot up. issue is to be resolved at
+> a later date.
 
 ## Example
 This section shows example configurations using this flake.
