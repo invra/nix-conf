@@ -18,11 +18,13 @@ if [ -z "$flake" ]; then
   exit 1
 fi
 
-if [ "$(sw_vers -productVersion)" = "26.0" ]; then
-  echo "\e[31mYour macOS version is currently not supported due to Nix daemon crashes.\e[0m"
-  echo "\e[34mInfo:\e[0m Please downgrade to Seqouia, and install Nix, then upgrade."
-  echo "\e[33mhttps://github.com/NixOS/nix/issues/13342 for issue tracking.\e[0m"
-  exit 1
+if [ "$DISTRUPT_SOFT_LOCK_AND_OVERRIDE__MACOS_0x1A" != "1" ]; then
+  if [ "$(sw_vers -productVersion)" = "26.0" ]; then
+    echo "\e[31mYour macOS version is currently not supported due to Nix daemon crashes.\e[0m"
+    echo "\e[34mInfo:\e[0m Please downgrade to Sequoia, and install Nix, then upgrade."
+    echo "\e[33mhttps://github.com/NixOS/nix/issues/13342 for issue tracking.\e[0m"
+    exit 1
+  fi
 fi
 
 if ! command -v nix &>/dev/null; then
