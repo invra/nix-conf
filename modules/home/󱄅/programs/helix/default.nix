@@ -35,11 +35,6 @@ in
             "file-encoding"
             "file-line-ending"
           ];
-          mode = {
-            normal = "NORMAL";
-            insert = "INSERT";
-            select = "SELECT";
-          };
         };
         lsp = {
           display-inlay-hints = true;
@@ -51,11 +46,22 @@ in
           skip-levels = 1;
         };
       };
+      keys = {
+        normal = {
+          A-r = ":config-reload";
+          space = {
+            space = "@<space>f";
+            w = ":w!";
+            q = ":q";
+          };
+        };
+      };
     };
     extraPackages = with pkgs; [
       nil
       nixd
       marksman
+      markdownlint-cli2
       bash-language-server
     ];
   };
