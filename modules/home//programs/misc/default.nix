@@ -22,7 +22,8 @@
       steam
       betterdisplay
       pika
-      utm
+      tart
+      teams
     ];
 
     file.".hushlogin".text = "";

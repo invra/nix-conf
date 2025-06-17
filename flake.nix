@@ -64,14 +64,16 @@
                     builtins.elem (nixpkgs.lib.getName pkg) [
                       "davinci-resolve"
                       "steam-unwrapped"
-                      "steam"
                       "steam_osx"
                       "discord"
+                      "tart"
                       "betterdisplay"
                       "raycast"
+                      "steam"
                       "parsec-bin"
                       "mongodb-compass"
                       "postman"
+                      "teams"
                     ];
                 };
                 stable = import nixpkgs-stable {
@@ -84,12 +86,14 @@
                       "steam-unwrapped"
                       "steam_osx"
                       "discord"
+                      "tart"
                       "betterdisplay"
                       "raycast"
                       "steam"
                       "parsec-bin"
                       "mongodb-compass"
                       "postman"
+                      "teams"
                     ];
                 };
 
@@ -136,12 +140,14 @@
                     "steam-unwrapped"
                     "steam_osx"
                     "discord"
+                    "tart"
                     "betterdisplay"
                     "raycast"
                     "steam"
                     "parsec-bin"
                     "mongodb-compass"
                     "postman"
+                    "teams"
                   ];
               };
               stable = import nixpkgs-stable {
@@ -153,12 +159,14 @@
                     "steam-unwrapped"
                     "steam_osx"
                     "discord"
+                    "tart"
                     "betterdisplay"
                     "raycast"
                     "steam"
                     "parsec-bin"
                     "mongodb-compass"
                     "postman"
+                    "teams"
                   ];
               };
               inherit (configTOML) user;
