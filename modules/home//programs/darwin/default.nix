@@ -14,7 +14,7 @@ in
       orientation = system.dock.orientation;
       tilesize = 40;
       minimize-to-application = true;
-      show-recents = true;
+      show-recents = false;
       wvous-br-corner = 1;
       size-immutable = true;
     };
