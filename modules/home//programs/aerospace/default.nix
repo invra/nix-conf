@@ -81,8 +81,7 @@ in
         ];
 
         alt-enter = "macos-native-fullscreen";
-        cmd-enter = "exec-and-forget ${pkgs.kitty}/bin/kitty";
-        cmd-t = "exec-and-forget open -na /System/Library/CoreServices/Finder.app";
+        cmd-enter = ["exec-and-forget open -n ${pkgs.ghostty-bin}/Applications/Ghostty.app" "mode main"];
       };
     };
   };

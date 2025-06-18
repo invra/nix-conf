@@ -21,11 +21,11 @@ in
       enableMiddleClickPaste = false;
     };
 
-    hotkeys.commands."launch-kitty" = {
+    hotkeys.commands."launch-ghostty" = {
       key = "Meta+Return";
-      name = "Launch Kitty";
-      command = "kitty";
-      comment = "Launch kitty terminal emulator.";
+      name = "Launch Ghostty";
+      command = "ghostty";
+      comment = "Launch Ghostty terminal emulator.";
     };
 
     panels = [
