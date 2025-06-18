@@ -14,7 +14,7 @@ in
 
     settings = {
       theme = "rose-pine";
-      font-size = 18;
+      font-size = 14;
     };
   };
 }
