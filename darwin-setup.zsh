@@ -44,6 +44,7 @@ fi
 
 if ! command -v hx &>/dev/null; then
   echo "\e[1;32m[INFO]\e[0m The home-manager isn't applied, I will apply it now..."
+  mkdir "$HOME/Library/Application Support/discord"
   zsh -c "home-manager switch --flake '.#$flake' -b backup"
 else
   echo "\e[1;32m[INFO]\e[0m The config has already been installed. Use darwin-manager from now on to rebuild."
