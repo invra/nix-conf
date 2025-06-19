@@ -81,7 +81,10 @@ in
         ];
 
         alt-enter = "macos-native-fullscreen";
-        cmd-enter = ["exec-and-forget open -n ${pkgs.ghostty-bin}/Applications/Ghostty.app" "mode main"];
+        cmd-enter = [
+          "exec-and-forget open -n ${pkgs.ghostty-bin}/Applications/Ghostty.app"
+          "mode main"
+        ];
       };
     };
   };

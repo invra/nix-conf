@@ -27,10 +27,10 @@ in
     enable = true;
     settings = {
       logo = {
-        source = ./art.bin;
+        source = ./art.png;
         width = 54;
         height = 22;
-        type = "raw";
+        type = "kitty-direct";
       };
       display.separator = " ";
       modules =
