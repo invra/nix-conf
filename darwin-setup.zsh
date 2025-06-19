@@ -18,7 +18,7 @@ if [ -z "$flake" ]; then
   exit 1
 fi
 
-if [ "$DISTRUPT_SOFT_LOCK_AND_OVERRIDE__MACOS_0x1A" != "1" ]; then
+if [ "$DISRUPT_SOFT_LOCK_AND_OVERRIDE_MACOS_0x1A" != "1" ]; then
   if [ "$(sw_vers -productVersion)" = "26.0" ]; then
     echo "\e[31mYour macOS version is currently not supported due to Nix daemon crashes.\e[0m"
     echo "\e[34mInfo:\e[0m Please downgrade to Sequoia, and install Nix, then upgrade."
@@ -42,7 +42,7 @@ if ! command -v home-manager &>/dev/null; then
   echo "The config isn't applied, I will apply it now..."
   echo "Root access is required for a nix-darwin rebuild now. Please enter your password below."
   sudo nix run nix-darwin --experimental-features "nix-command flakes" -- switch --flake ".#$flake"
-  if [ "$DISTRUPT_SOFT_LOCK_AND_OVERRIDE__MACOS_0x1A" = "1" ]; then
+  if [ "$DISRUPT_SOFT_LOCK_AND_OVERRIDE_MACOS_0x1A" = "1" ]; then
     if [ "$(sw_vers -productVersion)" = "26.0" ]; then
       echo "I am going go edit the LaunchDaemon to go and include the required ENV to not run into crash issues."
       sudo plutil -insert EnvironmentVariables -dictionary /Library/LaunchDaemons/org.nixos.nix-daemon.plist
