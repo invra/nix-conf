@@ -20,33 +20,15 @@
       autoHideDelay = 0.45;
       autohide = true;
       orientation = "bottom";
-    };
-    graphics = {
-      blacklists = [
-        "nouveau"
-        "nvidia"
+      entries = {pkgs, ...}: [
+          { path = "/Applications/Apps.app"; }
+          { path = "/System/Applications/Mail.app"; }
+          { path = "/System/Applications/Music.app"; }
+          { path = "${pkgs.ghostty-bin}/Applications/Ghostty.app"; }
+          { path = "${pkgs.zen}/Applications/Zen.app"; }
       ];
-      wanted = [ "amdgpu" ];
     };
-    greeter = "gdm";
     hostname = "NixOS";
-    interfaces = { };
-    kernelParams = [ "intel_iommu=on" ];
-    locale = "en_AU.UTF-8";
-    networking = {
-      dhcpEnabled = true;
-      firewallEnabled = false;
-      networkmanager = true;
-    };
-    services = {
-      mongodb = {
-        enable = true;
-      };
-      ssh = {
-        enable = true;
-      };
-    };
-    timezone = "Australia/Sydney";
   };
   user = {
     displayName = "peter";

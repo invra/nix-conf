@@ -21,32 +21,16 @@
       autoHideDelay = 0.45;
       autohide = true;
       orientation = "right";
-    };
-    graphics = {
-      blacklists = [
-        "nouveau"
-        "nvidia"
+      size = 40;
+      entries = {pkgs, config?{}}: [
+        { path = "/Applications/Apps.app"; }
+        { path = "${pkgs.zen}/Applications/Zen.app"; }
+        { path = "${pkgs.zed-editor}/Applications/Zed.app"; }
+        { path = "${config.home.homeDirectory}/Applications/Home Manager Apps/Discord.app"; }
+        { path = "${pkgs.ghostty-bin}/Applications/Ghostty.app"; }
       ];
-      wanted = [ "amdgpu" ];
     };
-    greeter = "gdm";
     hostname = "NixOS";
-    interfaces = { };
-    kernelParams = [ "intel_iommu=on" ];
-    locale = "en_AU.UTF-8";
-    networking = {
-      dhcpEnabled = true;
-      firewallEnabled = false;
-      networkmanager = true;
-    };
-    services = {
-      mongodb = {
-        enable = true;
-      };
-      ssh = {
-        enable = true;
-      };
-    };
     timezone = "Australia/Sydney";
   };
   user = {
