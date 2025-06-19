@@ -39,9 +39,6 @@ fi
 
 
 if ! command -v home-manager &>/dev/null; then
-  echo "The config isn't applied, I will apply it now..."
-  echo "Root access is required for a nix-darwin rebuild now. Please enter your password below."
-  sudo nix run nix-darwin --experimental-features "nix-command flakes" -- switch --flake ".#$flake"
   if [ "$DISRUPT_SOFT_LOCK_AND_OVERRIDE_MACOS_0x1A" = "1" ]; then
     if [ "$(sw_vers -productVersion)" = "26.0" ]; then
       echo "I am going go edit the LaunchDaemon to go and include the required ENV to not run into crash issues."
@@ -51,6 +48,9 @@ if ! command -v home-manager &>/dev/null; then
       sudo launchctl bootstrap system /Library/LaunchDaemons/org.nixos.nix-daemon.plist
     fi
   fi
+  echo "The config isn't applied, I will apply it now..."
+  echo "Root access is required for a nix-darwin rebuild now. Please enter your password below."
+  sudo nix run nix-darwin --experimental-features "nix-command flakes" -- switch --flake ".#$flake"
 else
   echo "The config has already been installed. Use darwin-manager from now on to rebuild."
 fi
