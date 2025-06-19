@@ -1,17 +1,5 @@
 {
   desktop = {
-    hyprland = {
-      enable = true;
-      monitors = [
-        {
-          name = "DP-3";
-          position = "0x0";
-          refreshRate = 180;
-          resolution = "2560x1440";
-          scale = 1;
-        }
-      ];
-    };
     plasma = {
       enable = true;
     };
