@@ -23,11 +23,11 @@ if ! command -v nix &>/dev/null; then
   sh <(curl --proto '=https' --tlsv1.2 -L https://nixos.org/nix/install)
 else
   echo "\e[1;32m[INFO]\e[0m Nix is already installed. Skipping installation."
-  source /etc/zshrc
 fi
 
 
 if ! command -v home-manager &>/dev/null; then
+  source /etc/zshrc
   if [ "$(sw_vers -productVersion)" = "26.0" ]; then
     echo "\e[1;32m[INFO]\e[0m I am going go edit the LaunchDaemon to go and include the required ENV to not run into crash issues."
     echo "\e[1;32m[INFO]\e[0m Do not worry if there is 'Value already exists' errors."
@@ -37,7 +37,7 @@ if ! command -v home-manager &>/dev/null; then
     sudo launchctl bootstrap system /Library/LaunchDaemons/org.nixos.nix-daemon.plist
   fi
   echo "\e[1;32m[INFO]\e[0m The config isn't applied, I will apply it now..."
-  sudo nix run nix-darwin --experimental-features "nix-command flakes" -- switch --flake ".#$flake"
+  zsh -c "sudo nix run nix-darwin --experimental-features 'nix-command flakes' -- switch --flake '.#$flake'"
   source /etc/zshrc
 else
   echo "\e[1;32m[INFO]\e[0m The config has already been installed. Use darwin-manager from now on to rebuild."
