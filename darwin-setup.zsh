@@ -30,6 +30,7 @@ fi
 if ! command -v home-manager &>/dev/null; then
   if [ "$(sw_vers -productVersion)" = "26.0" ]; then
     echo "\e[1;32m[INFO]\e[0m I am going go edit the LaunchDaemon to go and include the required ENV to not run into crash issues."
+    echo "\e[1;32m[INFO]\e[0m Do not worry if there is 'Value already exists' errors."
     sudo plutil -insert EnvironmentVariables -dictionary /Library/LaunchDaemons/org.nixos.nix-daemon.plist
     sudo plutil -insert EnvironmentVariables.OBJC_DISABLE_INITIALIZE_FORK_SAFETY -string YES /Library/LaunchDaemons/org.nixos.nix-daemon.plist
     sudo launchctl unload /Library/LaunchDaemons/org.nixos.nix-daemon.plist
