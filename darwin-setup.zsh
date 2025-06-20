@@ -30,9 +30,8 @@ if ! command -v home-manager &>/dev/null; then
   source /etc/zshrc
   if [ "$(sw_vers -productVersion)" = "26.0" ]; then
     echo "\e[1;32m[INFO]\e[0m I am going go edit the LaunchDaemon to go and include the required ENV to not run into crash issues."
-    echo "\e[1;32m[INFO]\e[0m Do not worry if there is 'Value already exists' errors."
-    sudo plutil -insert EnvironmentVariables -dictionary /Library/LaunchDaemons/org.nixos.nix-daemon.plist
-    sudo plutil -insert EnvironmentVariables.OBJC_DISABLE_INITIALIZE_FORK_SAFETY -string YES /Library/LaunchDaemons/org.nixos.nix-daemon.plist
+    sudo plutil -insert EnvironmentVariables -dictionary /Library/LaunchDaemons/org.nixos.nix-daemon.plist &> /dev/null
+    sudo plutil -insert EnvironmentVariables.OBJC_DISABLE_INITIALIZE_FORK_SAFETY -string YES /Library/LaunchDaemons/org.nixos.nix-daemon.plist &> /dev/null
     sudo launchctl unload /Library/LaunchDaemons/org.nixos.nix-daemon.plist
     sudo launchctl bootstrap system /Library/LaunchDaemons/org.nixos.nix-daemon.plist
   fi
@@ -45,7 +44,7 @@ fi
 
 if ! command -v hx &>/dev/null; then
   echo "\e[1;32m[INFO]\e[0m The home-manager isn't applied, I will apply it now..."
-  mkdir "$HOME/Library/Application Support/discord"
+  mkdir "$HOME/Library/Application Support/discord" &> /dev/null
   zsh -c "home-manager switch --flake '.#$flake' -b backup"
 else
   echo "\e[1;32m[INFO]\e[0m The config has already been installed. Use darwin-manager from now on to rebuild."
