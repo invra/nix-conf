@@ -18,7 +18,7 @@ in
 
   environment.systemPackages = with pkgs; [
     git
-    ghostty-bin
+    ghostty
     # firefox-esr
     home-manager
   ];
