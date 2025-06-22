@@ -23,6 +23,7 @@
       betterdisplay
       pika
       tart
+      utm
       teams
     ];
 
