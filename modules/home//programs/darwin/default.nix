@@ -8,6 +8,11 @@ let
   pkgs = unstable;
 in
 {
+imports = [
+  ../../../modules/wallpaper
+  ../../../modules/dock
+];
+    
   targets.darwin.defaults = {
     "com.apple.dock" = {
       autohide = system.dock.autohide or false;
@@ -41,4 +46,8 @@ in
       { path = "/System/Applications/System Settings.app"; }
     ])) {inherit pkgs config;};
   };
+    programs.setWallpaper = {
+      enable = true;
+      wallpaperPath = ../../../../../wallpapers/rose_pine_shapes.png;
+    };
 }
