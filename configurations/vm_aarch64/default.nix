@@ -17,11 +17,6 @@
   };
   system = {
     hardware-module = ./hardware-configuration.nix;
-    dock = {
-      autoHideDelay = 0.45;
-      autohide = true;
-      orientation = "right";
-    };
     graphics = {
       blacklists = [
         "nouveau"
@@ -30,7 +25,7 @@
       ];
       wanted = [ ];
     };
-    greeter = "gdm";
+    greeter = "sddm";
     hostname = "NixOS";
     interfaces = { };
     kernelParams = [ "intel_iommu=on" ];
@@ -39,14 +34,6 @@
       dhcpEnabled = true;
       firewallEnabled = false;
       networkmanager = true;
-      # interfaces = [
-      #   {
-      #     type = "BRIDGE";
-      #     name = "br0";
-      #     interfaces = [ "enp6s0" ];
-      #     dhcpEnabled = true;
-      #   }
-      # ];
     };
     services = {
       mongodb = {

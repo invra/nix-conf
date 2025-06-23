@@ -20,7 +20,7 @@ This does **not** mean tasks will be completed in order, as some may be more res
 Required to simplify common workflows:
 
 - [ ] Create a non-intrusive way to copy to `wl-copy`  
-- [ ] Add shortcuts for repetitive or time-consuming tasks  
+- [x] Add shortcuts for repetitive or time-consuming tasks  
 
 ### Other Enhancements
 
@@ -32,13 +32,12 @@ Required to simplify common workflows:
 ## Enhance Nix Configurations
 Add more customisation options & features:
 
-- [ ] Add macOS Dock settings
+- [x] Add macOS Dock settings
 - [ ] Add `ignorePackages` (to skip default packages)  
 - [ ] Add `extraPackages` (to allow users to specify workflow-specific packages)  
 - [ ] Remove the need to include macOS-specific config in the Linux config (and vice versa)
 - [ ] Add proper types for user configuration  
 - [ ] Add support to disable modules the user doesn't need  
-- [ ] Add shell utilities for common tasks (as macros)  
 
 ## Port over to new Nix-darwin configuration
 (Re)Move the nix options:

@@ -1,4 +1,3 @@
 result
-NixOS.qcow2
-.dls
+*.qcow2
 .DS_Store
