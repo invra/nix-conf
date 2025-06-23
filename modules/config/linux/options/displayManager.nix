@@ -1,6 +1,6 @@
 { unstable, system, ... }:
 {
-  services.xserver.displayManager.gdm = {
+  services.displayManager.gdm = {
     enable = system.greeter == "gdm";
     wayland = true;
   };
