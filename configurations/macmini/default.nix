@@ -20,13 +20,15 @@
       autoHideDelay = 0.45;
       autohide = true;
       orientation = "bottom";
-      entries = {pkgs, ...}: [
+      entries =
+        { pkgs, ... }:
+        [
           { path = "/Applications/Apps.app"; }
           { path = "/System/Applications/Mail.app"; }
           { path = "/System/Applications/Music.app"; }
           { path = "${pkgs.ghostty-bin}/Applications/Ghostty.app"; }
           { path = "${pkgs.zen}/Applications/Zen.app"; }
-      ];
+        ];
     };
     hostname = "NixOS";
   };
