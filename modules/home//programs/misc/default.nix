@@ -11,7 +11,6 @@
       pavucontrol
       # davinci-resolve
       signal-desktop-bin
-      ungoogled-chromium
     ];
   };
 }
