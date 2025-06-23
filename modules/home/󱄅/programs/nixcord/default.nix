@@ -21,7 +21,7 @@
     config = {
       useQuickCss = true;
       themeLinks = [ ];
-      frameless = true;
+      frameless = false;
       plugins = {
         betterSettings.enable = true;
         callTimer.enable = true;
