@@ -48,6 +48,6 @@ imports = [
   };
     programs.setWallpaper = {
       enable = true;
-      wallpaperPath = ../../../../../wallpapers/rose_pine_shapes.png;
+      wallpaperPath = ../../../../../wallpapers/landscape.jpg;
     };
 }
