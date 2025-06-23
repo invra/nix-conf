@@ -67,6 +67,19 @@
         "type": "github"
       }
     },
+    "chromium": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1750719077,
+        "narHash": "sha256-fH7HIBHZugKk6EdetxQmu6E6o263KaYsvU5SkG8diyg=",
+        "type": "tarball",
+        "url": "https://commondatastorage.googleapis.com/chromium-browser-snapshots/Mac_Arm/1477591/chrome-mac.zip"
+      },
+      "original": {
+        "type": "tarball",
+        "url": "https://commondatastorage.googleapis.com/chromium-browser-snapshots/Mac_Arm/1477591/chrome-mac.zip"
+      }
+    },
     "damage-control": {
       "locked": {
         "lastModified": 1748098817,
@@ -352,6 +365,7 @@
     },
     "ip": {
       "inputs": {
+        "chromium": "chromium",
         "damage-control": "damage-control",
         "ghostty": "ghostty",
         "linearmouse": "linearmouse",
@@ -362,11 +376,11 @@
         "wezterm": "wezterm"
       },
       "locked": {
-        "lastModified": 1749835323,
-        "narHash": "sha256-Sf61yn/LA3AOeLqRGFbO2ACGKE5EVDoNd0BXb3n7U8w=",
+        "lastModified": 1750720713,
+        "narHash": "sha256-TAtqvze3kv0oW0UHW17gAnkEnshBQq0f9rPQGGf93m0=",
         "owner": "hiten-tandon",
         "repo": "some-nix-darwin-packages",
-        "rev": "39bd198f010cec49075e15e535593b6dea56f209",
+        "rev": "000c40af2081716139b729036c3fc7c5a7702c59",
         "type": "gitlab"
       },
       "original": {
