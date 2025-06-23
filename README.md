@@ -4,13 +4,10 @@ task to do this, this flake might be for you.
 
 ## Use
 This flake is tailored for my use, it may align with yours, so here a list below.
-* Open source contribution with GitLab, and GitHub
-* Web Development with Bun.js
-* Native programming with C, C++, Rust, Zig
-* Vim centric (pretty much no mouse)
-* Terminal centric (Terminal when helpful. You will find mostly no file manager)
+* Keyboard centric
+* Mostly Terminal centric
 * Minimalism where wanted, but complexity for certain tasks. (Audio patch software, advanced networking support)
-* Declarative, convenient, reproducible setup (1-5 commands and your good to go to be setup)
+* Declarative, convenient, reproducible setup (3-10 commands and your good to go to be setup)
 * Networking (docker, network manager, advanced interface configs for bridging.)
 
 ## Support
@@ -55,6 +52,9 @@ For example, a folder named `gary` corresponds to the following commands:
 
 ```sh
 sudo nixos-rebuild switch --flake .#gary
-darwin-rebuild switch --flake .#gary
+nh os switch -H gary
+sudo darwin-rebuild switch --flake .#gary
+nh darwin switch -H gary
 home-manager rebuild switch --flake .#gary
+nh home switch -c gary
 ```
