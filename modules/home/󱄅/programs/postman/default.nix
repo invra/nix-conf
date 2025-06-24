@@ -1,4 +1,7 @@
 { unstable, ... }:
+let
+  pkgs = unstable;
+in
 {
-  home.packages = [ unstable.postman ];
+  home.packages = [ pkgs.postman ];
 }

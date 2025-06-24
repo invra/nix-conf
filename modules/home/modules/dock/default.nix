@@ -4,12 +4,11 @@
   unstable,
   ...
 }:
-
 with lib;
-
 let
   cfg = config.local.dock;
   inherit (unstable) dockutil;
+  pkgs = unstable;
 in
 {
   options = {
@@ -48,10 +47,10 @@ in
   config = mkIf cfg.enable {
     home.activation.dockSetup = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
       (
-        haveURIs="$(${dockutil}/bin/dockutil --list | ${unstable.coreutils}/bin/cut -f2)"
+        haveURIs="$(${dockutil}/bin/dockutil --list | ${pkgs.coreutils}/bin/cut -f2)"
         wantURIs="$(
           ${lib.concatMapStringsSep "\n" (
-            entry: "echo file://$(${unstable.coreutils}/bin/realpath '${entry.path}' | sed 's/ /%20/g')"
+            entry: "echo file://$(${pkgs.coreutils}/bin/realpath '${entry.path}' | sed 's/ /%20/g')"
           ) cfg.entries}
         )"
 
@@ -61,7 +60,7 @@ in
             entry:
             "${dockutil}/bin/dockutil --replacing 'Vesktop' --no-restart --add '${entry.path}' --section ${entry.section} ${entry.options} >/dev/null 2>&1"
           ) cfg.entries}
-          ${unstable.killall}/bin/killall Dock >/dev/null 2>&1
+          ${pkgs.killall}/bin/killall Dock >/dev/null 2>&1
         fi
       ) >/dev/null 2>&1
     '';

@@ -4,7 +4,8 @@
   ...
 }:
 let
-  isDarwin = unstable.stdenv.isDarwin;
+  pkgs = unstable;
+  isDarwin = pkgs.stdenv.isDarwin;
   wmModule =
     if isDarwin then
       {
