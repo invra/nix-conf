@@ -1,4 +1,7 @@
 { unstable, ... }:
+let
+  pkgs = unstable;
+in
 {
-  home.packages = [ unstable.prismlauncher ];
+  home.packages = [ pkgs.prismlauncher ];
 }

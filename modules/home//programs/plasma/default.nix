@@ -1,11 +1,12 @@
 { unstable, desktop, ... }:
 
 let
+  pkgs = unstable;
   enable = desktop.plasma.enable;
 in
 {
-  home.packages = unstable.lib.optionals enable (
-    with unstable;
+  home.packages = pkgs.lib.optionals enable (
+    with pkgs;
     [
       plasma-panel-colorizer
       kdePackages.krohnkite

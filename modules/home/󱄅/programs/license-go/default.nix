@@ -1,4 +1,7 @@
 { unstable, ... }:
+let
+  pkgs = unstable;
+in
 {
-  home.packages = [ unstable.license-go ];
+  home.packages = [ pkgs.license-go ];
 }

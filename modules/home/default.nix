@@ -6,7 +6,8 @@
 }:
 let
   lib = nixpkgs.lib;
-  stdenv = unstable.stdenv;
+  pkgs = unstable;
+  stdenv = pkgs.stdenv;
 in
 {
   imports = custils.getModulesFromDirsRec (

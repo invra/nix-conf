@@ -1,9 +1,12 @@
 { unstable, ... }:
+let
+  pkgs = unstable;
+in
 {
   environment.shells = [
-    unstable.bashInteractive
-    unstable.zsh
-    unstable.fish
-    unstable.nushell
+    pkgs.bashInteractive
+    pkgs.zsh
+    pkgs.fish
+    pkgs.nushell
   ];
 }

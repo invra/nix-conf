@@ -1,7 +1,0 @@
-{ ... }:
-{
-  # stylix = {
-  #   enable = true;
-  #   image = ../../..;
-  # };
-}

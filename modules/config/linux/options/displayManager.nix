@@ -1,4 +1,7 @@
 { unstable, system, ... }:
+let
+  pkgs = unstable;
+in
 {
   services.displayManager = {
     gdm = {
@@ -15,6 +18,6 @@
 
   programs.sway = {
     enable = true;
-    package = unstable.swayfx;
+    package = pkgs.swayfx;
   };
 }

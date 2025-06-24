@@ -1,4 +1,7 @@
 { unstable, ... }:
+let
+  pkgs = unstable;
+in
 {
   stylix.targets = {
     nixcord.enable = false;
@@ -8,14 +11,11 @@
 
   programs.nixcord = {
     enable = true;
-    discord = {
-      enable = unstable.stdenv.isDarwin;
-      # package = unstable.discord;
-    };
+    discord.enable = pkgs.stdenv.isDarwin;
 
     vesktop = {
-      enable = unstable.stdenv.isLinux;
-      package = unstable.vesktop;
+      enable = pkgs.stdenv.isLinux;
+      package = pkgs.vesktop;
     };
     quickCss = builtins.readFile ./quick.css;
     config = {
