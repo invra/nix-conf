@@ -37,6 +37,7 @@ in
     };
   };
   environment.systemPackages = with pkgs; [
+    jack2
     home-manager
   ];
 }
