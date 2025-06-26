@@ -1,11 +1,12 @@
 { unstable, desktop, ... }:
 
 let
+  pkgs = unstable;
   enable = desktop.plasma.enable;
 in
 {
-  home.packages = unstable.lib.optionals enable (
-    with unstable;
+  home.packages = pkgs.lib.optionals enable (
+    with pkgs;
     [
       plasma-panel-colorizer
       kdePackages.krohnkite
@@ -36,19 +37,10 @@ in
 
         widgets = [
           "org.kde.plasma.kickoff"
+          "org.kde.plasma.icontasks"
           "org.kde.plasma.marginsseparator"
           "org.kde.plasma.systemtray"
           "org.kde.plasma.digitalclock"
-        ];
-      }
-      {
-        location = "right";
-        hiding = "autohide";
-        lengthMode = "fit";
-        floating = true;
-
-        widgets = [
-          "org.kde.plasma.icontasks"
         ];
       }
     ];

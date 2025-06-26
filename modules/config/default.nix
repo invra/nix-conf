@@ -3,7 +3,7 @@ let
   pkgs = unstable;
 in
 {
-  imports = if unstable.stdenv.isLinux then [ ./linux ] else [ ./darwin ];
+  imports = if pkgs.stdenv.isLinux then [ ./linux ] else [ ./darwin ];
 
   nix = {
     settings = {
@@ -25,19 +25,20 @@ in
   };
 
   nixpkgs = {
-    hostPlatform = unstable.hostPlatform.system;
-    pkgs = unstable;
+    hostPlatform = pkgs.hostPlatform.system;
+    inherit pkgs;
   };
 
   users.users = {
     ${user.username} = {
       name = user.username;
       description = user.displayName;
-      shell = unstable.nushell;
+      shell = pkgs.nushell;
     };
   };
   environment.systemPackages = with pkgs; [
     jack2
+    git
     home-manager
   ];
 }

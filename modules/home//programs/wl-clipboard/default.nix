@@ -1,4 +1,7 @@
 { unstable, ... }:
+let
+  pkgs = unstable;
+in
 {
-  home.packages = [ unstable.wl-clipboard ];
+  home.packages = [ pkgs.wl-clipboard ];
 }

@@ -4,6 +4,9 @@
   unstable,
   ...
 }:
+let
+  pkgs = unstable;
+in
 {
   imports = [
     system.hardware-module
@@ -24,7 +27,7 @@
   time.timeZone = system.timezone;
   hardware = {
     graphics.enable = true;
-    # amdgpu.opencl.enable = lib.mkForce (builtins.elem "amdgpu" (system.graphics.wanted or [ ]));
+    amdgpu.opencl.enable = lib.mkForce (builtins.elem "amdgpu" (system.graphics.wanted or [ ]));
   };
 
   documentation.man = {
@@ -33,10 +36,10 @@
   };
 
   environment.stub-ld.enable = true;
-  xdg = {
-    portal.enable = true;
-    portal.extraPortals = [ unstable.xdg-desktop-portal-gtk ];
+  xdg.portal = {
+    enable = true;
+    extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
   };
-
+  
   system.stateVersion = "25.11";
 }

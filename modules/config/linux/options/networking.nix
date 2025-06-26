@@ -1,10 +1,13 @@
 { system, unstable, ... }:
+let
+  pkgs = unstable;
+in
 {
   networking = {
     hostName = system.hostname;
     networkmanager.enable = system.networking.networkmanager;
     firewall.enable = system.networking.firewallEnabled;
-    useDHCP = unstable.lib.mkForce system.networking.dhcpEnabled;
+    useDHCP = pkgs.lib.mkForce system.networking.dhcpEnabled;
 
     interfaces = builtins.listToAttrs (
       map (iface: {
