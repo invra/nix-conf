@@ -95,5 +95,29 @@ in
     krunner = {
       position = "center";
     };
+
+    window-rules = [
+       {
+        description = "Set PiP";
+        apply = {
+          desktops = {
+            apply = "force";
+            value = "\\0";
+          };
+          above = {
+            apply = "force";
+            value = true;
+          };
+          position= {
+            apply = "initially";
+            value = "-1,-1";
+          };
+        };
+        match.title = {
+          type = "exact";
+          value = "Picture-in-Picture";
+        };             
+      } 
+    ];
   };
 }
