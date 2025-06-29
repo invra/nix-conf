@@ -58,7 +58,7 @@
     timezone = "Australia/Sydney";
   };
   user = {
-    displayName = "Invraa (>.<)";
+    displayName = "Invra";
     initialPassword = "123456";
     username = "invra";
   };
