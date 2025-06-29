@@ -3,6 +3,7 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     flake-utils.url = "github:numtide/flake-utils";
     nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-25.05";
+    nixpkgs-24_11.url = "github:NixOS/nixpkgs/nixos-24.11";
     stylix.url = "github:danth/stylix";
     zen-browser.url = "gitlab:InvraNet/zen-flake";
     nixcord.url = "github:kaylorben/nixcord";
@@ -26,6 +27,7 @@
   outputs =
     {
       nixpkgs-stable,
+      nixpkgs-24_11,
       flake-utils,
       darwin,
       nixpkgs,
@@ -70,6 +72,7 @@
                       "betterdisplay"
                       "raycast"
                       "steam"
+                    "bitwig-studio-unwrapped"
                       "parsec-bin"
                       "mongodb-compass"
                       "postman"
@@ -90,6 +93,7 @@
                       "betterdisplay"
                       "raycast"
                       "steam"
+                    "bitwig-studio-unwrapped"
                       "parsec-bin"
                       "mongodb-compass"
                       "postman"
@@ -144,6 +148,7 @@
                     "betterdisplay"
                     "raycast"
                     "steam"
+                    "bitwig-studio-unwrapped"
                     "parsec-bin"
                     "mongodb-compass"
                     "postman"
@@ -163,6 +168,7 @@
                     "betterdisplay"
                     "raycast"
                     "steam"
+                    "bitwig-studio-unwrapped"
                     "parsec-bin"
                     "mongodb-compass"
                     "postman"
@@ -209,6 +215,7 @@
                     home-manager
                     unstable
                     stable
+                    nixpkgs-24_11
                     nixpkgs-stable
                     nixpkgs
                     plasma-manager
@@ -218,6 +225,7 @@
                     custils
                     ;
                   pkgs = unstable;
+                  pkgs-24_11 = import nixpkgs-24_11 { inherit system; };
                   inherit (configTOML) system development;
                   inherit (user) username;
                 };
