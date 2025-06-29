@@ -1,4 +1,4 @@
-{ unstable, user, ... }:
+{ pkgs-24_11, unstable, user, ... }:
 {
   home = {
     homeDirectory = "/home/${user.username}";
@@ -11,6 +11,12 @@
       pavucontrol
       # davinci-resolve
       signal-desktop-bin
+
+      (bitwig-studio.override {
+        bitwig-studio-unwrapped = bitwig-studio5-unwrapped.override {
+          vulkan-loader = pkgs-24_11.vulkan-loader;
+        };
+      })
     ];
   };
 }

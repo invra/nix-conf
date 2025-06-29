@@ -4,8 +4,8 @@ let
 in
 {
   boot = {
-    kernelPackages = pkgs.linuxKernel.packages.linux_6_14;
-    extraModulePackages = with pkgs.linuxKernel.packages.linux_6_14; [ v4l2loopback ];
+    kernelPackages = pkgs.linuxPackages_latest;
+    extraModulePackages = with pkgs; [ linuxPackages_latest.v4l2loopback.out ];
     kernelModules = [ "v4l2loopback" ];
     extraModprobeConfig = ''
       options v4l2loopback devices=1 video_nr=1 card_label="OBS Virtual Camera" exclusive_caps=1
