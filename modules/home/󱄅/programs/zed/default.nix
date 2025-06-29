@@ -2,7 +2,7 @@
 {
   stylix.targets.zed.enable = false;
   programs.zed-editor = {
-    enable = true;
+    enable = false;
 
     extensions = [
       "rose-pine-theme"
