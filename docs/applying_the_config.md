@@ -15,7 +15,14 @@ Run the setup script to initialize and apply the configuration:
 
 ```sh
 ./darwin_setup.zsh --flake <CONFIG_NAME>
-````
+```
+
+> [!NOTE]
+> For early adopters of macOS 26 (Tahoe), please know that
+> to allow for your Nix daemon not to crash, I have to tamper
+> with `/Library/LaunchDaemons/org.nixos.nix-daemon.plist` and
+> add `OBJC_DISABLE_INITIALIZE_FORK_SAFETY` which makes the
+> Nix daemon not crash. [issue #13342 on NixOS/nix](https://github.com/NixOS/nix/issues/13342)
 
 ---
 
