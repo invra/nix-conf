@@ -1,22 +1,33 @@
 # Xcode Command Line Tools
-The XCLIT, is a package by Apple to help developers get development environments up and running.
-Why we need this is to download Git.
+
+**Xcode Command Line Tools (XCLT)** is a package provided by Apple that helps developers set up their development environments quickly and easily.
+
+One common reason to install XCLT is to use **Git**, which is included in the tools.
 
 ## Installation
-The experience gto download XCLIT is very simple, just type a command which is shipped with
-XCLIT and it will install XCLIT with some intervention.
 
-So run:
+Installing XCLT is straightforward. In fact, running a command that depends on the tools will trigger the installation automatically.
+
+To begin the installation:
+
+```sh
+git
+````
+
+You’ll be prompted to install the Xcode Command Line Tools. Click “Next” and accept the license agreement.
+
+> [!NOTE]
+> The estimated download time shown by the installer is often wildly inaccurate.
+> Even if it says “16 hours” or “2 days,” the process usually takes **less than 10 minutes**.
+
+Once the installation is complete, verify it by running:
+
 ```sh
 git
 ```
 
-It will say that you need to install XCLIT, and hit next, and accept the terms. Pleas note
-the estimated time is horribly wrong. It it says 16 hours or even 2 days, it will at most take
-10 minutes.
-
-Once you have been noitified its been installed you can type `git` again to test it's there.
-
+If everything is set up correctly, it will display Git’s usage information.
 
 ## Finished!
-Please go back go [the README](../README.md) to continue.
+
+You’re all set! Head back to the [README](../README.md) to continue.
