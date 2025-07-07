@@ -14,10 +14,8 @@ The setup process differs slightly depending on your operating system:
 Run the setup script to initialize and apply the configuration:
 
 ```sh
-./darwin_setup.zsh
+./darwin_setup.zsh --flake <CONFIG_NAME>
 ````
-
-This script uses `nh` to apply both the system and user configurations.
 
 ---
 
