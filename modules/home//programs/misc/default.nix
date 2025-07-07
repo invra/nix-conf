@@ -1,4 +1,9 @@
-{ pkgs-24_11, unstable, user, ... }:
+{
+  pkgs-24_11,
+  unstable,
+  user,
+  ...
+}:
 {
   home = {
     homeDirectory = "/home/${user.username}";

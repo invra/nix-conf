@@ -1,4 +1,9 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 let
   cfg = config.programs.setWallpaper;
 in
@@ -13,7 +18,7 @@ in
   };
 
   config = lib.mkIf cfg.enable {
-    home.activation.setWallpaper = lib.hm.dag.entryAfter ["writeBoundary"] ''
+    home.activation.setWallpaper = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
       wallpaper_path="$(realpath ${cfg.wallpaperPath})"
       /usr/bin/osascript -e "tell application \"Finder\" to set desktop picture to POSIX file \"$wallpaper_path\""
     '';

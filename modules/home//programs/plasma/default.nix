@@ -97,7 +97,7 @@ in
     };
 
     window-rules = [
-       {
+      {
         description = "Set PiP";
         apply = {
           desktops = {
@@ -108,7 +108,7 @@ in
             apply = "force";
             value = true;
           };
-          position= {
+          position = {
             apply = "initially";
             value = "-1,-1";
           };
@@ -116,8 +116,8 @@ in
         match.title = {
           type = "exact";
           value = "Picture-in-Picture";
-        };             
-      } 
+        };
+      }
     ];
   };
 }
