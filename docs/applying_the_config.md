@@ -1,51 +1,87 @@
-# Applying this configuration.
+# Applying This Configuration
 
+## First-Time Setup
 
-## First time
+The setup process differs slightly depending on your operating system:
 
-When applying the configurations for the first time, use the `nixos_setup.sh` and
-`darwin_setup.zsh` to configure your systems and apply the configurations for the first time
-After that you can use the commands in the following section
+- **macOS (Darwin)** users should use the provided setup script.
+- **NixOS** users should follow the manual steps outlined below.
 
-## Rebuilding after the first time
+---
 
-After creating the config. It is important to know what the name of the directory is you made.
-The name of *that* directory is what you use in the following commands to build.
+### macOS (Darwin)
 
->[!note]
-> As it stands now the configurations are geared towards single user systems.
-> In future this may change though it's severly unlikely and even if it does
-> it won't be soon.
+Run the setup script to initialize and apply the configuration:
+
+```sh
+./darwin_setup.zsh
+````
+
+This script uses `nh` to apply both the system and user configurations.
+
+---
+
+### NixOS (Manual Setup)
+
+NixOS users should apply the system and user configurations manually.
+
+1. Apply the system configuration:
+
+```sh
+sudo nixos-rebuild switch --flake .#<CONFIG_NAME>
+```
+
+2. Apply the user (home-manager) configuration:
+
+```sh
+home-manager switch --flake .#<CONFIG_NAME>
+```
+
+Replace `<CONFIG_NAME>` with the name of your configuration as defined in the flake.
+
+> \[!NOTE]
+> These configurations are currently intended for **single-user systems**.
+> While multi-user support may be added in the future, it is unlikely and not planned anytime soon.
 >
-> As a rule of thumb, the configuration done at the super user level is done
-> using [modules/config/nixos](../modules/config/nixos) or [modules/config/darwin](../modules/config/darwin) modules (depending on the system)
-> while user level configuration is done using [modules/home](../modules/home) modules
+> * System-level configuration is defined in [`modules/config/nixos`](../modules/config/nixos) or [`modules/config/darwin`](../modules/config/darwin)
+> * User-level configuration is defined in [`modules/home`](../modules/home)
 
-### Darwin
+---
+
+## Example (NixOS)
+
 ```sh
-  nh darwin switch -uH <CONFIG_NAME>
+# Apply system configuration:
+sudo nixos-rebuild switch --flake .#mainpc_x86
+
+# Apply user configuration:
+home-manager switch --flake .#mainpc_x86
+```
+Certainly — here’s a new section added to your documentation that explains the transition from **manual first-time setup** (especially for NixOS) to using **`nh` commands** afterward.
+
+This keeps the style and tone consistent, with no emojis, and maintains clear structure:
+
+Here’s a polished version of your section with clearer formatting, consistent style, and a small grammar fix:
+
+## After the First Rebuild
+
+Once you've applied the configuration manually for the first time, you can switch to using the `nh` commands for all targets: `nixos`, `darwin`, and `home-manager`.
+
+The manual commands like these:
+
+```sh
+  sudo nixos-rebuild switch --flake .#<NAME>
+  sudo darwin-rebuild switch --flake .#<NAME>
+  home-manager switch --flake .#<NAME>
+````
+
+can be replaced with the following `nh` commands:
+
+```sh
+  nh os switch -H <NAME>
+  nh darwin switch -H <NAME>
+  nh home switch -c <NAME>
 ```
 
-### NixOS
-```sh
-  nh os switch -uH <CONFIG_NAME>
-```
-
-### Setting up home-manager
-After applying the config. [home-manager](https://www.github.com/nix-community/home-manager) is a universal system to download and configure for your user.
-The command to do this config is.
-```sh
- nh home switch -us <CONFIG_NAME> 
-```
-
-### Example
-```sh
-# On NixOS to build the mainpc_x86 configuration you'll run
-nh os switch -uH mainpc_x86
-
-# NixOS will build the config and switch to it, and though it's really rare
-# you may need to reboot
-
-#Once you're done to run home-manager you may run
-nh home switch -us mainpc_x86
-```
+> [!NOTE]
+> The `nh` commands expect your flakes to be located in `~/.nix`, which is configured via environment variables.
