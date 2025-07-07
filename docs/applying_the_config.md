@@ -39,7 +39,7 @@ home-manager switch --flake .#<CONFIG_NAME>
 
 Replace `<CONFIG_NAME>` with the name of your configuration as defined in the flake.
 
-> \[!NOTE]
+> [!NOTE]
 > These configurations are currently intended for **single-user systems**.
 > While multi-user support may be added in the future, it is unlikely and not planned anytime soon.
 >
