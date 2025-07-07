@@ -41,24 +41,3 @@ This section shows example configurations using this flake.
 <summary>Nix-darwin – Neovim + Spotify</summary>
 <img src="./.res/demo_4.png" alt="Demo 4">
 </details>
-
-## Making a Configuration of Your Own
-
-It’s highly recommended to create your own configuration — this is what makes the system truly ***yours***.
-
-### File Structure
-
-Your configurations should live inside the `./configurations/` directory.
-You’ll find my personal configurations there as examples to follow.
-
-Each configuration resides in a directory named after the profile, which informs the flake system of its identifier.
-For example, a folder named `gary` corresponds to the following commands:
-
-```sh
-sudo nixos-rebuild switch --flake .#gary
-nh os switch -H gary
-sudo darwin-rebuild switch --flake .#gary
-nh darwin switch -H gary
-home-manager rebuild switch --flake .#gary
-nh home switch -c gary
-```
