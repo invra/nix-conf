@@ -57,11 +57,6 @@ sudo nixos-rebuild switch --flake .#mainpc_x86
 # Apply user configuration:
 home-manager switch --flake .#mainpc_x86
 ```
-Certainly — here’s a new section added to your documentation that explains the transition from **manual first-time setup** (especially for NixOS) to using **`nh` commands** afterward.
-
-This keeps the style and tone consistent, with no emojis, and maintains clear structure:
-
-Here’s a polished version of your section with clearer formatting, consistent style, and a small grammar fix:
 
 ## After the First Rebuild
 
