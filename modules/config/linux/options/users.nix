@@ -8,6 +8,7 @@
       "docker"
       "wheel"
       "libvirtd"
+      "audio"
     ];
     packages = with unstable; [
       wayvnc
