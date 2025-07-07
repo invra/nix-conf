@@ -1,25 +1,37 @@
-# Cloning repo with Git.
-Now for people who are reading this, either don't know what their doing or have realized this need to be done specially.
+# Cloning the Repository with Git
+
+If you're reading this, you might be new to Git or want to make sure you’re doing this step correctly.
 
 ## Cloning
-Now I don't know what Git platform you're reading this from. But the only right one is [Gitlab](https://gitlab.com)
 
-In short the reason is I might at a point down th road drop these other platforms. So its better to be safe
-with the remote being the one I primarily use and will never drop.
+I don't know which Git hosting platform you’re using, but the only *officially supported* one for this project is [GitLab](https://gitlab.com).
 
-To clone run this:
+The reason: I may drop other platforms in the future, so it’s safest to use the remote I primarily maintain and will continue to support.
 
-Gitlab:
+To clone the repository, run the appropriate command below:
+
+### GitLab
+
 ```sh
 nix run nixpkgs#git --extra-experimental-features "nix-command flakes" -- clone https://gitlab.com/<username>/<fork-name> ~/.nix
-```
+````
 
-Github:
+### GitHub
+
 ```sh
 nix run nixpkgs#git --extra-experimental-features "nix-command flakes" -- clone https://github.com/<username>/<fork-name> ~/.nix
 ```
 
-> [!important]
-> It is imperative we have it cloned to `~/.nix` due to custom toolchains I made expect `~/.nix`.
+### Codeberg
 
-Go back to [the README](./README.md) for next step.
+```sh
+nix run nixpkgs#git --extra-experimental-features "nix-command flakes" -- clone https://codeberg.org/<username>/<fork-name> ~/.nix
+```
+
+> [!IMPORTANT]
+> It is **imperative** that the repository is cloned into the `~/.nix` directory,
+> because the custom toolchains expect the code to be located there.
+
+---
+
+After cloning, proceed back to [the README](./README.md) for the next step.
