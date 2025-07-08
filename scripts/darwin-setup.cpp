@@ -7,7 +7,7 @@ const std::string RED = "\033[1;31m";
 const std::string GREEN = "\033[1;32m";
 const std::string RESET = "\033[0m";
 
-bool is_command_available(const std::string& cmd) {
+bool is_command_available(const std::string &cmd) {
     std::string check = "command -v " + cmd + " >/dev/null 2>&1";
     return std::system(check.c_str()) == 0;
 }
@@ -35,14 +35,13 @@ int main(int argc, char* argv[]) {
         if (!is_command_available("nix")) {
             std::cout << GREEN << "[INFO] " << RESET << "Nix is not installed. Installing Nix...\n";
             run_command("curl --proto '=https' --tlsv1.2 -L https://nixos.org/nix/install | sh");
-            return 0;
         } else {
             std::cout << GREEN << "[INFO] " << RESET << "Nix is already installed. I will skip installation.\n";
         }
 
         std::string version;
-        FILE* fp = popen("sw_vers -productVersion", "r");
-        if (fp) {
+        FILE *fp = popen("sw_vers -productVersion", "r");
+        if (fp != nullptr) {
             char buffer[64];
             if (fgets(buffer, sizeof(buffer), fp)) {
                 version = buffer;
