@@ -85,6 +85,16 @@ in
           "exec-and-forget open -n ${pkgs.ghostty-bin}/Applications/Ghostty.app"
           "mode main"
         ];
+        cmd-esc = [
+          "reload-config"
+          "mode main"
+        ];
+        alt-space = [
+          "layout floating tiling"
+          "mode main"
+        ];
+        cmd-h = [];
+        cmd-alt-h = [];
       };
     };
   };
