@@ -53,7 +53,6 @@
             ];
 
             custils = import ./utils { inherit (nixpkgs) lib; };
-
             user = configTOML.user;
             development = configTOML.development;
             desktop = configTOML.desktop;
@@ -77,6 +76,26 @@
                 "nvidia-x11"
                 "nvidia-settings"
               ];
+
+              specialArgs = unstable: stable: {
+                inherit
+                  desktop
+                  user
+                  home-manager
+                  development
+                  unstable
+                  stable
+                  nixpkgs-stable
+                  nixpkgs
+                  plasma-manager
+                  nixcord
+                  stylix
+                  zen-browser
+                  custils
+                  ;
+                inherit (configTOML) system;
+                inherit (user) username;
+              };
           in
           {
             darwinConfigurations.${name} =
@@ -91,29 +110,10 @@
                   system = "aarch64-darwin";
                   config = { inherit allowUnfreePredicate; };
                 };
-
               in
               darwin.lib.darwinSystem {
                 system = "aarch64-darwin";
-                specialArgs = {
-                  inherit
-                    desktop
-                    user
-                    home-manager
-                    development
-                    unstable
-                    stable
-                    nixpkgs-stable
-                    nixpkgs
-                    plasma-manager
-                    nixcord
-                    stylix
-                    zen-browser
-                    custils
-                    ;
-                  system = configTOML.system;
-                  username = user.username;
-                };
+                specialArgs = specialArgs unstable stable;
                 modules = [
                   ./modules/config
                 ];
@@ -136,25 +136,7 @@
             {
               legacyPackages.nixosConfigurations.${name} = nixpkgs.lib.nixosSystem {
                 inherit system;
-                specialArgs = {
-                  inherit
-                    desktop
-                    user
-                    home-manager
-                    development
-                    unstable
-                    stable
-                    nixpkgs-stable
-                    nixpkgs
-                    plasma-manager
-                    nixcord
-                    stylix
-                    zen-browser
-                    custils
-                    ;
-                  inherit (configTOML) system;
-                  inherit (user) username;
-                };
+                specialArgs = specialArgs unstable stable;
                 modules = [
                   ./modules/config
                   stylix.nixosModules.stylix
