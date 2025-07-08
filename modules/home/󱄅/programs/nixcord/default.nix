@@ -1,27 +1,15 @@
-{ unstable, ... }:
-let
-  pkgs = unstable;
-in
+{ ... }:
 {
   stylix.targets = {
     nixcord.enable = false;
-    vesktop.enable = false;
     vencord.enable = false;
   };
 
   programs.nixcord = {
     enable = true;
-    discord = with pkgs; {
-      enable = true;
-      package = discord;
-    };
-
-    # vesktop = with pkgs; {
-    #   enable = pkgs.stdenv.isLinux;
-    #   package = vesktop;
-    # };
-
+    discord.enable = true;
     quickCss = import ./quickcss.nix;
+
     config = {
       useQuickCss = true;
       themeLinks = [ ];
@@ -45,10 +33,14 @@ in
         spotifyShareCommands.enable = true;
         voiceChatDoubleClick.enable = true;
         voiceDownload.enable = true;
-        voiceMessages.enable = true;
+        voiceMessages = {
+          enable = true;
+          echoCancellation = false;
+          noiseSuppression = false;
+        };
         volumeBooster = {
           enable = true;
-          multiplier = 5;
+          multiplier = 2;
         };
         webRichPresence.enable = true;
         youtubeAdblock.enable = true;
