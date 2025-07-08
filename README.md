@@ -1,26 +1,46 @@
 # Invra's Nix Flake
 
-This is a flake for NixOS and also supports Nix-darwin! It’s designed to be modular for others to use. This *is* more for *advanced users*, so if you’re up for the task, this flake might be for you.
+This Nix flake provides the following:
 
-## Use
+* **Home-manager config**
+* **NixOS config**
+* **Nix-darwin config**
 
-This flake is tailored for my use, but it may align with yours. Here's a list below:
+### Key Features:
 
-* Keyboard-centric
-* Mostly terminal-centric
-* Minimalism where wanted, but complexity where needed (e.g., audio patch software, advanced networking support)
-* Declarative, convenient, reproducible setup (3–10 commands and you're good to go)
-* Networking (Docker, NetworkManager, advanced interface configs for bridging)
+* **Advanced networking for virtualization** (Bridging)
+* **Pro audio** (JACK2 with OOB support for Bitwig Studio)
+* **Terminal-based work**:
+  * Helix editor
+  * spotify_player
+  * git, gh, glab
+  * btop
 
-## Support
+* **Zen Browser**
+* **Multimedia**:
+  * OBS Studio
+  * yt-dlp
 
-* `aarch64-darwin`
-* `x86_64-linux`
-* `aarch64-linux`
+* **Social** (currently only Discord)
+* **Remote software**:
+  * Parsec
+  * Remmina Connect
+  * Wayvnc
 
-## Example
+### Supported Platforms:
 
-This section shows example configurations using this flake.
+This flake **guarantees** support for the following platforms:
+
+* aarch64-linux
+* x86_64-linux
+* aarch64-darwin
+
+> [!NOTE]
+> The reason `x86_64-darwin` is not supported is that 2025 marks the last year of macOS support for the x86\_64 ISA. As a result, there will be no need to continue supporting the x86 architecture.
+
+## Examples
+
+This section showcases example configurations using this flake.
 
 <details open>
 <summary>NixOS – Spotify + WezTerm + Hyprland</summary>
@@ -43,4 +63,5 @@ This section shows example configurations using this flake.
 </details>
 
 ## Documentation
-The documenation is available in [`./docs`](./docs/) directory.
+
+The full documentation is available in the [`./docs`](./docs/) directory.
