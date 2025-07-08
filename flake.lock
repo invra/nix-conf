@@ -434,17 +434,18 @@
         "nixpkgs": "nixpkgs_2"
       },
       "locked": {
-        "lastModified": 1751098667,
-        "narHash": "sha256-ca6U8x1WRmgpX83Cz90MWvI8JeB4ScR0MiPiOepNpXA=",
-        "owner": "kaylorben",
-        "repo": "nixcord",
-        "rev": "574d28d8d6320908f1be56ce160947946125ccb6",
-        "type": "github"
+        "lastModified": 1751541968,
+        "narHash": "sha256-FO08UhTu+kyiJpReP/TBI+Xvan01Mvf4MlZvdEfbB0s=",
+        "ref": "refs/heads/main",
+        "rev": "caca900dcbfcd6ca2d60a1a49f53853c0ed60e5f",
+        "revCount": 410,
+        "type": "git",
+        "url": "https://github.com/kaylorben/nixcord"
       },
       "original": {
-        "owner": "kaylorben",
-        "repo": "nixcord",
-        "type": "github"
+        "rev": "caca900dcbfcd6ca2d60a1a49f53853c0ed60e5f",
+        "type": "git",
+        "url": "https://github.com/kaylorben/nixcord"
       }
     },
     "nixpkgs": {
