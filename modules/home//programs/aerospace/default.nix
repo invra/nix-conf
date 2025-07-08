@@ -93,8 +93,8 @@ in
           "layout floating tiling"
           "mode main"
         ];
-        cmd-h = [];
-        cmd-alt-h = [];
+        cmd-h = [ ];
+        cmd-alt-h = [ ];
       };
     };
   };
