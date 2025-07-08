@@ -37,15 +37,7 @@
     networking = {
       dhcpEnabled = true;
       firewallEnabled = false;
-      networkmanager = false;
-      # interfaces = [
-      #   {
-      #     type = "BRIDGE";
-      #     name = "br0";
-      #     interfaces = [ "enp6s0" ];
-      #     dhcpEnabled = true;
-      #   }
-      # ];
+      networkmanager = true;
     };
     services = {
       mongodb = {
