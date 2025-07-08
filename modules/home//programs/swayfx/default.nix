@@ -1,4 +1,7 @@
-{ unstable, desktop, ... }:
+{
+  unstable,
+  ...
+}:
 {
   imports = [
     ./mako
@@ -9,7 +12,7 @@
   home = {
     file = {
       ".config/sway/config".source = ./config;
-      ".config/sway/screenshot.nu".source = ./screenshot.nu;
+      ".config/sway/screenshot.nu".text = import ./scripts/screenshot.nix;
       ".config/sway/wallpaper.png".source = ../../../../../wallpapers/flake.jpg;
     };
 
