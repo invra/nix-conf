@@ -122,11 +122,6 @@
           // (flake-utils.lib.eachSystem [ "aarch64-linux" "x86_64-linux" "aarch64-darwin" ] (
             system:
             let
-              overlays = [
-                zen-browser.overlay
-                ghostty.overlays.default
-                ip.overlay
-              ];
               unstable = import nixpkgs {
                 inherit system overlays;
                 config = { inherit allowUnfreePredicate; };
