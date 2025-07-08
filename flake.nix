@@ -54,6 +54,24 @@
             user = configTOML.user;
             development = configTOML.development;
             desktop = configTOML.desktop;
+
+            allowUnfreePredicate =
+              pkg:
+              builtins.elem (nixpkgs.lib.getName pkg) [
+                "davinci-resolve"
+                "steam-unwrapped"
+                "steam_osx"
+                "discord"
+                "tart"
+                "betterdisplay"
+                "raycast"
+                "steam"
+                "bitwig-studio-unwrapped"
+                "parsec-bin"
+                "mongodb-compass"
+                "postman"
+                "teams"
+              ];
           in
           {
             darwinConfigurations.${name} =
@@ -61,44 +79,12 @@
                 unstable = import nixpkgs {
                   inherit overlays;
                   system = "aarch64-darwin";
-                  config.allowUnfreePredicate =
-                    pkg:
-                    builtins.elem (nixpkgs.lib.getName pkg) [
-                      "davinci-resolve"
-                      "steam-unwrapped"
-                      "steam_osx"
-                      "discord"
-                      "tart"
-                      "betterdisplay"
-                      "raycast"
-                      "steam"
-                      "bitwig-studio-unwrapped"
-                      "parsec-bin"
-                      "mongodb-compass"
-                      "postman"
-                      "teams"
-                    ];
+                  config = { inherit allowUnfreePredicate; };
                 };
                 stable = import nixpkgs-stable {
                   inherit overlays;
                   system = "aarch64-darwin";
-                  config.allowUnfreePredicate =
-                    pkg:
-                    builtins.elem (nixpkgs.lib.getName pkg) [
-                      "davinci-resolve"
-                      "steam-unwrapped"
-                      "steam_osx"
-                      "discord"
-                      "tart"
-                      "betterdisplay"
-                      "raycast"
-                      "steam"
-                      "bitwig-studio-unwrapped"
-                      "parsec-bin"
-                      "mongodb-compass"
-                      "postman"
-                      "teams"
-                    ];
+                  config = { inherit allowUnfreePredicate; };
                 };
 
               in
@@ -137,43 +123,11 @@
               ];
               unstable = import nixpkgs {
                 inherit system overlays;
-                config.allowUnfreePredicate =
-                  pkg:
-                  builtins.elem (nixpkgs.lib.getName pkg) [
-                    "davinci-resolve"
-                    "steam-unwrapped"
-                    "steam_osx"
-                    "discord"
-                    "tart"
-                    "betterdisplay"
-                    "raycast"
-                    "steam"
-                    "bitwig-studio-unwrapped"
-                    "parsec-bin"
-                    "mongodb-compass"
-                    "postman"
-                    "teams"
-                  ];
+                config = { inherit allowUnfreePredicate; };
               };
               stable = import nixpkgs-stable {
                 inherit system overlays;
-                config.allowUnfreePredicate =
-                  pkg:
-                  builtins.elem (nixpkgs.lib.getName pkg) [
-                    "davinci-resolve"
-                    "steam-unwrapped"
-                    "steam_osx"
-                    "discord"
-                    "tart"
-                    "betterdisplay"
-                    "raycast"
-                    "steam"
-                    "bitwig-studio-unwrapped"
-                    "parsec-bin"
-                    "mongodb-compass"
-                    "postman"
-                    "teams"
-                  ];
+                config = { inherit allowUnfreePredicate; };
               };
               inherit (configTOML) user;
             in
