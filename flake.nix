@@ -124,6 +124,7 @@
             let
               overlays = [
                 zen-browser.overlay
+                ghostty.overlays.default
                 ip.overlay
               ];
               unstable = import nixpkgs {
