@@ -8,24 +8,24 @@ This Nix flake provides the following:
 
 ### Key Features:
 
-* **Advanced networking for virtualization** (Bridging)
-* **Pro audio** (JACK2 with OOB support for Bitwig Studio)
-* **Terminal-based work**:
-  * Helix editor
-  * spotify_player
-  * git, gh, glab
-  * btop
+- **Advanced networking for virtualization** (Bridging)
+- **Pro audio** (JACK2 with OOB support for Bitwig Studio)
+- **Terminal-based work**:
+  - Helix editor
+  - spotify_player
+  - git, gh, glab
+  - btop
 
-* **Zen Browser**
-* **Multimedia**:
-  * OBS Studio
-  * yt-dlp
+- **Zen Browser**
+- **Multimedia**:
+  - OBS Studio
+  - yt-dlp
 
-* **Social** (currently only Discord)
-* **Remote software**:
-  * Parsec
-  * Remmina Connect
-  * Wayvnc
+- **Social** (currently only Discord)
+- **Remote software**:
+  - Parsec
+  - Remmina Connect
+  - Wayvnc
 
 ### Supported Platforms:
 
