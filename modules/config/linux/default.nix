@@ -28,6 +28,11 @@ in
   hardware = {
     graphics.enable = true;
     amdgpu.opencl.enable = lib.mkForce (builtins.elem "amdgpu" (system.graphics.wanted or [ ]));
+
+    nvidia = {
+      open = true;
+      nvidiaSettings = true;
+    };
   };
 
   documentation.man = {
