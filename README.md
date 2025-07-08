@@ -43,6 +43,4 @@ This section shows example configurations using this flake.
 </details>
 
 ## Documentation
-The documenation is available in [`./docs`](./docs)
-
-## DocumentationThe documenation is available in [`./docs`](./docs/)
+The documenation is available in [`./docs`](./docs/) directory.
