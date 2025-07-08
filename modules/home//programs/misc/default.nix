@@ -22,6 +22,10 @@
           vulkan-loader = pkgs-24_11.vulkan-loader;
         };
       })
+      wineWowPackages.waylandFull
+      winetricks
+      yabridge
+      (yabridgectl.override { wine = wineWowPackages.waylandFull; })
     ];
   };
 }
