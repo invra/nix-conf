@@ -2,9 +2,9 @@
 
 This Nix flake provides the following:
 
-* **Home-manager config**
-* **NixOS config**
-* **Nix-darwin config**
+- **Home-manager config**
+- **NixOS config**
+- **Nix-darwin config**
 
 ### Key Features:
 
@@ -31,9 +31,9 @@ This Nix flake provides the following:
 
 This flake **guarantees** support for the following platforms:
 
-* aarch64-linux
-* x86_64-linux
-* aarch64-darwin
+- aarch64-linux
+- x86_64-linux
+- aarch64-darwin
 
 > [!NOTE]
 > The reason `x86_64-darwin` is not supported is that 2025 marks the last year of macOS support for the x86\_64 ISA. As a result, there will be no need to continue supporting the x86 architecture.
