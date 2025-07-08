@@ -74,6 +74,8 @@
                 "mongodb-compass"
                 "postman"
                 "teams"
+                "nvidia-x11"
+                "nvidia-settings"
               ];
           in
           {
