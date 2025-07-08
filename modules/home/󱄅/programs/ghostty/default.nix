@@ -23,6 +23,7 @@ in
     settings = {
       theme = "rose-pine";
       background-opacity = 0.95;
+      gtk-single-instance = true;
       font-size = 14;
     };
   };
