@@ -17,7 +17,7 @@ in
       enable = pkgs.stdenv.isLinux;
       package = pkgs.vesktop;
     };
-    quickCss = builtins.readFile ./quick.css;
+    quickCss = import ./quickcss.nix;
     config = {
       useQuickCss = true;
       themeLinks = [ ];
