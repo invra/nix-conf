@@ -11,12 +11,16 @@ in
 
   programs.nixcord = {
     enable = true;
-    discord.enable = pkgs.stdenv.isDarwin;
-
-    vesktop = {
-      enable = pkgs.stdenv.isLinux;
-      package = pkgs.vesktop;
+    discord = with pkgs; {
+      enable = true;
+      package = discord;
     };
+
+    # vesktop = with pkgs; {
+    #   enable = pkgs.stdenv.isLinux;
+    #   package = vesktop;
+    # };
+
     quickCss = import ./quickcss.nix;
     config = {
       useQuickCss = true;
@@ -46,9 +50,7 @@ in
           enable = true;
           multiplier = 5;
         };
-        webKeybinds.enable = true;
         webRichPresence.enable = true;
-        webScreenShareFixes.enable = true;
         youtubeAdblock.enable = true;
       };
     };
