@@ -77,25 +77,25 @@
                 "nvidia-settings"
               ];
 
-              specialArgs = unstable: stable: {
-                inherit
-                  desktop
-                  user
-                  home-manager
-                  development
-                  unstable
-                  stable
-                  nixpkgs-stable
-                  nixpkgs
-                  plasma-manager
-                  nixcord
-                  stylix
-                  zen-browser
-                  custils
-                  ;
-                inherit (configTOML) system;
-                inherit (user) username;
-              };
+            specialArgs = unstable: stable: {
+              inherit
+                desktop
+                user
+                home-manager
+                development
+                unstable
+                stable
+                nixpkgs-stable
+                nixpkgs
+                plasma-manager
+                nixcord
+                stylix
+                zen-browser
+                custils
+                ;
+              inherit (configTOML) system;
+              inherit (user) username;
+            };
           in
           {
             darwinConfigurations.${name} =
