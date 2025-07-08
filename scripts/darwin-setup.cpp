@@ -34,7 +34,7 @@ int main(int argc, char* argv[]) {
 
         if (!is_command_available("nix")) {
             std::cout << GREEN << "[INFO] " << RESET << "Nix is not installed. Installing Nix...\n";
-            run_command("sh <(curl --proto '=https' --tlsv1.2 -L https://nixos.org/nix/install)");
+            run_command("curl --proto '=https' --tlsv1.2 -L https://nixos.org/nix/install | sh");
             return 0;
         } else {
             std::cout << GREEN << "[INFO] " << RESET << "Nix is already installed. I will skip installation.\n";
