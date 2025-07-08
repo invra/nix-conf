@@ -8,6 +8,7 @@
     zen-browser.url = "gitlab:InvraNet/zen-flake";
     nixcord.url = "git+https://github.com/kaylorben/nixcord?rev=caca900dcbfcd6ca2d60a1a49f53853c0ed60e5f";
     ip.url = "gitlab:hiten-tandon/some-nix-darwin-packages";
+    ghostty.url = "github:ghostty-org/ghostty";
 
     darwin = {
       url = "github:lnl7/nix-darwin";
@@ -36,6 +37,7 @@
       ip,
       nixcord,
       stylix,
+      ghostty,
       zen-browser,
       ...
     }:
@@ -46,6 +48,7 @@
           let
             overlays = [
               zen-browser.overlay
+              ghostty.overlays.default
               ip.overlay
             ];
 
