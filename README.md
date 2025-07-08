@@ -41,3 +41,8 @@ This section shows example configurations using this flake.
 <summary>Nix-darwin – Neovim + Spotify</summary>
 <img src="./.res/demo_4.png" alt="Demo 4">
 </details>
+
+## Documentation
+The documenation is available in [`./docs`](./docs)
+
+## DocumentationThe documenation is available in [`./docs`](./docs/)
