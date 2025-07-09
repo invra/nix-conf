@@ -839,11 +839,11 @@
         "nixpkgs": "nixpkgs_6"
       },
       "locked": {
-        "lastModified": 1751733975,
-        "narHash": "sha256-o5qxc+argWvKz90p7s0vKgQ8zIHNucbJ07SqQST3RbE=",
+        "lastModified": 1752086652,
+        "narHash": "sha256-kBakF0sJDCZWAJLo+amM05StkEh+n1UvQMsyK2CrsJc=",
         "owner": "InvraNet",
         "repo": "zen-flake",
-        "rev": "bf550147674f0c6f0583b0302487a5eebd55f3c3",
+        "rev": "9c4348c605ceb411ad3c0a27ecfe26bfa96129b9",
         "type": "gitlab"
       },
       "original": {
