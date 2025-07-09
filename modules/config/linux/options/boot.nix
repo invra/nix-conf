@@ -19,7 +19,7 @@ in
     };
 
     kernel.sysctl = {
-      "vm.swappiness" = 1;
+      "vm.swappiness" = 10;
     };
   };
 }
