@@ -13,12 +13,12 @@ bool is_command_available(const std::string &cmd) {
 }
 
 void run_command(const std::string& cmd, bool print = true) {
-    if (print) std::cout << GREEN << "[INFO] " << RESET << "I am running: \"" << cmd << "\"" << std::endl;
+    if (print) std::cout << GREEN << "[INFO] " << RESET << "I am running: " << cmd << "." << std::endl;
     std::system(cmd.c_str());
 }
 
 void run_after_install_command(const std::string& cmd) {
-    std::string full = "zsh -c 'source /etc/zshrc && " + cmd + "'";
+    std::string full = "zsh -c \"source /etc/zshrc && " + cmd + "\"";
     run_command(full);
 }
 
@@ -64,7 +64,7 @@ int main(int argc, char* argv[]) {
 
         if (!is_command_available("home-manager")) {
             std::cout << GREEN << "[INFO] " << RESET << "Applying nix-darwin config...\n";
-            run_after_install_command("sudo nix run nix-darwin --extra-experimental-features \"nix-command flakes\" -- switch --flake \".#" + flake + "\"");
+            run_after_install_command("sudo nix run nix-darwin --extra-experimental-features 'nix-command flakes' -- switch --flake '.#" + flake + "'");
         } else {
             std:: cout << GREEN << "[INFO] " << RESET << "The nix-darwin installation has already happened, if it hasn't... Please uninstall or dereference home-manager." << std::endl;
         }
