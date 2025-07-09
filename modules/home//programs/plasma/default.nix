@@ -22,13 +22,6 @@ in
       enableMiddleClickPaste = false;
     };
 
-    hotkeys.commands."launch-ghostty" = {
-      key = "Meta+Return";
-      name = "Launch Ghostty";
-      command = "ghostty";
-      comment = "Launch Ghostty terminal emulator.";
-    };
-
     panels = [
       {
         location = "top";
@@ -45,12 +38,19 @@ in
       }
     ];
 
+    hotkeys.commands."launch-ghostty" = {
+      key = "Meta+Return";
+      name = "Launch Ghostty";
+      command = "${pkgs.ghostty}/bin/ghostty";
+      comment = "Launch Ghostty terminal emulator.";
+    };
+
     shortcuts = {
       ksmserver."Lock Session" = [
         "Screensaver"
         "Meta+L"
       ];
-      navigation."Quit" = "Meta+Q";
+      Navigation."Quit" = "Meta+Q";
 
       kwin = {
         "Switch Window Down" = "Meta+J";
