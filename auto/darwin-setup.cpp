@@ -37,11 +37,13 @@ int main(int argc, char* argv[]) {
             return 1;
         }
 
-        if (!is_command_available("nix")) {
-            std::cout << GREEN << "[INFO] " << RESET << "Nix is not installed. Installing Nix...\n";
-            run_command("curl --proto '=https' --tlsv1.2 -L https://nixos.org/nix/install | sh");
+        const char* nix_path = "/nix/var/nix/profiles/default/bin/nix";
+
+        if (access(nix_path, F_OK) == -1) {
+            std::cout << "\033[1;32m[INFO] \033[0mNix is not installed. Installing Nix...\n";
+            system("curl --proto '=https' --tlsv1.2 -L https://nixos.org/nix/install | sh");
         } else {
-            std::cout << GREEN << "[INFO] " << RESET << "Nix is already installed. I will skip installation.\n";
+            std::cout << "\033[1;32m[INFO] \033[0mNix is already installed. I will skip installation.\n";
         }
 
         std::string version;
