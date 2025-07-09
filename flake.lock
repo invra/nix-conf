@@ -273,11 +273,11 @@
         "zon2nix": "zon2nix"
       },
       "locked": {
-        "lastModified": 1751912500,
-        "narHash": "sha256-7hCbGzNRAXWSBWXZrTMZ7DIB6LDlCQKzPXGRxwOoOKA=",
+        "lastModified": 1751992153,
+        "narHash": "sha256-m21+C0NWjKpmxfyaqmUIP4hb3cuBo3olIwNbALrsgJ0=",
         "owner": "ghostty-org",
         "repo": "ghostty",
-        "rev": "26522ab8c20dd9d2c690d04af94844f5e8719637",
+        "rev": "731da5aea543c144140f237a1582ccd833b5481a",
         "type": "github"
       },
       "original": {
@@ -322,11 +322,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1751824240,
-        "narHash": "sha256-aDDC0CHTlL7QDKWWhdbEgVPK6KwWt+ca0QkmHYZxMzI=",
+        "lastModified": 1751990210,
+        "narHash": "sha256-krWErNDl9ggMLSfK00Q2BcoSk3+IRTSON/DiDgUzzMw=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "fd9e55f5fac45a26f6169310afca64d56b681935",
+        "rev": "218da00bfa73f2a61682417efe74549416c16ba6",
         "type": "github"
       },
       "original": {
@@ -348,11 +348,11 @@
         "wezterm": "wezterm"
       },
       "locked": {
-        "lastModified": 1750720713,
-        "narHash": "sha256-TAtqvze3kv0oW0UHW17gAnkEnshBQq0f9rPQGGf93m0=",
+        "lastModified": 1752002337,
+        "narHash": "sha256-06+iGvZU+WrR427Zwp8NEcjER7gPkKMyk6yWCIDDMz0=",
         "owner": "hiten-tandon",
         "repo": "some-nix-darwin-packages",
-        "rev": "000c40af2081716139b729036c3fc7c5a7702c59",
+        "rev": "2761a5e605762f751a1395c7a7cabfd5b0dc42c7",
         "type": "gitlab"
       },
       "original": {
@@ -482,11 +482,11 @@
     },
     "nixpkgs_2": {
       "locked": {
-        "lastModified": 1749285348,
-        "narHash": "sha256-frdhQvPbmDYaScPFiCnfdh3B/Vh81Uuoo0w5TkWmmjU=",
+        "lastModified": 1751792365,
+        "narHash": "sha256-J1kI6oAj25IG4EdVlg2hQz8NZTBNYvIS0l4wpr9KcUo=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "3e3afe5174c561dee0df6f2c2b2236990146329f",
+        "rev": "1fd8bada0b6117e6c7eb54aad5813023eed37ccb",
         "type": "github"
       },
       "original": {
@@ -680,11 +680,11 @@
         "tinted-zed": "tinted-zed"
       },
       "locked": {
-        "lastModified": 1751914048,
-        "narHash": "sha256-xHO3xlw35tCC0f3pN3osPNjgwwwAgusTuZk5iC8oDiE=",
+        "lastModified": 1751995939,
+        "narHash": "sha256-C5CSTv+b8XSbqJwqTP8SGkZEK3YCCJnmvRbg209ql5w=",
         "owner": "danth",
         "repo": "stylix",
-        "rev": "bf0ef81c8fcc30c32db9dab32d379f8d9db835e4",
+        "rev": "8f3259dbc57c8ee871492fde80f77468826bbd63",
         "type": "github"
       },
       "original": {
@@ -844,8 +844,8 @@
     "wezterm": {
       "flake": false,
       "locked": {
-        "lastModified": 1749786342,
-        "narHash": "sha256-RggoFo05PQPIJXp3VtfOmYo6iuXl4Ngp8n/4Xi+J988=",
+        "lastModified": 1751946853,
+        "narHash": "sha256-AFWVn0kCe2/G3snFm1ZWivQeQSgWJtaIYceQt48fxTg=",
         "type": "tarball",
         "url": "https://github.com/wezterm/wezterm/releases/download/nightly/WezTerm-macos-nightly.zip"
       },
