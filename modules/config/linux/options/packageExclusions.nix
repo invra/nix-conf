@@ -8,6 +8,10 @@ in
     konsole
     elisa
     dolphin
+    discover
+    kate
+    gwenview
+    okular
   ];
 
   programs.nano.enable = false;
