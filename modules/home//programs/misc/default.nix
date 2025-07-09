@@ -16,6 +16,11 @@
       pavucontrol
       # davinci-resolve
       signal-desktop-bin
+      wayvnc
+      wget
+      jdk21
+      libreoffice-qt-fresh
+      remmina
 
       (bitwig-studio.override {
         bitwig-studio-unwrapped = bitwig-studio5-unwrapped.override {
