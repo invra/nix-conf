@@ -4,17 +4,19 @@
 
 The setup process differs slightly depending on your operating system:
 
-- **macOS (Darwin)** users should use the provided setup script.
+- **macOS (Darwin)** users should use the provided setup C++ automation.
 - **NixOS** users should follow the manual steps outlined below.
 
 ---
 
 ### macOS (Darwin)
 
-Run the setup script to initialize and apply the configuration:
+Compile and run the automation file, this is a direct replacement for the ZSH script.
 
 ```sh
-./darwin_setup.zsh --flake <CONFIG_NAME>
+cd auto
+c++ darwin-setup.cpp -o darwin-setup
+./darwin-setup -f <CONFIG_NAME>
 ```
 
 > [!NOTE]
