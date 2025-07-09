@@ -32,6 +32,12 @@ in
     nvidia = {
       open = true;
       nvidiaSettings = true;
+
+      prime = {
+        intelBusId = system.graphics.nvidia.prime.intelBusId or "";
+        nvidiaBusId = system.graphics.nvidia.prime.nvidiaBusId or "";
+        amdgpuBusId = system.graphics.nvidia.prime.amdgpuBusId or "";
+      };
     };
   };
 
