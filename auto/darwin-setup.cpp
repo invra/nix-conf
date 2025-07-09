@@ -42,6 +42,14 @@ int main(int argc, char* argv[]) {
         if (access(nix_path, F_OK) == -1) {
             std::cout << "\033[1;32m[INFO] \033[0mNix is not installed. Installing Nix...\n";
             system("curl --proto '=https' --tlsv1.2 -L https://nixos.org/nix/install | sh");
+        
+            if (version.find("26.0") != std::string::npos) {
+                std::cout << GREEN << "[INFO] " << RESET << "Patching nix-daemon plist to disable fork safety...\n";
+                run_command("sudo plutil -insert EnvironmentVariables -dictionary /Library/LaunchDaemons/org.nixos.nix-daemon.plist &>/dev/null", false);
+                run_command("sudo plutil -insert EnvironmentVariables.OBJC_DISABLE_INITIALIZE_FORK_SAFETY -string YES /Library/LaunchDaemons/org.nixos.nix-daemon.plist &>/dev/null", false);
+                run_command("sudo launchctl unload /Library/LaunchDaemons/org.nixos.nix-daemon.plist");
+                run_command("sudo launchctl bootstrap system /Library/LaunchDaemons/org.nixos.nix-daemon.plist");
+            }
         } else {
             std::cout << "\033[1;32m[INFO] \033[0mNix is already installed. I will skip installation.\n";
         }
@@ -54,14 +62,6 @@ int main(int argc, char* argv[]) {
                 version = buffer;
             }
             pclose(fp);
-        }
-
-        if (version.find("26.0") != std::string::npos) {
-            std::cout << GREEN << "[INFO] " << RESET << "Patching nix-daemon plist to disable fork safety...\n";
-            run_command("sudo plutil -insert EnvironmentVariables -dictionary /Library/LaunchDaemons/org.nixos.nix-daemon.plist &>/dev/null", false);
-            run_command("sudo plutil -insert EnvironmentVariables.OBJC_DISABLE_INITIALIZE_FORK_SAFETY -string YES /Library/LaunchDaemons/org.nixos.nix-daemon.plist &>/dev/null", false);
-            run_command("sudo launchctl unload /Library/LaunchDaemons/org.nixos.nix-daemon.plist");
-            run_command("sudo launchctl bootstrap system /Library/LaunchDaemons/org.nixos.nix-daemon.plist");
         }
 
         if (!is_command_available("home-manager")) {
