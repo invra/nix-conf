@@ -18,5 +18,6 @@ in
 
   environment.systemPackages = with pkgs; [
     ghostty
+    zen
   ];
 }
