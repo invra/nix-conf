@@ -17,6 +17,11 @@ void run_command(const std::string& cmd, bool print = true) {
     std::system(cmd.c_str());
 }
 
+void run_after_install_command(const std::string& cmd) {
+    std::string full = "zsh -c 'source /etc/zshrc && " + cmd + "'";
+    run_command(full);
+}
+
 int main(int argc, char* argv[]) {
     #ifdef __APPLE__
         std::string flake;
@@ -59,8 +64,7 @@ int main(int argc, char* argv[]) {
 
         if (!is_command_available("home-manager")) {
             std::cout << GREEN << "[INFO] " << RESET << "Applying nix-darwin config...\n";
-            std::string darwinCmd = "sudo nix run nix-darwin --experimental-features 'nix-command flakes' -- switch --flake '.#" + flake + "'";
-            run_command("zsh -c \"" + darwinCmd + "\"");
+            run_after_install_command("sudo nix run nix-darwin --experimental-features 'nix-command flakes' -- switch --flake '.#" + flake + "'");
         } else {
             std:: cout << GREEN << "[INFO] " << RESET << "The nix-darwin installation has already happened, if it hasn't... Please uninstall or dereference home-manager." << std::endl;
         }
@@ -68,8 +72,7 @@ int main(int argc, char* argv[]) {
         if (!is_command_available("hx")) {
             std::cout << GREEN << "[INFO] " << RESET << "Home Manager config not applied. Applying now...\n";
             run_command("mkdir -p \"$HOME/Library/Application Support/discord\"");
-            std::string hmCmd = "home-manager switch --flake '.#" + flake + "' -b backup";
-            run_command("zsh -c \"" + hmCmd + "\"");
+            run_after_install_command("home-manager switch --flake '.#" + flake + "' -b backup");
         } else {
             std::cout << GREEN << "[INFO] " << RESET << "The home-manager config seems to be already applied. Please use nh to rebuild.\n";
         }
