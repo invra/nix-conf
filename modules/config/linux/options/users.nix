@@ -10,18 +10,5 @@
       "libvirtd"
       "audio"
     ];
-    packages = with unstable; [
-      wayvnc
-      wget
-      jdk21
-      glib
-      libreoffice-qt-fresh
-      remmina
-      gcc
-      clang-tools
-      cmake
-      calibre
-      gnumake
-    ];
   };
 }
