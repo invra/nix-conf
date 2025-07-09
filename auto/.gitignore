@@ -1,5 +1,4 @@
 **
 !.gitignore
 !README.md
-!darwin-setup.cpp
-!darwin-setup.zsh
+!*.cpp
