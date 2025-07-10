@@ -9,8 +9,8 @@ let
 in
 {
   imports = [
-    ../../../modules/wallpaper
-    ../../../modules/dock
+    ../../modules/wallpaper
+    ../../modules/dock
   ];
 
   targets.darwin.defaults = {
@@ -26,7 +26,7 @@ in
       "com.apple.keyboard.fnState" = true;
       AppleTemperatureUnit = "Celsius";
       AppleMeasurementUnits = "Centimeters";
-      AppleMetricUnits = 1;
+      AppleMetricUnits = true;
       AppleHighlightColor = "0.968627 0.831373 1.000000 Purple";
       AppleAccentColor = 5;
     };
@@ -99,7 +99,7 @@ in
   };
   programs.setWallpaper = {
     enable = true;
-    wallpaperPath = ../../../../../wallpapers/landscape.jpg;
+    wallpaperPath = ../../../../wallpapers/landscape.jpg;
   };
 }
 
