@@ -42,8 +42,9 @@ Add more customisation options & features:
 ## Port over to new Nix-darwin configuration
 (Re)Move the nix options:
 - [x] ``hombrew`` [^1]
-- [ ] ``system.defaults`` - More to be added later to list.
+- [x] ``system.defaults`` - More to be added later to list.[^4]
 
 [^1]: All homebrew packages were either ported or removed from this repo. - 24-05-2025 7a432fdf93fef3db93c72a42d3e8c6880f67e0c2
 [^2]: Evil helix -> plain helix. - 26-05-2025 be5f4ed6d88afc270d636a4cc0a794be0ce22c0d
 [^3]: Yank to clipboard is by just hitting `y`. - 10-07-2025 2596bdc4ec9428b8909383349c2c1b33f10ab318
+[^4]: All was moved to home-manager, including some new wanted options. - 10-07-2025 2121891900e3a14fe795b707a7f56710be73c4aa
