@@ -12,7 +12,6 @@ let
 in
 {
   imports = [
-    ./options/defaults.nix
     ./options/envrionment.nix
     ./options/programs.nix
   ];
