@@ -1,5 +1,4 @@
 {
-  pkgs-24_11,
   unstable,
   user,
   ...
@@ -22,15 +21,8 @@
       libreoffice-qt-fresh
       remmina
 
-      (bitwig-studio.override {
-        bitwig-studio-unwrapped = bitwig-studio5-unwrapped.override {
-          vulkan-loader = pkgs-24_11.vulkan-loader;
-        };
-      })
       wineWowPackages.waylandFull
       winetricks
-      yabridge
-      (yabridgectl.override { wine = wineWowPackages.waylandFull; })
     ];
   };
 }
