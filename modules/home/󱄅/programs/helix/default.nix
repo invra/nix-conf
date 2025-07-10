@@ -49,12 +49,15 @@ in
       keys = {
         normal = {
           A-r = ":config-reload";
+          y = ":clipboard-yank";
           space = {
             space = "@<space>f";
-            w = ":w!";
-            q = ":q";
+            w = ":wq!";
+            W = ":w!";
+            q = ":bc";
           };
         };
+        select.y = ":clipboard-yank";
       };
     };
     extraPackages = with pkgs; [
