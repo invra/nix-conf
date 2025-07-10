@@ -16,11 +16,6 @@ in
       };
     };
     desktopEntries = {
-      zen = {
-        name = "Zen Browser";
-        exec = "${pkgs.zen}/bin/zen";
-      };
-
       ghostty = {
         name = "Ghostty";
         exec = "${pkgs.ghostty}/bin/ghostty";
