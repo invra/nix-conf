@@ -14,6 +14,51 @@ in
   ];
 
   targets.darwin.defaults = {
+    NSGlobalDomain = {
+      AppleShowAllExtensions = false;
+      NSAutomaticSpellingCorrectionEnabled = false;
+      NSAutomaticQuoteSubstitutionEnabled = false;
+      NSAutomaticPeriodSubstitutionEnabled = false;
+      NSAutomaticDashSubstitutionEnabled = false;
+      NSAutomaticInlinePredictionEnabled = false;
+      NSAutomaticCapitalizationEnabled = false;
+      AppleICUForce24HourTime = true;
+      "com.apple.keyboard.fnState" = true;
+      AppleTemperatureUnit = "Celsius";
+      AppleMeasurementUnits = "Centimeters";
+      AppleMetricUnits = 1;
+      AppleHighlightColor = "0.968627 0.831373 1.000000 Purple";
+      AppleAccentColor = 5;
+    };
+
+    "com.apple.screencapture" = {
+      location = "~/Desktop";
+      type = "png";
+      target = "clipboard";
+    };
+
+    "com.apple.WindowManager" = {
+      EnableStandardClickToShowDesktop = false;
+      GloballyEnabled = false;
+    };
+
+    "com.apple.menuextra.clock" = {
+      Show24Hour = true;
+      ShowSeconds = true;
+    };
+
+    "com.apple.desktopservices" = {
+      DSDontWriteNetworkStores = true;
+      DSDontWriteUSBStores = true;
+    };
+
+    "com.apple.finder" = {
+      AppleShowAllExtensions = true;
+      CreateDesktop = false;
+      QuitMenuItem = true;
+      NewWindowTarget = "Home";
+    };
+
     "com.apple.dock" = {
       autohide = system.dock.autohide or false;
       orientation = system.dock.orientation or "bottom";
