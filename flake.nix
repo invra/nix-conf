@@ -79,6 +79,7 @@
 
             specialArgs = unstable: stable: {
               inherit
+                nixpkgs-24_11
                 desktop
                 user
                 home-manager
@@ -96,20 +97,17 @@
               inherit (configTOML) system;
               inherit (user) username;
             };
+
+            pkgs-config = system: {
+              inherit system overlays;
+              config = { inherit allowUnfreePredicate; };
+            };
           in
           {
             darwinConfigurations.${name} =
               let
-                unstable = import nixpkgs {
-                  inherit overlays;
-                  system = "aarch64-darwin";
-                  config = { inherit allowUnfreePredicate; };
-                };
-                stable = import nixpkgs-stable {
-                  inherit overlays;
-                  system = "aarch64-darwin";
-                  config = { inherit allowUnfreePredicate; };
-                };
+                unstable = import nixpkgs (pkgs-config "aarch64-darwin");
+                stable = import nixpkgs-stable (pkgs-config "aarch64-darwin");
               in
               darwin.lib.darwinSystem {
                 system = "aarch64-darwin";
@@ -118,19 +116,11 @@
                   ./modules/config
                 ];
               };
-          }
-          // (flake-utils.lib.eachSystem [ "aarch64-linux" "x86_64-linux" "aarch64-darwin" ] (
+          } // (flake-utils.lib.eachSystem [ "aarch64-linux" "x86_64-linux" "aarch64-darwin" ] (
             system:
             let
-              unstable = import nixpkgs {
-                inherit system overlays;
-                config = { inherit allowUnfreePredicate; };
-              };
-              stable = import nixpkgs-stable {
-                inherit system overlays;
-                config = { inherit allowUnfreePredicate; };
-              };
-              inherit (configTOML) user;
+              unstable = import nixpkgs (pkgs-config system);
+              stable = import nixpkgs-stable (pkgs-config system);
             in
             with unstable;
             {
@@ -142,29 +132,12 @@
                   stylix.nixosModules.stylix
                 ];
               };
-              formatter = nixfmt-tree;
               legacyPackages.homeConfigurations.${name} = home-manager.lib.homeManagerConfiguration {
                 pkgs = unstable;
-                extraSpecialArgs = {
-                  inherit
-                    desktop
-                    user
-                    home-manager
-                    unstable
-                    stable
-                    nixpkgs-24_11
-                    nixpkgs-stable
-                    nixpkgs
-                    plasma-manager
-                    nixcord
-                    stylix
-                    zen-browser
-                    custils
-                    ;
+                extraSpecialArgs = (specialArgs unstable stable) // {
                   pkgs = unstable;
-                  pkgs-24_11 = import nixpkgs-24_11 { inherit system; };
-                  inherit (configTOML) system development;
-                  inherit (user) username;
+                  pkgs-24_11 = import nixpkgs-24_11 (pkgs-config system);
+                  inherit (configTOML) development;
                 };
                 modules = [
                   plasma-manager.homeManagerModules.plasma-manager
@@ -173,6 +146,7 @@
                   ./modules/home
                 ];
               };
+              formatter = nixfmt-tree;
             }
           ))
         ) (builtins.mapAttrs (name: _: import ./configurations/${name}) (builtins.readDir ./configurations))
