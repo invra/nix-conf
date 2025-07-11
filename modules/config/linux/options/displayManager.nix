@@ -15,9 +15,11 @@ in
       wayland.enable = true;
     };
   };
-
-  programs.sway = {
-    enable = true;
-    package = pkgs.swayfx;
+  programs = {
+    niri.enable = true;
+    sway = {
+      enable = true;
+      package = pkgs.swayfx;
+    };
   };
 }

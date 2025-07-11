@@ -19,5 +19,8 @@ in
   environment.systemPackages = with pkgs; [
     ghostty
     zen
+    xwayland-satellite
+    swww
+    alacritty
   ];
 }

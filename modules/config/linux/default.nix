@@ -49,7 +49,7 @@ in
   environment.stub-ld.enable = true;
   xdg.portal = {
     enable = true;
-    extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+    extraPortals = [ pkgs.xdg-desktop-portal-gtk pkgs.xdg-desktop-portal-gnome];
   };
 
   system.stateVersion = "25.11";
