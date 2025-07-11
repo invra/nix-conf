@@ -52,6 +52,7 @@ in
       ];
 
       kwin = {
+        "Window Fullscreen" = "Alt+Return,,Make Window Fullscreen";
         "Switch Window Down" = "Meta+J";
         "Switch Window Left" = "Meta+H";
         "Switch Window Right" = "Meta+L";
