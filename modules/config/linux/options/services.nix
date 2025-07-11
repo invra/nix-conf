@@ -4,6 +4,7 @@
   services = {
     pulseaudio.daemon.config.flat-volumes = "no";
     flatpak.enable = true;
+    blueman.enable = true;
     qemuGuest.enable = true;
     spice-vdagentd.enable = true;
     xserver = {
