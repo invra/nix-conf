@@ -21,6 +21,5 @@ in
     zen
     xwayland-satellite
     swww
-    alacritty
   ];
 }
