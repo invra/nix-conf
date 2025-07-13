@@ -39,7 +39,7 @@
     greeter = "gdm";
     hostname = "NixOS";
     interfaces = { };
-    kernelParams = [ "intel_iommu=on" "acpi_backlight=video" ];
+    kernelParams = [ "intel_iommu=on" "iommu=pt" "acpi_backlight=video" ];
     locale = "en_AU.UTF-8";
     networking = {
       dhcpEnabled = true;
