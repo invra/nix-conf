@@ -31,6 +31,7 @@ in
 
     nvidia = {
       open = true;
+      modesetting.enable = true;
       nvidiaSettings = true;
 
       prime = {
