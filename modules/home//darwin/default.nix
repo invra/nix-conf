@@ -102,4 +102,3 @@ in
     wallpaperPath = ../../../../wallpapers/landscape.jpg;
   };
 }
-

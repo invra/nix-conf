@@ -50,9 +50,10 @@ in
         "Screensaver"
         "Meta+L"
       ];
-      Navigation."Quit" = "Meta+Q";
 
       kwin = {
+        "Window Close" = "";
+        "Window Fullscreen" = "Alt+Return,,Make Window Fullscreen";
         "Switch Window Down" = "Meta+J";
         "Switch Window Left" = "Meta+H";
         "Switch Window Right" = "Meta+L";
@@ -81,6 +82,7 @@ in
     };
 
     configFile = {
+      "kdeglobals"."Shortcuts"."Quit" = "Meta+Q";
       "baloofilerc"."Basic Settings"."Indexing-Enabled" = false;
       "kwinrc"."org.kde.kdecoration2"."ButtonsOnLeft" = "SF";
       "kwinrc"."Desktops" = {
