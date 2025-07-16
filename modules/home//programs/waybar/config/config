@@ -8,10 +8,10 @@
     "margin-right": 0,
     "modules-left": [
         "custom/launcher",
-        "sway/workspaces",
+        "niri/workspaces",
     ],
     "modules-center": [
-      "sway/window"
+      "niri/window"
     ],
     "modules-right": [
         "network",

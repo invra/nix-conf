@@ -31,7 +31,7 @@
         "nvidia"
       ];
 
-      nvidia.prime= {
+      nvidia.prime = {
         intelBusId = "PCI:0:2:0";
         nvidiaBusId = "PCI:1:0:0";
       };
@@ -39,7 +39,7 @@
     greeter = "gdm";
     hostname = "NixOS";
     interfaces = { };
-    kernelParams = [ "intel_iommu=on" ];
+    kernelParams = [ "intel_iommu=on" "iommu=pt" "acpi_backlight=video" ];
     locale = "en_AU.UTF-8";
     networking = {
       dhcpEnabled = true;

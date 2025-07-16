@@ -3,12 +3,6 @@
   ...
 }:
 {
-  imports = [
-    ./mako
-    ./waybar
-    ./rofi
-  ];
-
   home = {
     file = {
       ".config/sway/config".source = ./config;
