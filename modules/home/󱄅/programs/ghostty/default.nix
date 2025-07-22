@@ -1,10 +1,8 @@
 {
-  unstable,
+  pkgs,
   ...
 }:
 let
-  pkgs = unstable;
-
   ghostty =
     if pkgs.stdenv.isDarwin then
       pkgs.ghostty-bin

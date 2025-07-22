@@ -1,10 +1,10 @@
-{ unstable, ... }:
-let
-  pkgs = unstable;
-in
 {
-  programs.obs-studio = {
+  pkgs,
+  ...
+}:
+{
+  programs.obs-studio = with pkgs; {
     enable = true;
-    package = pkgs.obs-studio;
+    package = obs-studio;
   };
 }

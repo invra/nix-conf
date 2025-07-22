@@ -1,15 +1,9 @@
 {
-  lib,
   user,
   system,
-  unstable,
-  stable,
-  desktop,
+  pkgs,
   ...
 }:
-let
-  pkgs = unstable;
-in
 {
   imports = [
     ./options/envrionment.nix

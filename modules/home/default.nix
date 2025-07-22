@@ -1,12 +1,11 @@
 {
   nixpkgs,
-  unstable,
+  pkgs,
   custils,
   ...
 }:
 let
   lib = nixpkgs.lib;
-  pkgs = unstable;
   stdenv = pkgs.stdenv;
 in
 {

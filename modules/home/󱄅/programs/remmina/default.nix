@@ -1,7 +1,7 @@
-{ unstable, ... }:
-let
-  pkgs = unstable;
-in
 {
-  home.packages = [ pkgs.remmina ];
+  pkgs,
+  ...
+}:
+{
+  home.packages = with pkgs; [ remmina ];
 }

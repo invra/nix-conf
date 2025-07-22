@@ -1,5 +1,5 @@
 {
-  unstable,
+  pkgs,
   ...
 }:
 {
@@ -10,7 +10,7 @@
       ".config/sway/wallpaper.png".source = ../../../../../wallpapers/flake.jpg;
     };
 
-    packages = with unstable; [
+    packages = with pkgs; [
       playerctl
       wl-clipboard
       grim

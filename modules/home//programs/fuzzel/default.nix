@@ -1,7 +1,7 @@
-{ unstable, ... }:
-let
-  pkgs = unstable;
-in
+{
+  pkgs,
+  ...
+}:
 {
   stylix.targets.fuzzel.enable = false;
   programs.fuzzel = {

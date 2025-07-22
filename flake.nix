@@ -79,6 +79,7 @@
               ];
 
             specialArgs = unstable: stable: {
+              pkgs = unstable;
               inherit
                 nixpkgs-24_11
                 desktop

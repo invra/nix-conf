@@ -1,7 +1,8 @@
-{ system, unstable, ... }:
-let
-  pkgs = unstable;
-in
+{
+  system,
+  pkgs,
+  ...
+}:
 {
   networking = {
     hostName = system.hostname;

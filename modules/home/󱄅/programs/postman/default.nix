@@ -1,7 +1,7 @@
-{ unstable, ... }:
-let
-  pkgs = unstable;
-in
 {
-  home.packages = [ pkgs.postman ];
+  pkgs,
+  ...
+}:
+{
+  home.packages = with pkgs; [ postman ];
 }
