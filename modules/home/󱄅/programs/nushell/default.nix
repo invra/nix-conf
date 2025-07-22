@@ -54,7 +54,7 @@
       export def --env gc [
         source: string, # Repository to clone (e.g gitlab:invra/nix-conf or ssh:gitlab:invra/nix-conf)
         target?: string, # Location to clone to.
-        --cd(-c) # Wether to cd into new target.
+        --cd(-c) # Whether to cd into new target.
         --only-hm (-H) # Only build output for Home-manager, and switch.
         --only-config (-C) # Only build output for Configuration, and switch.
       ] {
