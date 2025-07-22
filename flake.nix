@@ -72,6 +72,7 @@
                 "parsec-bin"
                 "mongodb-compass"
                 "postman"
+                "vscode"
                 "teams"
                 "nvidia-x11"
                 "nvidia-settings"
