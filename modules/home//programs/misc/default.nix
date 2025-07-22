@@ -1,9 +1,9 @@
 {
   user,
-  config,
   unstable,
   ...
 }:
+let pkgs = unstable; in
 {
   imports = [
     ../../../modules/dock
@@ -11,7 +11,7 @@
 
   home = {
     homeDirectory = "/Users/${user.username}";
-    packages = with unstable; [
+    packages = with pkgs; [
       jankyborders
       sketchybar
       alt-tab-macos
