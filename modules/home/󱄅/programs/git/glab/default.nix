@@ -1,4 +1,9 @@
-{ unstable, ... }:
 {
-  home.packages = with unstable; [ glab ];
+  pkgs,
+  ...
+}:
+{
+  home.packages = with pkgs; [
+    glab
+  ];
 }

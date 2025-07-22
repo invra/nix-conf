@@ -1,12 +1,12 @@
 {
-  unstable,
   user,
+  pkgs,
   ...
 }:
 {
   home = {
     homeDirectory = "/home/${user.username}";
-    packages = with unstable; [
+    packages = with pkgs; [
       vlc
       gimp3
       wayvnc

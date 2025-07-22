@@ -1,12 +1,9 @@
 {
   config,
   system,
-  unstable,
+  pkgs,
   ...
 }:
-let
-  pkgs = unstable;
-in
 {
   imports = [
     ../../modules/wallpaper

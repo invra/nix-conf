@@ -1,9 +1,9 @@
 {
-  unstable,
+  pkgs,
   ...
 }:
 {
-  home.packages = with unstable; [
+  home.packages = with pkgs; [
     postman
     parsec-bin
     pgadmin4-desktopmode

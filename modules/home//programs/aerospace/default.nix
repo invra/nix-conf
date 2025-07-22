@@ -1,7 +1,9 @@
-{ unstable, ... }:
+{
+  pkgs,
+  ...
+}:
 let
   gaps = 6;
-  pkgs = unstable;
 in
 {
   programs.aerospace = {

@@ -1,7 +1,8 @@
-{ unstable, system, ... }:
-let
-  pkgs = unstable;
-in
+{
+  system,
+  pkgs,
+  ...
+}:
 {
   services.displayManager = {
     gdm = {

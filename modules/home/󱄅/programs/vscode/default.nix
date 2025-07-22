@@ -1,10 +1,10 @@
-{ unstable, ... }:
-let
-  pkgs = unstable;
-in
 {
-  programs.vscode = {
-    package = pkgs.vscode;
+  pkgs,
+  ...
+}:
+{
+  programs.vscode = with pkgs; {
+    package = vscode;
     enable = true;
   }; 
 }

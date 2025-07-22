@@ -1,7 +1,9 @@
-{ unstable, desktop, ... }:
-
+{
+  pkgs,
+  desktop,
+  ...
+}:
 let
-  pkgs = unstable;
   enable = desktop.plasma.enable;
 in
 {

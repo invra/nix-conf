@@ -1,7 +1,7 @@
-{ unstable, ... }:
-let
-  pkgs = unstable;
-in
+{
+  pkgs,
+  ...
+}:
 {
   xdg = {
     mimeApps = {
@@ -15,10 +15,10 @@ in
         "application/x-desktop" = "ghostty.desktop";
       };
     };
-    desktopEntries = {
+    desktopEntries = with pkgs; {
       ghostty = {
         name = "Ghostty";
-        exec = "${pkgs.ghostty}/bin/ghostty";
+        exec = "${ghostty}/bin/ghostty";
       };
     };
   };

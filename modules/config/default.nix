@@ -1,7 +1,8 @@
-{ user, unstable, ... }:
-let
-  pkgs = unstable;
-in
+{
+  user,
+  pkgs,
+  ...
+}:
 {
   imports = if pkgs.stdenv.isLinux then [ ./linux ] else [ ./darwin ];
 
@@ -24,10 +25,7 @@ in
     };
   };
 
-  nixpkgs = {
-    hostPlatform = pkgs.hostPlatform.system;
-    inherit pkgs;
-  };
+  # nixpkgs.hostPlatform = pkgs.hostPlatform.system;
 
   users.users = {
     ${user.username} = {

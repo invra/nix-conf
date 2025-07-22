@@ -1,7 +1,7 @@
-{ unstable, ... }:
-let
-  pkgs = unstable;
-in
+{
+  pkgs,
+  ...
+}:
 {
   environment.shells = [
     pkgs.bashInteractive

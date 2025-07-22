@@ -1,7 +1,8 @@
-{ unstable, system, ... }:
-let
-  pkgs = unstable;
-in
+{
+  pkgs,
+  system,
+  ...
+}:
 {
   boot = {
     kernelPackages = pkgs.linuxPackages_latest;

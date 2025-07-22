@@ -1,7 +1,7 @@
-{ unstable, ... }:
-let
-  pkgs = unstable;
-in
+{
+  pkgs,
+  ...
+}:
 {
   environment.plasma6.excludePackages = with pkgs.kdePackages; [
     plasma-browser-integration
@@ -13,6 +13,5 @@ in
     gwenview
     okular
   ];
-
   programs.nano.enable = false;
 }

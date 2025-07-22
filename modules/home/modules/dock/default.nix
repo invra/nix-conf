@@ -1,14 +1,13 @@
 {
   config,
   lib,
-  unstable,
+  pkgs,
   ...
 }:
 with lib;
 let
   cfg = config.local.dock;
-  inherit (unstable) dockutil;
-  pkgs = unstable;
+  inherit (pkgs) dockutil;
 in
 {
   options = {

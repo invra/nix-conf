@@ -1,7 +1,10 @@
-{ unstable, ... }:
+{
+  pkgs,
+  ...
+}:
 {
   fonts = {
-    packages = with unstable; [
+    packages = with pkgs; [
       nerd-fonts.jetbrains-mono
       font-awesome
       liberation_ttf

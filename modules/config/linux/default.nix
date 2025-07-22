@@ -1,12 +1,9 @@
 {
   lib,
   system,
-  unstable,
+  pkgs,
   ...
 }:
-let
-  pkgs = unstable;
-in
 {
   imports = [
     system.hardware-module

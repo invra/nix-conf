@@ -1,4 +1,7 @@
-{ unstable, ... }:
+{
+  pkgs,
+  ...
+}:
 {
   stylix.targets.zed.enable = false;
   programs.zed-editor = {
@@ -11,7 +14,7 @@
       "nu"
       "discord-presence"
     ];
-    extraPackages = with unstable; [
+    extraPackages = with pkgs; [
       nixd
       nil
     ];
