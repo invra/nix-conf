@@ -6,7 +6,7 @@
     nixpkgs-24_11.url = "github:NixOS/nixpkgs/nixos-24.11";
     stylix.url = "github:danth/stylix";
     zen-browser.url = "gitlab:InvraNet/zen-flake";
-    nixcord.url = "git+https://github.com/kaylorben/nixcord?rev=caca900dcbfcd6ca2d60a1a49f53853c0ed60e5f";
+    nixcord.url = "git+https://github.com/kaylorben/nixcord";
     ip.url = "gitlab:hiten-tandon/some-nix-darwin-packages";
     ghostty.url = "github:ghostty-org/ghostty";
 
