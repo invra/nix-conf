@@ -17,6 +17,9 @@
   };
 
   environment.systemPackages = with pkgs; [
+    uutils-coreutils-noprefix
+    uutils-diffutils
+    uutils-findutils
     ghostty
     zen
     pciutils

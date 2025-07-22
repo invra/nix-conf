@@ -37,6 +37,9 @@
   environment.systemPackages = with pkgs; [
     jack2
     git
+    uutils-diffutils
+    uutils-findutils
+    uutils-coreutils-noprefix
     home-manager
   ];
 }

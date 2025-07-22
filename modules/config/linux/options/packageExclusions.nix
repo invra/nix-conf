@@ -13,5 +13,6 @@
     gwenview
     okular
   ];
+
   programs.nano.enable = false;
 }
