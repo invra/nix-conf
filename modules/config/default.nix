@@ -37,9 +37,10 @@
   environment.systemPackages = with pkgs; [
     jack2
     git
+    helix
+    home-manager
     uutils-diffutils
     uutils-findutils
     uutils-coreutils-noprefix
-    home-manager
   ];
 }
