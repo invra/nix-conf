@@ -43,8 +43,8 @@ in
     hotkeys.commands."launch-ghostty" = {
       key = "Meta+Return";
       name = "Launch Ghostty";
-      command = "${pkgs.ghostty}/bin/ghostty";
-      comment = "Launch Ghostty terminal emulator.";
+      command = "ghostty";
+      comment = "Launch Ghostty terminal.";
     };
 
     shortcuts = {
