@@ -78,8 +78,32 @@
     --button-filled-brand-text: #c4a7e7 !important;
     --button-filled-brand-text-hover: var(--button-outline-danger-text) !important;
   }
+  
+  .custom-user-profile-theme .themeColor_fb7f94.secondary_fb7f94 {
+    background: rgba(155,155,155,0.1) !important;
+    border: none;
+  }
 
+  .button_fb7f94.button__201d5.lookFilled__201d5.colorPrimary__201d5.themeColor_fb7f94.primary_fb7f94.sizeSmall__201d5.grow__201d5 {
+    background: #c4a7e722 !important;
+    color: #c4a7e7 !important;
+    font-weight: 600 !important;
+    border: none !important;
+  }
 
+  .button_fb7f94.button__201d5.lookFilled__201d5.colorPrimary__201d5.themeColor_fb7f94.primary_fb7f94.sizeSmall__201d5.grow__201d5:hover {
+    background: #c4a7e744 !important;
+    color: #c4a7e7 !important;
+    font-weight: 600 !important;
+    border: none !important;
+  }
+
+  .button_fb7f94.button__201d5.lookFilled__201d5.colorPrimary__201d5.themeColor_fb7f94.primary_fb7f94.sizeSmall__201d5.grow__201d5:active {
+    background: #c4a7e766 !important;
+    color: #c4a7e7 !important;
+    font-weight: 600 !important;
+    border: none !important;
+  }
 
   .visual-refresh .tabBar__133bf .addFriend__133bf.addFriend__133bf.addFriend__133bf:hover {
     background-color: #c4a7e722;
@@ -115,16 +139,20 @@
   :root .user-profile-popout,
   .outer_c0bea0.user-profile-sidebar {
     background: #1f1d2e !important;
-    --profile-gradient-start: #2b293d !important;
-    --profile-gradient-end: #2b293d !important;
+    --profile-gradient-start: #1f1d2e !important;
+    --profile-gradient-end: #1f1d2e !important;
     padding: 0 !important;
-    --profile-gradient-primary-color: #2b293d !important;
-    --profile-gradient-secondary-color: #2b293d !important;
-    --profile-gradient-overlay-color: #2b293d !important;
+    --profile-gradient-primary-color: #1f1d2e !important;
+    --profile-gradient-secondary-color: #1f1d2e !important;
+    --profile-gradient-overlay-color: #1f1d2e !important;
     --profile-gradient-primary-color: #e0def4 !important;
-    --profile-gradient-primary-color: #2b293d !important;
-    --profile-gradient-primary-color: #2b293d !important;
-    --profile-gradient-primary-color: #2b293d !important;
+    --profile-gradient-primary-color: #1f1d2e !important;
+    --profile-gradient-primary-color: #1f1d2e !important;
+    --profile-gradient-primary-color: #1f1d2e !important;
+  }
+
+  .outer_c0bea0 .inner_c0bea0 .backgroundImage__9c3be {
+    display: none;
   }
 
   .footerButtonColor__7f9c0 {
@@ -136,7 +164,7 @@
   }
 
   .custom-user-profile-theme .themeColor_fb7f94.primary_fb7f94 {
-    background: #2b293d;
+    background: #1f1d2e;
   }
 
   .wrapper__44b0c[role="img"] > svg > circle {
@@ -144,9 +172,23 @@
   }
 
   .custom-user-profile-theme .inner_c0bea0 {
-    --profile-gradient-start: #2b293d !important;
-    --profile-gradient-end: #2b293d !important;
-    background: none !important;
+    --profile-gradient-start: #1f1d2e !important;
+    --profile-gradient-end: #1f1d2e !important;
+    background: #1f1d2e !important;
+  }
+
+  .outer_c0bea0.user-profile-modal-v2.custom-theme-background.custom-user-profile-theme {
+    --profile-gradient-primary-color: none !important;
+    --profile-gradient-secondary-color: none !important;
+    --profile-gradient-overlay-color: none !important;
+    --profile-gradient-button-color: none !important;
+    --profile-gradient-modal-background-color: none !important;
+    --custom-theme-base-color-amount: none !important;
+    --custom-theme-text-color-amount: none !important;
+    --custom-theme-text-color-light: none !important;
+    --custom-theme-base-color-dark-hsl: none !important;
+    --custom-theme-base-color-dark: none !important;
+    --custom-theme-text-color-dark: none !important;
   }
 
   #vc-spotify-progress-bar>[class^=slider]:hover [class^=barFill] {
@@ -274,4 +316,10 @@
   .gradientContainer_bfe55a {
     background-image: none !important;
   }
+
+  .custom-user-profile-theme .tabBarItem__37bfc {
+    --selected-tab-item-color: var(--text-primary) !important;
+    color: #ffffff61 !important;
+  }
+  
 ''
