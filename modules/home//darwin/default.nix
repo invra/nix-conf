@@ -4,6 +4,9 @@
   pkgs,
   ...
 }:
+let
+  isAppDrawerCompliant = import ../../modules/dock/os_vers {inherit pkgs;};
+in
 {
   imports = [
     ../../modules/wallpaper
@@ -73,7 +76,10 @@
       (system.dock.entries or (
         { ... }:
         [
-          { path = "/Applications/Launchpad.app"; }
+          {
+            path =
+              if isAppDrawerCompliant then "/System/Applications/Apps.app" else "/Applications/Launchpad.app";
+          }
           { path = "/Applications/Safari.app"; }
           { path = "/System/Applications/Messages.app"; }
           { path = "/System/Applications/Mail.app"; }

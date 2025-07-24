@@ -1,0 +1,7 @@
+[package]
+name = "os_vers"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+os_info = "3.12.0"
