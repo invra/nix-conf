@@ -118,7 +118,8 @@
                   ./modules/config
                 ];
               };
-          } // (flake-utils.lib.eachSystem [ "aarch64-linux" "x86_64-linux" "aarch64-darwin" ] (
+          }
+          // (flake-utils.lib.eachSystem [ "aarch64-linux" "x86_64-linux" "aarch64-darwin" ] (
             system:
             let
               unstable = import nixpkgs (pkgs-config system);
