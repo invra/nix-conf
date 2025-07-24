@@ -55,7 +55,7 @@ int main(int argc, char *argv[]) {
 
     if (access(nix_path, F_OK) == -1) {
         std::cout << GREEN << "[INFO] " << RESET << "Nix is not installed. Installing Nix...\n";
-        system("bash <(curl --proto '=https' --tlsv1.2 -L https://nixos.org/nix/install)");
+        system("curl --proto '=https' --tlsv1.2 -L https://nixos.org/nix/install | sh");
     
         if (version.find("26.0") != std::string::npos) {
             std::cout << GREEN << "[INFO] " << RESET << "Patching nix-daemon plist to disable fork safety...\n";
