@@ -81,20 +81,19 @@ fn main() {
 
     if !is_command_available("home-manager") {
         info!("Applying nix-darwin config...");
-        run_after_install_command(format!("sudo nix run nix-darwin --extra-experimental-features 'nix-command flakes' -- switch --flake '.#{cmd}'"));
+        run_after_install_command(format!("sudo nix run nix-darwin --extra-experimental-features 'nix-command flakes' -- switch --flake '.#{flake}'").as_str());
     } else {
         info!("The nix-darwin installation has already happened, if it hasn't... Please uninstall or dereference home-manager.");
     }
 
     if !is_command_available("hx") {
         info!("Home Manager config not applied. Applying now...");
-        run_after_install_command(format!("home-manager switch --flake '.#{flake}' -b backup"));
+        run_after_install_command(format!("home-manager switch --flake '.#{flake}' -b backup").as_str());
         
         println!("{} Please run \"source /etc/zshrc\" to have access to Nix.", "[FINISHED]".green());
     } else {
         info!("The home-manager config seems to be already applied. Please use nh to rebuild.");
     }
-
 }
 
 
