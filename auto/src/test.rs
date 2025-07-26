@@ -1,5 +1,5 @@
-
+use colored::Colorize;
 
 fn main() {
-    println!("If you see this message the toolchain is working correctly!")
+    println!("{} {} {} {}","Hello!".bold().green(), "If you see".yellow(), "this message".italic().bold().yellow(), "the toolchain is working correctly!".yellow())
 }
