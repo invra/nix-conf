@@ -15,6 +15,11 @@ use {
         path::Path,
     },
     clap::Parser,
+    os_info::{
+        get as get_os_info,
+        Version,
+        Type,
+    },
 };
 
 
@@ -73,7 +78,16 @@ fn main() {
         println!("Nix is not installed. Installing Nix...");
         run_command("curl --proto '=https' --tlsv1.2 -L https://nixos.org/nix/install | sh", false);
 
-        // TODO: PLIST MANAGEMENT
+        match get_info().version() {
+            Version::Semantic(major, _, _) if major >= 26 => {
+                println!("Patching nix-daemon plist to disable fork safety...");
+                run_command("sudo plutil -insert EnvironmentVariables -dictionary /Library/LaunchDaemons/org.nixos.nix-daemon.plist &>/dev/null", false);
+                run_command("sudo plutil -insert EnvironmentVariables.OBJC_DISABLE_INITIALIZE_FORK_SAFETY -string YES /Library/LaunchDaemons/org.nixos.nix-daemon.plist &>/dev/null", false);
+                run_command("sudo launchctl unload /Library/LaunchDaemons/org.nixos.nix-daemon.plist", false);
+                run_command("sudo launchctl bootstrap system /Library/LaunchDaemons/org.nixos.nix-daemon.plist", false);
+            }
+            _ => ()
+        }
     } else {
         println!("Nix is already installed. I will skip installation.");
     }
