@@ -6,7 +6,7 @@ You will find all the files required in [`./src`](./src/).
 To bootstrap Cargo run
 
 ```sh
-$  make bootstrap
+$  python3 ./bootstrap.py
 ```
 
 The bootstrap script will:
