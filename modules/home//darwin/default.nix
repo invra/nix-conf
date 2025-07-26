@@ -13,10 +13,11 @@
   targets.darwin = {
     dock = {
       enable = true;
-    } // pkgs.lib.optionalAttrs (system ? dock && system.dock ? entries) {
+    }
+    // pkgs.lib.optionalAttrs (system ? dock && system.dock ? entries) {
       entries = system.dock.entries { inherit pkgs config; };
     };
-    
+
     defaults = {
       NSGlobalDomain = {
         AppleShowAllExtensions = false;

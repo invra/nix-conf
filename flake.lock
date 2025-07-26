@@ -403,20 +403,22 @@
       "inputs": {
         "flake-compat": "flake-compat_2",
         "flake-parts": "flake-parts",
-        "nixpkgs": "nixpkgs_3"
+        "nixpkgs": [
+          "nixpkgs"
+        ]
       },
       "locked": {
-        "lastModified": 1753321333,
-        "narHash": "sha256-tNh44gumJ+qklzLC5MadpWWK1qvYutZytqaoXpFmjKU=",
-        "ref": "refs/heads/main",
-        "rev": "360397778114931ce13e430edc5c07c56edb5454",
-        "revCount": 446,
-        "type": "git",
-        "url": "https://github.com/kaylorben/nixcord"
+        "lastModified": 1753407704,
+        "narHash": "sha256-TRJXudGSVk05NpRB+2HJ4AiOm0mXAm+M31PoOh4xchY=",
+        "owner": "kaylorben",
+        "repo": "nixcord",
+        "rev": "855a08344b3e9a5428f797df07de3f2c0c2e4799",
+        "type": "github"
       },
       "original": {
-        "type": "git",
-        "url": "https://github.com/kaylorben/nixcord"
+        "owner": "kaylorben",
+        "repo": "nixcord",
+        "type": "github"
       }
     },
     "nixpkgs": {
@@ -497,22 +499,6 @@
     },
     "nixpkgs_3": {
       "locked": {
-        "lastModified": 1749494155,
-        "narHash": "sha256-FG4DEYBpROupu758beabUk9lhrblSf5hnv84v1TLqMc=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "88331c17ba434359491e8d5889cce872464052c2",
-        "type": "github"
-      },
-      "original": {
-        "owner": "NixOS",
-        "ref": "nixos-25.05",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
-    "nixpkgs_4": {
-      "locked": {
         "lastModified": 1752950548,
         "narHash": "sha256-NS6BLD0lxOrnCiEOcvQCDVPXafX1/ek1dfJHX1nUIzc=",
         "owner": "NixOS",
@@ -527,7 +513,7 @@
         "type": "github"
       }
     },
-    "nixpkgs_5": {
+    "nixpkgs_4": {
       "locked": {
         "lastModified": 1751792365,
         "narHash": "sha256-J1kI6oAj25IG4EdVlg2hQz8NZTBNYvIS0l4wpr9KcUo=",
@@ -543,7 +529,7 @@
         "type": "github"
       }
     },
-    "nixpkgs_6": {
+    "nixpkgs_5": {
       "locked": {
         "lastModified": 1751271578,
         "narHash": "sha256-P/SQmKDu06x8yv7i0s8bvnnuJYkxVGBWLWHaU+tt4YY=",
@@ -639,7 +625,7 @@
         "home-manager": "home-manager",
         "ip": "ip",
         "nixcord": "nixcord",
-        "nixpkgs": "nixpkgs_4",
+        "nixpkgs": "nixpkgs_3",
         "nixpkgs-24_11": "nixpkgs-24_11",
         "nixpkgs-stable": "nixpkgs-stable",
         "plasma-manager": "plasma-manager",
@@ -668,7 +654,7 @@
         "firefox-gnome-theme": "firefox-gnome-theme",
         "flake-parts": "flake-parts_2",
         "gnome-shell": "gnome-shell",
-        "nixpkgs": "nixpkgs_5",
+        "nixpkgs": "nixpkgs_4",
         "nur": "nur",
         "systems": "systems_3",
         "tinted-foot": "tinted-foot",
@@ -835,18 +821,18 @@
         "darwin-universal-src": "darwin-universal-src",
         "linux-aarch-src": "linux-aarch-src",
         "linux-x86-src": "linux-x86-src",
-        "nixpkgs": "nixpkgs_6"
+        "nixpkgs": "nixpkgs_5"
       },
       "locked": {
-        "lastModified": 1752086652,
-        "narHash": "sha256-kBakF0sJDCZWAJLo+amM05StkEh+n1UvQMsyK2CrsJc=",
-        "owner": "InvraNet",
+        "lastModified": 1753500495,
+        "narHash": "sha256-UOBsFUoEtSrMrMsJtTwDA72uiSPMC4Gd+cAPSP182b0=",
+        "owner": "invra",
         "repo": "zen-flake",
-        "rev": "9c4348c605ceb411ad3c0a27ecfe26bfa96129b9",
+        "rev": "a49456d7fdf7454dcc186eb6174d3efbee948026",
         "type": "gitlab"
       },
       "original": {
-        "owner": "InvraNet",
+        "owner": "invra",
         "repo": "zen-flake",
         "type": "gitlab"
       }
