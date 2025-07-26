@@ -1,12 +1,5 @@
 use {
     colored::Colorize,
-    // tracing::info,
-    // tracing_subscriber::{
-    //     EnvFilter,
-    //     fmt::{self, format},
-    //     prelude::__tracing_subscriber_SubscriberExt,
-    //     util::SubscriberInitExt,
-    // },
     std::{
         process::{
             ExitStatus,
@@ -22,7 +15,6 @@ use {
     },
 };
 
-
 #[derive(Debug, Clone, Copy)]
 pub enum Error {
     IncompatibleSystem,
@@ -36,6 +28,10 @@ struct Args {
     flake: String,
 }
 
+fn iprintln(msg: &str)  {
+    println!("{} {msg}", "[INFO]".yellow());
+}
+
 fn is_command_available(cmd: &str) -> bool {
     Command::new("command")
         .arg("-v")
@@ -44,7 +40,7 @@ fn is_command_available(cmd: &str) -> bool {
 }
 
 fn run_command(cmd: &str, print: bool) -> std::process::ExitStatus {
-    print.then(|| println!("I a running: {cmd}"));
+    print.then(|| iprintln("I am running: {cmd}"));
     Command::new("zsh")
         .arg("-c")
         .arg(cmd)
@@ -53,7 +49,7 @@ fn run_command(cmd: &str, print: bool) -> std::process::ExitStatus {
 }
 
 fn run_after_install_command(cmd: &str) {
-    let full = format!("zsh -c \"source /etc/zshrc && {cmd} \"");
+    let full = format!("zsh -c \"source /etc/zshrc && {cmd}\"");
     run_command(&full, true);
 }
 
@@ -61,21 +57,10 @@ fn run_after_install_command(cmd: &str) {
 fn main() {
     let args = Args::parse();
     let flake = args.flake;
-
-    // tracing_subscriber::registry()
-    // .with(
-    //     fmt::layer()
-    //     .with_target(false)
-    //     .with_level(true)
-    //     .without_time()
-    //     .with_ansi(true)
-    // )
-    // .with(EnvFilter::new("info"))
-    // .init();
-
     let nix_path = Path::new("/nix/var/nix/profiles/default/bin/nix");
+
     if !Path::exists(nix_path) {
-        println!("Nix is not installed. Installing Nix...");
+        iprintln("Nix is not installed. Installing Nix...");
         run_command("curl --proto '=https' --tlsv1.2 -L https://nixos.org/nix/install | sh", false);
 
         match get_os_info().version() {
@@ -89,23 +74,23 @@ fn main() {
             _ => ()
         }
     } else {
-        println!("Nix is already installed. I will skip installation.");
+        iprintln("Nix is already installed. I will skip installation.");
     }
 
     if !is_command_available("home-manager") {
-        println!("Applying nix-darwin config...");
+        iprintln("Applying nix-darwin config...");
         run_after_install_command(format!("sudo nix run nix-darwin --extra-experimental-features 'nix-command flakes' -- switch --flake '.#{flake}'").as_str());
     } else {
-        println!("The nix-darwin installation has already happened, if it hasn't... Please uninstall or dereference home-manager.");
+        iprintln("The nix-darwin installation has already happened, if it hasn't... Please uninstall or dereference home-manager.");
     }
 
     if !is_command_available("hx") {
-        println!("Home Manager config not applied. Applying now...");
+        iprintln("Home Manager config not applied. Applying now...");
         run_after_install_command(format!("home-manager switch --flake '.#{flake}' -b backup").as_str());
         
         println!("{} Please run \"source /etc/zshrc\" to have access to Nix.", "[FINISHED]".green());
     } else {
-        println!("The home-manager config seems to be already applied. Please use nh to rebuild.");
+        iprintln("The home-manager config seems to be already applied. Please use nh to rebuild.");
     }
 }
 
