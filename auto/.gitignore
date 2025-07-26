@@ -4,7 +4,7 @@
 # But don't ignore these files in the root
 !.gitignore
 !README.md
-!Makefile
+!bootstrap.py
 !Cargo.toml
 !Cargo.lock
 
