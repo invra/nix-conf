@@ -3,13 +3,13 @@ Theres automations scripts are written with Rust.
 You will find all the files required in [`./src`](./src/).
 
 ## Bootstrapping Cargo
-To boostrap Cargo run
+To bootstrap Cargo run
 
 ```sh
-$  make boostrap
+$  make bootstrap
 ```
 
-The boostrap script will:
+The bootstrap script will:
 - Create ./.bootstrap
 - Put ENV's: RUSTUP_HOME, CARGO_HOME as `$(CURDIR)/.bootstrap/[rustup,cargo]`
 - Install rustup script with `-y --no-modify-path --profile minimal`
