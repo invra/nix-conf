@@ -83,22 +83,60 @@ in
     })
 
     (mkIf cfg.enable {
-      home.activation.dockSetup = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+      home.activation.darwinDock = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+        #!/bin/bash
         (
-          haveURIs="$(${dockutil}/bin/dockutil --list | ${pkgs.coreutils}/bin/cut -f2)"
-          wantURIs="$(
-            ${lib.concatMapStringsSep "\n" (
-              entry: "echo file://$(${pkgs.coreutils}/bin/realpath '${entry.path}' | sed 's/ /%20/g')"
-            ) cfg.entries}
-          )"
+          haveURIs="$(${dockutil}/bin/dockutil --list | ${pkgs.coreutils}/bin/cut -f2 | ${pkgs.coreutils}/bin/sort)"
+          wantURIs=""
+          ${lib.optionalString (cfg.entries != []) ''
+            wantURIs="$(
+              {
+                ${lib.concatMapStringsSep "\n" (
+                  entry: ''
+                    if [[ -z "${entry.path or ""}" || -z "${entry.section or ""}" ]]; then
+                      echo "Error: Invalid entry in cfg.entries (missing path or section): ${builtins.toJSON entry}" >&2
+                      exit 1
+                    fi
+                    path="$(${pkgs.coreutils}/bin/realpath "${entry.path}")"
+                    if [[ "$path" =~ home-manager-applications ]]; then
+                      path="$(${pkgs.coreutils}/bin/realpath "$path")"
+                    fi
+                    if [[ ! "$path" =~ \.app$ ]]; then
+                      echo "Error: Path '$path' is not an application bundle" >&2
+                      exit 1
+                    fi
+                    echo "file://$path/"
+                  ''
+                ) cfg.entries}
+              } | ${pkgs.coreutils}/bin/sort
+            )"
+          ''}
 
           if ! diff -wu <(echo -n "$haveURIs") <(echo -n "$wantURIs") >/dev/null 2>&1; then
+            echo "Dock URIs differ, updating Dock" >&2
             ${dockutil}/bin/dockutil --no-restart --remove all >/dev/null 2>&1
-            ${lib.concatMapStringsSep "\n" (
-              entry:
-              "${dockutil}/bin/dockutil --no-restart --add '${entry.path}' --section ${entry.section} ${entry.options} >/dev/null 2>&1"
-            ) cfg.entries}
+            ${lib.optionalString (cfg.entries != []) ''
+              ${lib.concatMapStringsSep "\n" (
+                entry: ''
+                  if [[ -z "${entry.path or ""}" || -z "${entry.section or ""}" ]]; then
+                    echo "Error: Invalid entry in cfg.entries (missing path or section): ${builtins.toJSON entry}" >&2
+                    exit 1
+                  fi
+                  resolved_path="$(${pkgs.coreutils}/bin/realpath "${entry.path}")"
+                  if [[ "$resolved_path" =~ home-manager-applications ]]; then
+                    resolved_path="$(${pkgs.coreutils}/bin/realpath "$resolved_path")"
+                  fi
+                  if [[ ! "$resolved_path" =~ \.app$ ]]; then
+                    echo "Error: Path '$resolved_path' is not an application bundle" >&2
+                    exit 1
+                  fi
+                  ${dockutil}/bin/dockutil --no-restart --add "$resolved_path" --section ${entry.section} ${entry.options or ""} >/dev/null 2>&1
+                ''
+              ) cfg.entries}
+            ''}
             ${pkgs.killall}/bin/killall Dock >/dev/null 2>&1
+          else
+            echo "Dock URIs are identical, no update needed" >&2
           fi
         ) >/dev/null 2>&1
       '';
