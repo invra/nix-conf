@@ -1,14 +1,17 @@
-use colored::Colorize;
-use clap::Parser;
-
 #[cfg(target_os = "macos")]
 fn main() {
+    use colored::Colorize;
     println!("Hello, world!");
 }
 
 
 #[cfg(not(target_os = "macos"))]
-fn main() -> Result<(), ()> {
-    eprintln!("{} {}", "[ERROR]".red(), "This tool only works on macOS, and should only be run on it.");
-    Err(())
+#[derive(Debug, Clone, Copy)]
+pub enum Error {
+    IncompatibleSystem,
+}
+
+#[cfg(not(target_os = "macos"))]
+fn main() -> Result<(), Error> {
+    Err(Error::IncompatibleSystem)
 }
