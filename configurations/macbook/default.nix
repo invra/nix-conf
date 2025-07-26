@@ -28,7 +28,7 @@
           config ? { },
         }:
         [
-          { path = "/Applications/Apps.app"; }
+          { path = "/System/Applications/Apps.app"; }
           { path = "${pkgs.zen}/Applications/Zen.app"; }
           { path = "${pkgs.zed-editor}/Applications/Zed.app"; }
           { path = "${config.home.homeDirectory}/Applications/Home Manager Apps/Discord.app"; }
