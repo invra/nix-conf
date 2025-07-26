@@ -35,7 +35,6 @@ fn is_command_available(cmd: &str) -> bool {
     Command::new("command")
         .arg("-v")
         .arg(cmd)
-        .arg(">/dev/null 2>&1")
         .output().unwrap().status.success()
 }
 
