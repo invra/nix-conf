@@ -1,4 +1,7 @@
-{ ... }:
+{
+  pkgs,
+  ...
+}:
 {
   stylix.targets = {
     nixcord.enable = false;
