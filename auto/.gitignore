@@ -1,6 +1,15 @@
+# Ignore everything recursively
 **
+
+# But don't ignore these files in the root
 !.gitignore
 !README.md
 !*.cpp
-!*.rs
 !Makefile
+!Cargo.toml
+!Cargo.lock
+
+# Un-ignore directories so git can look inside them
+!src/
+# Then un-ignore Rust files inside those directories
+!src/**/*.rs
