@@ -23,7 +23,7 @@
       entries =
         { pkgs, ... }:
         [
-          { path = "/Applications/Apps.app"; }
+          { path = "/System/Applications/Apps.app"; }
           { path = "/System/Applications/Mail.app"; }
           { path = "/System/Applications/Music.app"; }
           { path = "${pkgs.ghostty-bin}/Applications/Ghostty.app"; }
