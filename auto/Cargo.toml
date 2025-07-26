@@ -1,0 +1,11 @@
+[package]
+name = "invra-nix-automation"
+version = "0.0.1"
+edition = "2024"
+authors = [ "Invra" ]
+
+[[bin]]
+name = "bootstrap-darwin"
+path = "src/nix-darwin.rs"
+
+[dependencies]
