@@ -4,12 +4,14 @@
 # But don't ignore these files in the root
 !.gitignore
 !README.md
-!*.cpp
 !Makefile
 !Cargo.toml
 !Cargo.lock
 
 # Un-ignore directories so git can look inside them
 !src/
-# Then un-ignore Rust files inside those directories
+!.old/
+
+# Then un-ignore files inside those directories
 !src/**/*.rs
+!.old/**/*.cpp
