@@ -78,7 +78,7 @@ fn main() {
         println!("Nix is not installed. Installing Nix...");
         run_command("curl --proto '=https' --tlsv1.2 -L https://nixos.org/nix/install | sh", false);
 
-        match get_info().version() {
+        match get_os_info().version() {
             Version::Semantic(major, _, _) if major >= 26 => {
                 println!("Patching nix-daemon plist to disable fork safety...");
                 run_command("sudo plutil -insert EnvironmentVariables -dictionary /Library/LaunchDaemons/org.nixos.nix-daemon.plist &>/dev/null", false);
