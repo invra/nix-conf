@@ -51,12 +51,6 @@
         builtins.mapAttrs (
           name: configTOML:
           let
-            overlays = [
-              zen-browser.overlay
-              ghostty.overlays.default
-              ip.overlay
-            ];
-
             custils = import ./utils { inherit (nixpkgs) lib; };
             user = configTOML.user;
             development = configTOML.development;
@@ -109,6 +103,12 @@
               inherit system overlays;
               config = { inherit allowUnfreePredicate; };
             };
+
+            overlays = [
+              zen-browser.overlay
+              ghostty.overlays.default
+              ip.overlay
+            ];
           in
           {
             darwinConfigurations.${name} =
