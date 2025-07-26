@@ -38,13 +38,13 @@ fn is_command_available(cmd: &str) -> bool {
         .output().unwrap().status.success()
 }
 
-fn run_command(cmd: &str, print: bool) -> std::process::Output {
+fn run_command(cmd: &str, print: bool) -> std::process::ExitStatus {
     print.then(|| println!("I a running: {cmd}"));
     Command::new("zsh")
         .arg("-c")
         .arg(cmd)
-        .output()
-        .expect(format!("{cmd} Could not be ran!").as_str())
+        .status()
+        .expect(&format!("{cmd} could not be run!"))
 }
 
 fn run_after_install_command(cmd: &str) {
