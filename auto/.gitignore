@@ -10,8 +10,6 @@
 
 # Un-ignore directories so git can look inside them
 !src/
-!.old/
 
 # Then un-ignore files inside those directories
 !src/**/*.rs
-!.old/**/*.cpp
