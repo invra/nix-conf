@@ -78,7 +78,7 @@
     --button-filled-brand-text: #c4a7e7 !important;
     --button-filled-brand-text-hover: var(--button-outline-danger-text) !important;
   }
-  
+
   .custom-user-profile-theme .themeColor_fb7f94.secondary_fb7f94 {
     background: rgba(155,155,155,0.1) !important;
     border: none;
@@ -321,5 +321,5 @@
     --selected-tab-item-color: var(--text-primary) !important;
     color: #ffffff61 !important;
   }
-  
+
 ''

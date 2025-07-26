@@ -5,8 +5,7 @@
     nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-25.05";
     nixpkgs-24_11.url = "github:NixOS/nixpkgs/nixos-24.11";
     stylix.url = "github:danth/stylix";
-    zen-browser.url = "gitlab:InvraNet/zen-flake";
-    nixcord.url = "git+https://github.com/kaylorben/nixcord";
+    zen-browser.url = "gitlab:invra/zen-flake";
     ip.url = "gitlab:hiten-tandon/some-nix-darwin-packages";
     ghostty.url = "github:ghostty-org/ghostty";
 
@@ -20,8 +19,14 @@
     };
     plasma-manager = {
       url = "github:nix-community/plasma-manager";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        home-manager.follows = "home-manager";
+      };
+    };
+    nixcord = {
+      url = "github:kaylorben/nixcord";
       inputs.nixpkgs.follows = "nixpkgs";
-      inputs.home-manager.follows = "home-manager";
     };
   };
 
@@ -144,6 +149,7 @@
                 };
                 modules = [
                   plasma-manager.homeManagerModules.plasma-manager
+                  zen-browser.homeManagerModules.zen-browser
                   nixcord.homeModules.nixcord
                   stylix.homeModules.stylix
                   ./modules/home

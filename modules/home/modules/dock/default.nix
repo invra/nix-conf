@@ -1,4 +1,9 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 with lib;
 let
   cfg = config.targets.darwin.dock;
@@ -15,24 +20,26 @@ in
       };
 
       entries = mkOption {
-        type = types.listOf (types.submodule {
-          options = {
-            path = mkOption {
-              type = types.str;
-              description = "Path to the app or file to add to the Dock.";
+        type = types.listOf (
+          types.submodule {
+            options = {
+              path = mkOption {
+                type = types.str;
+                description = "Path to the app or file to add to the Dock.";
+              };
+              section = mkOption {
+                type = types.str;
+                default = "apps";
+                description = "Dock section: apps, others, etc.";
+              };
+              options = mkOption {
+                type = types.str;
+                default = "";
+                description = "Extra options to pass to dockutil.";
+              };
             };
-            section = mkOption {
-              type = types.str;
-              default = "apps";
-              description = "Dock section: apps, others, etc.";
-            };
-            options = mkOption {
-              type = types.str;
-              default = "";
-              description = "Extra options to pass to dockutil.";
-            };
-          };
-        });
+          }
+        );
         default = [
           {
             path =
@@ -60,7 +67,7 @@ in
 
     local.dock = mkOption {
       type = types.attrs;
-      default = {};
+      default = { };
       internal = true;
     };
   };
