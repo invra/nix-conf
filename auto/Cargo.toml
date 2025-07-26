@@ -8,4 +8,8 @@ authors = [ "Invra" ]
 name = "bootstrap-darwin"
 path = "src/nix-darwin.rs"
 
+[[bin]]
+name = "test"
+path = "src/test.rs"
+
 [dependencies]
