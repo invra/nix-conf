@@ -1,12 +1,12 @@
 use {
     colored::Colorize,
-    tracing::info,
-    tracing_subscriber::{
-        EnvFilter,
-        fmt::{self, format},
-        prelude::__tracing_subscriber_SubscriberExt,
-        util::SubscriberInitExt,
-    },
+    // tracing::info,
+    // tracing_subscriber::{
+    //     EnvFilter,
+    //     fmt::{self, format},
+    //     prelude::__tracing_subscriber_SubscriberExt,
+    //     util::SubscriberInitExt,
+    // },
     std::{
         process::{
             ExitStatus,
@@ -40,7 +40,7 @@ fn is_command_available(cmd: &str) -> bool {
 }
 
 fn run_command(cmd: &str, print: bool) -> std::process::Output {
-    print.then(|| info!("I a running: {cmd}"));
+    print.then(|| println!("I a running: {cmd}"));
     Command::new("zsh")
         .arg("-c")
         .arg(cmd)
@@ -58,41 +58,41 @@ fn main() {
     let args = Args::parse();
     let flake = args.flake;
 
-    tracing_subscriber::registry()
-    .with(
-        fmt::layer()
-        .with_target(false)
-        .with_level(true)
-        .without_time()
-        .with_ansi(true)
-    )
-    .with(EnvFilter::new("info"))
-    .init();
+    // tracing_subscriber::registry()
+    // .with(
+    //     fmt::layer()
+    //     .with_target(false)
+    //     .with_level(true)
+    //     .without_time()
+    //     .with_ansi(true)
+    // )
+    // .with(EnvFilter::new("info"))
+    // .init();
 
     let nix_path = Path::new("/nix/var/nix/profiles/default/bin/nix");
     if !Path::exists(nix_path) {
-        info!("Nix is not installed. Installing Nix...");
+        println!("Nix is not installed. Installing Nix...");
         run_command("curl --proto '=https' --tlsv1.2 -L https://nixos.org/nix/install | sh", false);
 
         // TODO: PLIST MANAGEMENT
     } else {
-        info!("Nix is already installed. I will skip installation.");
+        println!("Nix is already installed. I will skip installation.");
     }
 
     if !is_command_available("home-manager") {
-        info!("Applying nix-darwin config...");
+        println!("Applying nix-darwin config...");
         run_after_install_command(format!("sudo nix run nix-darwin --extra-experimental-features 'nix-command flakes' -- switch --flake '.#{flake}'").as_str());
     } else {
-        info!("The nix-darwin installation has already happened, if it hasn't... Please uninstall or dereference home-manager.");
+        println!("The nix-darwin installation has already happened, if it hasn't... Please uninstall or dereference home-manager.");
     }
 
     if !is_command_available("hx") {
-        info!("Home Manager config not applied. Applying now...");
+        println!("Home Manager config not applied. Applying now...");
         run_after_install_command(format!("home-manager switch --flake '.#{flake}' -b backup").as_str());
         
         println!("{} Please run \"source /etc/zshrc\" to have access to Nix.", "[FINISHED]".green());
     } else {
-        info!("The home-manager config seems to be already applied. Please use nh to rebuild.");
+        println!("The home-manager config seems to be already applied. Please use nh to rebuild.");
     }
 }
 
