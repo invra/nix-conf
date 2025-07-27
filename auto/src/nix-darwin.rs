@@ -1,34 +1,24 @@
 use {
-    colored::Colorize,
-    std::{
-        collections::BTreeMap,
-        process::{
-            ExitStatus,
-            Command,
-        },
-        fs::{
-          File,
-          OpenOptions,  
-        },
-        io::{
-            Read,
-            Write,
-        },
-        path::{
-            Path,
-            PathBuf,
-        },
-    },
-    clap::Parser,
-    os_info::{
+    clap::Parser, colored::Colorize, os_info::{
         get as get_os_info,
         Version,
-        Type,
-    },
-    plist::{
-        Value,
-        Dictionary,
-    },
+    }, plist::{
+        Dictionary, Value
+    }, std::{
+        collections::BTreeMap, fs::{
+            File,
+            OpenOptions,
+        }, io::{
+            Read,
+            Write,
+        }, ops::Not, path::{
+            Path,
+            PathBuf,
+        }, process::{
+            Command,
+            ExitStatus,
+        }
+    }
 };
 
 #[derive(Debug, Clone, Copy)]
@@ -38,45 +28,27 @@ pub enum Error {
 }
 
 #[derive(Parser, Debug)]
-#[command(name = "Nix Darwin Installer", about = "A Nix installer which also boostraps the configs.", long_about = None)]
+#[command(name = "Nix Darwin Installer", about = "A Nix installer which also bootstraps the configs.", long_about = None)]
 struct Args {
     #[arg(short, long)]
-    flake: String,
+    flake: Option<String>,
 
     #[arg(long)]
     patch_plist: bool,
 }
 
-fn run_patch_plist() {
-    if std::env::var("ELEVATED").is_ok() {
-        // Already elevated, just run the actual patch logic
-        patch_plist().expect("Failed to patch plist");
-        return;
-    }
+fn run_patch_plist() -> Result<(), String> {
 
+    iprintln("Patching nix-daemon plist to disable fork safety...");
     let args: Vec<String> = std::env::args().collect();
-    let mut cmd = Command::new("sudo");
+    let mut status = Command::new("sudo").args([&args[0], "--patch-plist"]).status().map_err(|x| x.to_string())?;
 
-    cmd.env("ELEVATED", "1"); // mark that we're now elevated
-    cmd.arg(&args[0]); // binary path
-    cmd.arg("--patch-plist");
+    status.success().then_some(()).ok_or(String::from("Failed to patch plist as root"))?;
+    iprintln("Patch successful, restarting daemon...");
+    run_command("sudo launchctl unload /Library/LaunchDaemons/org.nixos.nix-daemon.plist", true);
+    run_command("sudo launchctl bootstrap system /Library/LaunchDaemons/org.nixos.nix-daemon.plist", true); 
 
-    // Forward all args except flags already handled
-    for arg in &args[1..] {
-        if arg != "--patch-plist" {
-            cmd.arg(arg);
-        }
-    }
-
-    let status = cmd.status().expect("Failed to elevate for plist patching");
-
-    if !status.success() {
-        eprintln!("Failed to patch plist as root");
-        std::process::exit(status.code().unwrap_or(1));
-    }
-
-    // Exit the original (non-elevated) process
-    std::process::exit(0);
+    Ok(())
 }
 
 fn patch_plist() -> Result<(), Box<dyn std::error::Error>> {
@@ -120,7 +92,7 @@ fn patch_plist() -> Result<(), Box<dyn std::error::Error>> {
     Ok(())
 }
 
-fn iprintln(msg: &str)  {
+fn iprintln(msg: &str) {
     println!("{} {msg}", "[INFO]".yellow());
 }
 
@@ -128,11 +100,15 @@ fn is_command_available(cmd: &str) -> bool {
     Command::new("command")
         .arg("-v")
         .arg(cmd)
-        .output().unwrap().status.success()
+        .output()
+        .map(|output| output.status.success())
+        .unwrap_or(false)
 }
 
 fn run_command(cmd: &str, print: bool) -> std::process::ExitStatus {
-    print.then(|| iprintln(format!("{}", &cmd).as_str()));
+    if print {
+        iprintln(cmd);
+    }
     Command::new("zsh")
         .arg("-c")
         .arg(cmd)
@@ -146,54 +122,52 @@ fn run_after_install_command(cmd: &str) {
 }
 
 #[cfg(target_os = "macos")]
-fn main() {
+fn main()  -> Result<(), String>{
     let args = Args::parse();
 
     if args.patch_plist {
-        iprintln("Attempting patch...");
-        run_patch_plist();
-        return;
+        match get_os_info().version() {
+            &Version::Semantic(major, _, _) if major >= 26 => {
+                if std::env::var("USER") == Ok("root".into()) {
+                    return patch_plist().map_err(|e| e.to_string());
+                } else {
+                    return Err("Patch plist needs to be run as root".into());
+                }
+            }
+            _ => iprintln("Patching is only required for macOS sequoia and later, skipping."),
+        }
+        return Ok(());
     }
 
-    let flake = args.flake;
+    let flake = args.flake.ok_or(Error::NoFlakeProvided).expect("Flake argument is required for normal operation");
     let nix_path = Path::new("/nix/var/nix/profiles/default/bin/nix");
-   
     if !nix_path.exists() {
         iprintln("Nix is not installed. Installing Nix...");
         run_command("curl --proto '=https' --tlsv1.2 -L https://nixos.org/nix/install | sh", false);
+        run_patch_plist();
     } else {
         iprintln("Nix is already installed. I will skip installation.");
     }
 
-    match get_os_info().version() {
-        &Version::Semantic(major, _, _) if major >= 26 => {                    
-            iprintln("Patching nix-daemon plist to disable fork safety...");
-            run_patch_plist();
-            iprintln("Patched and now restarting daemon...");
-            run_command("sudo launchctl unload /Library/LaunchDaemons/org.nixos.nix-daemon.plist", true);
-            run_command("sudo launchctl bootstrap system /Library/LaunchDaemons/org.nixos.nix-daemon.plist", true);
-        }
-        _ => ()
-    }
-
     if !is_command_available("home-manager") {
         iprintln("Applying nix-darwin config...");
-        run_after_install_command(format!("sudo nix run nix-darwin --extra-experimental-features 'nix-command flakes' -- switch --flake '.#{flake}'").as_str());
+        run_after_install_command(&format!(
+            "sudo nix run nix-darwin --extra-experimental-features 'nix-command flakes' -- switch --flake '.#{}'",
+            flake
+        ));
     } else {
         iprintln("The nix-darwin installation has already happened, if it hasn't... Please uninstall or dereference home-manager.");
     }
 
     if !is_command_available("hx") {
         iprintln("Home Manager config not applied. Applying now...");
-        run_after_install_command(format!("home-manager switch --flake '.#{flake}' -b backup").as_str());
-        
+        run_after_install_command(&format!("home-manager switch --flake '.#{}' -b backup", flake));
         println!("{} Please run \"source /etc/zshrc\" to have access to Nix.", "[FINISHED]".green());
     } else {
         iprintln("The home-manager config seems to be already applied. Please use nh to rebuild.");
     }
+    Ok(())
 }
-
-
 
 #[cfg(not(target_os = "macos"))]
 fn main() -> Result<(), Error> {
