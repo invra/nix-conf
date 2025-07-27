@@ -167,7 +167,7 @@ dependencies = [
 
 [[package]]
 name = "invra-nix-automation"
-version = "0.0.1"
+version = "1.0.0"
 dependencies = [
  "clap",
  "colored",
