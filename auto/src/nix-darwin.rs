@@ -136,12 +136,7 @@ fn main() {
     let args = Args::parse();
     let flake = args.flake;
     let nix_path = Path::new("/nix/var/nix/profiles/default/bin/nix");
-
-    if !nix_path.exists() && !args.patch_plist {
-        run_patch_plist();
-        return; // let the elevated run handle the rest
-    }
-    
+   
     if !nix_path.exists() {
         iprintln("Nix is not installed. Installing Nix...");
         run_command("curl --proto '=https' --tlsv1.2 -L https://nixos.org/nix/install | sh", false);
