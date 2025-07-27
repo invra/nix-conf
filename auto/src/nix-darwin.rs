@@ -161,19 +161,19 @@ fn main() {
     if !nix_path.exists() {
         iprintln("Nix is not installed. Installing Nix...");
         run_command("curl --proto '=https' --tlsv1.2 -L https://nixos.org/nix/install | sh", false);
-
-        match get_os_info().version() {
-            &Version::Semantic(major, _, _) if major >= 26 => {                    
-                iprintln("Patching nix-daemon plist to disable fork safety...");
-                run_patch_plist();
-                iprintln("Patched and now restarting daemon...");
-                run_command("sudo launchctl unload /Library/LaunchDaemons/org.nixos.nix-daemon.plist", true);
-                run_command("sudo launchctl bootstrap system /Library/LaunchDaemons/org.nixos.nix-daemon.plist", true);
-            }
-            _ => ()
-        }
     } else {
         iprintln("Nix is already installed. I will skip installation.");
+    }
+
+    match get_os_info().version() {
+        &Version::Semantic(major, _, _) if major >= 26 => {                    
+            iprintln("Patching nix-daemon plist to disable fork safety...");
+            run_patch_plist();
+            iprintln("Patched and now restarting daemon...");
+            run_command("sudo launchctl unload /Library/LaunchDaemons/org.nixos.nix-daemon.plist", true);
+            run_command("sudo launchctl bootstrap system /Library/LaunchDaemons/org.nixos.nix-daemon.plist", true);
+        }
+        _ => ()
     }
 
     if !is_command_available("home-manager") {
