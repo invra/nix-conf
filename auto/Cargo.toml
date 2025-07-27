@@ -1,6 +1,6 @@
 [package]
 name = "invra-nix-automation"
-version = "0.0.1"
+version = "1.0.0"
 edition = "2024"
 authors = [ "Invra" ]
 
@@ -13,11 +13,10 @@ name = "test"
 path = "src/test.rs"
 
 [target.'cfg(target_os="macos")'.dependencies]
-clap = "4.5.41"
-colored = "3.0.0"
+clap = { version = "4.5.41", features = ["derive"] }
 os_info = "3.12.0"
 tracing = "0.1.41"
 tracing-subscriber = { version = "0.3.19", features = ["env-filter"] }
 
 [dependencies]
-clap = { version = "4.5.41", features = ["derive"] }
+colored = "3.0.0"
