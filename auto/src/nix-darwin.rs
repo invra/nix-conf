@@ -134,7 +134,7 @@ fn main()  -> Result<(), String>{
                     return Err("Patch plist needs to be run as root".into());
                 }
             }
-            _ => iprintln("Patching is only required for macOS sequoia and later, skipping."),
+            _ => iprintln("Patching is only required for macOS Tahoe and later, skipping."),
         }
         return Ok(());
     }
