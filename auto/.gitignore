@@ -4,7 +4,7 @@
 # But don't ignore these files in the root
 !.gitignore
 !*.md
-!bootstrap.py
+!bootstrap.swift
 !Cargo.*
 
 # Un-ignore directories so git can look inside them
