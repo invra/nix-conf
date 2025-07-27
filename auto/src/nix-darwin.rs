@@ -148,6 +148,13 @@ fn run_after_install_command(cmd: &str) {
 #[cfg(target_os = "macos")]
 fn main() {
     let args = Args::parse();
+
+    if args.patch_plist {
+        iprintln("Attempting patch...");
+        run_patch_plist();
+        return;
+    }
+
     let flake = args.flake;
     let nix_path = Path::new("/nix/var/nix/profiles/default/bin/nix");
    
@@ -157,11 +164,9 @@ fn main() {
 
         match get_os_info().version() {
             &Version::Semantic(major, _, _) if major >= 26 => {                    
-                if args.patch_plist {
-                    iprintln("Patching nix-daemon plist to disable fork safety...");
-                    run_patch_plist();
-                    iprintln("Patched and now restarting daemon...");
-                }
+                iprintln("Patching nix-daemon plist to disable fork safety...");
+                run_patch_plist();
+                iprintln("Patched and now restarting daemon...");
                 run_command("sudo launchctl unload /Library/LaunchDaemons/org.nixos.nix-daemon.plist", true);
                 run_command("sudo launchctl bootstrap system /Library/LaunchDaemons/org.nixos.nix-daemon.plist", true);
             }
