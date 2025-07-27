@@ -172,6 +172,7 @@ dependencies = [
  "clap",
  "colored",
  "os_info",
+ "plist",
  "tracing",
  "tracing-subscriber",
 ]
