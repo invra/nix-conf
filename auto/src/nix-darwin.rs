@@ -40,7 +40,7 @@ fn is_command_available(cmd: &str) -> bool {
 }
 
 fn run_command(cmd: &str, print: bool) -> std::process::ExitStatus {
-    print.then(|| iprintln("I am running: {cmd}"));
+    print.then(|| iprintln(format!("{}", &cmd).as_str()));
     Command::new("zsh")
         .arg("-c")
         .arg(cmd)
