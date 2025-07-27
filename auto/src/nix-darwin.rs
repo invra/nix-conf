@@ -37,6 +37,10 @@ struct Args {
     patch_plist: bool,
 }
 
+fn iprintln(msg: &str) {
+    println!("{} {msg}", "[INFO]".yellow());
+}
+
 fn run_patch_plist() -> Result<(), String> {
 
     iprintln("Patching nix-daemon plist to disable fork safety...");
@@ -90,10 +94,6 @@ fn patch_plist() -> Result<(), Box<dyn std::error::Error>> {
     root.to_writer_xml(&mut f)?;
 
     Ok(())
-}
-
-fn iprintln(msg: &str) {
-    println!("{} {msg}", "[INFO]".yellow());
 }
 
 fn is_command_available(cmd: &str) -> bool {
