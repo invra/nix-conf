@@ -48,21 +48,35 @@ struct Args {
 }
 
 fn run_patch_plist() {
-    let args: Vec<String> = std::env::args().collect();
-
-let mut cmd = Command::new("sudo");
-cmd.arg(&args[0]); // path to current binary
-cmd.arg("--patch-plist");
-
-// Forward all args except binary name and flags already added
-for arg in &args[1..] {
-    if arg != "--patch-plist" {
-        cmd.arg(arg);
+    if std::env::var("ELEVATED").is_ok() {
+        // Already elevated, just run the actual patch logic
+        patch_plist().expect("Failed to patch plist");
+        return;
     }
-}
 
-let status = cmd.status()
-    .expect("Failed to elevate permissions for patching plist");
+    let args: Vec<String> = std::env::args().collect();
+    let mut cmd = Command::new("sudo");
+
+    cmd.env("ELEVATED", "1"); // mark that we're now elevated
+    cmd.arg(&args[0]); // binary path
+    cmd.arg("--patch-plist");
+
+    // Forward all args except flags already handled
+    for arg in &args[1..] {
+        if arg != "--patch-plist" {
+            cmd.arg(arg);
+        }
+    }
+
+    let status = cmd.status().expect("Failed to elevate for plist patching");
+
+    if !status.success() {
+        eprintln!("Failed to patch plist as root");
+        std::process::exit(status.code().unwrap_or(1));
+    }
+
+    // Exit the original (non-elevated) process
+    std::process::exit(0);
 }
 
 fn patch_plist() -> Result<(), Box<dyn std::error::Error>> {
@@ -141,15 +155,13 @@ fn main() {
         iprintln("Nix is not installed. Installing Nix...");
         run_command("curl --proto '=https' --tlsv1.2 -L https://nixos.org/nix/install | sh", false);
 
-        if args.patch_plist {
-            iprintln("Patching nix-daemon plist to disable fork safety...");
-            run_patch_plist();
-            iprintln("Patched and now restarting daemon...");
-        }
-
         match get_os_info().version() {
-            &Version::Semantic(major, _, _) if major >= 26 => {
-                
+            &Version::Semantic(major, _, _) if major >= 26 => {                    
+                if args.patch_plist {
+                    iprintln("Patching nix-daemon plist to disable fork safety...");
+                    run_patch_plist();
+                    iprintln("Patched and now restarting daemon...");
+                }
                 run_command("sudo launchctl unload /Library/LaunchDaemons/org.nixos.nix-daemon.plist", true);
                 run_command("sudo launchctl bootstrap system /Library/LaunchDaemons/org.nixos.nix-daemon.plist", true);
             }
