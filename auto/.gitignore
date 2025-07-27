@@ -3,10 +3,9 @@
 
 # But don't ignore these files in the root
 !.gitignore
-!README.md
+!*.md
 !bootstrap.py
-!Cargo.toml
-!Cargo.lock
+!Cargo.*
 
 # Un-ignore directories so git can look inside them
 !src/
