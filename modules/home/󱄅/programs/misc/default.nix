@@ -79,8 +79,15 @@ in
         };
         extensions = [ bitwarden ];
       };
-      "pnsd0143.Default (release)" = {
+      "qnqmadke.Default (release)-8" = {
         dontCreate = true;
+      };
+      "help" = {
+        name = "help";
+        settings = {
+          
+        };
+        extensions = [ ublock-origin ];
       };
     };
   };
