@@ -10,7 +10,7 @@ $  python3 ./bootstrap.py
 ```
 
 The bootstrap script will:
-- Create ./.bootstrap
+- Create ./.bootstrap folder
 - Put ENV's: RUSTUP_HOME, CARGO_HOME as `$(CURDIR)/.bootstrap/[rustup,cargo]`
 - Install rustup script with `-y --no-modify-path --profile minimal`
 
