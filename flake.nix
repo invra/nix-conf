@@ -78,7 +78,6 @@
               ];
 
             specialArgs = unstable: stable: {
-              pkgs = unstable;
               inherit
                 nixpkgs-24_11
                 desktop
@@ -97,7 +96,9 @@
                 ;
               inherit (configTOML) system;
               inherit (user) username;
-            };
+            } // (unstable.lib.optionalAttrs unstable.stdenv.isDarwin {
+              pkgs = unstable;
+            });
 
             pkgs-config = system: {
               inherit system overlays;
@@ -156,12 +157,32 @@
                 ];
               };
               formatter = nixfmt-tree;
+
+              devShells.default = unstable.mkShell {
+                buildInputs = with pkgs; [
+                  # Rust tools
+                  cargo
+                  rustfmt
+                  rust-analyzer
+                  
+                  # Nix tools
+                  nixd
+                  nil
+
+                  # Zig tools
+                  zig
+                  zls
+                  zig-zlint
+
+                  # Swift
+                  swift
+                  swiftlint
+                  swiftformat
+                ];
+              };
             }
           ))
         ) (builtins.mapAttrs (name: _: import ./configurations/${name}) (builtins.readDir ./configurations))
       )
-    ))
-    // {
-      custils = import ./utils { inherit (nixpkgs) lib; };
-    };
+    ));
 }
