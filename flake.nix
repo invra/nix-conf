@@ -78,6 +78,7 @@
               ];
 
             specialArgs = unstable: stable: {
+              pkgs = unstable;
               inherit
                 nixpkgs-24_11
                 desktop
@@ -96,9 +97,7 @@
                 ;
               inherit (configTOML) system;
               inherit (user) username;
-            } // (unstable.lib.optionalAttrs unstable.stdenv.isDarwin {
-              pkgs = unstable;
-            });
+            };
 
             pkgs-config = system: {
               inherit system overlays;
