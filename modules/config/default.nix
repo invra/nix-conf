@@ -25,8 +25,6 @@
     };
   };
 
-  # nixpkgs.hostPlatform = pkgs.hostPlatform.system;
-
   users.users = {
     ${user.username} = {
       name = user.username;
@@ -34,6 +32,7 @@
       shell = pkgs.nushell;
     };
   };
+
   environment.systemPackages = with pkgs; [
     jack2
     git
