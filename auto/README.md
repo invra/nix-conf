@@ -3,15 +3,14 @@ Theres automations scripts are written with Rust.
 You will find all the files required in [`./src`](./src/).
 
 ## Bootstrapping Cargo
-To bootstrap Cargo run
+To bootstrap Cargo with Swift run:
 
 ```sh
-$  python3 ./bootstrap.py
+$  swift ./bootstrap.swift
 ```
 
 The bootstrap script will:
 - Create ./.bootstrap folder
-- Put ENV's: RUSTUP_HOME, CARGO_HOME as `$(CURDIR)/.bootstrap/[rustup,cargo]`
 - Install rustup script with `-y --no-modify-path --profile minimal`
 
 What **YOU** will need to do:
