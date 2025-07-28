@@ -15,16 +15,17 @@ Compile and run the automation file, this is a direct replacement for the ZSH sc
 
 ```sh
 cd auto
-c++ darwin-setup.cpp -o darwin-setup
-./darwin-setup -f <CONFIG_NAME>
+swift ./bootstrap.swift
+PATH=$PATH:./.bootstrap/cargo/bin
+cargo r --bin bootstrap-darwin -- --flake <CONFIG_NAME>
 ```
 
 > [!NOTE]
 > For early adopters of macOS 26 (Tahoe), please know that
-> to allow for your Nix daemon not to crash, I have to tamper
-> with `/Library/LaunchDaemons/org.nixos.nix-daemon.plist` and
-> add `OBJC_DISABLE_INITIALIZE_FORK_SAFETY` which makes the
-> Nix daemon not crash. [issue #13342 on NixOS/nix](https://github.com/NixOS/nix/issues/13342)
+> to allow for your Nix daemon to not crash, I have to edit
+> the `/Library/LaunchDaemons/org.nixos.nix-daemon.plist` and
+> add `OBJC_DISABLE_INITIALIZE_FORK_SAFETY` which makes the Nix
+> daemon not crash due to fork saftey. [Issue #13342 on NixOS/nix](https://github.com/NixOS/nix/issues/13342)
 
 ---
 
