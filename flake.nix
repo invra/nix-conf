@@ -171,11 +171,9 @@
                   # Zig tools
                   zig
                   zls
-                  zig-zlint
 
                   # Swift
                   swift
-                  swiftlint
                   swiftformat
                 ];
               };
