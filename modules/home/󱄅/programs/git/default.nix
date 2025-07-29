@@ -1,5 +1,8 @@
-{ development, ... }:
-with development.git;
+{
+  configTOML,
+  ...
+}:
+with configTOML.development.git;
 {
   imports = [
     ./gh

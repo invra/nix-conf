@@ -19,9 +19,6 @@
       name: configTOML:
       let
         custils = import ./utils { inherit (nixpkgs) lib; };
-        user = configTOML.user;
-        development = configTOML.development;
-        desktop = configTOML.desktop;
 
         allowUnfreePredicate =
           pkg:
@@ -48,10 +45,7 @@
           pkgs = unstable;
           inherit
             nixpkgs-24_11
-            desktop
-            user
             home-manager
-            development
             unstable
             stable
             nixpkgs-stable
@@ -61,9 +55,8 @@
             stylix
             zen-browser
             custils
+            configTOML
             ;
-          inherit (configTOML) system;
-          inherit (user) username;
         };
 
         pkgs-config = system: {
@@ -112,7 +105,6 @@
             extraSpecialArgs = (specialArgs unstable stable) // {
               pkgs = unstable;
               pkgs-24_11 = import nixpkgs-24_11 (pkgs-config system);
-              inherit (configTOML) development;
             };
             modules = [
               plasma-manager.homeManagerModules.plasma-manager

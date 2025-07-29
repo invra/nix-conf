@@ -1,12 +1,12 @@
 {
-  user,
   custils,
+  configTOML,
   ...
 }:
 {
   imports = custils.getModulesFromDirRec ./programs;
   home = {
-    username = user.username;
+    username = configTOML.user.username;
     stateVersion = "24.11";
     sessionVariables = {
       EDITOR = "hx";

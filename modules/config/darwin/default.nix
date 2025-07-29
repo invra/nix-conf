@@ -1,7 +1,6 @@
 {
-  user,
-  system,
   pkgs,
+  configTOML,
   ...
 }:
 {
@@ -11,14 +10,14 @@
   ];
 
   security.pam.services.sudo_local.touchIdAuth = true;
-  users.knownUsers = [ user.username ];
+  users.knownUsers = [ configTOML.user.username ];
 
-  users.users.${user.username} = {
-    home = "/Users/${user.username}";
+  users.users.${configTOML.user.username} = {
+    home = "/Users/${configTOML.user.username}";
     uid = 501;
   };
 
-  system = {
+  system = with configTOML; {
     primaryUser = user.username;
     keyboard = {
       enableKeyMapping = true;

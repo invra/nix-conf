@@ -1,7 +1,10 @@
-{ desktop, system, ... }:
+{
+  configTOML,
+  ...
+}:
 {
 
-  services = {
+  services = with configTOML; {
     pulseaudio.daemon.config.flat-volumes = "no";
     flatpak.enable = true;
     blueman.enable = true;

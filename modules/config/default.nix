@@ -1,6 +1,6 @@
 {
-  user,
   pkgs,
+  configTOML,
   ...
 }:
 {
@@ -25,7 +25,7 @@
     };
   };
 
-  users.users = {
+  users.users = with configTOML; {
     ${user.username} = {
       name = user.username;
       description = user.displayName;

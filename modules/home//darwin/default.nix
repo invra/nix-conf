@@ -1,7 +1,7 @@
 {
   config,
-  system,
   pkgs,
+  configTOML,
   ...
 }:
 {
@@ -14,8 +14,8 @@
     dock = {
       enable = true;
     }
-    // pkgs.lib.optionalAttrs (system ? dock && system.dock ? entries) {
-      entries = system.dock.entries { inherit pkgs config; };
+    // pkgs.lib.optionalAttrs (configTOML.system ? dock && configTOML.system.dock ? entries) {
+      entries = configTOML.system.dock.entries { inherit pkgs config; };
     };
 
     defaults = {
@@ -64,7 +64,7 @@
         NewWindowTarget = "Home";
       };
 
-      "com.apple.dock" = {
+      "com.apple.dock" = with configTOML; {
         autohide = system.dock.autohide or false;
         orientation = system.dock.orientation or "bottom";
         tilesize = system.dock.size or 64;
