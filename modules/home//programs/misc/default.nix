@@ -1,6 +1,6 @@
 {
-  user,
   pkgs,
+  configTOML,
   ...
 }:
 {
@@ -9,7 +9,7 @@
   ];
 
   home = {
-    homeDirectory = "/Users/${user.username}";
+    homeDirectory = "/Users/${configTOML.user.username}";
     packages = with pkgs; [
       jankyborders
       sketchybar

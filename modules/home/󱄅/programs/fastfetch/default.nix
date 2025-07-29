@@ -1,6 +1,6 @@
 {
-  development,
   pkgs,
+  configTOML,
   ...
 }:
 let
@@ -125,8 +125,8 @@ in
       ++ (map (type: {
         type = "custom";
         key = "    ${type}:";
-        format = "${development.git.username}";
-      }) development.git.types)
+        format = "${configTOML.development.git.username}";
+      }) configTOML.development.git.types)
       ++ [
         {
           type = "custom";

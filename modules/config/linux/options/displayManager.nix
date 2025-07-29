@@ -1,17 +1,17 @@
 {
-  system,
   pkgs,
+  configTOML,
   ...
 }:
 {
-  services.displayManager = {
+  services.displayManager = with configTOML.system; {
     gdm = {
-      enable = system.greeter == "gdm";
+      enable = (greeter == "gdm");
       wayland = true;
     };
 
     sddm = {
-      enable = system.greeter == "sddm";
+      enable = (greeter == "sddm");
       enableHidpi = true;
       wayland.enable = true;
     };
