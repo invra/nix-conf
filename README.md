@@ -48,19 +48,25 @@ This section showcases example configurations using this flake.
 </details>
 
 <details>
-<summary>NixOS – Vesktop + Browsing + PiP</summary>
+<summary>Nix-darwin – Spotify + Ghostty</summary>
 <img src="./.res/demo_2.png" alt="Demo 2">
 </details>
 
 <details>
-<summary>NixOS – Neovim with Mako</summary>
+<summary>NixOS – Vesktop + Browsing + PiP</summary>
 <img src="./.res/demo_3.png" alt="Demo 3">
 </details>
 
 <details>
-<summary>Nix-darwin – Neovim + Spotify</summary>
+<summary>Nix-darwin – Helix - Rust Dev + Browsing - Reading Docs + PiP</summary>
 <img src="./.res/demo_4.png" alt="Demo 4">
 </details>
+
+<details>
+<summary>NixOS – Neovim + Mako</summary>
+<img src="./.res/demo_5.png" alt="Demo 5">
+</details>
+
 
 ## Documentation
 
