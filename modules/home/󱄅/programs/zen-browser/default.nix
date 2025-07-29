@@ -66,7 +66,7 @@ in
       "help" = {
         name = "help";
         settings = {
-          
+
         };
         extensions = [ ublock-origin ];
       };
