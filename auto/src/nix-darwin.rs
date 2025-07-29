@@ -42,7 +42,6 @@ fn iprintln(msg: &str) {
 }
 
 fn run_patch_plist() -> Result<(), String> {
-
     iprintln("Patching nix-daemon plist to disable fork safety...");
     let args: Vec<String> = std::env::args().collect();
     let mut status = Command::new("sudo").args([&args[0], "--patch-plist"]).status().map_err(|x| x.to_string())?;
