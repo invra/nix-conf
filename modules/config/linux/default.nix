@@ -24,7 +24,9 @@
   time.timeZone = configTOML.system.timezone;
   hardware = {
     graphics.enable = true;
-    amdgpu.opencl.enable = lib.mkForce (builtins.elem "amdgpu" (configTOML.system.graphics.wanted or [ ]));
+    amdgpu.opencl.enable = lib.mkForce (
+      builtins.elem "amdgpu" (configTOML.system.graphics.wanted or [ ])
+    );
 
     nvidia = {
       open = true;
