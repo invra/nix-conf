@@ -9,6 +9,5 @@ Add more customisation options & features:
 - [x] Add macOS Dock settings
 - [ ] Add `ignorePackages` (to skip default packages)  
 - [ ] Add `extraPackages` (to allow users to specify workflow-specific packages)  
-- [ ] Remove the need to include macOS-specific config in the Linux config (and vice versa)
-- [ ] Add proper types for user configuration  
+- [x] Remove the need to include macOS-specific config in the Linux config (and vice versa)
 - [ ] Add support to disable modules the user doesn't need  
