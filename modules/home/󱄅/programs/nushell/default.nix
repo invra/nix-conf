@@ -9,10 +9,6 @@
     ./zoxide
   ];
 
-  home.packages = with pkgs; [
-    vivid
-  ];
-
   programs.nushell = {
     enable = true;
 
@@ -49,7 +45,7 @@
 
     extraConfig = ''
       #!/bin/nu
-      $env.LS_COLORS = (vivid generate rose-pine)
+      $env.LS_COLORS = (${pkgs.vivid}/bin/vivid generate rose-pine)
 
       export def --env gc [
         source: string, # Repository to clone (e.g gitlab:invra/nix-conf or ssh:gitlab:invra/nix-conf)
