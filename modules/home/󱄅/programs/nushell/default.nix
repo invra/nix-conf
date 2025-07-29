@@ -104,7 +104,7 @@
       }
 
       if not ("x" in $env) {
-        fastfetch
+        ${pkgs.fastfetch}/bin/fastfetch
       }
 
       $env.x = true
