@@ -16,7 +16,10 @@
     };
   };
   system = {
-    normaliseKbd = true;
+    keyboard = {
+      normalise = true;
+      remapCapsToEscape = true; 
+    };
     dock = {
       autoHideDelay = 0.45;
       autohide = true;
