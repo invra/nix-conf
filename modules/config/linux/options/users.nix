@@ -2,6 +2,9 @@
   configTOML,
   ...
 }:
+let
+  inherit (configTOML) user;
+in
 {
   users.users.${configTOML.user.username} = {
     inherit (configTOML.user) initialPassword;

@@ -1,10 +1,21 @@
 {
-  pkgs,
   configTOML,
+  pkgs,
+  extraOverlays,
+  allowUnfreePredicate,
+  linux,
   ...
 }:
+let
+  inherit (configTOML) user;
+in
 {
-  imports = if pkgs.stdenv.isLinux then [ ./linux ] else [ ./darwin ];
+  imports = if linux then [ ./linux ] else [ ./darwin ];
+
+  nixpkgs = {
+    config.allowUnfreePredicate = allowUnfreePredicate;
+    overlays = extraOverlays;
+  };
 
   nix = {
     settings = {
@@ -25,7 +36,7 @@
     };
   };
 
-  users.users = with configTOML; {
+  users.users = {
     ${user.username} = {
       name = user.username;
       description = user.displayName;

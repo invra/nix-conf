@@ -1,4 +1,7 @@
-{ pkgs, pkgs-24_11, ... }:
+{ pkgs, nixpkgs-24_11, ... }:
+let
+  pkgs-24_11 = import nixpkgs-24_11 { inherit (pkgs) system; };
+in
 {
   home.packages = with pkgs; [
     yabridge
