@@ -74,6 +74,7 @@
               allowUnfreePredicate =
                 pkg:
                 builtins.readFile ./unfreePacakges.txt |> builtins.split "\n" |> builtins.elem (lib.getName pkg);
+              custils = import ./utils { inherit (nixpkgs) lib; };
             };
             mkHomeManConfig =
               system:

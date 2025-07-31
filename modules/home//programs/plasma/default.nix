@@ -4,7 +4,7 @@
   ...
 }:
 let
-  inherit (configTOML.plasma) enable;
+  enable = configTOML.plasma.enable or false;
 in
 {
   home.packages = pkgs.lib.optionals enable (

@@ -6,17 +6,12 @@
   nixcord,
   stylix,
   nixpkgs,
-  specialArgs,
   system,
   ...
 }:
 home-manager.lib.homeManagerConfiguration {
   inherit extraSpecialArgs;
-  pkgs = import nixpkgs {
-    inherit system;
-    inherit (specialArgs) allowUnfreePredicate;
-    overlays = specialArgs.extraOverlays;
-  };
+  pkgs = import nixpkgs { inherit system; };
   modules = [
     plasma-manager.homeManagerModules.plasma-manager
     zen-browser.homeModules.zen-browser
