@@ -20,26 +20,7 @@
       let
         custils = import ./utils { inherit (nixpkgs) lib; };
 
-        allowUnfreePredicate =
-          pkg:
-          builtins.elem (nixpkgs.lib.getName pkg) [
-            "davinci-resolve"
-            "steam-unwrapped"
-            "steam_osx"
-            "discord"
-            "tart"
-            "betterdisplay"
-            "raycast"
-            "steam"
-            "bitwig-studio-unwrapped"
-            "parsec-bin"
-            "mongodb-compass"
-            "postman"
-            "vscode"
-            "teams"
-            "nvidia-x11"
-            "nvidia-settings"
-          ];
+        allowUnfreePredicate = import ./unfree_predicates.nix {inherit (nixpkgs) lib;};
 
         specialArgs = unstable: stable: {
           pkgs = unstable;
@@ -65,8 +46,8 @@
         };
 
         overlays = [
-          zen-browser.overlay
           ghostty.overlays.default
+          zen-browser.overlay
           ip.overlay
         ];
       in
@@ -108,7 +89,7 @@
             };
             modules = [
               plasma-manager.homeManagerModules.plasma-manager
-              zen-browser.homeManagerModules.zen-browser
+              zen-browser.homeModules.zen-browser
               nixcord.homeModules.nixcord
               stylix.homeModules.stylix
               ./modules/home
