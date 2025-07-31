@@ -1,6 +1,6 @@
 {
-  config,
   pkgs,
+  config,
   configTOML,
   ...
 }:
@@ -81,6 +81,6 @@ in
 
   programs.setWallpaper = {
     enable = true;
-    wallpaperPath = ../../../../wallpapers/landscape.jpg;
+    wallpaperPath = configTOML.user.wallpaper or ../../../../wallpapers/flake.jpg;
   };
 }
