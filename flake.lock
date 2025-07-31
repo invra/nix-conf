@@ -824,11 +824,11 @@
         "nixpkgs": "nixpkgs_5"
       },
       "locked": {
-        "lastModified": 1753610837,
-        "narHash": "sha256-ifD324Dtq2wojZeHP6dVTa5tUypWqnNeUXTbhvuJ6Fo=",
+        "lastModified": 1753925568,
+        "narHash": "sha256-OmfC3n8Sqr+Bw9mT1byj36l9eY6PCYCByFfkZqIGyK4=",
         "owner": "invra",
         "repo": "zen-flake",
-        "rev": "b1bf6fd352ea31f7887951a76311b3bfccf59bdb",
+        "rev": "c48ae4db605141516d535635aa27ef84cb379ca5",
         "type": "gitlab"
       },
       "original": {
