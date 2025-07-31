@@ -23,7 +23,6 @@
       pika
       tart
       utm
-      teams
     ];
 
     file.".hushlogin".text = "";
