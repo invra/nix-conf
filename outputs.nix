@@ -20,7 +20,7 @@
       let
         custils = import ./utils { inherit (nixpkgs) lib; };
 
-        allowUnfreePredicate = import ./unfree_predicates.nix {inherit (nixpkgs) lib;};
+        allowUnfreePredicate = import ./unfree_predicates.nix { inherit (nixpkgs) lib; };
 
         specialArgs = unstable: stable: {
           pkgs = unstable;

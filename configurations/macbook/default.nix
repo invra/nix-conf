@@ -18,7 +18,7 @@
   system = {
     keyboard = {
       normalise = true;
-      remapCapsToEscape = true; 
+      remapCapsToEscape = true;
     };
     dock = {
       autoHideDelay = 0.45;

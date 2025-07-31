@@ -75,22 +75,24 @@
                 pkg:
                 builtins.readFile ./unfreePacakges.txt |> builtins.split "\n" |> builtins.elem (lib.getName pkg);
             };
-
+            mkHomeManConfig =
+              system:
+              import ./configure-home.nix {
+                inherit
+                  home-manager
+                  plasma-manager
+                  nixcord
+                  stylix
+                  zen-browser
+                  nixpkgs
+                  ;
+                inherit system;
+                extraSpecialArgs = specialArgs;
+              };
           in
-          {
-            homeConfigurations.${name} = import ./configure-home.nix {
-              inherit
-                home-manager
-                plasma-manager
-                nixcord
-                stylix
-                zen-browser
-                ;
-              extraSpecialArgs = specialArgs;
-            };
-          }
-          // lib.optionalAttrs (!lib.strings.hasSuffix "x86" name && !lib.strings.hasSuffix "aarch64" name) {
+          lib.optionalAttrs (!lib.strings.hasSuffix "x86" name && !lib.strings.hasSuffix "aarch64" name) {
             darwinConfigurations.${name} = import ./configure-darwin.nix { inherit darwin specialArgs; };
+            homeConfigurations.${name} = mkHomeManConfig "aarch64-darwin";
           }
           // lib.optionalAttrs (lib.strings.hasSuffix "x86" name) {
             nixosConfigurations.${name} = import ./configure-nixos.nix {
@@ -101,6 +103,7 @@
                 ;
               system = "x86_64-linux";
             };
+            homeConfigurations.${name} = mkHomeManConfig "x86_64-linux";
           }
           // lib.optionalAttrs (lib.strings.hasSuffix "aarch64" name) {
             nixosConfigurations.${name} = import ./configure-nixos.nix {
@@ -111,6 +114,7 @@
                 ;
               system = "aarch64-linux";
             };
+            homeConfigurations.${name} = mkHomeManConfig "aarch64-linux";
           }
 
         ) (builtins.mapAttrs (name: _: import ./configurations/${name}) (builtins.readDir ./configurations))
