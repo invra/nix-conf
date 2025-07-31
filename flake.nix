@@ -60,7 +60,7 @@
           {
             nixosConfigurations.${name} = configure.mkNixConfig system;
             homeConfigurations.${name} = configure.mkHomeConfig system;
-            darwinConfigurations.${name} = configure.mkDarwinConig system;
+            darwinConfigurations.${name} = configure.mkDarwinConfig system;
           }
         ) (builtins.mapAttrs (name: _: import ./configurations/${name}) (builtins.readDir ./configurations))
       )
