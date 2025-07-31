@@ -17,6 +17,6 @@ home-manager.lib.homeManagerConfiguration {
     zen-browser.homeModules.zen-browser
     nixcord.homeModules.nixcord
     stylix.homeModules.stylix
-    ./modules/home
+    ../../modules/home
   ];
 }

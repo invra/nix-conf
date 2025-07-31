@@ -8,7 +8,7 @@
 nixpkgs.lib.nixosSystem {
   inherit system specialArgs;
   modules = [
-    ./modules/config
+    ../../modules/config
     stylix.nixosModules.stylix
   ];
 }
