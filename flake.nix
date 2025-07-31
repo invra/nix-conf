@@ -86,8 +86,8 @@
                   stylix
                   zen-browser
                   nixpkgs
+                  system
                   ;
-                inherit system;
                 extraSpecialArgs = specialArgs;
               };
           in
