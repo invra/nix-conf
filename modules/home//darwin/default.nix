@@ -4,6 +4,9 @@
   configTOML,
   ...
 }:
+let
+  inherit (configTOML) system;
+in
 {
   imports = [
     ../../modules/wallpaper
@@ -64,7 +67,7 @@
         NewWindowTarget = "Home";
       };
 
-      "com.apple.dock" = with configTOML; {
+      "com.apple.dock" = {
         autohide = system.dock.autohide or false;
         orientation = system.dock.orientation or "bottom";
         tilesize = system.dock.size or 64;

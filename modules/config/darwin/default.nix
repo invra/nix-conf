@@ -1,5 +1,4 @@
 { pkgs, configTOML, ... }:
-
 {
   _module.args = {
     inherit pkgs configTOML;

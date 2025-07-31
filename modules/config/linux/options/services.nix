@@ -2,9 +2,11 @@
   configTOML,
   ...
 }:
+let
+  inherit (configTOML) system desktop;
+in
 {
-
-  services = with configTOML; {
+  services = {
     pulseaudio.daemon.config.flat-volumes = "no";
     flatpak.enable = true;
     blueman.enable = true;

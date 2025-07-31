@@ -3,6 +3,9 @@
   configTOML,
   ...
 }:
+let
+  inherit (configTOML) system;
+in
 {
   boot = with configTOML.system; {
     kernelPackages = pkgs.linuxPackages_latest;

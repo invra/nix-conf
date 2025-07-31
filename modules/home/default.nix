@@ -1,12 +1,10 @@
 {
-  nixpkgs,
   pkgs,
-  custils,
   ...
 }:
 let
-  lib = nixpkgs.lib;
-  stdenv = pkgs.stdenv;
+  inherit (pkgs) lib stdenv;
+  custils = import ../utils { inherit lib; };
 in
 {
   imports = custils.getModulesFromDirsRec (

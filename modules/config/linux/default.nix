@@ -1,9 +1,12 @@
 {
   lib,
-  pkgs,
   configTOML,
+  pkgs,
   ...
 }:
+let
+  inherit (configTOML) system;
+in
 {
   imports = [
     configTOML.system.hardware-module
@@ -33,7 +36,7 @@
       modesetting.enable = true;
       nvidiaSettings = true;
 
-      prime = with configTOML; {
+      prime = {
         intelBusId = system.graphics.nvidia.prime.intelBusId or "";
         nvidiaBusId = system.graphics.nvidia.prime.nvidiaBusId or "";
         amdgpuBusId = system.graphics.nvidia.prime.amdgpuBusId or "";
