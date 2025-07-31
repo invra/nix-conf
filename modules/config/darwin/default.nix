@@ -1,9 +1,5 @@
 { pkgs, configTOML, ... }:
 {
-  _module.args = {
-    inherit pkgs configTOML;
-  };
-
   assertions = [
     {
       assertion = !(configTOML.system.normaliseKbd or false);

@@ -17,24 +17,26 @@ in
     overlays = extraOverlays;
   };
 
-  nix = {
-    settings = {
-      cores = 8;
-      max-jobs = 1;
-      experimental-features = [
-        "nix-command"
-        "flakes"
-      ];
-      extra-experimental-features = [
-        "pipe-operators"
-      ];
+  nix.settings = {
+    cores = 8;
+    max-jobs = 1;
 
-      substituters = [ "https://nix-community.cachix.org" ];
-      trusted-public-keys = [
-        "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
-      ];
-    };
+    experimental-features = [
+      "nix-command"
+      "flakes"
+    ];
+
+    extra-experimental-features = [
+      "pipe-operators"
+    ];
+
+    substituters = [ "https://nix-community.cachix.org" ];
+
+    trusted-public-keys = [
+      "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+    ];
   };
+  
 
   users.users = {
     ${user.username} = {
