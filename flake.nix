@@ -44,7 +44,7 @@
         builtins.mapAttrs (
           name: configTOML:
           let
-            configure = import ./configure-systems.nix {
+            configure = import ./utils/configuration {
               inherit (nixpkgs) lib;
               inherit flakeInputs configTOML;
               configName = name;
