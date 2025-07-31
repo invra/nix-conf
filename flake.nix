@@ -32,20 +32,10 @@
 
   outputs =
     {
-      nixpkgs-stable,
-      nixpkgs-24_11,
       flake-utils,
-      darwin,
       nixpkgs,
-      home-manager,
-      plasma-manager,
-      ip,
-      nixcord,
-      stylix,
-      ghostty,
-      zen-browser,
       ...
-    }:
+    }@flakeInputs:
     let
       inherit (nixpkgs) lib;
     in
@@ -54,70 +44,24 @@
         builtins.mapAttrs (
           name: configTOML:
           let
-            specialArgs = {
-              inherit
-                nixpkgs-24_11
-                home-manager
-                nixpkgs-stable
-                plasma-manager
-                nixcord
-                stylix
-                zen-browser
-                configTOML
-                ;
-              extraOverlays = [
-                zen-browser.overlay
-                ghostty.overlays.default
-                ip.overlay
-              ];
-              linux = (lib.strings.hasSuffix "x86" name || lib.strings.hasSuffix "aarch64" name);
-              allowUnfreePredicate =
-                pkg:
-                builtins.readFile ./unfreePacakges.txt |> builtins.split "\n" |> builtins.elem (lib.getName pkg);
-              custils = import ./utils { inherit (nixpkgs) lib; };
+            configure = import ./configure-systems.nix {
+              inherit (nixpkgs) lib;
+              inherit flakeInputs configTOML;
+              configName = name;
             };
-            mkHomeManConfig =
-              system:
-              import ./configure-home.nix {
-                inherit
-                  home-manager
-                  plasma-manager
-                  nixcord
-                  stylix
-                  zen-browser
-                  nixpkgs
-                  ;
-                inherit system;
-                extraSpecialArgs = specialArgs;
-              };
+            system =
+              if lib.strings.hasSuffix "x86" name then
+                "x86_64-linux"
+              else if lib.strings.hasSuffix "aarch64" name then
+                "aarch64-linux"
+              else
+                "aarch64-darwin";
           in
-          lib.optionalAttrs (!lib.strings.hasSuffix "x86" name && !lib.strings.hasSuffix "aarch64" name) {
-            darwinConfigurations.${name} = import ./configure-darwin.nix { inherit darwin specialArgs; };
-            homeConfigurations.${name} = mkHomeManConfig "aarch64-darwin";
+          {
+            nixosConfigurations.${name} = configure.mkNixConfig system;
+            homeConfigurations.${name} = configure.mkHomeConfig system;
+            darwinConfigurations.${name} = configure.mkDarwinConig system;
           }
-          // lib.optionalAttrs (lib.strings.hasSuffix "x86" name) {
-            nixosConfigurations.${name} = import ./configure-nixos.nix {
-              inherit
-                nixpkgs
-                stylix
-                specialArgs
-                ;
-              system = "x86_64-linux";
-            };
-            homeConfigurations.${name} = mkHomeManConfig "x86_64-linux";
-          }
-          // lib.optionalAttrs (lib.strings.hasSuffix "aarch64" name) {
-            nixosConfigurations.${name} = import ./configure-nixos.nix {
-              inherit
-                nixpkgs
-                stylix
-                specialArgs
-                ;
-              system = "aarch64-linux";
-            };
-            homeConfigurations.${name} = mkHomeManConfig "aarch64-linux";
-          }
-
         ) (builtins.mapAttrs (name: _: import ./configurations/${name}) (builtins.readDir ./configurations))
       )
     ))
