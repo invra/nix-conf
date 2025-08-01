@@ -1,6 +1,6 @@
 { lib, ... }:
 let
-  
+
   getModulesFromDirRec =
     dir:
     if lib.pathExists (lib.path.append dir "default.nix") then

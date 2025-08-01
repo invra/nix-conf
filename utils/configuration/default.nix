@@ -25,7 +25,9 @@ let
     linux = (lib.strings.hasSuffix "x86" configName || lib.strings.hasSuffix "aarch64" configName);
     allowUnfreePredicate =
       pkg:
-      builtins.readFile ../../unfreePacakges.txt |> builtins.split "\n" |> builtins.elem (lib.getName pkg);
+      builtins.readFile ../../unfreePacakges.txt
+      |> builtins.split "\n"
+      |> builtins.elem (lib.getName pkg);
     custils = import ../. { inherit lib; };
   };
 in
