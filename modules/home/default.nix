@@ -8,9 +8,9 @@
 }:
 {
   imports = custils.getModulesFromDirsRec (
-    lib.lists.toList (lib.path.append ./. "󱄅")
-    ++ (lib.optional linux (lib.path.append ./. ""))
-    ++ (lib.optional (!linux) (lib.path.append ./. ""))
+    lib.lists.toList ./common
+    ++ (lib.optional linux ./linux)
+    ++ (lib.optional (!linux) ./darwin)
   );
   nixpkgs = {
     config.allowUnfreePredicate = allowUnfreePredicate;
