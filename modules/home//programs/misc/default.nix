@@ -19,7 +19,6 @@
       wget
       jdk21
       libreoffice-qt-fresh
-      remmina
 
       wineWowPackages.waylandFull
       winetricks
