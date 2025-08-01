@@ -8,7 +8,8 @@
     file = {
       ".config/sway/config".source = ./config;
       ".config/sway/screenshot.nu".text = import ./scripts/screenshot.nix;
-      ".config/sway/wallpaper.png".source = configTOML.user.wallpaper or ../../../../../wallpapers/flake.jpg;
+      ".config/sway/wallpaper.png".source =
+        configTOML.user.wallpaper or ../../../../../wallpapers/flake.jpg;
     };
 
     packages = with pkgs; [
