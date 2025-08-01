@@ -6,12 +6,14 @@ let
   gaps = 6;
 in
 {
-  programs.aerospace = {
+  imports = [
+    ./sketchybar.nix  
+  ];
+  
+  services.aerospace = {
     enable = true;
 
-    userSettings = {
-      start-at-login = true;
-
+    settings = {
       enable-normalization-flatten-containers = true;
       automatically-unhide-macos-hidden-apps = true;
       enable-normalization-opposite-orientation-for-nested-containers = true;
@@ -99,5 +101,13 @@ in
         cmd-alt-h = [ ];
       };
     };
+  };
+
+  # Disable default menubar, dont worry about yabai here, it will NOT intefere with AeroSpace (iThink)
+  services.yabai = {
+    enable = true;
+    extraConfig = ''
+      yabai -m config menubar_opacity 0.0
+    '';
   };
 }
