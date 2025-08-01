@@ -19,15 +19,8 @@ let
         PATH=${pkgs.uutils-coreutils-noprefix}/bin
         mkdir -p $out
         versionStr=$(${osVers}/bin/os_vers)
-        versionStr="$(echo -n "$versionStr" | tr -d '\n\r ')"
 
-        echo "DEBUG: versionStr='$versionStr'"
-
-        versionInt=$((versionStr + 0))
-
-        echo "DEBUG: versionInt='$versionInt'"
-
-        if [ "$versionInt" -ge 26 ]; then
+        if [ "$versionStr" -ge 26 ]; then
           echo true > $out/result.txt
         else
           echo false > $out/result.txt
