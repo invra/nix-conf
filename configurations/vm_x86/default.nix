@@ -12,7 +12,7 @@
         "GitLab"
         "GitHub"
       ];
-      username = "InvraNet";
+      username = "Invra";
     };
   };
   system = {

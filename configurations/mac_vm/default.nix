@@ -10,7 +10,7 @@
         "GitLab"
         "GitHub"
       ];
-      username = "InvraNet";
+      username = "Invra";
     };
   };
   system = {
@@ -41,7 +41,7 @@
     timezone = "Australia/Sydney";
   };
   user = {
-    displayName = "InvraNet";
+    displayName = "Invra";
     initialPassword = "123456";
     username = "invra";
   };
