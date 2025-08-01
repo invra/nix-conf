@@ -1,7 +1,7 @@
 ''
   /**
    * @name Rose Pine
-   * @author InvraNet
+   * @author Invra
    * @authorLink https://github.com/SEELE1306
    * @description Soho vibes for discord.
    * @license GPLv3
