@@ -15,7 +15,7 @@
       sketchybar
       alt-tab-macos
       raycast
-      blender
+      # blender
       linearmouse
       obs-studio
       steam
