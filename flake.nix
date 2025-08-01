@@ -67,6 +67,6 @@
     ))
     // (flake-utils.lib.eachDefaultSystem (system: {
       formatter = nixpkgs.legacyPackages.${system}.nixfmt-tree;
-      devShells.default = import ./devsh.nix { pkgs = import nixpkgs { inherit system; }; };
+      devShells.default = import ./devsh.nix (import nixpkgs { inherit system; });
     }));
 }
