@@ -17,11 +17,6 @@
   };
   system = {
     hardware-module = ./hardware-configuration.nix;
-    dock = {
-      autoHideDelay = 0.45;
-      autohide = true;
-      orientation = "right";
-    };
     graphics = {
       blacklists = [
         "nouveau"
@@ -58,7 +53,7 @@
     timezone = "Australia/Sydney";
   };
   user = {
-    displayName = "Invraa (>.<)";
+    displayName = "Invra";
     initialPassword = "123456";
     username = "invra";
   };
