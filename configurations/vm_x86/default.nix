@@ -25,9 +25,9 @@
     graphics = {
       blacklists = [
         "nouveau"
-        "nvidia"
+        "amdgpu"
       ];
-      wanted = [ "amdgpu" ];
+      wanted = [ "modesetting" "nvidia" ];
     };
     greeter = "gdm";
     hostname = "NixOS";
@@ -38,14 +38,6 @@
       dhcpEnabled = true;
       firewallEnabled = false;
       networkmanager = false;
-      # interfaces = [
-      #   {
-      #     type = "BRIDGE";
-      #     name = "br0";
-      #     interfaces = [ "enp6s0" ];
-      #     dhcpEnabled = true;
-      #   }
-      # ];
     };
     services = {
       mongodb = {
@@ -58,7 +50,7 @@
     timezone = "Australia/Sydney";
   };
   user = {
-    displayName = "Invraa (>.<)";
+    displayName = "Invra";
     initialPassword = "123456";
     username = "invra";
   };
