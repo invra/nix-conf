@@ -25,6 +25,9 @@
 
     shellAliases = {
       fuckoff = "exit";
+      ":q" = "exit";
+      l = "ls -l";
+      la = "ls-al";
     };
 
     extraEnv = ''
