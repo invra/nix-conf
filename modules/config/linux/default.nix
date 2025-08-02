@@ -1,15 +1,12 @@
 {
-  lib,
   configTOML,
   pkgs,
   ...
 }:
-let
-  inherit (configTOML) system;
-in
+with configTOML.system;
 {
   imports = [
-    configTOML.system.hardware-module
+    hardware-module
     ./stylix.nix
     ./options/boot.nix
     ./options/displayManager.nix
@@ -21,28 +18,11 @@ in
     ./options/services.nix
     ./options/users.nix
     ./options/virtualisation.nix
+    ./options/hardware.nix
   ];
 
-  i18n.defaultLocale = configTOML.system.locale;
-  time.timeZone = configTOML.system.timezone;
-  hardware = {
-    graphics.enable = true;
-    amdgpu.opencl.enable = lib.mkForce (
-      builtins.elem "amdgpu" (configTOML.system.graphics.wanted or [ ])
-    );
-
-    nvidia = {
-      open = true;
-      modesetting.enable = true;
-      nvidiaSettings = true;
-
-      prime = {
-        intelBusId = system.graphics.nvidia.prime.intelBusId or "";
-        nvidiaBusId = system.graphics.nvidia.prime.nvidiaBusId or "";
-        amdgpuBusId = system.graphics.nvidia.prime.amdgpuBusId or "";
-      };
-    };
-  };
+  i18n.defaultLocale = locale;
+  time.timeZone = timezone;
 
   documentation.man = {
     man-db.enable = false;
