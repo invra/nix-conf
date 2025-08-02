@@ -31,6 +31,12 @@ in
         inner.horizontal = gaps;
       };
 
+      exec-on-workspace-change = [
+        "/bin/bash"
+        "-c"
+        "sketchybar --trigger aerospace_workspace_change FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE PREV_WORKSPACE=$AEROSPACE_PREV_WORKSPACE"
+      ];
+
       mode.main.binding = {
         alt-h = "focus left";
         alt-j = "focus down";

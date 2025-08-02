@@ -17,7 +17,6 @@
       steam
       raycast
       obs-studio
-      sketchybar
       linearmouse
       jankyborders
       alt-tab-macos
