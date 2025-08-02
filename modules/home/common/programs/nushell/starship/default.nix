@@ -7,8 +7,8 @@ let
     directoryFg = "#c4a7e7";
     directoryBg = "#403850";
 
-    gitFg = "#31748f";
-    gitBg = "#1f2d3d";
+    gitFg = "#9ccfd8";
+    gitBg = "#37414d";
   };
 in
 {
