@@ -1,9 +1,4 @@
 {
-  desktop = {
-    plasma = {
-      enable = true;
-    };
-  };
   development = {
     git = {
       defaultBranch = "main";
