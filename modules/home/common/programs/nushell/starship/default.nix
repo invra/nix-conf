@@ -15,7 +15,7 @@ in
 {
   programs.starship = {
     enable = true;
-    settings =  {
+    settings = {
       character = {
         error_symbol = "[ 󱞪](bold red)";
         success_symbol = "[ 󱞪](bold green)";
