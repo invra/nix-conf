@@ -7,9 +7,9 @@ let
 in
 {
   imports = [
-    ./sketchybar.nix  
+    ./sketchybar.nix
   ];
-  
+
   services.aerospace = {
     enable = true;
 
