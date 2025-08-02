@@ -1,9 +1,4 @@
 {
-  desktop = {
-    plasma = {
-      enable = true;
-    };
-  };
   development = {
     git = {
       defaultBranch = "main";
@@ -33,7 +28,7 @@
     hostname = "NixOS";
   };
   user = {
-    displayName = "peter";
+    displayName = "Peter";
     initialPassword = "123456";
     username = "peter";
   };
