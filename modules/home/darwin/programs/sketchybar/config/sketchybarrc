@@ -42,8 +42,8 @@ for sid in $(aerospace list-workspaces --all); do
     background.height=30 \
     background.width=50 \
     icon="" \
-    icon.color=0xffc4a7e7 \
     icon.font="JetBrainsMono Nerd Font:Regular:14.0" \
+    icon.color=0xff26233a \
     icon.padding_left=15 \
     icon.padding_right=15 \
     icon.shadow.drawing=off \
@@ -52,8 +52,6 @@ for sid in $(aerospace list-workspaces --all); do
     label.padding_left=0 \
     label.y_offset=-1 \
     label.shadow.drawing=off \
-    label.shadow.color=0xA0000000 \
-    label.shadow.distance=4 \
     click_script="aerospace workspace $sid" \
     script="$CONFIG_DIR/plugins/aerospace.sh $sid"
 done
