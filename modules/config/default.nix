@@ -10,7 +10,7 @@ let
   inherit (configTOML) user;
 in
 {
-  imports = if linux then [ ./linux ] else [ ./darwin ];
+  imports = if linux then [ ./linux ./stylix.nix ] else [ ./darwin ./stylix.nix ];
 
   nixpkgs = {
     config.allowUnfreePredicate = allowUnfreePredicate;

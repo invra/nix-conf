@@ -7,7 +7,7 @@
   stylix = {
     enable = true;
     base16Scheme = "${pkgs.base16-schemes}/share/themes/rose-pine.yaml";
-    image = configTOML.user.wallpaper or ../../../wallpapers/flake.jpg;
+    image = configTOML.user.wallpaper or ../../wallpapers/flake.jpg;
     fonts = {
       serif = {
         package = pkgs.dejavu_fonts;

@@ -7,7 +7,6 @@ with configTOML.system;
 {
   imports = [
     hardware-module
-    ./stylix.nix
     ./options/boot.nix
     ./options/displayManager.nix
     ./options/fonts.nix
