@@ -1,10 +1,11 @@
 #!/usr/bin/env bash
 
-# make sure it's executable with:
-# chmod +x ~/.config/sketchybar/plugins/aerospace.sh
+focused="$AEROSPACE_FOCUSED_WORKSPACE"
 
-if [ "$1" = "$FOCUSED_WORKSPACE" ]; then
-  sketchybar --set "$NAME" background.color=0xff26233a label.shadow.drawing=on background.border_width=0
-else
-  sketchybar --set "$NAME" background.color=0xff1f1d2e label.shadow.drawing=off background.border_width=0
-fi
+for sid in $(aerospace list-workspaces --all); do
+  if [ "$sid" = "$focused" ]; then
+    sketchybar --set space."$sid" icon.color=0xffeb6f92
+  else
+    sketchybar --set space."$sid" icon.color=0xffc4a7e7
+  fi
+done
