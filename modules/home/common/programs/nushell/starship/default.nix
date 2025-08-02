@@ -10,6 +10,7 @@ let
     gitFg = "#9ccfd8";
     gitBg = "#37414d";
   };
+  # Background is 35-parts #1A1825 to 10-parts foreground.
 in
 {
   programs.starship = {
