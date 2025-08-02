@@ -51,7 +51,10 @@ in
   mkDarwinConfig =
     _:
     import ./configure-darwin.nix {
-      inherit (flakeInputs) darwin;
+      inherit (flakeInputs)
+        darwin
+        stylix
+        ;
       inherit specialArgs;
     };
   mkNixConfig =
