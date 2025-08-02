@@ -1,6 +1,3 @@
-# A simple sketchybar config for aerospace users to get started with
-# Not too different from the base starting config!
-
 PLUGIN_DIR="$CONFIG_DIR/plugins"
 
 ##### Bar Appearance #####
@@ -10,20 +7,15 @@ PLUGIN_DIR="$CONFIG_DIR/plugins"
 # If you are looking for other colors, see the color picker:
 # https://felixkratz.github.io/SketchyBar/config/tricks#color-picker
 
-sketchybar --bar position=top y_offset=0 margin=0 sticky=on topmost=on layer=top height=44 blur_radius=30 color=0x40000000
-
-##### Changing Defaults #####
-# We now change some default values, which are applied to all further items.
-# For a full list of all available item properties see:
-# https://felixkratz.github.io/SketchyBar/config/items
+sketchybar --bar position=top y_offset=0 margin=0 sticky=on topmost=on height=42 color=0xff191724
 
 default=(
   padding_left=5
   padding_right=5
   icon.font="Hack Nerd Font:Bold:17.0"
   label.font="SF Pro:Semibold:17.0"
-  icon.color=0xffffffff
-  label.color=0xffffffff
+  icon.color=0xffe0def4
+  label.color=0xffe0def4
   icon.padding_left=4
   icon.padding_right=4
   label.padding_left=4
@@ -46,18 +38,20 @@ for sid in $(aerospace list-workspaces --all); do
       echo "${v:-1}"
     )" \
     drawing=off \
-    background.color=0x44ffffff \
+    background.color=0xff1f1d2e \
     background.corner_radius=5 \
     background.drawing=on \
-    background.border_color=0xAAFFFFFF \
+    background.border_color=0xff1f1d2e \
     background.border_width=0 \
     background.height=25 \
     icon="$sid" \
     icon.padding_left=10 \
+    icon.padding_right=14 \
     icon.shadow.distance=4 \
     icon.shadow.color=0xA0000000 \
-    label.font="sketchybar-app-font:Regular:16.0" \
-    label.padding_right=20 \
+    label.font="sketchybar-app-font:Regular:0.0" \
+    label.width=0 \
+    label.padding_right=0 \
     label.padding_left=0 \
     label.y_offset=-1 \
     label.shadow.drawing=off \
@@ -87,14 +81,14 @@ for mid in $(aerospace list-monitors | cut -c1); do
 done
 
 sketchybar --add item space_separator left \
-  --set space_separator icon="L" \
+  --set space_separator icon="󰘔" \
   icon.padding_left=4 \
   label.drawing=off \
   background.drawing=off \
   script="$PLUGIN_DIR/space_windows.sh" \
   --subscribe space_separator aerospace_workspace_change front_app_switched space_windows_change aerospace_monitor_change
 
-# Front app!!
+# Focused app
 sketchybar --add item front_app left \
   --set front_app icon.drawing=off \
   script="$PLUGIN_DIR/front_app.sh" \
@@ -119,12 +113,7 @@ sketchybar --add item clock right \
   --add item battery right \
   --set battery update_freq=120 script="$PLUGIN_DIR/battery.sh" \
   --subscribe battery system_woke power_source_change \
-  --add item swap e \
-  --set swap update_freq=20 script="$PLUGIN_DIR/memswap.sh" \
-  icon="" \
-  label.font="Hack Nerd Font:Italic:13.0" \
-  icon.color=0x44FFFFFF \
-  label.color=0x44FFFFFF
+  --add item swap e
 
 ##### Force all scripts to run the first time (never do this in a script) #####
 sketchybar --update
