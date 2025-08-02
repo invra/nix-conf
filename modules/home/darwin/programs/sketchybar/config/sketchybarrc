@@ -1,3 +1,5 @@
+#!/bin/bash
+
 PLUGIN_DIR="$CONFIG_DIR/plugins"
 
 ##### Bar Appearance #####
@@ -12,8 +14,8 @@ sketchybar --bar position=top y_offset=0 margin=0 sticky=on topmost=on height=42
 default=(
   padding_left=5
   padding_right=5
-  icon.font="Hack Nerd Font:Bold:17.0"
-  label.font="SF Pro:Semibold:17.0"
+  icon.font="JetBrainsMono Nerd Font:Regular:17.0"
+  label.font="JetBrainsMono Nerd Font:Regular:17.0"
   icon.color=0xffe0def4
   label.color=0xffe0def4
   icon.padding_left=4
@@ -24,32 +26,27 @@ default=(
 )
 sketchybar --default "${default[@]}"
 
-##### Adding aeropsace layouts #####
-# Add the aerospace events we specified in aerospace.toml
 sketchybar --add event aerospace_workspace_change
 sketchybar --add event aerospace_monitor_change
 
 for sid in $(aerospace list-workspaces --all); do
-  sketchybar --add item space.$sid left \
-    --subscribe space.$sid aerospace_workspace_change \
-    --set space.$sid \
-    display="$(
-      v=$(aerospace list-windows --workspace "$sid" --format "%{monitor-appkit-nsscreen-screens-id}" | cut -c1)
-      echo "${v:-1}"
-    )" \
+  sketchybar --add item space."$sid" left \
+    --subscribe space."$sid" aerospace_workspace_change \
+    --set space."$sid" \
     drawing=off \
     background.color=0xff1f1d2e \
     background.corner_radius=5 \
     background.drawing=on \
     background.border_color=0xff1f1d2e \
     background.border_width=0 \
-    background.height=25 \
-    icon="$sid" \
-    icon.padding_left=10 \
-    icon.padding_right=14 \
-    icon.shadow.distance=4 \
-    icon.shadow.color=0xA0000000 \
-    label.font="sketchybar-app-font:Regular:0.0" \
+    background.height=30 \
+    background.width=50 \
+    icon="" \
+    icon.color=0xffc4a7e7 \
+    icon.font="JetBrainsMono Nerd Font:Regular:14.0" \
+    icon.padding_left=15 \
+    icon.padding_right=15 \
+    icon.shadow.drawing=off \
     label.width=0 \
     label.padding_right=0 \
     label.padding_left=0 \
@@ -63,20 +60,20 @@ done
 
 # Load Icons on startup
 for mid in $(aerospace list-monitors | cut -c1); do
-  for sid in $(aerospace list-workspaces --monitor $mid --empty no); do
+  for sid in $(aerospace list-workspaces --monitor "$mid" --empty no); do
   apps=$(aerospace list-windows --workspace "$sid" | awk -F'|' '{gsub(/^ *| *$/, "", $2); print $2}')
 
-  sketchybar --set space.$sid drawing=on
+  sketchybar --set space."$sid" drawing=on
 
   icon_strip=" "
   if [ "${apps}" != "" ]; then
     while read -r app; do
-      icon_strip+=" $($CONFIG_DIR/plugins/icon_map_fn.sh "$app")"
+      icon_strip+=" $("$CONFIG_DIR"/plugins/icon_map_fn.sh "$app")"
     done <<<"${apps}"
   else
     icon_strip=""
   fi
-  sketchybar --set space.$sid label="$icon_strip"
+  sketchybar --set space."$sid" label="$icon_strip"
   done
 done
 
