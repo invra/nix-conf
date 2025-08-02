@@ -1,4 +1,16 @@
 { ... }:
+let
+  colours = {
+    usernameFg = "#ebbcba";
+    usernameBg = "#483d47";
+
+    directoryFg = "#c4a7e7";
+    directoryBg = "#403850";
+
+    gitFg = "#31748f";
+    gitBg = "#1f2d3d";
+  };
+in
 {
   programs.starship = {
     enable = true;
@@ -9,7 +21,7 @@
       };
       directory = {
         format = "[ $path ]($style)";
-        style = "fg:#c4a7e7 bg:#413951";
+        style = "fg:${colours.directoryFg} bg:${colours.directoryBg}";
         substitutions = {
           Downloads = " ";
           Documents = "󰈙 ";
@@ -28,14 +40,14 @@
         truncation_symbol = "…/";
       };
       format = ''
-        [](fg:#4a3e47)[ 󱄅  ](bg:#4a3e47 fg:#ebbcba)$username[](bg:#413951 fg:#4a3e47)$directory[](fg:#413951 bg:#463a36)$git_branch$git_status[](fg:#463a36 bg:#26233a)$nodejs$rust$golang$php[](fg:#26233a bg:#2a273f)$time[](fg:#2a273f)
+        [](fg:${colours.usernameBg})[ 󱄅  ](bg:${colours.usernameBg} fg:${colours.usernameFg})$username[](bg:${colours.directoryBg} fg:${colours.usernameBg})$directory[](fg:${colours.directoryBg} bg:${colours.gitBg})$git_branch$git_status[](fg:${colours.gitBg} bg:#26233a)$nodejs$rust$golang$php[](fg:#26233a bg:#2a273f)$time[](fg:#2a273f)
         $character'';
       git_branch = {
-        format = "[[ $symbol $branch ](fg:#f6c177 bg:#463a36)]($style)";
+        format = "[[ $symbol $branch ](fg:${colours.gitFg} bg:${colours.gitBg})]($style)";
         symbol = "";
       };
       git_status = {
-        format = "[[($all_status$ahead_behind )](fg:#f6c177 bg:#463a36)]($style)";
+        format = "[[($all_status$ahead_behind )](fg:${colours.gitFg} bg:${colours.gitBg})]($style)";
         style = "bg:#394260";
       };
       golang = {
@@ -69,7 +81,7 @@
         format = "[$user ]($style)";
         show_always = true;
         style_root = "red bold";
-        style_user = "bg:#4a3e47 fg:#ebbcba bold";
+        style_user = "bg:${colours.usernameBg} fg:${colours.usernameFg} bold";
       };
     };
   };
