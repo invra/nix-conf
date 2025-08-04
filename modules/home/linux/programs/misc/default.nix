@@ -19,9 +19,10 @@
       wget
       jdk21
       libreoffice-qt-fresh
-
-      wineWowPackages.waylandFull
       winetricks
+
+      kdePackages.kdeconnect-kde
+      wineWowPackages.waylandFull
     ];
   };
 }
