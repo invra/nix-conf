@@ -25,5 +25,10 @@ with configTOML;
         amdgpuBusId = system.graphics.nvidia.prime.amdgpuBusId or "";
       };
     };
+
+    bluetooth = {
+      enable = true;
+      powerOnBoot = true;
+    };
   };
 }
