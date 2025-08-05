@@ -32,7 +32,7 @@ for i = 1, 10, 1 do
       height = 26,
       border_color = colors.bg2,
     },
-    popup = { background = { border_width = 5, border_color = colors.black } }
+    popup = { background = { border_width = 5, border_color = colors.bg2 } }
   })
 
   spaces[i] = space
@@ -71,7 +71,7 @@ for i = 1, 10, 1 do
     space:set({
       icon = { highlight = selected, },
       label = { highlight = selected },
-      background = { border_color = selected and colors.black or colors.bg2 }
+      background = { border_color = selected and colors.grey or colors.bg2 }
     })
     space_bracket:set({
       background = { border_color = selected and colors.grey or colors.bg2 }
