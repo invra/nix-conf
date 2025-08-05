@@ -21,6 +21,7 @@ in
     settings = {
       theme = "rose-pine";
       background-opacity = 0.95;
+      macos-titlebar-style = "hidden";
       font-size = 14;
     };
   };
