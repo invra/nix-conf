@@ -1,7 +1,7 @@
 {
-  home-manager,
   extraSpecialArgs,
   plasma-manager,
+  home-manager,
   zen-browser,
   nixcord,
   stylix,
