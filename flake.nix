@@ -8,7 +8,7 @@
     zen-browser.url = "gitlab:invra/zen-flake";
     ip.url = "gitlab:hiten-tandon/some-nix-darwin-packages";
     ghostty.url = "github:ghostty-org/ghostty";
-
+    
     darwin = {
       url = "github:lnl7/nix-darwin";
       inputs.nixpkgs.follows = "nixpkgs";

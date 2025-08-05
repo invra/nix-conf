@@ -1,15 +1,14 @@
 { pkgs, ... }:
 
 {
-  home.packages = with pkgs; [ lua ];
+  home.packages = [pkgs.lua];
   programs.sketchybar = {
     enable = true;
-  };
-
-  home.file = {
-    ".config/sketchybar" = {
+    configType = "lua";
+    config = {
       source = ./config;
       recursive = true;
     };
+    includeSystemPath = true;
   };
 }
