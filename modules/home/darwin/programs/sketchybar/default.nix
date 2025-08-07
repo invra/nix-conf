@@ -1,7 +1,7 @@
 { pkgs, ... }:
 
 {
-  home.packages = [pkgs.lua];
+  home.packages = [ pkgs.lua ];
   programs.sketchybar = {
     enable = true;
     configType = "lua";

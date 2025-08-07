@@ -8,9 +8,7 @@ with flakeConfig;
 {
   hardware = {
     graphics.enable = true;
-    amdgpu.opencl.enable = lib.mkForce (
-      builtins.elem "amdgpu" (system.graphics.wanted or [ ])
-    );
+    amdgpu.opencl.enable = lib.mkForce (builtins.elem "amdgpu" (system.graphics.wanted or [ ]));
 
     nvidia = {
       open = false;

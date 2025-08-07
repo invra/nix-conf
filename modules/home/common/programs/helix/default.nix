@@ -14,11 +14,18 @@
 
       language = [
         {
-          language-servers = ["discord-rpc" "rust-analyzer"];
+          language-servers = [
+            "discord-rpc"
+            "rust-analyzer"
+          ];
           name = "rust";
         }
         {
-          language-servers = ["discord-rpc" "nixd" "nil"];
+          language-servers = [
+            "discord-rpc"
+            "nixd"
+            "nil"
+          ];
           name = "nix";
         }
       ];
@@ -26,7 +33,7 @@
 
     settings = {
       theme = "rose_pine";
-     
+
       editor = {
         line-number = "relative";
         color-modes = true;
