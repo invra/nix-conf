@@ -1,10 +1,10 @@
 {
   pkgs,
-  configTOML,
+  flakeConfig,
   ...
 }:
 {
-  networking = with configTOML.system; {
+  networking = with flakeConfig.system; {
     hostName = hostname;
     networkmanager.enable = networking.networkmanager;
     firewall.enable = networking.firewallEnabled;

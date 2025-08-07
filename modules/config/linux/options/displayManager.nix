@@ -1,10 +1,10 @@
 {
   pkgs,
-  configTOML,
+  flakeConfig,
   ...
 }:
 {
-  services.displayManager = with configTOML.system; {
+  services.displayManager = with flakeConfig.system; {
     gdm = {
       enable = (greeter == "gdm");
       wayland = true;

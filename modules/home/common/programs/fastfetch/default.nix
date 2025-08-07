@@ -1,6 +1,6 @@
 {
   pkgs,
-  configTOML,
+  flakeConfig,
   ...
 }:
 let
@@ -125,8 +125,8 @@ in
       ++ (map (type: {
         type = "custom";
         key = "    ${type}:";
-        format = "${configTOML.development.git.username}";
-      }) configTOML.development.git.types)
+        format = "${flakeConfig.development.git.username}";
+      }) flakeConfig.development.git.types)
       ++ [
         {
           type = "custom";

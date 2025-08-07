@@ -1,6 +1,6 @@
 {
   pkgs,
-  configTOML,
+  flakeConfig,
   ...
 }:
 {
@@ -9,7 +9,7 @@
   ];
 
   home = {
-    homeDirectory = "/Users/${configTOML.user.username}";
+    homeDirectory = "/Users/${flakeConfig.user.username}";
     packages = with pkgs; [
       utm
       tart

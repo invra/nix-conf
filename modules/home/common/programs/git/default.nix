@@ -1,8 +1,8 @@
 {
-  configTOML,
+  flakeConfig,
   ...
 }:
-with configTOML.development.git;
+with flakeConfig.development.git;
 {
   imports = [
     ./gh

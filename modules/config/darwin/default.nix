@@ -1,8 +1,12 @@
-{ pkgs, configTOML, ... }:
+{
+  pkgs,
+  flakeConfig,
+  ...
+}:
 {
   assertions = [
     {
-      assertion = !(configTOML.system.normaliseKbd or false);
+      assertion = !(flakeConfig.system.normaliseKbd or false);
       message = ''
         The option `system.normaliseKbd` has been deprecated.
         Please use `system.keyboard.normalise` instead.
@@ -17,13 +21,13 @@
 
   security.pam.services.sudo_local.touchIdAuth = true;
 
-  users.knownUsers = [ configTOML.user.username ];
-  users.users.${configTOML.user.username} = {
-    home = "/Users/${configTOML.user.username}";
+  users.knownUsers = [ flakeConfig.user.username ];
+  users.users.${flakeConfig.user.username} = {
+    home = "/Users/${flakeConfig.user.username}";
     uid = 501;
   };
 
-  system = with configTOML; {
+  system = with flakeConfig; {
     primaryUser = user.username;
     keyboard = {
       enableKeyMapping = true;

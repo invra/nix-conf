@@ -43,11 +43,11 @@
     (builtins.foldl' lib.attrsets.recursiveUpdate { } (
       builtins.attrValues (
         builtins.mapAttrs (
-          name: configTOML:
+          name: flakeConfig:
           let
             configure = import ./utils/configuration {
               inherit (nixpkgs) lib;
-              inherit flakeInputs configTOML;
+              inherit flakeInputs flakeConfig;
               configName = name;
             };
             system =

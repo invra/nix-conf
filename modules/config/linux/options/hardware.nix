@@ -1,15 +1,15 @@
 {
   lib,
   config,
-  configTOML,
+  flakeConfig,
   ...
 }:
-with configTOML;
+with flakeConfig;
 {
   hardware = {
     graphics.enable = true;
     amdgpu.opencl.enable = lib.mkForce (
-      builtins.elem "amdgpu" (configTOML.system.graphics.wanted or [ ])
+      builtins.elem "amdgpu" (system.graphics.wanted or [ ])
     );
 
     nvidia = {

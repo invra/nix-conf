@@ -1,11 +1,11 @@
 {
   pkgs,
   config,
-  configTOML,
+  flakeConfig,
   ...
 }:
 let
-  inherit (configTOML) system;
+  inherit (flakeConfig) system;
 in
 {
   imports = [
@@ -17,8 +17,8 @@ in
     dock = {
       enable = true;
     }
-    // pkgs.lib.optionalAttrs (configTOML.system ? dock && configTOML.system.dock ? entries) {
-      entries = configTOML.system.dock.entries { inherit pkgs config; };
+    // pkgs.lib.optionalAttrs (flakeConfig.system ? dock && flakeConfig.system.dock ? entries) {
+      entries = flakeConfig.system.dock.entries { inherit pkgs config; };
     };
 
     defaults = {
@@ -81,6 +81,6 @@ in
 
   programs.setWallpaper = {
     enable = true;
-    wallpaperPath = configTOML.user.wallpaper or ../../../../wallpapers/flake.jpg;
+    wallpaperPath = flakeConfig.user.wallpaper or ../../../../wallpapers/flake.jpg;
   };
 }

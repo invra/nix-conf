@@ -1,9 +1,9 @@
 {
-  configTOML,
   pkgs,
+  flakeConfig,
   ...
 }:
-with configTOML.system;
+with flakeConfig.system;
 {
   imports = [
     hardware-module

@@ -1,9 +1,9 @@
 {
-  configTOML,
+  flakeConfig,
   ...
 }:
 let
-  inherit (configTOML) system desktop;
+  inherit (flakeConfig) system desktop;
 in
 {
   services = {

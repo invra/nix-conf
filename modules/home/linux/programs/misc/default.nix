@@ -1,11 +1,11 @@
 {
   pkgs,
-  configTOML,
+  flakeConfig,
   ...
 }:
 {
   home = {
-    homeDirectory = "/home/${configTOML.user.username}";
+    homeDirectory = "/home/${flakeConfig.user.username}";
     packages = with pkgs; [
       vlc
       gimp3

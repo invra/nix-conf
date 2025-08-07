@@ -1,7 +1,7 @@
 {
   flakeInputs,
   configName,
-  configTOML,
+  flakeConfig,
   lib,
   ...
 }:
@@ -16,7 +16,7 @@ let
       stylix
       zen-browser
       ;
-    inherit configTOML;
+    inherit flakeConfig;
     extraOverlays = with flakeInputs; [
       discord-rpc-lsp.overlays.default
       ghostty.overlays.default

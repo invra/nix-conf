@@ -1,10 +1,10 @@
 {
   pkgs,
-  configTOML,
+  flakeConfig,
   ...
 }:
 let
-  inherit (configTOML) system;
+  inherit (flakeConfig) system;
 in
 {
   boot = {

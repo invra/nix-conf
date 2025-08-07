@@ -1,13 +1,13 @@
 {
-  configTOML,
   pkgs,
+  linux,
+  flakeConfig,
   extraOverlays,
   allowUnfreePredicate,
-  linux,
   ...
 }:
 let
-  inherit (configTOML) user;
+  inherit (flakeConfig) user;
 in
 {
   imports =

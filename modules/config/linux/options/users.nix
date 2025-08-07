@@ -1,13 +1,13 @@
 {
-  configTOML,
+  flakeConfig,
   ...
 }:
 let
-  inherit (configTOML) user;
+  inherit (flakeConfig) user;
 in
 {
-  users.users.${configTOML.user.username} = {
-    inherit (configTOML.user) initialPassword;
+  users.users.${user.username} = {
+    inherit (user) initialPassword;
     isNormalUser = true;
     extraGroups = [
       "networkmanager"

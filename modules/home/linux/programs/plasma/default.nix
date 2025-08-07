@@ -1,10 +1,10 @@
 {
   pkgs,
-  configTOML,
+  flakeConfig,
   ...
 }:
 let
-  enable = configTOML.plasma.enable or false;
+  enable = flakeConfig.plasma.enable or false;
 in
 {
   home.packages = pkgs.lib.optionals enable (
