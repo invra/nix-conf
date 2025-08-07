@@ -9,8 +9,24 @@
     enable = true;
     defaultEditor = true;
 
+    languages = {
+      language-server.discord-rpc.command = "discord-rpc-lsp";
+
+      language = [
+        {
+          language-servers = ["discord-rpc" "rust-analyzer"];
+          name = "rust";
+        }
+        {
+          language-servers = ["discord-rpc" "nixd" "nil"];
+          name = "nix";
+        }
+      ];
+    };
+
     settings = {
       theme = "rose_pine";
+     
       editor = {
         line-number = "relative";
         color-modes = true;
@@ -66,6 +82,7 @@
       marksman
       markdownlint-cli2
       bash-language-server
+      discord-rpc-lsp
     ];
   };
 }

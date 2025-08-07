@@ -18,8 +18,9 @@ let
       ;
     inherit configTOML;
     extraOverlays = with flakeInputs; [
-      zen-browser.overlay
+      discord-rpc-lsp.overlays.default
       ghostty.overlays.default
+      zen-browser.overlay
       ip.overlay
     ];
     linux = (lib.strings.hasSuffix "x86" configName || lib.strings.hasSuffix "aarch64" configName);

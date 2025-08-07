@@ -8,6 +8,7 @@
     zen-browser.url = "gitlab:invra/zen-flake";
     ip.url = "gitlab:hiten-tandon/some-nix-darwin-packages";
     ghostty.url = "github:ghostty-org/ghostty";
+    discord-rpc-lsp.url = "gitlab:invra/discord-rpc-lsp"; 
     
     darwin = {
       url = "github:lnl7/nix-darwin";
