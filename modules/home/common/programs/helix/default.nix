@@ -19,6 +19,10 @@
             "rust-analyzer"
           ];
           name = "rust";
+          indent = {
+            tab-width = 2;
+            unit = " ";
+          };
         }
         {
           language-servers = [
@@ -27,6 +31,27 @@
             "nil"
           ];
           name = "nix";
+        }
+        {
+          language-servers = [
+            "discord-rpc"
+            "zls"
+          ];
+          name = "zig";
+        }
+        {
+          language-servers = [
+            "discord-rpc"
+            "typescript-langague-server"
+          ];
+          name = "typescript";
+        }
+        {
+          language-servers = [
+            "discord-rpc"
+            "gopls"
+          ];
+          name = "go";
         }
       ];
     };
