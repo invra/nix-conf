@@ -113,7 +113,7 @@ in
   services.yabai = {
     enable = true;
     extraConfig = ''
-      yabai -m config menubar_opacity 0.0
+      yabai -m config focus_follows_mouse autofocus
     '';
   };
 }
