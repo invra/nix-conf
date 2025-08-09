@@ -1,8 +1,7 @@
 {
-  pkgs,
+  rustPlatform,
   ...
 }:
-with pkgs;
 {
   cpu_load = rustPlatform.buildRustPackage {
     pname = "cpu_load";
