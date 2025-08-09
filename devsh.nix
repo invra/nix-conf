@@ -9,6 +9,7 @@
   zls,
   swift,
   swiftformat,
+  rustc,
   ...
 }:
 mkShell {
@@ -17,6 +18,7 @@ mkShell {
     cargo
     rustfmt
     rust-analyzer
+    rustc
 
     # Nix tools
     nixd
