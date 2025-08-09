@@ -43,7 +43,7 @@ local menu_padding = sbar.add("item", "menu.padding", {
 })
 
 local function update_menus(env)
-  sbar.exec("$CONFIG_DIR/helpers/menus/bin/menus -l", function(menus)
+  sbar.exec("menus -l", function(menus)
     sbar.set('/menu\\..*/', { drawing = false })
     menu_padding:set({ drawing = true })
     id = 1

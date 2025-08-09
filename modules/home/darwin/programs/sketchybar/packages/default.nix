@@ -1,5 +1,8 @@
-{ pkgs, ... }:
-let
+{
+  pkgs,
+  ...
+}:
+{
   cpu_load = pkgs.rustPlatform.buildRustPackage {
     pname = "cpu_load";
     version = "0.1.0";
@@ -13,7 +16,11 @@ let
     src = ./network_load;
     cargoLock.lockFile = ./network_load/Cargo.lock;
   };
-in
-{
-  inherit cpu_load network_load;
+
+  menus = pkgs.rustPlatform.buildRustPackage {
+    pname = "menus";
+    version = "0.1.0";
+    src = ./menus;
+    cargoLock.lockFile = ./menus/Cargo.lock;
+  };
 }
