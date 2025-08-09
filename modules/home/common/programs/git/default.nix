@@ -17,5 +17,10 @@ with flakeConfig.development.git;
       init.defaultBranch = defaultBranch;
       core.quotepath = "off";
     };
+    aliases = {
+      p = "push -v";
+      c = "commit";
+      a = "commit --amend";
+    };
   };
 }
