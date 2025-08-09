@@ -1,7 +1,6 @@
 local colors = require("colors")
 local icons = require("icons")
 local settings = require("settings")
-local app_icons = require("helpers.app_icons")
 
 local spaces = {}
 
@@ -54,8 +53,8 @@ for i = 1, 10, 1 do
 
   local space_popup = sbar.add("item", {
     position = "popup." .. space.name,
-    padding_left= 5,
-    padding_right= 0,
+    padding_left = 5,
+    padding_right = 0,
     background = {
       drawing = true,
       image = {
@@ -67,9 +66,8 @@ for i = 1, 10, 1 do
 
   space:subscribe("space_change", function(env)
     local selected = env.SELECTED == "true"
-    local color = selected and colors.white or colors.bg2
     space:set({
-      icon = { highlight = selected, },
+      icon = { highlight = selected },
       label = { highlight = selected },
       background = { border_color = selected and colors.grey or colors.bg2 }
     })
@@ -93,11 +91,6 @@ for i = 1, 10, 1 do
   end)
 end
 
-local space_window_observer = sbar.add("item", {
-  drawing = false,
-  updates = true,
-})
-
 local spaces_indicator = sbar.add("item", {
   padding_left = -3,
   padding_right = 0,
@@ -119,24 +112,6 @@ local spaces_indicator = sbar.add("item", {
     border_color = colors.with_alpha(colors.bg1, 0.0),
   }
 })
-
-space_window_observer:subscribe("space_windows_change", function(env)
-  local icon_line = ""
-  local no_app = true
-  for app, count in pairs(env.INFO.apps) do
-    no_app = false
-    local lookup = app_icons[app]
-    local icon = ((lookup == nil) and app_icons["Default"] or lookup)
-    icon_line = icon_line .. icon
-  end
-
-  if (no_app) then
-    icon_line = " —"
-  end
-  sbar.animate("tanh", 10, function()
-    spaces[env.INFO.space]:set({ label = icon_line })
-  end)
-end)
 
 spaces_indicator:subscribe("swap_menus_and_spaces", function(env)
   local currently_on = spaces_indicator:query().icon.value == icons.switch.on
