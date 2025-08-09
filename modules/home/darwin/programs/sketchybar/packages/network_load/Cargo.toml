@@ -4,4 +4,4 @@ version = "0.1.0"
 edition = "2024"
 
 [dependencies]
-systemstat = "0.2.5"
+netdev = "0.37.1"
