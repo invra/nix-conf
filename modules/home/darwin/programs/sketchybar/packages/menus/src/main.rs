@@ -1,20 +1,25 @@
-use clap::Parser;
-use core_foundation::base::{CFTypeRef, TCFType};
-use core_foundation::boolean::kCFBooleanTrue;
-use core_foundation::dictionary::CFDictionaryRef;
-use core_foundation::string::CFString;
-use objc::runtime::{Class, Object};
-use objc::{msg_send, sel, sel_impl};
-use std::os::raw::c_void;
-use std::ptr;
-use std::thread;
-use std::time::Duration;
+#![allow(unsafe_op_in_unsafe_fn)]
+
+#[cfg(not(target_os = "macos"))]
+compile_error!("This program only works aarch64-macOS");
+
+use {
+    clap::Parser,
+    core_foundation::{
+        base::TCFType, boolean::kCFBooleanTrue as KFCBooleanTrue, dictionary::CFDictionaryRef,
+        string::CFString,
+    },
+    objc2::{
+        msg_send,
+        runtime::{AnyClass, AnyObject},
+    },
+    std::{os::raw::c_void, ptr, thread, time::Duration},
+};
 
 use core_foundation_sys::string::{
     CFStringGetCString, CFStringGetLength, CFStringRef, kCFStringEncodingUTF8,
 };
 
-#[allow(unexpected_cfgs)]
 fn main() {
     unsafe { ax_init() };
 
@@ -30,8 +35,8 @@ fn main() {
         return;
     }
 
-    if args.list {
-        unsafe {
+    unsafe {
+        if args.list {
             let app = ax_get_front_app();
             if app.is_null() {
                 eprintln!("Failed to get frontmost application");
@@ -41,9 +46,7 @@ fn main() {
             if !app.is_null() {
                 CFRelease(app as *const c_void);
             }
-        }
-    } else if let Some(id_or_alias) = args.select {
-        unsafe {
+        } else if let Some(id_or_alias) = args.select {
             let app = ax_get_front_app();
             if app.is_null() {
                 eprintln!("Failed to get frontmost application");
@@ -61,9 +64,6 @@ fn main() {
     }
 }
 
-#[cfg(not(target_os = "macos"))]
-compile_error!("This program requires macOS");
-
 type AXUIElementRef = *mut c_void;
 #[allow(dead_code)]
 type CFStringRefAlias = *const c_void;
@@ -73,19 +73,18 @@ type CFArrayRef = *const c_void;
 #[link(name = "CoreFoundation", kind = "framework")]
 #[link(name = "AppKit", kind = "framework")]
 unsafe extern "C" {
-    fn AXUIElementCreateApplication(pid: i32) -> AXUIElementRef;
-    fn AXUIElementCopyAttributeValue(
+    unsafe fn AXUIElementCreateApplication(pid: i32) -> AXUIElementRef;
+    unsafe fn AXUIElementCopyAttributeValue(
         element: AXUIElementRef,
         attr: *const c_void,
         value: *mut *mut c_void,
     ) -> i32;
-    fn AXUIElementPerformAction(element: AXUIElementRef, action: *const c_void) -> i32;
-    fn CFArrayGetCount(array: CFArrayRef) -> isize;
-    fn CFArrayGetValueAtIndex(array: CFArrayRef, index: isize) -> *mut c_void;
-    fn AXIsProcessTrustedWithOptions(options: CFDictionaryRef) -> bool;
-    fn AXIsProcessTrusted() -> bool;
-    fn CFRelease(cf: *const c_void);
-    fn CFDictionaryCreate(
+    unsafe fn AXUIElementPerformAction(element: AXUIElementRef, action: *const c_void) -> i32;
+    unsafe fn CFArrayGetCount(array: CFArrayRef) -> isize;
+    unsafe fn CFArrayGetValueAtIndex(array: CFArrayRef, index: isize) -> *mut c_void;
+    unsafe fn AXIsProcessTrustedWithOptions(options: CFDictionaryRef) -> bool;
+    unsafe fn CFRelease(cf: *const c_void);
+    unsafe fn CFDictionaryCreate(
         allocator: *const c_void,
         keys: *const *const c_void,
         values: *const *const c_void,
@@ -105,7 +104,7 @@ const K_AX_PRESS_ACTION: &str = "AXPress";
 unsafe fn ax_init() {
     let key = CFString::new(K_AX_TRUSTED_CHECK_OPTION_PROMPT);
     let keys = [key.as_CFTypeRef() as *const c_void];
-    let values = [kCFBooleanTrue as *const c_void];
+    let values = [KFCBooleanTrue as *const c_void];
     let options = CFDictionaryCreate(
         ptr::null(),
         keys.as_ptr(),
@@ -127,19 +126,19 @@ unsafe fn ax_init() {
 }
 
 unsafe fn ax_get_front_app() -> AXUIElementRef {
-    let cls = match Class::get("NSWorkspace") {
+    let cls = match AnyClass::get(std::ffi::CString::new("NSWorkspace").unwrap().as_c_str()) {
         Some(cls) => cls,
         None => {
             eprintln!("Failed to get NSWorkspace class");
             return ptr::null_mut();
         }
     };
-    let workspace: *mut Object = msg_send![cls, sharedWorkspace];
+    let workspace: *mut AnyObject = msg_send![cls, sharedWorkspace];
     if workspace.is_null() {
         eprintln!("Failed to get shared workspace");
         return ptr::null_mut();
     }
-    let front_app: *mut Object = msg_send![workspace, frontmostApplication];
+    let front_app: *mut AnyObject = msg_send![workspace, frontmostApplication];
     if front_app.is_null() {
         eprintln!("No frontmost app found");
         return ptr::null_mut();
@@ -264,10 +263,6 @@ unsafe fn ax_select_menu_option(app: AXUIElementRef, id: i32) {
     if !menubar.is_null() {
         CFRelease(menubar as *const c_void);
     }
-}
-
-unsafe fn check_accessibility_permissions() -> bool {
-    AXIsProcessTrusted()
 }
 
 unsafe fn axui_element_copy_attribute(
