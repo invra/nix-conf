@@ -212,7 +212,10 @@ unsafe fn ax_print_menu_options(app: AXUIElementRef) {
                 {
                     let cstr = std::ffi::CStr::from_ptr(buffer.as_ptr());
                     if let Ok(str_slice) = cstr.to_str() {
-                        println!("{}", str_slice);
+                        // Skip printing "Apple"
+                        if str_slice != "Apple" {
+                            println!("{}", str_slice);
+                        }
                     }
                 }
             }

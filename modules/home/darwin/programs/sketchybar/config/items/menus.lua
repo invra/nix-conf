@@ -27,7 +27,7 @@ for i = 1, max_items, 1 do
       padding_left = 6,
       padding_right = 6,
     },
-    click_script = "$CONFIG_DIR/helpers/menus/bin/menus -s " .. i,
+    click_script = "menus -s " .. i,
   })
 
   menu_items[i] = menu
