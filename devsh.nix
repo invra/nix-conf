@@ -10,6 +10,7 @@
   swift,
   swiftformat,
   rustc,
+  clippy,
   ...
 }:
 mkShell {
@@ -19,6 +20,7 @@ mkShell {
     rustfmt
     rust-analyzer
     rustc
+    clippy
 
     # Nix tools
     nixd
