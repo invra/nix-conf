@@ -13,6 +13,7 @@ let
     src = ./network_load;
     cargoLock.lockFile = ./network_load/Cargo.lock;
   };
-in {
+in
+{
   inherit cpu_load network_load;
 }
