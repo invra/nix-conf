@@ -1,24 +1,14 @@
 use {
-    clap::Parser, colored::Colorize, os_info::{
-        get as get_os_info,
-        Version,
-    }, plist::{
-        Dictionary, Value
-    }, std::{
-        collections::BTreeMap, fs::{
-            File,
-            OpenOptions,
-        }, io::{
-            Read,
-            Write,
-        }, ops::Not, path::{
-            Path,
-            PathBuf,
-        }, process::{
-            Command,
-            ExitStatus,
-        }
-    }
+    clap::Parser,
+    colored::Colorize,
+    os_info::{Version, get as get_os_info},
+    plist::{Dictionary, Value},
+    std::{
+        fs::{File, OpenOptions},
+        io::Read,
+        path::{Path, PathBuf},
+        process::Command,
+    },
 };
 
 #[derive(Debug, Clone, Copy)]
@@ -44,12 +34,24 @@ fn iprintln(msg: &str) {
 fn run_patch_plist() -> Result<(), String> {
     iprintln("Patching nix-daemon plist to disable fork safety...");
     let args: Vec<String> = std::env::args().collect();
-    let mut status = Command::new("sudo").args([&args[0], "--patch-plist"]).status().map_err(|x| x.to_string())?;
+    let status = Command::new("sudo")
+        .args([&args[0], "--patch-plist"])
+        .status()
+        .map_err(|x| x.to_string())?;
 
-    status.success().then_some(()).ok_or(String::from("Failed to patch plist as root"))?;
+    status
+        .success()
+        .then_some(())
+        .ok_or(String::from("Failed to patch plist as root"))?;
     iprintln("Patch successful, restarting daemon...");
-    run_command("sudo launchctl unload /Library/LaunchDaemons/org.nixos.nix-daemon.plist", true);
-    run_command("sudo launchctl bootstrap system /Library/LaunchDaemons/org.nixos.nix-daemon.plist", true); 
+    run_command(
+        "sudo launchctl unload /Library/LaunchDaemons/org.nixos.nix-daemon.plist",
+        true,
+    );
+    run_command(
+        "sudo launchctl bootstrap system /Library/LaunchDaemons/org.nixos.nix-daemon.plist",
+        true,
+    );
 
     Ok(())
 }
@@ -62,7 +64,9 @@ fn patch_plist() -> Result<(), Box<dyn std::error::Error>> {
 
     let mut root: Value = plist::Value::from_reader_xml(&*buf)?;
 
-    let dict = root.as_dictionary_mut().expect("Expected top-level plist to be a <dict>");
+    let dict = root
+        .as_dictionary_mut()
+        .expect("Expected top-level plist to be a <dict>");
     let env_vars = if let Some(Value::Dictionary(env)) = dict.get_mut("EnvironmentVariables") {
         env
     } else {
@@ -121,7 +125,7 @@ fn run_after_install_command(cmd: &str) {
 }
 
 #[cfg(target_os = "macos")]
-fn main()  -> Result<(), String>{
+fn main() -> Result<(), String> {
     let args = Args::parse();
 
     if args.patch_plist {
@@ -138,12 +142,18 @@ fn main()  -> Result<(), String>{
         return Ok(());
     }
 
-    let flake = args.flake.ok_or(Error::NoFlakeProvided).expect("Flake argument is required for normal operation");
+    let flake = args
+        .flake
+        .ok_or(Error::NoFlakeProvided)
+        .expect("Flake argument is required for normal operation");
     let nix_path = Path::new("/nix/var/nix/profiles/default/bin/nix");
     if !nix_path.exists() {
         iprintln("Nix is not installed. Installing Nix...");
-        run_command("curl --proto '=https' --tlsv1.2 -L https://nixos.org/nix/install | sh", false);
-        run_patch_plist();
+        run_command(
+            "curl --proto '=https' --tlsv1.2 -L https://nixos.org/nix/install | sh",
+            false,
+        );
+        _ = run_patch_plist();
     } else {
         iprintln("Nix is already installed. I will skip installation.");
     }
@@ -160,13 +170,21 @@ fn main()  -> Result<(), String>{
             flake
         ));
     } else {
-        iprintln("The nix-darwin installation has already happened, if it hasn't... Please uninstall or dereference home-manager.");
+        iprintln(
+            "The nix-darwin installation has already happened, if it hasn't... Please uninstall or dereference home-manager.",
+        );
     }
 
     if !is_command_available("hx") {
         iprintln("Home Manager config not applied. Applying now...");
-        run_after_install_command(&format!("home-manager switch --flake '.#{}' -b backup", flake));
-        println!("{} Please run \"source /etc/zshrc\" to have access to Nix.", "[FINISHED]".green());
+        run_after_install_command(&format!(
+            "home-manager switch --flake '.#{}' -b backup",
+            flake
+        ));
+        println!(
+            "{} Please run \"source /etc/zshrc\" to have access to Nix.",
+            "[FINISHED]".green()
+        );
     } else {
         iprintln("The home-manager config seems to be already applied. Please use nh to rebuild.");
     }
