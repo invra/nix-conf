@@ -14,11 +14,14 @@
     };
   };
   system = {
-    normaliseKbd = true;
     dock = {
       autoHideDelay = 0.45;
       autohide = true;
       orientation = "right";
+    };
+    keyboard = {
+      normalise = true;
+      remapCapsToEscape = true;
     };
     graphics = {
       blacklists = [ ];
