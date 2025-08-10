@@ -151,7 +151,7 @@ fn main()  -> Result<(), String>{
     if !is_command_available("home-manager") {
         iprintln("Applying nix-darwin config...");
         run_after_install_command(&format!(
-            "sudo nix run nix-darwin --extra-experimental-features 'nix-command flakes' -- switch --flake '.#{}'",
+            "sudo nix run nix-darwin --extra-experimental-features 'nix-command flakes pipe-operators' -- switch --flake '.#{}'",
             flake
         ));
     } else {
