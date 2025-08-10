@@ -445,11 +445,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1754815237,
-        "narHash": "sha256-/RwuSccxptW9j4Inakoc4Kb5Qq8oELwfMnHgMd7XQo0=",
+        "lastModified": 1754828852,
+        "narHash": "sha256-O20062uDsco2pxixfDt8hwe1Hl1IgPMNVt3pR+iOB8E=",
         "owner": "invra",
         "repo": "nixcord",
-        "rev": "b04f996fa2a0dfd43c6fef6bbe4cc684b17898d2",
+        "rev": "7213a8f6998c86466d2d18f15f06a9fc669060b9",
         "type": "github"
       },
       "original": {
