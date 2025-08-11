@@ -24,7 +24,7 @@ in
       gaps = {
         outer.left = gaps;
         outer.bottom = gaps;
-        outer.top = 2 * gaps; # expected to look good on a MacBook's screen @1512x982
+        outer.top = (2 * gaps) - 4; # expected to look good on a MacBook's screen @1800x1169
         outer.right = gaps;
 
         inner.vertical = gaps;
