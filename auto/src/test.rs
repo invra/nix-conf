@@ -1,6 +1,8 @@
+mod mods;
+
 use {
     colored::Colorize,
-    os_info::{Version, get as get_os_info},
+    mods::os::{get_os_pretty, get_os_semantic},
 };
 
 fn main() {
@@ -9,12 +11,11 @@ fn main() {
         "[INFO]".yellow()
     );
 
-    match get_os_info().version() {
-        &Version::Semantic(major, _, _) => {
-            println!("{} macOS Version: {major}", "[SYSTEM]".green())
-        }
-        _ => println!("cow"),
-    }
-
-    println!("{} macOS Name: {:?}", "[SYSTEM]".green(), whoami::distro());
+    println!(
+        "{} macOS Sema: {:?}.{:?}",
+        "[SYSTEM]".green(),
+        get_os_semantic()[0],
+        get_os_semantic()[1]
+    );
+    println!("{} macOS Name: {}", "[SYSTEM]".green(), get_os_pretty());
 }
