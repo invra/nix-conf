@@ -7,9 +7,6 @@
 !bootstrap.swift
 !Cargo.*
 
-# Un-ignore directories so git can look inside them
-!src/
-
 # Un-ignore src and every subdirectory inside it
 !src/
 !src/**/
