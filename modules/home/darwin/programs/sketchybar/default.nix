@@ -1,6 +1,6 @@
 { pkgs, ... }:
 let
-  helpers = import ./packages {inherit (pkgs)rustPlatform;};
+  helpers = import ./packages { inherit (pkgs) rustPlatform; };
 in
 {
   home.packages = [ pkgs.lua ];
