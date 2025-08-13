@@ -4,6 +4,7 @@
 # But don't ignore these files in the root
 !.gitignore
 !*.md
+!*.rst
 !bootstrap.swift
 !Cargo.*
 
