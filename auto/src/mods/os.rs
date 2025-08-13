@@ -10,6 +10,7 @@ pub(crate) fn get_os_semantic() -> [u64; 2] {
     }
 }
 
+#[allow(dead_code)]
 pub(crate) fn get_os_pretty() -> String {
     let sem_version = get_os_semantic();
 
