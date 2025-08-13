@@ -17,6 +17,13 @@
     cargoLock.lockFile = ./network_load/Cargo.lock;
   };
 
+  memory_load = rustPlatform.buildRustPackage {
+    pname = "memory_load";
+    version = "0.1.0";
+    src = ./memory_load;
+    cargoLock.lockFile = ./memory_load/Cargo.lock;
+  };
+
   menus = rustPlatform.buildRustPackage {
     pname = "menus";
     version = "0.1.0";

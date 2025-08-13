@@ -15,6 +15,7 @@ in
 
     extraPackages = with helpers; [
       network_load
+      memory_load
       cpu_load
       menus
     ];
