@@ -9,6 +9,8 @@ local space_watcher = sbar.add("item", {
   updates = false,
 })
 
+-- Add the new FOCUSED_WORKSPACE event
+sbar.add("event", "FOCUSED_WORKSPACE")
 sbar.add("event", "swap_menus_and_spaces")
 sbar.add("event", "redraw_bar", function(env)
   for i = 1, 9 do
@@ -78,16 +80,26 @@ for i = 1, max_items do
     },
   })
 
-  space:subscribe("workspace_changed", function(env)
-    local selected = env.WORKSPACE and tonumber(env.WORKSPACE) == i
-    space:set({
-      icon = { highlight = selected },
-      label = { highlight = selected },
-      background = { border_color = selected and colors.grey or colors.bg2 },
-    })
-    space_bracket:set({
-      background = { border_color = selected and colors.grey or colors.bg2 },
-    })
+  space:subscribe("update_workspace", function(env)
+    if env.FOCUSED_WORKSPACE and tonumber(env.FOCUSED_WORKSPACE) == i then
+      space:set({
+        icon = { highlight = true },
+        label = { highlight = true },
+        background = { border_color = colors.grey },
+      })
+      space_bracket:set({
+        background = { border_color = colors.grey },
+      })
+    else
+      space:set({
+        icon = { highlight = false },
+        label = { highlight = false },
+        background = { border_color = colors.bg2 },
+      })
+      space_bracket:set({
+        background = { border_color = colors.bg2 },
+      })
+    end
   end)
 
   space:subscribe("mouse.clicked", function(env)
@@ -174,9 +186,6 @@ local spaces_indicator = sbar.add("item", {
     border_color = colors.with_alpha(colors.bg1, 0.0),
   },
 })
-
-space_watcher:subscribe("workspace_changed", update_spaces)
-space_watcher:subscribe("space_change", update_spaces)
 
 spaces_indicator:subscribe("swap_menus_and_spaces", function(env)
   local currently_on = spaces_indicator:query().icon.value == icons.switch.on
