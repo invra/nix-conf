@@ -45,6 +45,10 @@
           enable = true;
           multiplier = 2;
         };
+        messageClickActions = {
+          enable = true;
+          enableDoubleClickToEdit = true;
+        };
         webRichPresence.enable = true;
         youtubeAdblock.enable = true;
       };
