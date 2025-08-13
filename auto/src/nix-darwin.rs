@@ -1,7 +1,9 @@
+mod mods;
+
 use {
     clap::Parser,
     colored::Colorize,
-    os_info::{Version, get as get_os_info},
+    mods::os::get_os_semantic,
     plist::{Dictionary, Value},
     std::{
         fs::{File, OpenOptions},
@@ -127,17 +129,17 @@ fn run_after_install_command(cmd: &str) {
 #[cfg(target_os = "macos")]
 fn main() -> Result<(), String> {
     let args = Args::parse();
+    let [majorv, _minorv] = get_os_semantic();
 
     if args.patch_plist {
-        match get_os_info().version() {
-            &Version::Semantic(major, _, _) if major >= 26 => {
-                if std::env::var("USER") == Ok("root".into()) {
-                    return patch_plist().map_err(|e| e.to_string());
-                } else {
-                    return Err("Patch plist needs to be run as root".into());
-                }
+        if majorv >= 26 {
+            if std::env::var("USER") == Ok("root".into()) {
+                return patch_plist().map_err(|e| e.to_string());
+            } else {
+                return Err("Patch plist needs to be run as root".into());
             }
-            _ => iprintln("Patching is only required for macOS Tahoe and later, skipping."),
+        } else {
+            iprintln("Patching is only required for macOS Tahoe and later, skipping.");
         }
         return Ok(());
     }
