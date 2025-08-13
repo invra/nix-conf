@@ -10,5 +10,7 @@
 # Un-ignore directories so git can look inside them
 !src/
 
-# Then un-ignore files inside those directories
+# Un-ignore src and every subdirectory inside it
+!src/
+!src/**/
 !src/**/*.rs
