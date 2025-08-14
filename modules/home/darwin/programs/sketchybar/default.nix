@@ -14,6 +14,7 @@ in
     includeSystemPath = true;
 
     extraPackages = with helpers; [
+      pkgs.aerospace
       network_load
       memory_load
       cpu_load
