@@ -17,11 +17,6 @@
   };
   system = {
     hardware-module = ./hardware-configuration.nix;
-    dock = {
-      autoHideDelay = 0.45;
-      autohide = true;
-      orientation = "right";
-    };
     graphics = {
       blacklists = [
         "nouveau"
