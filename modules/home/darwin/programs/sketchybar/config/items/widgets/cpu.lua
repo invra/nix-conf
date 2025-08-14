@@ -2,7 +2,7 @@ local icons = require("icons")
 local colors = require("colors")
 local settings = require("settings")
 
-sbar.exec("killall cpu_load >/dev/null; cpu_load cpu_update 1")
+sbar.exec("killall cpu_load >/dev/null 2>&1; cpu_load cpu_update 1")
 
 local cpu = sbar.add("graph", "widgets.cpu" , 42, {
   position = "right",

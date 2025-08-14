@@ -2,7 +2,7 @@ local icons = require("icons")
 local colors = require("colors")
 local settings = require("settings")
 
-sbar.exec("killall memory_load >/dev/null; memory_load memory_update 1")
+sbar.exec("killall memory_load >/dev/null 2>&1; memory_load memory_update 1")
 
 local memory = sbar.add("graph", "widgets.memory" , 42, {
   position = "right",

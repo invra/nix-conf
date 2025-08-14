@@ -2,7 +2,7 @@ local icons = require("icons")
 local colors = require("colors")
 local settings = require("settings")
 
-sbar.exec("killall network_load >/dev/null; network_load en0 network_update 1.0")
+sbar.exec("killall network_load >/dev/null 2>&1; network_load en0 network_update 1.0")
 
 local popup_width = 250
 
