@@ -4,6 +4,7 @@ local settings = require("settings")
 
 local max_items = 15
 local spaces = {}
+local space_names = {}
 local space_watcher = sbar.add("item", { drawing = false, updates = false })
 
 sbar.add("event", "aerospace_workspace_change")
@@ -29,17 +30,13 @@ for i = 1, max_items do
     },
     padding_right = 1,
     padding_left = 1,
-    background = { color = colors.bg1, border_width = 1, height = 26, border_color = colors.bg2 },
+    background = { color = colors.bg1, border_width = 2, height = 26, border_color = colors.bg2 },
     popup = { background = { border_width = 5, border_color = colors.bg2 } },
     drawing = false,
     associated_display = 1,
   })
 
-  local space_bracket = sbar.add("bracket", "bracket.space." .. i, { space_item.name }, {
-    background = { color = colors.transparent, border_color = colors.bg2, height = 28, border_width = 2 },
-  })
-
-  sbar.add("space", "space.padding." .. i, { width = settings.group_paddings, drawing = false })
+  local spacer = sbar.add("space", "space.padding." .. i, { width = 18, drawing = false })
 
   local space_popup = sbar.add("item", {
     position = "popup." .. space_item.name,
@@ -47,6 +44,10 @@ for i = 1, max_items do
     padding_right = 0,
     background = { drawing = true, image = { corner_radius = 9, scale = 0.2 } },
   })
+
+  spaces[i] = { item = space_item, spacer = spacer }
+  table.insert(space_names, space_item.name)
+  table.insert(space_names, spacer.name)
 
   space_item:subscribe("mouse.clicked", function(env)
     if env.BUTTON == "other" then
@@ -58,9 +59,12 @@ for i = 1, max_items do
   end)
 
   space_item:subscribe("mouse.exited", function() space_item:set({ popup = { drawing = false } }) end)
-
-  spaces[i] = { item = space_item, bracket = space_bracket }
 end
+
+local spaces_group = sbar.add("bracket", "spaces_group", space_names, {
+  background = { color = colors.transparent, border_width = 0 },
+  padding_right = 20,
+})
 
 local function update_spaces()
   sbar.exec("aerospace list-workspaces --all", function(result)
@@ -76,10 +80,10 @@ local function update_spaces()
         local number = workspace_nums[i]
         if number then
           space.item:set({ icon = { string = tostring(number) }, drawing = true })
-          sbar.set("space.padding." .. i, { drawing = true })
+          space.spacer:set({ drawing = true })
         else
           space.item:set({ drawing = false })
-          sbar.set("space.padding." .. i, { drawing = false })
+          space.spacer:set({ drawing = false })
         end
       end
     end
@@ -96,7 +100,6 @@ local function update_spaces()
               label = { highlight = is_active },
               background = { border_color = is_active and colors.grey or colors.bg2 },
             })
-            space.bracket:set({ background = { border_color = is_active and colors.grey or colors.bg2 } })
           end
         end
       end
@@ -123,7 +126,7 @@ spaces_indicator:subscribe("swap_menus_and_spaces", function()
     for i = 1, max_items do
       if spaces[i] then
         spaces[i].item:set({ drawing = false })
-        sbar.set("space.padding." .. i, { drawing = false })
+        spaces[i].spacer:set({ drawing = false })
       end
     end
     sbar.set("/menu\\..*/", { drawing = true })
