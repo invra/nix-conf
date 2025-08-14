@@ -61,7 +61,7 @@ image::./.res/demo_2.png[Demo 2]
 image::./.res/demo_3.png[Demo 3]
 ====
 
-.Nix-darwin – Helix - Rust Dev + Browsing - Reading Docs + PiP
+.Nix-darwin – Rust Dev - Helix + Browsing - Reading Docs + PiP
 [%collapsible]
 ====
 image::./.res/demo_4.png[Demo 4]
@@ -75,4 +75,4 @@ image::./.res/demo_5.png[Demo 5]
 
 == Documentation
 
-The full documentation is available in the `./docs` directory.
+The full documentation is available in the ./docs[`./docs`] directory.
