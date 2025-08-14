@@ -6,10 +6,8 @@
 }:
 let
   cfg = config.services.airspace;
-  configFile = if cfg.settings != "" then
-    pkgs.writeText "aerospace-config.toml" cfg.settings
-  else
-    null;
+  configFile =
+    if cfg.settings != "" then pkgs.writeText "aerospace-config.toml" cfg.settings else null;
 in
 {
   options = {
@@ -31,8 +29,7 @@ in
     launchd.user.agents.aerospace = {
       command =
         "${cfg.package}/Applications/AeroSpace.app/Contents/MacOS/AeroSpace"
-        + (lib.optionalString (cfg.settings != "")
-            " --config-path ${configFile}");
+        + (lib.optionalString (cfg.settings != "") " --config-path ${configFile}");
       serviceConfig = {
         KeepAlive = true;
         RunAtLoad = true;
@@ -41,4 +38,3 @@ in
     };
   };
 }
-
