@@ -19,5 +19,6 @@ in
       cpu_load
       menus
     ];
+    service.enable = true;
   };
 }
