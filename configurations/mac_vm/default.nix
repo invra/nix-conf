@@ -18,6 +18,7 @@
       autoHideDelay = 0.45;
       autohide = true;
       orientation = "right";
+      size = 45;
     };
     keyboard = {
       normalise = true;
