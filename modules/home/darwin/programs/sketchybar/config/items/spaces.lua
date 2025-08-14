@@ -36,7 +36,7 @@ for i = 1, max_items do
     associated_display = 1,
   })
 
-  local spacer = sbar.add("space", "space.padding." .. i, { width = 18, drawing = false })
+  local spacer = sbar.add("item", "space.padding." .. i, { width = 2, drawing = false })
 
   local space_popup = sbar.add("item", {
     position = "popup." .. space_item.name,
