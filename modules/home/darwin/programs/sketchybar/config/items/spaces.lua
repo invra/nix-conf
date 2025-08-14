@@ -10,7 +10,7 @@ local space_watcher = sbar.add("item", {
 })
 
 -- Add the new FOCUSED_WORKSPACE event
-sbar.add("event", "FOCUSED_WORKSPACE")
+sbar.add("event", "aerospace_workspace_change")
 sbar.add("event", "swap_menus_and_spaces")
 sbar.add("event", "redraw_bar", function(env)
   for i = 1, 9 do
@@ -80,7 +80,7 @@ for i = 1, max_items do
     },
   })
 
-  space:subscribe("update_workspace", function(env)
+  space:subscribe("aerospace_workspace_change", function(env)
     if env.FOCUSED_WORKSPACE and tonumber(env.FOCUSED_WORKSPACE) == i then
       space:set({
         icon = { highlight = true },
@@ -108,7 +108,7 @@ for i = 1, max_items do
       space:set({ popup = { drawing = "toggle" } })
     else
       local op = (env.BUTTON == "right") and "remove" or "focus"
-      sbar.exec("aerospace workspace " .. op .. " " .. i)
+      sbar.exec("aerospace workspace " .. i)
     end
   end)
 
