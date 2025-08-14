@@ -41,15 +41,6 @@ This flake can usually *guarantee* support for the following platforms:
 * x86_64-linux
 * aarch64-darwin
 
-[NOTE]
-====
-`x86_64-darwin` has no view to guarantee support due to certain issues like software
-support and also 26 Tahoe marking the end of x86 architecture on macOS.
-
-This decision will only be subject to change if the Main Maintainer (Invra) were
-to get an x86 MacBook — which is highly unlikely given the foreseeable future of x86.
-====
-
 == Examples
 
 .NixOS – Spotify + WezTerm + Hyprland
