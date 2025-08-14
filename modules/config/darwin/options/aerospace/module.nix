@@ -4,9 +4,12 @@
   pkgs,
   ...
 }:
-
 let
   cfg = config.services.airspace;
+  configFile = if cfg.settings != "" then
+    pkgs.writeText "aerospace-config.toml" cfg.settings
+  else
+    null;
 in
 {
   options = {
@@ -15,27 +18,27 @@ in
       package = lib.mkPackageOption pkgs "aerospace" { };
 
       settings = lib.mkOption {
-        type = path;
+        type = str;
         default = "";
-        description = "Path to the TOML configuration file";
+        description = "TOML configuration file contents";
       };
     };
   };
 
-  config = (
-    lib.mkIf (cfg.enable) {
-      environment.systemPackages = [ cfg.package ];
+  config = lib.mkIf cfg.enable {
+    environment.systemPackages = [ cfg.package ];
 
-      launchd.user.agents.aerospace = {
-        command =
-          "${cfg.package}/Applications/AeroSpace.app/Contents/MacOS/AeroSpace"
-          + (lib.optionalString (cfg.settings != { }) " --config-path ${cfg.settings}");
-        serviceConfig = {
-          KeepAlive = true;
-          RunAtLoad = true;
-        };
-        managedBy = "services.aerospace.enable";
+    launchd.user.agents.aerospace = {
+      command =
+        "${cfg.package}/Applications/AeroSpace.app/Contents/MacOS/AeroSpace"
+        + (lib.optionalString (cfg.settings != "")
+            " --config-path ${configFile}");
+      serviceConfig = {
+        KeepAlive = true;
+        RunAtLoad = true;
       };
-    }
-  );
+      managedBy = "services.aerospace.enable";
+    };
+  };
 }
+

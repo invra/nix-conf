@@ -1,3 +1,8 @@
+{ pkgs, ... }:
+let
+  gaps = 6;
+in
+''
 accordion-padding = 30
 after-login-command = []
 after-startup-command = []
@@ -6,21 +11,21 @@ default-root-container-layout = "tiles"
 default-root-container-orientation = "auto"
 enable-normalization-flatten-containers = true
 enable-normalization-opposite-orientation-for-nested-containers = true
-exec-on-workspace-change = ['/bin/bash', '$(which sketchybar) > /tmp/aerodiag']
+exec-on-workspace-change = ['${pkgs.bashInteractive}/bin/bash', '-c', '${pkgs.sketchybar}/bin/sketchybar --trigger aerospace_workspace_change FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE']
 on-focus-changed = []
 on-focused-monitor-changed = ["move-mouse monitor-lazy-center"]
 on-window-detected = []
 start-at-login = false
 
 [gaps.inner]
-horizontal = 6
-vertical = 6
+horizontal = ${builtins.toString gaps}
+vertical = ${builtins.toString gaps}
 
 [gaps.outer]
-bottom = 6
-left = 6
-right = 6
-top = 8
+bottom = ${builtins.toString gaps}
+left = ${builtins.toString gaps}
+right = ${builtins.toString gaps}
+top = ${builtins.toString (gaps + 2)}
 
 [key-mapping]
 preset = "qwerty"
@@ -56,4 +61,4 @@ cmd-shift-8 = ["move-node-to-workspace 8", "workspace 8"]
 cmd-shift-9 = ["move-node-to-workspace 9", "workspace 9"]
 
 [workspace-to-monitor-force-assignment]
-
+''
