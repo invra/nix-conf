@@ -49,7 +49,7 @@ This flake can usually *guarantee* support for the following platforms:
 image::./.res/demo_1.png[Demo 1]
 ====
 
-.Nix-darwin – Spotify + Ghostty
+.Nix-darwin – YouTube Music (Zen Browser) + Ghostty
 [%collapsible]
 ====
 image::./.res/demo_2.png[Demo 2]
