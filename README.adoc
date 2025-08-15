@@ -1,5 +1,4 @@
 = INF (Invra's Nix Flake) Configuration Template
-
 This Nix flake provides the following:
 
 * *Home-manager config*
