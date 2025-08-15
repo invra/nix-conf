@@ -4,10 +4,10 @@ Priority is measured by how essential the task is.
 This does NOT mean tasks will be completed in order, as some may be more resource-intensive than others.
 
 ** Enhance Nix Configurations
-  Add more customization options & features:
+   Add more customization options & features:
 
-  - [X] Add macOS Dock settings
-  - [ ] Add =ignorePackages= (to skip default packages)
-  - [ ] Add =extraPackages= (to allow users to specify workflow-specific packages)
-  - [X] Remove the need to include macOS-specific config in the Linux config (and vice versa)
-  - [ ] Add support to disable modules the user doesn't need
+   - [X] Add macOS Dock settings
+   - [ ] Add =ignorePackages= (to skip default packages)
+   - [ ] Add =extraPackages= (to allow users to specify workflow-specific packages)
+   - [X] Remove the need to include macOS-specific config in the Linux config (and vice versa)
+   - [ ] Add support to disable modules the user doesn't need
