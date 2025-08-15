@@ -76,4 +76,4 @@ image::./.res/demo_5.png[Demo 5]
 == Documentation
 
 The full documentation has been replaced in favor of GitLab Wikis.
-It is available with link:https://gitlab.com/invra/nix-conf[this link].
+It is available with link:https://gitlab.com/invra/nix-conf/-/wikis/home[this link].
