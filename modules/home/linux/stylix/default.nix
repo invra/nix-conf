@@ -8,6 +8,17 @@
     enable = true;
     base16Scheme = "${pkgs.base16-schemes}/share/themes/rose-pine.yaml";
     image = flakeConfig.user.wallpaper or ../../../../wallpapers/flake.jpg;
+    icons = {
+      enable = true;
+      dark = "Papirus";
+      light = "Papirus";
+      package = pkgs.papirus-icon-theme;
+    };
+    cursor = {
+      package = pkgs.bibata-cursors;
+      name = "Bibata-Modern-Ice";
+      size = 24;
+    };
     fonts = {
       serif = {
         package = pkgs.dejavu_fonts;
