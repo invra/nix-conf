@@ -1,6 +1,6 @@
 = Automation Scripting
 
-These automation scripts are written in Rust. You will find all the required files in the link:./src/[./src] directory.
+These automation scripts are written in Rust. You will find all the required files in the link:./src/[`./src`] directory.
 
 == Bootstrapping Cargo
 
