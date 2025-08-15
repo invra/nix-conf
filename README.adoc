@@ -75,4 +75,4 @@ image::./.res/demo_5.png[Demo 5]
 
 == Documentation
 
-The full documentation is available in link:./docs[./docs].
+The full documentation is available in link:./docs[`./docs`].
