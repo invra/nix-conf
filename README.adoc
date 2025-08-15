@@ -1,78 +1,72 @@
 = INF (Invra's Nix Flake) Configuration Template
-This Nix flake provides the following:
 
-* *Home-manager config*
-* *NixOS config*
-* *Nix-darwin config*
+This Nix flake is your all-in-one system configuration toolkit. It provides:
+
+* Home-manager configuration
+* NixOS configuration
+* Nix-darwin configuration
+
+---
 
 == Key Features
 
-* *Advanced networking for virtualization* (Bridging)
-* *Pro audio* (JACK2 with OOB support for Bitwig Studio)
-* *Terminal-based work*:
-** helix
-** spotify_player
-** git, gh, glab
-** btop
-* *Multimedia*:
-** zen-browser
-** chromium
-** OBS Studio
-** yt-dlp
-** discord (*vesktop for linux-aarch64*)
-* *Remote software*:
-** Parsec
-** Wayvnc
-* *OOB Configurations*:
-** Rose-pine theme for congruency
-** Discord settings for optimal + sensical usage
-** Lower chance of PulseAudio to earrape you
-** (Mac) Apps installed to make _"the Mac experience"_ make more sense:
-*** Linear Mouse
-*** Raycast
-*** AeroSpace
+* **Advanced Networking for Virtualization**
+  - Full bridging support
+* **Pro Audio Setup**
+  - JACK2 with OOB support for Bitwig Studio
+* **Terminal-based Workflow**
+  - helix, spotify_player
+  - git, gh, glab
+  - btop
+* **Multimedia Suite**
+  - zen-browser, chromium, OBS Studio, yt-dlp
+  - Discord (Vesktop for Linux aarch64)
+* **Remote Software**
+  - Parsec, Wayvnc
+* **Out-of-the-Box Configurations**
+  - Rose-pine theme for aesthetic congruency
+  - Sensible Discord settings
+  - Lower chance of PulseAudio earrape
+  - macOS-specific apps:
+    - Linear Mouse
+    - Raycast
+    - AeroSpace
+
+---
 
 == Supported Platforms
 
-This flake can usually *guarantee* support for the following platforms:
+This flake guarantees support for:
 
 * aarch64-linux
 * x86_64-linux
 * aarch64-darwin
 
+---
+
 == Examples
 
-.NixOS – Spotify + WezTerm + Hyprland
-[%collapsible%open]
-====
+=== NixOS – Spotify + WezTerm + Hyprland
 image::./.res/demo_1.png[Demo 1]
-====
 
-.Nix-darwin – YouTube Music (Zen Browser) + Ghostty
-[%collapsible]
-====
+=== Nix-darwin – YouTube Music (Zen Browser) + Ghostty
 image::./.res/demo_2.png[Demo 2]
-====
 
-.NixOS – Vesktop + Browsing + PiP
-[%collapsible]
-====
+=== NixOS – Vesktop + Browsing + PiP
 image::./.res/demo_3.png[Demo 3]
-====
 
-.Nix-darwin – Rust Dev - Helix + Browsing + PiP
-[%collapsible]
-====
+=== Nix-darwin – Rust Dev - Helix + Browsing + PiP
 image::./.res/demo_4.png[Demo 4]
-====
 
-.NixOS – Neovim + Mako
-[%collapsible]
-====
+=== NixOS – Neovim + Mako
 image::./.res/demo_5.png[Demo 5]
-====
+
+---
 
 == Documentation
+You can find the docs
+link:https://gitlab.com/invra/nix-conf/-/wikis/home[here].
 
-The full documentation has been replaced in favor of GitLab Wikis.
-It is available with link:https://gitlab.com/invra/nix-conf/-/wikis/home[this link].
+== Contribution
+
+Check out the link:./contributions.adoc[Contributions write-up] and link:./TODO.org[Todo-list]
