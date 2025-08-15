@@ -3,7 +3,7 @@
 
 # But don't ignore these files in the root
 !.gitignore
-!*.rst
+!*.adoc
 !bootstrap.swift
 !Cargo.*
 

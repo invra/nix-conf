@@ -1,0 +1,58 @@
+= Automation Scripting
+
+These automation scripts are written in Rust. You will find all the required files in the link:./src/[./src] directory.
+
+== Bootstrapping Cargo
+
+To bootstrap Cargo with Swift, run:
+
+[source,bash]
+----
+swift ./bootstrap.swift
+----
+
+The bootstrap script will:
+
+* Create the `.bootstrap` folder
+* Install Rustup with the flags `-y --no-modify-path --profile minimal`
+
+You will need to:
+
+* Add `~/.nix/auto/.bootstrap/cargo/bin` to your `PATH`.
+
+== Running a Task
+
+This project uses Cargo like any other multi-binary Rust workspace.  
+To run a specific task, use:
+
+[source,bash]
+----
+cargo run --bin <target> -- [flags]
+----
+
+* `--bin <target>` – Specifies the binary to run
+* `-- [flags]` – Passes arguments directly to your binary
+
+== Targets
+
+=== bootstrap-darwin
+
+Installs Nix-darwin and sets up both the Home-Manager and Nix-darwin configurations.
+
+Example with a flake config:
+
+[source,bash]
+----
+cargo run --bin bootstrap-darwin -- -f macbook
+----
+
+* `-f <config_name>` – Specifies which flake configuration to apply
+
+=== test
+
+Recommended for newer macOS releases. Prints:
+
+* The OS’s pretty name (e.g., `macOS Catalina`)
+* The semantic version (e.g., `10.15`)
+
+This acts as a “dry run” to verify that your system information is detected correctly, helping to ensure nothing breaks due to mis-detection.
