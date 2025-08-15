@@ -46,27 +46,32 @@ This flake guarantees support for:
 
 == Examples
 
-.NixOS – Spotify + WezTerm + Hyprland [%collapsible%open]
+.NixOS – Spotify + WezTerm + Hyprland
+[%collapsible%open]
 ====
 image::./.res/demo_1.png[Demo 1]
 ====
 
-.Nix-darwin – YouTube Music (Zen Browser) + Ghostty [%collapsible]
+.Nix-darwin – YouTube Music (Zen Browser) + Ghostty
+[%collapsible]
 ====
 image::./.res/demo_2.png[Demo 2]
 ====
 
-.NixOS – Vesktop + Browsing + PiP [%collapsible]
+.NixOS – Vesktop + Browsing + PiP
+[%collapsible]
 ====
 image::./.res/demo_3.png[Demo 3]
 ====
 
-.Nix-darwin – Rust Dev - Helix + Browsing + PiP [%collapsible]
+.Nix-darwin – Rust Dev - Helix + Browsing + PiP
+[%collapsible]
 ====
 image::./.res/demo_4.png[Demo 4]
 ====
 
-.NixOS – Neovim + Mako [%collapsible]
+.NixOS – Neovim + Mako
+[%collapsible]
 ====
 image::./.res/demo_5.png[Demo 5]
 ====
