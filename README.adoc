@@ -61,7 +61,7 @@ image::./.res/demo_2.png[Demo 2]
 image::./.res/demo_3.png[Demo 3]
 ====
 
-.Nix-darwin – Rust Dev - Helix + Browsing - Reading Docs + PiP
+.Nix-darwin – Rust Dev - Helix + Browsing + PiP
 [%collapsible]
 ====
 image::./.res/demo_4.png[Demo 4]
