@@ -54,8 +54,7 @@
       };
     };
     timezone = "Australia/Sydney";
-    boot.efiDirectory = "/boot";
-  };
+};
   user = {
     displayName = "Invra";
     initialPassword = "123456";
