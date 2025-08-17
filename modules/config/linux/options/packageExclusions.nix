@@ -5,13 +5,14 @@
 {
   environment.plasma6.excludePackages = with pkgs.kdePackages; [
     plasma-browser-integration
-    konsole
-    elisa
-    dolphin
-    discover
-    kate
     gwenview
+    discover
+    dolphin
+    konsole
+    oxygen
     okular
+    elisa
+    kate
   ];
 
   programs.nano.enable = false;
