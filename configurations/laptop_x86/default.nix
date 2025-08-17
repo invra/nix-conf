@@ -1,8 +1,6 @@
 {
   desktop = {
-    plasma = {
-      enable = true;
-    };
+    plasma.enable = true;
   };
   development = {
     git = {
