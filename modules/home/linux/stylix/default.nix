@@ -10,13 +10,13 @@
     image = flakeConfig.user.wallpaper or ../../../../wallpapers/flake.jpg;
     icons = {
       enable = true;
-      dark = "Papirus";
-      light = "Papirus";
+      dark = "Papirus-Dark";
+      light = "Papirus-Light";
       package = pkgs.papirus-icon-theme;
     };
     cursor = {
       package = pkgs.bibata-cursors;
-      name = "Bibata-Modern-Ice";
+      name = "Bibata-Modern-Classic";
       size = 24;
     };
     fonts = {
