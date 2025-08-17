@@ -54,7 +54,7 @@
       };
     };
     timezone = "Australia/Sydney";
-};
+  };
   user = {
     displayName = "Invra";
     initialPassword = "123456";
