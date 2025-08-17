@@ -26,7 +26,7 @@
       };
     };
     nixcord = {
-      url = "github:invra/nixcord";
+      url = "github:KaylorBen/nixcord";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };

@@ -445,15 +445,15 @@
         ]
       },
       "locked": {
-        "lastModified": 1754975751,
-        "narHash": "sha256-mk76KUuaU7Rmk2BZB5Bchm2AqwKaN5Y6XVZlxRRM2hU=",
-        "owner": "invra",
+        "lastModified": 1755395461,
+        "narHash": "sha256-2zsR2QAE7wnDWzzMpVDpV6k+PCrcoVf1+yiNd4dbd08=",
+        "owner": "KaylorBen",
         "repo": "nixcord",
-        "rev": "b84a998b020d6c91863f017a364139d609080ec5",
+        "rev": "b1260171b674953712e093acfd285585f6586a01",
         "type": "github"
       },
       "original": {
-        "owner": "invra",
+        "owner": "KaylorBen",
         "repo": "nixcord",
         "type": "github"
       }
