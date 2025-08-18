@@ -9,7 +9,7 @@ These tools are not meant to replace full-featured system packages, but instead 
 - Provide shorthand commands for common actions
 - Reduce context-switching when working across multiple repositories or environments
 
-=== Example Tools
+=== Example Tool
 
 ==== `gc` — Git Clone (shorthand)
 The `gc` command is a shorthand wrapper around `git clone`.  
