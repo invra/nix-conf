@@ -54,11 +54,11 @@
         nix develop --command nu
       }
 
-      if not ("x" in $env) {
+      if not ("NU_EXISTING_INSTANCE" in $env) {
         ${pkgs.fastfetch}/bin/fastfetch
       }
 
-      $env.x = true
+      $env.NU_EXISTING_INSTANCE = true
 
       mkdir ($nu.data-dir | path join "vendor/autoload")
       ${pkgs.starship}/bin/starship init nu | save -f ($nu.data-dir | path join "vendor/autoload/starship.nu")
