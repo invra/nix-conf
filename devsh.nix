@@ -11,6 +11,9 @@
   swiftformat,
   rustc,
   clippy,
+  pkg-config,
+  openssl,
+  libgit2,
   ...
 }:
 mkShell {
@@ -21,6 +24,9 @@ mkShell {
     rust-analyzer
     rustc
     clippy
+    pkg-config
+    openssl
+    libgit2
 
     # Nix tools
     nixd

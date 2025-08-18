@@ -1,0 +1,29 @@
+== What is this Directory?
+
+This directory is a collection of small workflow tools bundled into this flake I have made.  
+Most of these utilities are written in Rust, and are designed to simplify common, repetitive tasks.
+
+=== Purpose
+These tools are not meant to replace full-featured system packages, but instead to:
+- Streamline daily workflows
+- Provide shorthand commands for common actions
+- Reduce context-switching when working across multiple repositories or environments
+
+=== Example Tools
+
+==== `gc` — Git Clone (shorthand)
+The `gc` command is a shorthand wrapper around `git clone`.  
+It allows repositories to be cloned with shorter, more convenient syntax.
+
+For example:
+
+[source,shell]
+----
+# Normal Git usage
+git clone https://github.com/user/repo.git
+
+# Shorthand with gc
+gc github:user/repo
+----
+
+This saves typing out the full repository URL each time, and can be extended with custom host aliases.

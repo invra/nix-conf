@@ -50,58 +50,6 @@
       #!/bin/nu
       $env.LS_COLORS = (${pkgs.vivid}/bin/vivid generate rose-pine)
 
-      export def --env gc [
-        source: string, # Repository to clone (e.g gitlab:invra/nix-conf or ssh:gitlab:invra/nix-conf)
-        target?: string, # Location to clone to.
-        --cd(-c) # Whether to cd into new target.
-        --only-hm (-H) # Only build output for Home-manager, and switch.
-        --only-config (-C) # Only build output for Configuration, and switch.
-      ] {
-          let parts = ($source | split row ":")
-          if ($parts | length) < 2 {
-            print $"(ansi red_bold)Error:(ansi reset) ($source) is not how you specify a repo. Use help \(-h\) to check.."
-
-            return
-          }
-
-          let is_ssh = $parts.0 == "ssh"
-          let provider = if $is_ssh { $parts.1 } else { $parts.0 }
-          let repo = if $is_ssh { $parts.2 } else { $parts.1 }
-
-          let url = if $is_ssh {
-            match $provider {
-              "github" => $"git@github.com:($repo).git"
-              "gitlab" => $"git@gitlab.com:($repo).git"
-              _ => {
-                print $"Unsupported SSH provider: ($provider)"
-                return
-              }
-            }
-          } else {
-            match $provider {
-              "github" => $"https://github.com/($repo).git"
-              "gitlab" => $"https://gitlab.com/($repo).git"
-              _ => {
-                print $"Unsupported provider: ($provider)"
-                return
-              }
-            }
-          }
-
-          let target_dir = if ($target != null) {
-            $target
-          } else {
-            $repo | split row "/" | last
-          }
-
-          print $"Cloning from ($url) into ($target_dir)"
-          git clone $url $target_dir
-
-          if $cd {
-            cd $target_dir
-          }
-      }
-
       export def dev [] {
         nix develop --command nu
       }
