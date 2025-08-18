@@ -50,10 +50,6 @@
       #!/bin/nu
       $env.LS_COLORS = (${pkgs.vivid}/bin/vivid generate rose-pine)
 
-      export def dev [] {
-        nix develop --command nu
-      }
-
       if not ("NU_EXISTING_INSTANCE" in $env) {
         ${pkgs.fastfetch}/bin/fastfetch
       }

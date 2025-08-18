@@ -10,17 +10,32 @@ let
       lockFile = "${src}/Cargo.lock";
     };
 
-    nativeBuildInputs = [
-      pkgs.pkg-config
-      pkgs.openssl
+    nativeBuildInputs = with pkgs; [
+      pkg-config
+      openssl
     ];
 
-    buildInputs = [
-      pkgs.openssl
+    buildInputs = with pkgs; [
+      openssl
+    ];
+  };
+
+  dev = pkgs.rustPlatform.buildRustPackage rec {
+    pname = "dev";
+    version = "0.1.0";
+    src = ./dev;
+
+    cargoLock = {
+      lockFile = "${src}/Cargo.lock";
+    };
+
+    nativeBuildInputs = with pkgs; [
+      pkg-config
     ];
   };
 in {
   home.packages = [
+    dev
     gc
   ];
 }
