@@ -12,8 +12,6 @@
   rustc,
   clippy,
   pkg-config,
-  openssl,
-  libgit2,
   ...
 }:
 mkShell {
@@ -25,8 +23,6 @@ mkShell {
     rustc
     clippy
     pkg-config
-    openssl
-    libgit2
 
     # Nix tools
     nixd
