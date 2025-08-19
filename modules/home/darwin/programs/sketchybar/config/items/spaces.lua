@@ -61,11 +61,6 @@ for i = 1, max_items do
   space_item:subscribe("mouse.exited", function() space_item:set({ popup = { drawing = false } }) end)
 end
 
-local spaces_group = sbar.add("bracket", "spaces_group", space_names, {
-  background = { color = colors.transparent, border_width = 0 },
-  padding_right = 20,
-})
-
 local function update_spaces()
   sbar.exec("aerospace list-workspaces --all", function(result)
     local workspace_nums = {}

@@ -170,15 +170,15 @@ wifi_up:subscribe("network_update", function(env)
   })
 end)
 
-wifi:subscribe({"wifi_change", "system_woke"}, function(env)
-  sbar.exec("ipconfig getifaddr en0", function(ip)
-    local connected = not (ip == "")
-    wifi:set({
-      icon = {
-        string = connected and icons.wifi.connected or icons.wifi.disconnected,
-        color = connected and colors.white or colors.red,
-      },
-    })
+wifi:subscribe({"wifi_change", "system_woke"}, function()
+  sbar.exec("ipconfig getifaddr en0", function(result_ip)
+    local connected = result_ip ~= ""
+      wifi:set({
+        icon = {
+          string = connected and icons.wifi.connected or icons.wifi.disconnected,
+          color = connected and colors.white or colors.red,
+        },
+      })
   end)
 end)
 

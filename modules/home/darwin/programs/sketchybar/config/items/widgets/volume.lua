@@ -111,7 +111,6 @@ local function volume_toggle_details(env)
       current_audio_device = result:sub(1, -2)
       sbar.exec("SwitchAudioSource -a -t output", function(available)
         current = current_audio_device
-        local color = colors.grey
         local counter = 0
 
         for device in string.gmatch(available, '[^\r\n]+') do
@@ -124,8 +123,12 @@ local function volume_toggle_details(env)
             width = popup_width,
             align = "center",
             label = { string = device, color = color },
-            click_script = 'SwitchAudioSource -s "' .. device .. '" && sketchybar --set /volume.device\\.*/ label.color=' .. colors.grey .. ' --set $NAME label.color=' .. colors.white
-
+            click_script = 'SwitchAudioSource -s "'
+              .. device
+              .. '" && sketchybar --set /volume.device\\.*/ label.color='
+              .. colors.grey
+              .. ' --set $NAME label.color='
+              .. colors.white
           })
           counter = counter + 1
         end
@@ -138,7 +141,7 @@ end
 
 local function volume_scroll(env)
   local delta = env.INFO.delta
-  if not (env.INFO.modifier == "ctrl") then delta = delta * 10.0 end
+  if env.INFO.modifier ~= "ctrl" then delta = delta * 10.0 end
 
   sbar.exec('osascript -e "set volume output volume (output volume of (get volume settings) + ' .. delta .. ')"')
 end

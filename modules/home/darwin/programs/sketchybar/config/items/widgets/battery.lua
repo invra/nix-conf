@@ -32,7 +32,7 @@ local remaining_time = sbar.add("item", {
 
 battery:subscribe({"routine", "power_source_change", "system_woke"}, function()
   sbar.exec("pmset -g batt", function(batt_info)
-    local icon = "!"
+    local icon
     local label = "?"
 
     local found, _, charge = batt_info:find("(%d+)%%")
@@ -77,9 +77,9 @@ battery:subscribe({"routine", "power_source_change", "system_woke"}, function()
   end)
 end)
 
-battery:subscribe("mouse.clicked", function(env)
+battery:subscribe("mouse.clicked", function()
   local drawing = battery:query().popup.drawing
-  
+
   battery:set( { popup = { drawing = "toggle" } })
   if drawing == "off" then
     sbar.exec("pmset -g batt", function(batt_info)

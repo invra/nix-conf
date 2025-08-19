@@ -1,5 +1,4 @@
 local colors = require("colors")
-local icons = require("icons")
 local settings = require("settings")
 
 local menu_watcher = sbar.add("item", {
@@ -39,7 +38,7 @@ local menu_padding = sbar.add("item", "menu.padding", {
   width = 5
 })
 
-local function update_menus(env)
+local function update_menus()
   sbar.exec("menus -l", function(menus)
     sbar.set('/menu\\..*/', { drawing = false })
     menu_padding:set({ drawing = true })
@@ -55,7 +54,7 @@ end
 
 menu_watcher:subscribe("front_app_switched", update_menus)
 
-space_menu_swap:subscribe("swap_menus_and_spaces", function(env)
+space_menu_swap:subscribe("swap_menus_and_spaces", function()
   local drawing = menu_items[1]:query().geometry.drawing == "on"
   if drawing then
     menu_watcher:set( { updates = false })
