@@ -59,8 +59,11 @@
                 "aarch64-linux"
               else
                 "aarch64-darwin";
+            inherit (configure)
+              mkNixConfig
+              mkHomeConfig
+              mkDarwinConfig;
           in
-          with configure;
           {
             nixosConfigurations.${name} = mkNixConfig system;
             homeConfigurations.${name} = mkHomeConfig system;
