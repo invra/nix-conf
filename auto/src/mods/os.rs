@@ -39,7 +39,7 @@ pub(crate) fn get_os_pretty() -> String {
         13 => "Ventura",
         14 => "Sonoma",
         15 => "Sequoia",
-        26 => "Tahoe",
+        26 | 16 => "Tahoe",
         _ => "Unknown",
     };
 
