@@ -35,5 +35,4 @@ arising from, out of, or in connection with the software or the use or other dea
 
 == More Information
 
-For more information, please refer to:  
-https://unlicense.org[Unlicense.org, window="_blank"]
+For more information, please refer to: https://unlicense.org[<unlicense.org>, window="_blank"]
