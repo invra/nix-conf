@@ -6,7 +6,7 @@ use {
         nix::nix_installed,
         os::{get_os_pretty, get_os_semantic},
     },
-    std::fs,
+    std::{env, fs, path::Path},
 };
 
 fn nix_darwin_applied() -> bool {
@@ -29,6 +29,16 @@ fn nix_darwin_applied() -> bool {
     }
 
     false
+}
+
+fn home_applied() -> bool {
+    let home = env::var("HOME").unwrap();
+    let target = Path::new(&home)
+        .join(".nix-profile")
+        .join("etc")
+        .join("man_db.conf");
+
+    target.exists()
 }
 
 fn main() {
@@ -54,5 +64,9 @@ fn main() {
         "[SYSTEM]".green(),
         nix_darwin_applied()
     );
-    println!("{} Home-manager is appiled: {}", "[SYSTEM]".green(), true);
+    println!(
+        "{} Home-manager is appiled: {}",
+        "[SYSTEM]".green(),
+        home_applied()
+    );
 }
