@@ -58,7 +58,9 @@ for i = 1, max_items do
     end
   end)
 
-  space_item:subscribe("mouse.exited", function() space_item:set({ popup = { drawing = false } }) end)
+  space_item:subscribe("mouse.exited", function()
+    space_item:set({ popup = { drawing = false } })
+  end)
 end
 
 local function update_spaces()
@@ -66,7 +68,9 @@ local function update_spaces()
     local workspace_nums = {}
     for line in result:gmatch("[^\r\n]+") do
       local n = tonumber(line)
-      if n then table.insert(workspace_nums, n) end
+      if n then
+        table.insert(workspace_nums, n)
+      end
     end
 
     for i = 1, max_items do
@@ -102,7 +106,9 @@ local function update_spaces()
   end)
 end
 
-space_watcher:subscribe("aerospace_workspace_change", function() update_spaces() end)
+space_watcher:subscribe("aerospace_workspace_change", function()
+  update_spaces()
+end)
 
 local spaces_indicator = sbar.add("item", {
   padding_left = -3,
@@ -136,19 +142,27 @@ end)
 
 spaces_indicator:subscribe("mouse.entered", function()
   sbar.animate("tanh", 30, function()
-    spaces_indicator:set({ background = { color = { alpha = 1.0 }, border_color = { alpha = 1.0 } },
-      icon = { color = colors.bg1 }, label = { width = "dynamic" } })
+    spaces_indicator:set({
+      background = { color = { alpha = 1.0 }, border_color = { alpha = 1.0 } },
+      icon = { color = colors.bg1 },
+      label = { width = "dynamic" },
+    })
   end)
 end)
 
 spaces_indicator:subscribe("mouse.exited", function()
   sbar.animate("tanh", 30, function()
-    spaces_indicator:set({ background = { color = { alpha = 0.0 }, border_color = { alpha = 0.0 } },
-      icon = { color = colors.grey }, label = { width = 0 } })
+    spaces_indicator:set({
+      background = { color = { alpha = 0.0 }, border_color = { alpha = 0.0 } },
+      icon = { color = colors.grey },
+      label = { width = 0 },
+    })
   end)
 end)
 
-spaces_indicator:subscribe("mouse.clicked", function() sbar.trigger("swap_menus_and_spaces") end)
+spaces_indicator:subscribe("mouse.clicked", function()
+  sbar.trigger("swap_menus_and_spaces")
+end)
 
 update_spaces()
 space_watcher:set({ updates = true })

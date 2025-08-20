@@ -8,4 +8,3 @@ sbar.bar({
   y_offset = 0,
   topmost = true,
 })
-

@@ -17,14 +17,16 @@ return {
 
   popup = {
     bg = 0xff191724,
-    border = 0xff1f1d2e
+    border = 0xff1f1d2e,
   },
 
   bg1 = 0xff1f1d2e,
   bg2 = 0xff26233a,
 
   with_alpha = function(color, alpha)
-    if alpha > 1.0 or alpha < 0.0 then return color end
+    if alpha > 1.0 or alpha < 0.0 then
+      return color
+    end
     return (color & 0x00ffffff) | (math.floor(alpha * 255.0) << 24)
   end,
 }
