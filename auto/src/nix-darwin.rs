@@ -3,7 +3,10 @@ mod mods;
 use {
     clap::Parser,
     colored::Colorize,
-    mods::{nix::nix_installed, os::get_os_semantic},
+    mods::{
+        nix::{home_applied, nix_darwin_applied, nix_installed},
+        os::get_os_semantic,
+    },
     plist::{Dictionary, Value},
     std::{
         fs::{File, OpenOptions},
@@ -101,15 +104,6 @@ fn patch_plist() -> Result<(), Box<dyn std::error::Error>> {
     Ok(())
 }
 
-fn is_command_available(cmd: &str) -> bool {
-    Command::new("command")
-        .arg("-v")
-        .arg(cmd)
-        .output()
-        .map(|output| output.status.success())
-        .unwrap_or(false)
-}
-
 fn run_command(cmd: &str, print: bool) -> std::process::ExitStatus {
     if print {
         iprintln(cmd);
@@ -159,7 +153,7 @@ fn main() -> Result<(), String> {
         iprintln("Nix is already installed. I will skip installation.");
     }
 
-    if !is_command_available("home-manager") {
+    if !nix_darwin_applied() {
         iprintln("Applying nix-darwin config...");
         run_after_install_command(&format!(
             r#"sudo nix run nix-darwin\
@@ -176,7 +170,7 @@ fn main() -> Result<(), String> {
         );
     }
 
-    if !is_command_available("hx") {
+    if !home_applied() {
         iprintln("Home Manager config not applied. Applying now...");
         run_after_install_command(&format!(
             "home-manager switch --flake '.#{}' -b backup",
