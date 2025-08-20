@@ -60,10 +60,11 @@
               else
                 "aarch64-darwin";
           in
+          with configure;
           {
-            nixosConfigurations.${name} = configure.mkNixConfig system;
-            homeConfigurations.${name} = configure.mkHomeConfig system;
-            darwinConfigurations.${name} = configure.mkDarwinConfig system;
+            nixosConfigurations.${name} = mkNixConfig system;
+            homeConfigurations.${name} = mkHomeConfig system;
+            darwinConfigurations.${name} = mkDarwinConfig system;
           }
         ) (builtins.mapAttrs (name: _: import ./configurations/${name}) (builtins.readDir ./configurations))
       )
