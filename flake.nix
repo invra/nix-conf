@@ -62,7 +62,8 @@
             inherit (configure)
               mkNixConfig
               mkHomeConfig
-              mkDarwinConfig;
+              mkDarwinConfig
+              ;
           in
           {
             nixosConfigurations.${name} = mkNixConfig system;
