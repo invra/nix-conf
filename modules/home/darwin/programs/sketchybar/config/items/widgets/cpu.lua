@@ -1,10 +1,10 @@
-local icons = require("icons")
 local colors = require("colors")
+local icons = require("icons")
 local settings = require("settings")
 
 sbar.exec("killall cpu_load >/dev/null 2>&1; cpu_load cpu_update 1")
 
-local cpu = sbar.add("graph", "widgets.cpu" , 42, {
+local cpu = sbar.add("graph", "widgets.cpu", 42, {
   position = "right",
   graph = { color = colors.blue },
   background = {
@@ -24,9 +24,9 @@ local cpu = sbar.add("graph", "widgets.cpu" , 42, {
     align = "right",
     padding_right = 0,
     width = 0,
-    y_offset = 4
+    y_offset = 4,
   },
-  padding_right = settings.paddings + 6
+  padding_right = settings.paddings + 6,
 })
 
 cpu:subscribe("cpu_update", function(env)
@@ -55,10 +55,10 @@ cpu:subscribe("mouse.clicked", function()
 end)
 
 sbar.add("bracket", "widgets.cpu.bracket", { cpu.name }, {
-  background = { color = colors.bg1 }
+  background = { color = colors.bg1 },
 })
 
 sbar.add("item", "widgets.cpu.padding", {
   position = "right",
-  width = settings.group_paddings
+  width = settings.group_paddings,
 })

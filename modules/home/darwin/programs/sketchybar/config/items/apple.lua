@@ -15,11 +15,11 @@ local apple = sbar.add("item", {
   background = {
     color = colors.bg1,
     border_color = colors.bg2,
-    border_width = 1
+    border_width = 1,
   },
   padding_left = 1,
   padding_right = 1,
-  click_script = "menus -s 0"
+  click_script = "menus -s 0",
 })
 
 sbar.add("bracket", { apple.name }, {
@@ -27,7 +27,7 @@ sbar.add("bracket", { apple.name }, {
     color = colors.transparent,
     height = 30,
     border_color = colors.bg2,
-  }
+  },
 })
 
 sbar.add("item", { width = 7 })
