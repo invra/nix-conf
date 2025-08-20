@@ -7,7 +7,7 @@ use {
 
 fn main() {
     println!(
-        "{} Running some stuff to get your system output to test if everything dectects correctly.",
+        "{} Running some stuff to get your system output to test if everything detects correctly.",
         "[INFO]".yellow()
     );
 
