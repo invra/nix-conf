@@ -3,7 +3,7 @@ mod mods;
 use {
     clap::Parser,
     colored::Colorize,
-    mods::os::get_os_semantic,
+    mods::{nix::nix_installed, os::get_os_semantic},
     plist::{Dictionary, Value},
     std::{
         fs::{File, OpenOptions},
@@ -148,8 +148,7 @@ fn main() -> Result<(), String> {
         .flake
         .ok_or(Error::NoFlakeProvided)
         .expect("Flake argument is required for normal operation");
-    let nix_path = Path::new("/nix/var/nix/profiles/default/bin/nix");
-    if !nix_path.exists() {
+    if nix_installed() {
         iprintln("Nix is not installed. Installing Nix...");
         run_command(
             "curl --proto '=https' --tlsv1.2 -L https://nixos.org/nix/install | sh",

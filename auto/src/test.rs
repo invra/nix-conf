@@ -2,7 +2,10 @@ mod mods;
 
 use {
     colored::Colorize,
-    mods::os::{get_os_pretty, get_os_semantic},
+    mods::{
+        nix::nix_installed,
+        os::{get_os_pretty, get_os_semantic},
+    },
 };
 
 fn main() {
@@ -18,4 +21,9 @@ fn main() {
         get_os_semantic()[1]
     );
     println!("{} macOS Name: {}", "[SYSTEM]".green(), get_os_pretty());
+    println!(
+        "{} Nix is Installed: {}",
+        "[SYSTEM]".green(),
+        nix_installed()
+    );
 }
