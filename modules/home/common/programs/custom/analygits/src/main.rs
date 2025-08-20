@@ -3,8 +3,8 @@ use {
     std::collections::HashMap, std::fs,
 };
 
-fn main() -> Result<(), Box<dyn std::error::Error>> {
-    let repo = Repository::discover(".")?;
+fn main() -> Result<(), String> {
+    let repo = Repository::discover(".").map_err(|x| x.to_string())?;
     let repo_path = repo.path().parent().unwrap();
 
     let head = repo.head().ok();
@@ -23,14 +23,14 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
 
     println!("Repository: {remote_url} (branch {branch})\n");
 
-    let mut revwalk = repo.revwalk()?;
-    revwalk.push_head()?;
+    let mut revwalk = repo.revwalk().map_err(|x| x.to_string())?;
+    revwalk.push_head().map_err(|x| x.to_string())?;
 
     let mut author_counts: HashMap<String, usize> = HashMap::new();
-    let mut commits: Vec<git2::Oid> = Vec::new();
+    let mut commits: Vec<git2::Oid> = vec![];
 
     for oid_result in revwalk {
-        let oid = oid_result?;
+        let oid = oid_result.map_err(|x| x.to_string())?;
         if let Ok(commit) = repo.find_commit(oid) {
             let author_sig = commit.author();
             let name = author_sig.name().unwrap_or("Unknown");
@@ -55,7 +55,9 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     println!("\nCommit Milestones:");
     for &m in &milestones {
         if m <= total_commits {
-            let commit = repo.find_commit(commits[total_commits - m])?;
+            let commit = repo
+                .find_commit(commits[total_commits - m])
+                .map_err(|x| x.to_string())?;
             let msg = commit.summary().unwrap_or("<no message>");
             println!(
                 "  {}th commit: {} by {} <{}>",
@@ -67,37 +69,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         }
     }
 
-    let mut lang_map: HashMap<&str, &str> = HashMap::new();
-    lang_map.insert("rs", "Rust");
-    lang_map.insert("c", "C");
-    lang_map.insert("h", "C Header");
-    lang_map.insert("lua", "Lua");
-    lang_map.insert("cc", "C++");
-    lang_map.insert("cpp", "C++");
-    lang_map.insert("hpp", "C++ Header");
-    lang_map.insert("py", "Python");
-    lang_map.insert("js", "JavaScript");
-    lang_map.insert("ts", "TypeScript");
-    lang_map.insert("tsx", "React TSX");
-    lang_map.insert("jsx", "React JSX");
-    lang_map.insert("java", "Java");
-    lang_map.insert("go", "Go");
-    lang_map.insert("rb", "Ruby");
-    lang_map.insert("php", "PHP");
-    lang_map.insert("swift", "Swift");
-    lang_map.insert("nix", "Nix");
-    lang_map.insert("toml", "TOML");
-    lang_map.insert("yaml", "YAML");
-    lang_map.insert("yml", "YAML");
-    lang_map.insert("json", "JSON");
-    lang_map.insert("md", "Markdown");
-    lang_map.insert("adoc", "ASCIIDoc");
-    lang_map.insert("org", "Org-mode");
-    lang_map.insert("html", "HTML");
-    lang_map.insert("css", "CSS");
-    lang_map.insert("scss", "SCSS");
-
-    let blacklist = Regex::new(r"(?i)^(README|TODO|CONTRIBUTING)\.").unwrap();
+    let blacklist = Regex::new(r"(?i)^(README|TODO|CONTRIBUTING).*").unwrap();
 
     let mut lang_counts: HashMap<&str, usize> = HashMap::new();
     let mut file_lines: HashMap<String, usize> = HashMap::new();
@@ -115,8 +87,11 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
                 }
 
                 if let Some(ext) = entry.path().extension().and_then(|e| e.to_str()) {
-                    let file_type = FileType::from_bytes(b"\xCA\xFE\xBA\xBE");
-                    if let Some(lang) = FileType::from_extension(ext) {
+                    if let Some(lang) = FileType::from_extension(ext)
+                        .first()
+                        .copied()
+                        .map(FileType::name)
+                    {
                         if let Ok(content) = fs::read_to_string(entry.path()) {
                             let line_count = content.lines().count();
                             *lang_counts.entry(lang).or_insert(0) += line_count;
