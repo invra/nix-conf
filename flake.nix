@@ -9,6 +9,7 @@
     ip.url = "gitlab:hiten-tandon/some-nix-darwin-packages";
     ghostty.url = "github:ghostty-org/ghostty";
     discord-rpc-lsp.url = "gitlab:invra/discord-rpc-lsp";
+    treefmt-nix.url = "github:numtide/treefmt-nix";
 
     darwin = {
       url = "github:lnl7/nix-darwin";
@@ -33,6 +34,7 @@
 
   outputs =
     {
+      treefmt-nix,
       flake-utils,
       nixpkgs,
       ...
@@ -66,8 +68,26 @@
         ) (builtins.mapAttrs (name: _: import ./configurations/${name}) (builtins.readDir ./configurations))
       )
     ))
-    // (flake-utils.lib.eachDefaultSystem (system: {
-      formatter = nixpkgs.legacyPackages.${system}.nixfmt-tree;
-      devShells.default = import ./devsh.nix (import nixpkgs { inherit system; });
-    }));
+    // flake-utils.lib.eachDefaultSystem (
+      system:
+      let
+        pkgs = import nixpkgs { inherit system; };
+        formatters =
+          (treefmt-nix.lib.evalModule pkgs {
+            projectRootFile = ".git/config";
+            programs = {
+              nixfmt.enable = true;
+              nixf-diagnose.enable = true;
+              rustfmt.enable = true;
+              toml-sort.enable = true;
+              shellcheck.enable = true;
+              shfmt.enable = true;
+            };
+          }).config.build;
+      in
+      {
+        formatter = formatters.wrapper;
+        devShells.default = import ./devsh.nix pkgs;
+      }
+    );
 }
