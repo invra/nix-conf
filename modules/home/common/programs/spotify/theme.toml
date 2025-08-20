@@ -1,5 +1,21 @@
 [[themes]]
 name = "rose-pine"
+
+[themes.component_style]
+selection = {bg = "#403d52", modifiers = ["Bold"]}
+block_title = {fg = "Magenta"}
+playback_track = {fg = "#ebbcba", modifiers = ["Bold"]}
+playback_album = {fg = "Yellow"}
+playback_metadata = {fg = "Blue"}
+playback_progress_bar = {bg = "#1f1d2e", fg = "#c4a7e7"}
+current_playing = {fg = "#ebbcba", modifiers = ["Bold"]}
+page_desc = {fg = "#ebbcba", modifiers = ["Bold"]}
+table_header = {fg = "Blue"}
+border = {}
+playback_status = {fg = "#ebbcba", modifiers = ["Bold"]}
+playback_artists = {fg = "#ebbcba", modifiers = ["Bold"]}
+playlist_desc = {fg = "Cyan"}
+
 [themes.palette]
 background = "#191724"
 foreground = "#e0def4"
@@ -19,19 +35,3 @@ bright_magenta = "#cba6f7"
 bright_red = "#f38ba8"
 bright_white = "#cdd6f4"
 bright_yellow = "#f9e2af"
-
-[themes.component_style]
-selection = { bg = "#403d52", modifiers = ["Bold"] }
-block_title = { fg = "Magenta" }
-playback_track = { fg = "#ebbcba", modifiers = ["Bold"] }
-playback_album = { fg = "Yellow" }
-playback_metadata = { fg = "Blue" }
-playback_progress_bar = { bg = "#1f1d2e", fg = "#c4a7e7" }
-current_playing = { fg = "#ebbcba", modifiers = ["Bold"] }
-page_desc = { fg = "#ebbcba", modifiers = ["Bold"] }
-table_header = { fg = "Blue" }
-border = {}
-playback_status = { fg = "#ebbcba", modifiers = ["Bold"] }
-playback_artists = { fg = "#ebbcba", modifiers = ["Bold"] }
-playlist_desc = { fg = "Cyan" }
-

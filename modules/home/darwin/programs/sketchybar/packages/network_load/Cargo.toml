@@ -1,7 +1,7 @@
+[dependencies]
+netdev = "0.37.1"
+
 [package]
 name = "network_load"
 version = "0.1.0"
 edition = "2024"
-
-[dependencies]
-netdev = "0.37.1"

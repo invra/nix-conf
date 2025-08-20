@@ -25,7 +25,8 @@ let
       pkg-config
     ];
   };
-in {
+in
+{
   home.packages = [
     dev
     gc
