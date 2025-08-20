@@ -59,8 +59,6 @@ func runRustupInit(at path: URL) throws {
         fputs("rustup-init failed.\n", stderr)
         exit(Int32(task.terminationStatus))
     }
-
-    print("Do not follow above tasks. This is meant to be a disposable environment.")
 }
 
 do {
