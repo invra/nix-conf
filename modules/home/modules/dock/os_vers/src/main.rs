@@ -1,5 +1,4 @@
-use os_info::{Type, Version, get as get_info};
-use std::process::exit;
+use os_info::{Version, get as get_info};
 
 #[cfg(target_os = "macos")]
 fn main() {
