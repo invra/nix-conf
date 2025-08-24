@@ -121,7 +121,5 @@ fn main() -> Result<(), String> {
         println!("  {:<15} {:>6} lines |{}", lang, count, "█".repeat(bar_len));
     }
 
-    println!("\x1b[38;2;25;25;235mhello\x1b[0m");
-
     Ok(())
 }
