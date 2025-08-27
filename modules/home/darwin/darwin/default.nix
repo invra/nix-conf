@@ -25,6 +25,8 @@ in
       NSGlobalDomain = {
         AppleShowAllExtensions = false;
         NSAutomaticSpellingCorrectionEnabled = false;
+        NSDocumentSaveNewDocumentsToCloud = false; # Default save files to disk not iCloud
+        NSTableViewDefaultSizeMode = 2; # Force set icon size to default value
         NSAutomaticQuoteSubstitutionEnabled = false;
         NSAutomaticPeriodSubstitutionEnabled = false;
         NSAutomaticDashSubstitutionEnabled = false;
@@ -43,6 +45,7 @@ in
         location = "~/Desktop";
         type = "png";
         target = "clipboard";
+        disable-shadow = true;
       };
 
       "com.apple.WindowManager" = {
@@ -62,6 +65,16 @@ in
 
       "com.apple.finder" = {
         AppleShowAllExtensions = true;
+        FXPreferredViewStyle = "Nlsv"; # List view
+        FXDefaultSearchScope = "SCcf"; # Search the current folder
+        _FXSortFoldersFirst = true; # List with directorys at first
+        FinderSpawnTab = false; # Disable finder tabs (due to WM)
+        FXRemoveOldTrashItems = true; # Delete bin in 30 days
+        FXEnableExtensionChangeWarning = false; # Disable change fs-extension warning
+        showWindowTitlebarIcons = false;
+        NSToolbarTitleViewRolloverDelay = 0.2;
+        AppleShowAllFiles = true;
+        ShowPathbar = true;
         CreateDesktop = false;
         QuitMenuItem = true;
         NewWindowTarget = "Home";
@@ -76,6 +89,8 @@ in
         wvous-br-corner = 1;
         size-immutable = true;
       };
+
+      "com.apple.CloudSubscriptionFeatures.optIn"."545129924" = false; # Disable AI bullshit
     };
   };
 
