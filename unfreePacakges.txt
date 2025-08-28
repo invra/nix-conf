@@ -10,7 +10,5 @@ bitwig-studio-unwrapped
 parsec-bin
 mongodb-compass
 postman
-vscode
 nvidia-x11
 nvidia-settings
-vscode-extension-ms-vsliveshare-vsliveshare
