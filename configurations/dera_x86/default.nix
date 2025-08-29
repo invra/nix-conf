@@ -22,7 +22,10 @@
         "nouveau"
         "nvidia"
       ];
-      wanted = [ "amdgpu" ];
+      wanted = [
+        "modesetting"
+        "amdgpu"
+      ];
     };
     greeter = "gdm";
     hostname = "NixOS";
