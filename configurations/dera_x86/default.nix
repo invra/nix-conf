@@ -7,12 +7,11 @@
   development = {
     git = {
       defaultBranch = "main";
-      email = "identificationsucks@gmail.com";
+      email = "lurker4youu@gmail.com";
       types = [
-        "GitLab"
         "GitHub"
       ];
-      username = "deracul";
+      username = "deracull";
     };
   };
   system = {
@@ -39,13 +38,13 @@
     };
     services = {
       mongodb = {
-        enable = true;
+        enable = false;
       };
       ssh = {
         enable = true;
       };
     };
-    timezone = "Australia/Sydney";
+    timezone = "Asia/Dubai";
   };
   user = {
     displayName = "dera is a wannabe femboy";
