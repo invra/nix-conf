@@ -2,6 +2,7 @@
 {
   home.packages = with pkgs; [
     postman
+    prismlauncher
     parsec-bin
     pgadmin4-desktopmode
     viu
@@ -17,4 +18,6 @@
     tldr
     yazi
   ];
+
+  programs.ripgrep.enable = true;
 }
