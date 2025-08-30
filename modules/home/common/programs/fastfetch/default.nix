@@ -125,8 +125,8 @@ in
       ++ (map (type: {
         type = "custom";
         key = "    ${type}:";
-        format = "${flakeConfig.development.git.username}";
-      }) flakeConfig.development.git.types)
+        format = "${flakeConfig.development.scm.git.username or flakeConfig.development.git.username}";
+      }) flakeConfig.development.scm.types or flakeConfig.development.git.types)
       ++ [
         {
           type = "custom";

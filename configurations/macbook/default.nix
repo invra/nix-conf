@@ -1,15 +1,21 @@
 {
-  development = {
+  development.scm = {
+    mercurial = {
+      enable = true;
+      defaultBranch = "main";
+      email = "identificationsucks@gmail.com";
+      username = "Invra";
+    };
     git = {
       defaultBranch = "main";
       email = "identificationsucks@gmail.com";
-      types = [
-        "GitLab"
-        "GitHub"
-      ];
       username = "Invra";
     };
-  };
+    types = [
+      "GitLab"
+      "GitHub"
+    ];
+  }; 
   system = {
     keyboard = {
       normalise = true;
