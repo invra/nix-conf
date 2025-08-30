@@ -45,6 +45,7 @@
       };
     };
     timezone = "Asia/Dubai";
+    boot.efiDirectory = "/boot";
   };
   user = {
     displayName = "dera is a wannabe femboy";
