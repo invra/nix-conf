@@ -1,4 +1,5 @@
 {
+  lib,
   pkgs,
   flakeConfig,
   ...
@@ -37,7 +38,7 @@ with flakeConfig.system;
     ];
   };
 
-  qt.platformTheme = "kde";
+  qt.platformTheme = lib.mkForce "kde";
 
   system.stateVersion = "25.11";
 }
