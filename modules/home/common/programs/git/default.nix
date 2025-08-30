@@ -6,7 +6,8 @@
 let
   useOldGit = flakeConfig ? development && flakeConfig.development ? git;
 
-  useHg = flakeConfig ? development
+  useHg =
+    flakeConfig ? development
     && flakeConfig.development ? scm
     && flakeConfig.development.scm ? mercurial;
 
@@ -15,10 +16,12 @@ let
       lib.warnIf true
         "The config option development.git is deprecated. Please use development.scm.git instead."
         flakeConfig.development.git
-    else if flakeConfig ? development && flakeConfig.development ? scm && flakeConfig.development.scm ? git then
+    else if
+      flakeConfig ? development && flakeConfig.development ? scm && flakeConfig.development.scm ? git
+    then
       flakeConfig.development.scm.git
     else
-      {};
+      { };
 in
 {
   imports = [

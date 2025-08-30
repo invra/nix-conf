@@ -15,7 +15,7 @@
       "GitLab"
       "GitHub"
     ];
-  }; 
+  };
   system = {
     keyboard = {
       normalise = true;
