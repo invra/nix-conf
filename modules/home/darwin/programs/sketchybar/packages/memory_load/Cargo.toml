@@ -1,6 +1,4 @@
 [dependencies]
-memory-stats = "1.2.0"
-sysinfo = "0.36.1"
 
 [package]
 name = "memory_load"

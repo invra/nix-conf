@@ -34,10 +34,10 @@ memory:subscribe("memory_update", function(env)
 
   memory:push({ load / 100. })
   local color = colors.blue
-  if load > 30 then
-    if load < 60 then
+  if load > 60 then
+    if load < 75 then
       color = colors.yellow
-    elseif load < 80 then
+    elseif load < 90 then
       color = colors.orange
     else
       color = colors.red

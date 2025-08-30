@@ -1,5 +1,4 @@
 use std::{env, io, thread::sleep, time::Duration};
-use sysinfo::System;
 
 #[cfg(target_os = "macos")]
 fn run_sketchybar(event_name: &str, total: f32) -> io::Result<()> {
@@ -35,15 +34,32 @@ fn main() -> Result<(), &'static str> {
         return Ok(());
     };
 
-    let mut sys = System::new();
-
     loop {
-        sys.refresh_memory();
-
-        let total_memory = sys.total_memory() as f32;
-        let used_memory = sys.used_memory() as f32;
-
-        let used_percent = (used_memory / total_memory) * 100.0;
+        #[cfg(target_os = "macos")]
+        let used_percent = {
+            let output = std::process::Command::new("memory_pressure")
+                .output()
+                .map_err(|_| "Failed to run memory_pressure")?;
+            let s = String::from_utf8_lossy(&output.stdout);
+            let line = s
+                .lines()
+                .find(|l| l.contains("System-wide memory free percentage:"));
+            if let Some(line) = line {
+                if let Some(start) = line.find(':') {
+                    if let Some(end) = line.find('%') {
+                        let free_str = &line[start + 1..end].trim();
+                        let free_percent: f32 = free_str.parse().map_err(|_| "Parse error")?;
+                        100.0 - free_percent
+                    } else {
+                        0.0
+                    }
+                } else {
+                    0.0
+                }
+            } else {
+                0.0
+            }
+        };
 
         let _ = run_sketchybar(event_name, used_percent);
 
