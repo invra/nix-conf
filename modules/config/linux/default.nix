@@ -37,5 +37,7 @@ with flakeConfig.system;
     ];
   };
 
+  qt.platformTheme = "kde6";
+
   system.stateVersion = "25.11";
 }
