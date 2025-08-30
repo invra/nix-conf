@@ -31,7 +31,7 @@ in
       alsa.enable = true;
       pulse.enable = true;
       jack.enable = true;
-      
+
       extraConfig.pipewire."91-null-sinks" = {
         "context.objects" = [
           {
