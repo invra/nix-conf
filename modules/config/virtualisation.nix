@@ -3,8 +3,7 @@
   linux,
   ...
 }:
-lib.optionalAttrs linux
-{
+lib.optionalAttrs linux {
   virtualisation = {
     docker.enable = true;
     libvirtd = {

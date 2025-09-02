@@ -7,8 +7,7 @@
 let
   inherit (flakeConfig) system desktop;
 in
-lib.optionalAttrs linux
-{
+lib.optionalAttrs linux {
   services = {
     pulseaudio.daemon.config.flat-volumes = "no";
     flatpak.enable = true;

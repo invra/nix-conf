@@ -5,8 +5,7 @@
   flakeConfig,
   ...
 }:
-lib.optionalAttrs linux
-{
+lib.optionalAttrs linux {
   hardware = with flakeConfig; {
     graphics.enable = true;
     amdgpu.opencl.enable = lib.mkForce (builtins.elem "amdgpu" (system.graphics.wanted or [ ]));

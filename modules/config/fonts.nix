@@ -13,7 +13,8 @@
       noto-fonts
       noto-fonts-emoji
     ];
-  } // lib.optionalAttrs linux {
-    fontconfig.defaultFonts.monospace = [ "JetBrainsMono" ];    
+  }
+  // lib.optionalAttrs linux {
+    fontconfig.defaultFonts.monospace = [ "JetBrainsMono" ];
   };
 }

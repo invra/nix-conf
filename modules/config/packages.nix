@@ -12,21 +12,24 @@
       nushell
     ];
 
-    systemPackages = with pkgs; [
-      jack2
-      git
-      helix
-      home-manager
-      uutils-diffutils
-      uutils-findutils
-      uutils-coreutils-noprefix
-    ] ++ lib.optionals linux [
-      ghostty
-      zen
-      pciutils
-      xwayland-satellite
-      swww
-    ];
+    systemPackages =
+      with pkgs;
+      [
+        jack2
+        git
+        helix
+        home-manager
+        uutils-diffutils
+        uutils-findutils
+        uutils-coreutils-noprefix
+      ]
+      ++ lib.optionals linux [
+        ghostty
+        zen
+        pciutils
+        xwayland-satellite
+        swww
+      ];
   }
   // lib.optionalAttrs linux {
     kde6.excludePackages = with pkgs.kdePackages; [

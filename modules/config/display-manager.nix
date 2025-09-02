@@ -5,8 +5,7 @@
   flakeConfig,
   ...
 }:
-lib.optionalAttrs linux
-{
+lib.optionalAttrs linux {
   services.displayManager = with flakeConfig.system; {
     gdm = {
       enable = (greeter == "gdm");
@@ -27,4 +26,3 @@ lib.optionalAttrs linux
     };
   };
 }
-
