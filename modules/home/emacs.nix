@@ -1,0 +1,9 @@
+{
+  ...
+}:
+{
+  programs.emacs = {
+    enable = true;
+  };
+}
+

@@ -1,0 +1,31 @@
+{
+  pkgs,
+  ...
+}:
+let
+  ghostty =
+    if pkgs.stdenv.isDarwin then
+      pkgs.ghostty-bin
+    else if pkgs.stdenv.isLinux then
+      pkgs.ghostty
+    else
+      throw "Unsupported platform: only Darwin and Linux are supported";
+in
+{
+  stylix.targets.ghostty.enable = false;
+
+  programs.ghostty = {
+    package = ghostty;
+    enable = true;
+
+    settings = {
+      theme = "rose-pine";
+      background-opacity = 0.95;
+      macos-titlebar-style = "hidden";
+      quit-after-last-window-closed = true;
+      window-save-state = "never";
+      font-size = 14;
+    };
+  };
+}
+
