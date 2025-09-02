@@ -1,67 +1,39 @@
 {
-  pkgs,
+  lib,
   linux,
-  flakeConfig,
   extraOverlays,
   allowUnfreePredicate,
   ...
 }:
 let
-  inherit (flakeConfig) user;
+  getModulesFromDirRec = dir: isRoot:
+    lib.lists.unique (
+      lib.lists.flatten (
+        lib.mapAttrsToList (
+          name: type:
+            if type == "regular" then
+              if isRoot then
+                lib.optional (lib.strings.hasSuffix ".nix" name && name != "default.nix")
+                  (lib.path.append dir name)
+              else
+                lib.optional (name == "default.nix")
+                  (lib.path.append dir name)
+            else if type == "directory" then
+              getModulesFromDirRec (lib.path.append dir name) false
+            else
+              [ ]
+        ) (builtins.readDir dir)
+      )
+    );
 in
 {
-  imports =
-    if linux then
-      [
-        ./linux
-        ./stylix.nix
-      ]
-    else
-      [
-        ./darwin
-        ./stylix.nix
-      ];
-
+  imports = (getModulesFromDirRec ./. true);
+  
   nixpkgs = {
     config.allowUnfreePredicate = allowUnfreePredicate;
     overlays = extraOverlays;
   };
 
-  nix.settings = {
-    cores = 8;
-    max-jobs = 1;
-
-    experimental-features = [
-      "nix-command"
-      "flakes"
-    ];
-
-    extra-experimental-features = [
-      "pipe-operators"
-    ];
-
-    substituters = [ "https://nix-community.cachix.org" ];
-
-    trusted-public-keys = [
-      "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
-    ];
-  };
-
-  users.users = {
-    ${user.username} = {
-      name = user.username;
-      description = user.displayName;
-      shell = pkgs.nushell;
-    };
-  };
-
-  environment.systemPackages = with pkgs; [
-    jack2
-    git
-    helix
-    home-manager
-    uutils-diffutils
-    uutils-findutils
-    uutils-coreutils-noprefix
-  ];
+  system.stateVersion = if linux then "25.11" else 6;
 }
+
