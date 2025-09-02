@@ -1,5 +1,7 @@
 {
+  lib,
   pkgs,
+  linux,
   flakeConfig,
   ...
 }:
@@ -8,7 +10,6 @@
     enable = true;
     base16Scheme = "${pkgs.base16-schemes}/share/themes/rose-pine.yaml";
     image = flakeConfig.user.wallpaper or ../../wallpapers/flake.jpg;
-    targets.qt.enable = false;
     fonts = {
       serif = {
         package = pkgs.dejavu_fonts;
@@ -25,5 +26,7 @@
         name = "JetBrains Mono Nerd Font";
       };
     };
+  } // lib.optionalAttrs linux {
+    targets.qt.enable = false;
   };
 }
