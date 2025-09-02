@@ -11,8 +11,6 @@
         "/home/${flakeConfig.user.username}";    
     username = flakeConfig.user.username;
     stateVersion = "24.11";
-    sessionVariables = {
-      EDITOR = "hx";
-    };
+    sessionVariables.EDITOR = "hx";
   };
 }

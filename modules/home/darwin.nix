@@ -3,18 +3,21 @@
   pkgs,
   config,
   flakeConfig,
+  linux,
   ...
 }:
 let
   inherit (flakeConfig) system;
 in
+lib.optionalAttrs (!linux)
 {
   imports = [
     ../wallpaper.nix
     ../dock
+    ./sketchybar
   ];
 
-  targets.darwin = lib.optionals pkgs.stdenv.isDarwin {
+  targets.darwin = {
     dock = {
       enable = true;
     }
@@ -95,7 +98,7 @@ in
     };
   };
 
-  programs.setWallpaper = lib.optionals pkgs.stdenv.isDarwin {
+  programs.setWallpaper = {
     enable = true;
     wallpaperPath = flakeConfig.user.wallpaper or ../../wallpapers/flake.jpg;
   };

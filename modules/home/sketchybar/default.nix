@@ -1,6 +1,7 @@
 {
   pkgs,
   lib,
+  linux,
   ...
 }:
 
@@ -35,10 +36,11 @@ let
     };
   };
 in
+lib.optionalAttrs (!linux)
 {
-  home.packages = lib.optionals pkgs.stdenv.isDarwin [ pkgs.lua ];
+  home.packages = [ pkgs.lua ];
 
-  programs.sketchybar = lib.optionals pkgs.stdenv.isDarwin {
+  programs.sketchybar = {
     enable = true;
     configType = "lua";
     config = lib.mkIf pkgs.stdenv.isDarwin {

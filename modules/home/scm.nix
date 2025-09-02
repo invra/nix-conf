@@ -51,7 +51,7 @@ in
   };
 
 
-  programs.mercurial = with flakeConfig.development.scm; {
+  programs.mercurial = lib.optionalAttrs useHg (with flakeConfig.development.scm; {
     enable = mercurial.enable or false;
     userName = mercurial.username or "default-username";
     userEmail = mercurial.email or "default@example.com";
@@ -63,7 +63,7 @@ in
       c = "commit";
       a = "commit --amend";
     };
-  };
+  });
   
   home.packages = with pkgs; [
     lazygit
