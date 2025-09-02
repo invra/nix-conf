@@ -1,0 +1,7 @@
+text=auto
+*.rs text eol=lf diff=rust
+*.nix text eol=lf
+*.toml text eol=lf
+*.adoc text eol=lf
+*.org text eol=lf
+*.{png,jpg,jpeg,gif,ico} binary
