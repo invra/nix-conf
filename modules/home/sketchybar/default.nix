@@ -38,21 +38,23 @@ in
 {
   home.packages = lib.optionals pkgs.stdenv.isDarwin [ pkgs.lua ];
 
-  programs.sketchybar.enable = lib.mkIf pkgs.stdenv.isDarwin true;
-  programs.sketchybar.configType = "lua";
-  programs.sketchybar.config = lib.mkIf pkgs.stdenv.isDarwin {
-    source = ./config;
-    recursive = true;
+  programs.sketchybar = lib.optionals pkgs.stdenv.isDarwin {
+    enable = true;
+    configType = "lua";
+    config = lib.mkIf pkgs.stdenv.isDarwin {
+      source = ./config;
+      recursive = true;
+    };
+    includeSystemPath = true;
+
+    extraPackages = with helpers; [
+      pkgs.aerospace
+      network_load
+      memory_load
+      cpu_load
+      menus
+    ];
+
+    service.enable = true;
   };
-  programs.sketchybar.includeSystemPath = lib.mkIf pkgs.stdenv.isDarwin true;
-
-  programs.sketchybar.extraPackages = lib.optionals pkgs.stdenv.isDarwin (with helpers; [
-    pkgs.aerospace
-    network_load
-    memory_load
-    cpu_load
-    menus
-  ]);
-
-  programs.sketchybar.service.enable = lib.mkIf pkgs.stdenv.isDarwin true;
 }
