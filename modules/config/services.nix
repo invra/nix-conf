@@ -1,10 +1,13 @@
 {
+  lib,
+  linux,
   flakeConfig,
   ...
 }:
 let
   inherit (flakeConfig) system desktop;
 in
+lib.optionalAttrs linux
 {
   services = {
     pulseaudio.daemon.config.flat-volumes = "no";
