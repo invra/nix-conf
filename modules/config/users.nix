@@ -29,4 +29,5 @@ in
       uid = 501;
     };
   };
+  system.primaryUser = user.username;
 }
