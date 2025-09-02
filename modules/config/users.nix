@@ -29,9 +29,11 @@ in
       home = "/Users/${flakeConfig.user.username}";
       uid = 501;
     };
-  } // lib.optionalAttrs (!linux) {
+  }
+  // lib.optionalAttrs (!linux) {
     knownUsers = lib.optionals (!linux) [ flakeConfig.user.username ];
   };
-} // lib.optionalAttrs (!linux) {
+}
+// lib.optionalAttrs (!linux) {
   system.primaryUser = user.username;
 }

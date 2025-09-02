@@ -4,8 +4,7 @@
   lib,
   ...
 }:
-lib.optionalAttrs (!linux)
-{
+lib.optionalAttrs (!linux) {
   imports = [
     ../../aerospace.nix
   ];

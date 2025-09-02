@@ -9,7 +9,7 @@
     ];
     username = "Invra";
   };
-  
+
   system = {
     hardware-module = ./hardware-configuration.nix;
     graphics = {
