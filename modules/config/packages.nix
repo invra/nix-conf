@@ -21,8 +21,9 @@
       uutils-findutils
       uutils-coreutils-noprefix
     ];
-    
-    excludePackages = lib.optionals linux (with pkgs.kdePackages; [
+  }
+  // lib.optionalAttrs linux {
+    kde6.excludePackages = with pkgs.kdePackages; [
       plasma-browser-integration
       gwenview
       discover
@@ -32,9 +33,8 @@
       okular
       elisa
       kate
-    ]);
+    ];
   };
-
 
   programs.nano.enable = false;
 }

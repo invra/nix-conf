@@ -5,8 +5,11 @@
   ...
 }:
 {
-  programs.obs-studio = lib.optionalAttrs linux (with pkgs; {
-    enable = true;
-    package = obs-studio;
-  });
+  programs.obs-studio = lib.optionalAttrs linux (
+    with pkgs;
+    {
+      enable = true;
+      package = obs-studio;
+    }
+  );
 }

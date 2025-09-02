@@ -5,7 +5,7 @@
   ...
 }:
 let
-  enable = (flakeConfig.plasma.enable or false) && linux; 
+  enable = (flakeConfig.plasma.enable or false) && linux;
 in
 {
   home.packages = pkgs.lib.optionals enable (
@@ -126,4 +126,3 @@ in
     ];
   };
 }
-

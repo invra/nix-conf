@@ -8,8 +8,7 @@
 let
   inherit (flakeConfig) system;
 in
-lib.optionalAttrs linux
-{
+lib.optionalAttrs linux {
   boot = {
     kernelPackages = pkgs.linuxPackages_latest;
     extraModulePackages = with pkgs; [ linuxPackages_latest.v4l2loopback.out ];
@@ -33,4 +32,3 @@ lib.optionalAttrs linux
     };
   };
 }
-

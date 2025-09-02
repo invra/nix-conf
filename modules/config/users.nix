@@ -6,7 +6,7 @@
   ...
 }:
 let
-  inherit (flakeConfig)user;
+  inherit (flakeConfig) user;
 in
 {
   users = {
@@ -15,7 +15,8 @@ in
       name = user.username;
       description = user.displayName;
       shell = pkgs.nushell;
-    } //  lib.optionalAttrs linux {
+    }
+    // lib.optionalAttrs linux {
       isNormalUser = true;
       extraGroups = [
         "networkmanager"
@@ -24,7 +25,8 @@ in
         "libvirtd"
         "audio"
       ];
-    } // lib.optionalAttrs (!linux) {
+    }
+    // lib.optionalAttrs (!linux) {
       home = "/Users/${flakeConfig.user.username}";
       uid = 501;
     };

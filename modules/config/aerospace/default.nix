@@ -26,4 +26,3 @@
     package = pkgs.sketchybar;
   };
 }
-

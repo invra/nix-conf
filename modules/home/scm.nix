@@ -50,25 +50,26 @@ in
     };
   };
 
+  programs.mercurial = lib.optionalAttrs useHg (
+    with flakeConfig.development.scm;
+    {
+      enable = mercurial.enable or false;
+      userName = mercurial.username or "default-username";
+      userEmail = mercurial.email or "default@example.com";
+      extraConfig = {
+        init.defaultBranch = mercurial.defaultBranch or "main";
+      };
+      aliases = {
+        p = "push";
+        c = "commit";
+        a = "commit --amend";
+      };
+    }
+  );
 
-  programs.mercurial = lib.optionalAttrs useHg (with flakeConfig.development.scm; {
-    enable = mercurial.enable or false;
-    userName = mercurial.username or "default-username";
-    userEmail = mercurial.email or "default@example.com";
-    extraConfig = {
-      init.defaultBranch = mercurial.defaultBranch or "main";
-    };
-    aliases = {
-      p = "push";
-      c = "commit";
-      a = "commit --amend";
-    };
-  });
-  
   home.packages = with pkgs; [
     lazygit
     glab
     gh
   ];
 }
-

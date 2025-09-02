@@ -5,12 +5,15 @@
   ...
 }:
 {
-  system.keyboard = lib.mkIf (!linux) (with flakeConfig; {
-    enableKeyMapping = true;
-    swapLeftCommandAndLeftAlt = system.keyboard.normalise or false;
-    swapLeftCtrlAndFn = system.keyboard.normalise or false;
-    remapCapsLockToEscape = system.keyboard.remapCapsToEscape or false;
-  });
+  system.keyboard = lib.mkIf (!linux) (
+    with flakeConfig;
+    {
+      enableKeyMapping = true;
+      swapLeftCommandAndLeftAlt = system.keyboard.normalise or false;
+      swapLeftCtrlAndFn = system.keyboard.normalise or false;
+      remapCapsLockToEscape = system.keyboard.remapCapsToEscape or false;
+    }
+  );
 
   xserver = lib.mkIf (!linux) {
     xkb = {

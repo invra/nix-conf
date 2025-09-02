@@ -7,7 +7,7 @@
 
 let
   helpers = {
-    cpu_load = pkgs.rustPlatform.buildRustPackage {    
+    cpu_load = pkgs.rustPlatform.buildRustPackage {
       pname = "cpu_load";
       version = "0.1.0";
       src = ./packages/cpu_load;
@@ -36,8 +36,7 @@ let
     };
   };
 in
-lib.optionalAttrs (!linux)
-{
+lib.optionalAttrs (!linux) {
   home.packages = [ pkgs.lua ];
 
   programs.sketchybar = {

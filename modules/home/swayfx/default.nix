@@ -10,8 +10,7 @@
     file = {
       ".config/sway/config".text = import ./config.nix;
       ".config/sway/screenshot.nu".text = import ./scripts/screenshot.nix;
-      ".config/sway/wallpaper.png".source =
-        flakeConfig.user.wallpaper or ../../../wallpapers/flake.jpg;
+      ".config/sway/wallpaper.png".source = flakeConfig.user.wallpaper or ../../../wallpapers/flake.jpg;
     };
 
     packages = with pkgs; [
@@ -24,4 +23,3 @@
     sessionVariables.NIXOS_OZONE_WL = "1";
   };
 }
-

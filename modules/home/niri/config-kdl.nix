@@ -238,4 +238,3 @@
       Mod+Shift+P { power-off-monitors; }
   }
 ''
-

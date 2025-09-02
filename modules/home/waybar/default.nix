@@ -11,4 +11,3 @@ lib.optionalAttrs linux {
     ".config/waybar/style.css".text = import ./style.nix;
   };
 }
-

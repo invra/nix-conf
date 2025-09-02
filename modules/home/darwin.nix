@@ -9,8 +9,7 @@
 let
   inherit (flakeConfig) system;
 in
-lib.optionalAttrs (!linux)
-{
+lib.optionalAttrs (!linux) {
   imports = [
     ../wallpaper.nix
     ../dock

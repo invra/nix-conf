@@ -62,4 +62,3 @@ in
 
   [workspace-to-monitor-force-assignment]
 ''
-
