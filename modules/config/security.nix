@@ -4,34 +4,38 @@
   ...
 }:
 {
-  security = if linux then {
-    doas = {
-      enable = true;
-      extraRules = [
-        {
-          groups = [ "wheel" ];
-          keepEnv = true;
-          persist = true;
-        }
-      ];
-    };
-    sudo.enable = false;
-    sudo-rs = linux {
-      enable = true;
-      extraRules = [
-        {
-          commands = [
+  security =
+    if linux then
+      {
+        doas = {
+          enable = true;
+          extraRules = [
             {
-              command = "${pkgs.systemd}/bin/reboot";
-              options = [ "NOPASSWD" ];
+              groups = [ "wheel" ];
+              keepEnv = true;
+              persist = true;
             }
           ];
-          groups = [ "wheel" ];
-        }
-      ];
-    };
-    polkit.enable = true;
-  } else {
-    pam.services.sudo_local.touchIdAuth = true;
-  };
+        };
+        sudo.enable = false;
+        sudo-rs = linux {
+          enable = true;
+          extraRules = [
+            {
+              commands = [
+                {
+                  command = "${pkgs.systemd}/bin/reboot";
+                  options = [ "NOPASSWD" ];
+                }
+              ];
+              groups = [ "wheel" ];
+            }
+          ];
+        };
+        polkit.enable = true;
+      }
+    else
+      {
+        pam.services.sudo_local.touchIdAuth = true;
+      };
 }
