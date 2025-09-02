@@ -5,7 +5,7 @@
 }:
 if linux then
   {
-    xserver.xkb = {
+    services.xserver.xkb = {
       layout = "us,us";
       options = "grp:alt_shift_toggle,eurosign:e,caps:escape";
       variant = ",workman";

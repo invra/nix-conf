@@ -32,7 +32,7 @@
       ];
   }
   // lib.optionalAttrs linux {
-    kde6.excludePackages = with pkgs.kdePackages; [
+    plasma6.excludePackages = with pkgs.kdePackages; [
       plasma-browser-integration
       gwenview
       discover

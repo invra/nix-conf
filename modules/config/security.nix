@@ -18,7 +18,7 @@
           ];
         };
         sudo.enable = false;
-        sudo-rs = linux {
+        sudo-rs = {
           enable = true;
           extraRules = [
             {

@@ -10,7 +10,6 @@ let
 in
 {
   users = {
-    knownUsers = lib.mkIf (!linux) [ flakeConfig.user.username ];
     users.${user.username} = {
       name = user.username;
       description = user.displayName;
@@ -30,6 +29,9 @@ in
       home = "/Users/${flakeConfig.user.username}";
       uid = 501;
     };
+  } // lib.optionalAttrs (!linux) {
+    knownUsers = lib.optionals (!linux) [ flakeConfig.user.username ];
   };
+} // lib.optionalAttrs (!linux) {
   system.primaryUser = user.username;
 }

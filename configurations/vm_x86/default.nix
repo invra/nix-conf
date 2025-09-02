@@ -1,20 +1,15 @@
 {
-  desktop = {
-    plasma = {
-      enable = true;
-    };
+  desktop.plasma.enable = true;
+  development.git = {
+    defaultBranch = "main";
+    email = "identificationsucks@gmail.com";
+    types = [
+      "GitLab"
+      "GitHub"
+    ];
+    username = "Invra";
   };
-  development = {
-    git = {
-      defaultBranch = "main";
-      email = "identificationsucks@gmail.com";
-      types = [
-        "GitLab"
-        "GitHub"
-      ];
-      username = "Invra";
-    };
-  };
+  
   system = {
     hardware-module = ./hardware-configuration.nix;
     graphics = {
@@ -38,12 +33,8 @@
       networkmanager = false;
     };
     services = {
-      mongodb = {
-        enable = true;
-      };
-      ssh = {
-        enable = true;
-      };
+      mongodb.enable = true;
+      ssh.enable = true;
     };
     timezone = "Australia/Sydney";
   };

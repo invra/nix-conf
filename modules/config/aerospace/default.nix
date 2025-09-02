@@ -1,7 +1,10 @@
 {
+  linux,
   pkgs,
+  lib,
   ...
 }:
+lib.optionalAttrs (!linux)
 {
   imports = [
     ../../aerospace.nix
