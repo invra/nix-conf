@@ -1,4 +1,5 @@
 {
+  lib,
   pkgs,
   config,
   flakeConfig,
@@ -13,7 +14,7 @@ in
     ../dock
   ];
 
-  targets.darwin = {
+  targets.darwin = lib.optionals pkgs.stdenv.isDarwin {
     dock = {
       enable = true;
     }
@@ -94,7 +95,7 @@ in
     };
   };
 
-  programs.setWallpaper = {
+  programs.setWallpaper = lib.optionals pkgs.stdenv.isDarwin {
     enable = true;
     wallpaperPath = flakeConfig.user.wallpaper or ../../wallpapers/flake.jpg;
   };
