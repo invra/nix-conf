@@ -33,11 +33,12 @@
       alt-tab-macos
       betterdisplay
   ] ++ lib.optionals pkgs.stdenv.isLinux [
+      wl-clipboard
       wayvnc
       helvum
       easyeffects
       vlc
-    gimp3
+      gimp3
       pavucontrol
       # davinci-resolve
       signal-desktop-bin
