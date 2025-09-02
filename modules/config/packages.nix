@@ -36,7 +36,7 @@
     ];
   };
 
-  programs.nano = lib.optionalAttrs linux {
-    enable = false;
+  programs = lib.optionalAttrs linux {
+    nano.enable = false;
   };
 }

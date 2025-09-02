@@ -1,12 +1,11 @@
 {
-  lib,
   pkgs,
   linux,
   ...
 }:
 {
-  security = {
-    doas = lib.mkIf linux {
+  security = if linux then {
+    doas = {
       enable = true;
       extraRules = [
         {
@@ -16,8 +15,8 @@
         }
       ];
     };
-    sudo.enable = lib.mkIf linux false;
-    sudo-rs = lib.mkIf linux {
+    sudo.enable = false;
+    sudo-rs = linux {
       enable = true;
       extraRules = [
         {
@@ -31,7 +30,8 @@
         }
       ];
     };
-    polkit.enable = lib.mkIf linux true;
-    pam.services.sudo_local.touchIdAuth = lib.mkIf (!linux) true;
+    polkit.enable = true;
+  } else {
+    pam.services.sudo_local.touchIdAuth = true;
   };
 }
