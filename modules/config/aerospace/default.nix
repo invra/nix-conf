@@ -22,9 +22,4 @@ lib.optionalAttrs (!linux) {
       yabai -m config focus_follows_mouse autofocus
     '';
   };
-
-  services.sketchybar = {
-    enable = true;
-    package = pkgs.sketchybar;
-  };
 }

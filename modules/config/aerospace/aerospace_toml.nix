@@ -11,7 +11,7 @@ in
   default-root-container-orientation = "auto"
   enable-normalization-flatten-containers = true
   enable-normalization-opposite-orientation-for-nested-containers = true
-  exec-on-workspace-change = ['${pkgs.bashInteractive}/bin/bash', '-c', '${pkgs.sketchybar}/bin/sketchybar --trigger aerospace_workspace_change FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE']
+  # exec-on-workspace-change = ['${pkgs.bashInteractive}/bin/bash', '-c', 'sketchierbar' --trigger aerospace_workspace_change FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE']
   on-focus-changed = []
   on-focused-monitor-changed = ["move-mouse monitor-lazy-center"]
   on-window-detected = []

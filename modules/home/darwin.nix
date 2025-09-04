@@ -13,7 +13,6 @@ lib.optionalAttrs (!linux) {
   imports = [
     ../wallpaper.nix
     ../dock
-    ./sketchybar
   ];
 
   targets.darwin = {
