@@ -30,6 +30,9 @@ struct Args {
 
     #[arg(long)]
     patch_plist: bool,
+
+    #[arg(short, long)]
+    skip_hm: bool,
 }
 
 fn iprintln(msg: &str) {
@@ -170,18 +173,22 @@ fn main() -> Result<(), String> {
         );
     }
 
-    if !home_applied() {
-        iprintln("Home Manager config not applied. Applying now...");
-        run_after_install_command(&format!(
-            "home-manager switch --flake '.#{}' -b backup",
-            flake
-        ));
-        println!(
-            "{} Please run \"source /etc/zshrc\" to have access to Nix.",
-            "[FINISHED]".green()
-        );
-    } else {
-        iprintln("The home-manager config seems to be already applied. Please use nh to rebuild.");
+    if !args.skip_hm {
+        if !home_applied() {
+            iprintln("Home Manager config not applied. Applying now...");
+            run_after_install_command(&format!(
+                "home-manager switch --flake '.#{}' -b backup",
+                flake
+            ));
+            println!(
+                "{} Please run \"source /etc/zshrc\" to have access to Nix.",
+                "[FINISHED]".green()
+            );
+        } else {
+            iprintln(
+                "The home-manager config seems to be already applied. Please use nh to rebuild.",
+            );
+        }
     }
     Ok(())
 }
