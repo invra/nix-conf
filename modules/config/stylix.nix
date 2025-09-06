@@ -26,7 +26,8 @@
         name = "JetBrains Mono Nerd Font";
       };
     };
-  } // lib.optionalAttrs linux {
+  }
+  // lib.optionalAttrs linux {
     targets.qt.enable = false;
   };
 }
