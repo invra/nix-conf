@@ -12,6 +12,7 @@
     ghostty.url = "github:ghostty-org/ghostty";
     discord-rpc-lsp.url = "gitlab:invra/discord-rpc-lsp";
     treefmt-nix.url = "github:numtide/treefmt-nix";
+    sketchierbar.url = "gitlab:invra/sketchierbar";
 
     darwin = {
       url = "github:lnl7/nix-darwin";

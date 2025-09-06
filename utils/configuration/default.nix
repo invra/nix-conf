@@ -19,6 +19,7 @@ let
     inherit flakeConfig;
     extraOverlays = with flakeInputs; [
       discord-rpc-lsp.overlays.default
+      sketchierbar.overlays.default
       ghostty.overlays.default
       zen-browser.overlay
       ip.overlay

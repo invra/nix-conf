@@ -4,14 +4,15 @@ let
 in
 ''
   accordion-padding = 30
-  after-login-command = []
-  after-startup-command = []
+  after-startup-command = [
+    'exec-and-forget ${pkgs.sketchierbar}/bin/sketchierbar'
+  ]
   automatically-unhide-macos-hidden-apps = true
   default-root-container-layout = "tiles"
   default-root-container-orientation = "auto"
   enable-normalization-flatten-containers = true
   enable-normalization-opposite-orientation-for-nested-containers = true
-  # exec-on-workspace-change = ['${pkgs.bashInteractive}/bin/bash', '-c', 'sketchierbar' --trigger aerospace_workspace_change FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE']
+  exec-on-workspace-change = ['${pkgs.bashInteractive}/bin/bash', '-c', '${pkgs.sketchierbar}/bin/sketchierbar --trigger aerospace_change $AEROSPACE_FOCUSED_WORKSPACE']
   on-focus-changed = []
   on-focused-monitor-changed = ["move-mouse monitor-lazy-center"]
   on-window-detected = []
