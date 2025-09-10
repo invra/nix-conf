@@ -15,6 +15,14 @@
   };
   system = {
     hardware-module = ./hardware/vm-aarch64.nix;
+    graphics = {
+      blacklists = [
+        "nouveau"
+        "nvidia"
+        "amdgpu"
+      ];
+      wanted = [ "modesetting" ];
+    };
     greeter = "gdm";
     hostname = "NixOS";
     interfaces = { };
