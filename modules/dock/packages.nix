@@ -30,4 +30,3 @@ let
   };
 in
 builtins.readFile "${checkVersion}/result.txt" == "true\n"
-
