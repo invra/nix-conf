@@ -6,9 +6,10 @@ This does NOT mean tasks will be completed in order, as some may be more resourc
 ** Enhance Nix Configurations
 
    - [X] Cleanup =utils= folder
-   - [] Revise =configurations= folder structure 
+   - [X] Revise =hosts= folder structure 
+   - [X] Figure out way to remove code duplication, and making a config simpler in the =hosts= folder.
    
 
 ** Make automation tools better
    - [] Add a Linux automation tool
-   - [x] Fact-check current logic
+   - [X] Fact-check current logic
