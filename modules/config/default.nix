@@ -1,12 +1,15 @@
 {
+  lib,
   linux,
   custils,
+  flakeConfig,
   extraOverlays,
   allowUnfreePredicate,
   ...
 }:
 {
-  imports = (custils.lib.getModulesFromDirRec ./. true);
+  imports = (custils.lib.getModulesFromDirRec ./. true)
+    ++ lib.optionals linux [ flakeConfig.system.hardware-module ];
 
   nixpkgs = {
     config.allowUnfreePredicate = allowUnfreePredicate;
