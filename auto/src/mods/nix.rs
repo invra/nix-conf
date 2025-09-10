@@ -13,26 +13,31 @@ pub(crate) fn nix_darwin_applied() -> bool {
             let file_name = entry.file_name();
             let file_name = file_name.to_string_lossy();
 
-            if file_name.starts_with("system-") && file_name.ends_with("-link") {
-                if file_name["system-".len()..file_name.len() - "-link".len()]
-                    .chars()
-                    .all(|c| c.is_ascii_digit())
-                {
+            if let Some(middle) = file_name
+                .strip_prefix("system-")
+                .and_then(|s| s.strip_suffix("-link"))
+            {
+                if middle.chars().all(|c| c.is_ascii_digit()) {
                     return true;
                 }
             }
         }
     }
-
     false
 }
 
 pub(crate) fn home_applied() -> bool {
-    let home = env::var("HOME").unwrap();
-    let target = Path::new(&home)
-        .join(".nix-profile")
-        .join("etc")
-        .join("man_db.conf");
-
-    target.exists()
+    let home = match env::var("HOME") {
+        Ok(h) => h,
+        Err(_) => return false,
+    };
+    
+    let hm_state = Path::new(&home)
+        .join(".local")
+        .join("state")
+        .join("nix")
+        .join("profiles")
+        .join("home-manager");
+    
+    hm_state.exists()
 }
