@@ -1,0 +1,13 @@
+= History/ Log of changes to hosts
+
+This file is here mostly actually to log the deletion, creation, and reasoning for a host.
+
+== History
+
+=== mainpc-x86
+
+The deletion of this configuration is due to the fact this computer hasnt been working for 6 months.
+
+It is all due to hardware issues, mostly the fact that the motherboard is horrible with Linux support (__never get an MSi board to make sure you dont have my issue__).
+
+When I am able to *rebuild* my system, it wont even be running with an Intel processor, so this computer configuration will be essentially useless.
