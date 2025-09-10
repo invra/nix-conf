@@ -8,7 +8,6 @@
 }:
 let
   getModulesFromDirRec = import ./lib/getModulesFromDirRec.nix { inherit lib; };
-
   specialArgs = {
     inherit (flakeInputs)
       nixpkgs-24_11
@@ -53,38 +52,39 @@ let
 
   mkHomeConfig =
     system:
-    import ./configuration/configure-home.nix {
-      inherit (flakeInputs)
-        home-manager
-        plasma-manager
-        nixcord
-        stylix
-        zen-browser
-        nixpkgs
-        ;
-      inherit system;
+    flakeInputs.home-manager.lib.homeManagerConfiguration {
+      pkgs = import flakeInputs.nixpkgs { inherit system; };
+      modules = [
+        ../modules/home
+        flakeInputs.plasma-manager.homeManagerModules.plasma-manager
+        flakeInputs.zen-browser.homeModules.zen-browser
+        flakeInputs.nixcord.homeModules.nixcord
+        flakeInputs.stylix.homeModules.stylix
+      ];
       extraSpecialArgs = specialArgs;
     };
 
   mkDarwinConfig =
-    _:
-    import ./configuration/configure-darwin.nix {
-      inherit (flakeInputs)
-        darwin
-        stylix
-        ;
-      inherit specialArgs;
-    };
-  mkNixConfig =
     system:
-    import ./configuration/configure-nixos.nix {
-      inherit (flakeInputs)
-        nixpkgs
-        stylix
-        ;
-      inherit specialArgs system;
+    flakeInputs.darwin.lib.darwinSystem {
+      inherit system;
+      modules = [
+        ../modules/config
+        flakeInputs.stylix.darwinModules.stylix
+      ];
+      specialArgs = specialArgs;
     };
 
+  mkNixConfig =
+    system:
+    flakeInputs.nixpkgs.lib.nixosSystem {
+      inherit system;
+      modules = [
+        ../modules/config
+        flakeInputs.stylix.nixosModules.stylix
+      ];
+      specialArgs = specialArgs;
+    };
 in
 {
   lib = {
