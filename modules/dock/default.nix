@@ -7,7 +7,7 @@
 with lib;
 let
   cfg = config.targets.darwin.dock;
-  isAppDrawerCompliant = import ./os_vers { inherit pkgs; };
+  isAppDrawerCompliant = import ./packages.nix { inherit pkgs; };
   dockutil = pkgs.dockutil;
 in
 {
