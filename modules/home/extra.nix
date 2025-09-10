@@ -44,7 +44,8 @@
       wayvnc
       libreoffice-qt6-still
       kdePackages.kdeconnect-kde
-    ] ++ (lib.optionals (pkgs.stdenv.isLinux && pkgs.stdenv.isx86_64) [
+    ]
+    ++ (lib.optionals (pkgs.stdenv.isLinux && pkgs.stdenv.isx86_64) [
       wineWowPackages.waylandFull
       winetricks
     ]);

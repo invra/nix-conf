@@ -9,7 +9,7 @@ let
 in
 lib.optionalAttrs linux {
   time.timeZone = flakeConfig.system.timezone or "Australia/Sydney";
-  
+
   services = {
     pulseaudio.daemon.config.flat-volumes = "no";
     flatpak.enable = true;

@@ -74,10 +74,15 @@
               homeConfigurations.${name} = mkHomeConfig system;
               darwinConfigurations.${name} = mkDarwinConfig system;
             }
-          ) (lib.mapAttrs' (name: _: lib.nameValuePair (lib.removeSuffix ".nix" name) (import ./hosts/${name})) (lib.filterAttrs (name: type: type == "regular") (builtins.readDir ./hosts)))
-        )
+          )
+          (
+            lib.mapAttrs' (name: _: lib.nameValuePair (lib.removeSuffix ".nix" name) (import ./hosts/${name})) (
+              lib.filterAttrs (name: type: type == "regular") (builtins.readDir ./hosts)
+            )
+          )
       )
-    ) // flake-utils.lib.eachDefaultSystem (
+    ))
+    // flake-utils.lib.eachDefaultSystem (
       system:
       let
         pkgs = import nixpkgs { inherit system; };

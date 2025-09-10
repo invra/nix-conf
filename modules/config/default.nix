@@ -8,7 +8,8 @@
   ...
 }:
 {
-  imports = (custils.lib.getModulesFromDirRec ./. true)
+  imports =
+    (custils.lib.getModulesFromDirRec ./. true)
     ++ lib.optionals linux [ flakeConfig.system.hardware-module ];
 
   nixpkgs = {
