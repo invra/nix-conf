@@ -1,14 +1,14 @@
 {
-  development = {
+  development.scm = {
     git = {
       defaultBranch = "main";
       email = "identificationsucks@gmail.com";
-      types = [
-        "GitLab"
-        "GitHub"
-      ];
       username = "Invra";
     };
+    types = [
+      "GitLab"
+      "GitHub"
+    ];
   };
   system = {
     dock = {
