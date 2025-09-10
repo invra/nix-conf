@@ -6,7 +6,6 @@
   home.packages =
     with pkgs;
     [
-      insomnia
       dbgate
       prismlauncher
       viu
@@ -22,13 +21,16 @@
       tldr
       yazi
       wget
-      obs-studio
+    ]
+    ++ lib.optionals (!(stdenv.isLinux && stdenv.isAarch64)) [
+      insomnia
     ]
     ++ lib.optionals pkgs.stdenv.isDarwin [
       utm
       pika
       steam
       linearmouse
+      obs-studio
     ]
     ++ lib.optionals pkgs.stdenv.isLinux [
       wl-clipboard
@@ -41,10 +43,11 @@
       # davinci-resolve
       wayvnc
       libreoffice-qt6-still
-      winetricks
       kdePackages.kdeconnect-kde
+    ] ++ (lib.optionals (pkgs.stdenv.isLinux && pkgs.stdenv.isx86_64) [
       wineWowPackages.waylandFull
-    ];
+      winetricks
+    ]);
 
   programs.ripgrep.enable = true;
 }

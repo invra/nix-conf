@@ -1,4 +1,5 @@
 {
+  pkgs,
   ...
 }:
 {
@@ -9,7 +10,8 @@
 
   programs.nixcord = {
     enable = true;
-    discord.enable = true;
+    discord.enable = !(pkgs.stdenv.isLinux && pkgs.stdenv.isAarch64);
+    vesktop.enable = (pkgs.stdenv.isLinux && pkgs.stdenv.isAarch64);
     quickCss = import ./quickcss.nix;
 
     config = {
