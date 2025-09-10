@@ -115,11 +115,7 @@ fn run_command(cmd: &str, print: bool) -> std::process::ExitStatus {
     if print {
         iprintln(cmd);
     }
-    match Command::new("zsh")
-        .arg("-c")
-        .arg(cmd)
-        .status()
-    {
+    match Command::new("zsh").arg("-c").arg(cmd).status() {
         Ok(status) => status,
         Err(_) => {
             eprintln(&format!("Command could not be run: {}", cmd));

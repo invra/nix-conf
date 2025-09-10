@@ -5,7 +5,7 @@
   ...
 }:
 {
-  imports = (custils.getModulesFromDirRec ./. true);
+  imports = (custils.lib.getModulesFromDirRec ./. true);
 
   nixpkgs = {
     config.allowUnfreePredicate = allowUnfreePredicate;

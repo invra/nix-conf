@@ -1,10 +1,10 @@
 {
   pkgs,
-  treefmt-nix,
+  flakeInputs,
 }:
 let
   formatters =
-    (treefmt-nix.lib.evalModule pkgs {
+    (flakeInputs.treefmt-nix.lib.evalModule pkgs {
       projectRootFile = ".git/config";
       programs = {
         nixfmt.enable = true;

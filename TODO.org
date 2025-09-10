@@ -5,7 +5,7 @@ This does NOT mean tasks will be completed in order, as some may be more resourc
 
 ** Enhance Nix Configurations
 
-   - [] Cleanup =utils= folder
+   - [X] Cleanup =utils= folder
    - [] Revise =configurations= folder structure 
    
 

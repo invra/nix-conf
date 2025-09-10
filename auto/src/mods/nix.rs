@@ -31,13 +31,13 @@ pub(crate) fn home_applied() -> bool {
         Ok(h) => h,
         Err(_) => return false,
     };
-    
+
     let hm_state = Path::new(&home)
         .join(".local")
         .join("state")
         .join("nix")
         .join("profiles")
         .join("home-manager");
-    
+
     hm_state.exists()
 }

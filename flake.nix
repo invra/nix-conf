@@ -37,7 +37,6 @@
 
   outputs =
     {
-      treefmt-nix,
       flake-utils,
       nixpkgs,
       ...
@@ -50,11 +49,6 @@
         builtins.mapAttrs (
           name: flakeConfig:
           let
-            configure = import ./utils/configuration {
-              inherit (nixpkgs) lib;
-              inherit flakeInputs flakeConfig;
-              configName = name;
-            };
             system =
               if lib.strings.hasSuffix "x86" name then
                 "x86_64-linux"
@@ -62,7 +56,13 @@
                 "aarch64-linux"
               else
                 "aarch64-darwin";
-            inherit (configure)
+            pkgs = import nixpkgs { inherit system; };
+            custils = import ./utils {
+              inherit (nixpkgs) lib;
+              inherit pkgs flakeInputs flakeConfig;
+              configName = name;
+            };
+            inherit (custils.builders)
               mkNixConfig
               mkHomeConfig
               mkDarwinConfig
@@ -80,10 +80,16 @@
       system:
       let
         pkgs = import nixpkgs { inherit system; };
+        custils = import ./utils {
+          inherit (nixpkgs) lib;
+          inherit pkgs flakeInputs;
+          flakeConfig = { };
+          configName = "devshell";
+        };
       in
       {
-        formatter = import ./utils/formatter.nix { inherit pkgs treefmt-nix; };
-        devShells.default = import ./utils/devsh.nix pkgs;
+        formatter = custils.development.formatter;
+        devShells.default = custils.development.devShell;
       }
     );
 }
