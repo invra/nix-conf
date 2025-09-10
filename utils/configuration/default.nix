@@ -25,16 +25,18 @@ let
       ip.overlay
     ];
     linux = (lib.strings.hasSuffix "x86" configName || lib.strings.hasSuffix "aarch64" configName);
-    allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
-      "nvidia-x11"
-      "nvidia-settings"
-      "davinci-resolve"
-      "steam-unwrapped"
-      "steam_osx"
-      "steam"
-      "bitwig-studio-unwrapped"
-      "discord"
-    ];
+    allowUnfreePredicate =
+      pkg:
+      builtins.elem (lib.getName pkg) [
+        "nvidia-x11"
+        "nvidia-settings"
+        "davinci-resolve"
+        "steam-unwrapped"
+        "steam_osx"
+        "steam"
+        "bitwig-studio-unwrapped"
+        "discord"
+      ];
     custils = import ../. { inherit lib; };
   };
 in
