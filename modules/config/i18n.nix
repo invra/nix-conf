@@ -6,8 +6,6 @@
 lib.optionalAttrs linux {
   i18n.defaultLocale = "en_AU.UTF-8";
 
-  i18n.extraLocales = ["en_US.UTF-8"];
-
   i18n.extraLocaleSettings = {
     LC_CTYPE = "en_AU.UTF-8";
     LC_ADDRESS = "en_AU.UTF-8";
