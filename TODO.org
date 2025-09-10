@@ -7,7 +7,7 @@ This does NOT mean tasks will be completed in order, as some may be more resourc
 
    - [X] Cleanup =utils= folder
    - [X] Revise =hosts= folder structure 
-   - [X] Figure out way to remove code duplication, and making a config simpler in the =hosts= folder.
+   - [] Figure out way to remove code duplication, and making a config simpler in the =hosts= folder.
    
 
 ** Make automation tools better
