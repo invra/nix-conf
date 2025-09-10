@@ -9,7 +9,6 @@
       insomnia
       dbgate
       prismlauncher
-      pgadmin4-desktopmode
       viu
       chromium
       ffmpeg
