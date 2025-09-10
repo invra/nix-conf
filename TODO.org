@@ -1,8 +1,5 @@
 * Todo List
 
-Priority is measured by how essential the task is.  
-This does NOT mean tasks will be completed in order, as some may be more resource-intensive than others.
-
 ** Enhance Nix Configurations
 
    - [X] Cleanup =utils= folder
