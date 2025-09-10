@@ -11,4 +11,4 @@ This does NOT mean tasks will be completed in order, as some may be more resourc
 
 ** Make automation tools better
    - [] Add a Linux automation tool
-   - [] Fact-check current logic
+   - [x] Fact-check current logic

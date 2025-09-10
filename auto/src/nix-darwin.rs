@@ -20,7 +20,6 @@ use {
 pub enum Error {
     IncompatibleSystem,
     NoFlakeProvided,
-    AlreadyDisplayed,
 }
 
 #[derive(Parser, Debug)]
@@ -89,7 +88,7 @@ fn patch_plist() -> Result<(), Box<dyn std::error::Error>> {
         );
         match dict.get_mut("EnvironmentVariables").unwrap() {
             Value::Dictionary(env) => env,
-            _ => panic!("Failed to insert or access EnvironmentVariables"),
+            _ => return Err("Failed to insert or access EnvironmentVariables".into()),
         }
     };
 
@@ -116,11 +115,17 @@ fn run_command(cmd: &str, print: bool) -> std::process::ExitStatus {
     if print {
         iprintln(cmd);
     }
-    Command::new("zsh")
+    match Command::new("zsh")
         .arg("-c")
         .arg(cmd)
         .status()
-        .expect(&format!("{cmd} could not be run!"))
+    {
+        Ok(status) => status,
+        Err(_) => {
+            eprintln(&format!("Command could not be run: {}", cmd));
+            std::process::exit(1);
+        }
+    }
 }
 
 fn run_after_install_command(cmd: &str) {
@@ -160,7 +165,9 @@ fn main() -> Result<(), String> {
             "curl --proto '=https' --tlsv1.2 -L https://nixos.org/nix/install | sh",
             false,
         );
-        _ = run_patch_plist();
+        if let Err(e) = run_patch_plist() {
+            eprintln(&format!("Failed to patch plist: {}", e));
+        }
     } else {
         iprintln("Nix is already installed. I will skip installation.");
     }
@@ -177,9 +184,7 @@ fn main() -> Result<(), String> {
             flake
         ));
     } else {
-        iprintln(
-            "The nix-darwin installation has already happened, if it hasn't... Please uninstall or dereference home-manager.",
-        );
+        iprintln("The nix-darwin installation has already occurred.");
     }
 
     if !args.skip_hm {
