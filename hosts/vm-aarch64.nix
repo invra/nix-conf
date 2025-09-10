@@ -1,8 +1,6 @@
 {
   desktop = {
-    plasma = {
-      enable = true;
-    };
+    plasma.enable = true;
   };
   development = {
     git = {
@@ -16,36 +14,17 @@
     };
   };
   system = {
-    hardware-module = ./hardware-configuration.nix;
-    graphics = {
-      blacklists = [
-        "nouveau"
-        "nvidia"
-      ];
-      wanted = [ "amdgpu" ];
-    };
+    hardware-module = ./hardware/vm-aarch64.nix;
     greeter = "gdm";
     hostname = "NixOS";
     interfaces = { };
-    kernelParams = [ "intel_iommu=on" ];
     locale = "en_AU.UTF-8";
     networking = {
-      dhcpEnabled = false;
+      dhcpEnabled = true;
       firewallEnabled = false;
       networkmanager = true;
-      interfaces = [
-        {
-          type = "BRIDGE";
-          name = "br0";
-          interfaces = [ "enp6s0" ];
-          dhcpEnabled = true;
-        }
-      ];
     };
     services = {
-      mongodb = {
-        enable = true;
-      };
       ssh = {
         enable = true;
       };

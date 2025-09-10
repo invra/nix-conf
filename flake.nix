@@ -46,37 +46,38 @@
     in
     (builtins.foldl' lib.attrsets.recursiveUpdate { } (
       builtins.attrValues (
-        builtins.mapAttrs (
-          name: flakeConfig:
-          let
-            system =
-              if lib.strings.hasSuffix "x86" name then
-                "x86_64-linux"
-              else if lib.strings.hasSuffix "aarch64" name then
-                "aarch64-linux"
-              else
-                "aarch64-darwin";
-            pkgs = import nixpkgs { inherit system; };
-            custils = import ./utils {
-              inherit (nixpkgs) lib;
-              inherit pkgs flakeInputs flakeConfig;
-              configName = name;
-            };
-            inherit (custils.builders)
-              mkNixConfig
-              mkHomeConfig
-              mkDarwinConfig
-              ;
-          in
-          {
-            nixosConfigurations.${name} = mkNixConfig system;
-            homeConfigurations.${name} = mkHomeConfig system;
-            darwinConfigurations.${name} = mkDarwinConfig system;
-          }
-        ) (builtins.mapAttrs (name: _: import ./configurations/${name}) (builtins.readDir ./configurations))
+        builtins.mapAttrs
+          (
+            name: flakeConfig:
+            let
+              system =
+                if lib.strings.hasSuffix "x86" name then
+                  "x86_64-linux"
+                else if lib.strings.hasSuffix "aarch64" name then
+                  "aarch64-linux"
+                else
+                  "aarch64-darwin";
+              pkgs = import nixpkgs { inherit system; };
+              custils = import ./utils {
+                inherit (nixpkgs) lib;
+                inherit pkgs flakeInputs flakeConfig;
+                configName = name;
+              };
+              inherit (custils.builders)
+                mkNixConfig
+                mkHomeConfig
+                mkDarwinConfig
+                ;
+            in
+            {
+              nixosConfigurations.${name} = mkNixConfig system;
+              homeConfigurations.${name} = mkHomeConfig system;
+              darwinConfigurations.${name} = mkDarwinConfig system;
+            }
+          ) (lib.mapAttrs' (name: _: lib.nameValuePair (lib.removeSuffix ".nix" name) (import ./hosts/${name})) (lib.filterAttrs (name: type: type == "regular") (builtins.readDir ./hosts)))
+        )
       )
-    ))
-    // flake-utils.lib.eachDefaultSystem (
+    ) // flake-utils.lib.eachDefaultSystem (
       system:
       let
         pkgs = import nixpkgs { inherit system; };

@@ -14,29 +14,14 @@
     };
   };
   system = {
-    hardware-module = ./hardware-configuration.nix;
+    hardware-module = ./hardware/vm-x86.nix;
     graphics = {
-      blacklists = [
-        "nouveau"
-      ];
-      wanted = [
-        "modesetting"
-        "nvidia"
-      ];
-
-      nvidia.prime = {
-        intelBusId = "PCI:0:2:0";
-        nvidiaBusId = "PCI:1:0:0";
-      };
+      blacklists = [ ];
+      wanted = [ "modesetting" ];
     };
     greeter = "gdm";
     hostname = "NixOS";
     interfaces = { };
-    kernelParams = [
-      "intel_iommu=on"
-      "iommu=pt"
-      "acpi_backlight=video"
-    ];
     locale = "en_AU.UTF-8";
     networking = {
       dhcpEnabled = true;
@@ -44,9 +29,6 @@
       networkmanager = true;
     };
     services = {
-      mongodb = {
-        enable = true;
-      };
       ssh = {
         enable = true;
       };

@@ -14,24 +14,29 @@
     };
   };
   system = {
-    dock = {
-      autoHideDelay = 0.45;
-      autohide = true;
-      orientation = "right";
-      size = 45;
-    };
-    keyboard = {
-      normalise = true;
-      remapCapsToEscape = true;
-    };
+    hardware-module = ./hardware/laptop-x86.nix;
     graphics = {
-      blacklists = [ ];
-      wanted = [ ];
+      blacklists = [
+        "nouveau"
+      ];
+      wanted = [
+        "modesetting"
+        "nvidia"
+      ];
+
+      nvidia.prime = {
+        intelBusId = "PCI:0:2:0";
+        nvidiaBusId = "PCI:1:0:0";
+      };
     };
     greeter = "gdm";
     hostname = "NixOS";
     interfaces = { };
-    kernelParams = [ ];
+    kernelParams = [
+      "intel_iommu=on"
+      "iommu=pt"
+      "acpi_backlight=video"
+    ];
     locale = "en_AU.UTF-8";
     networking = {
       dhcpEnabled = true;
@@ -39,8 +44,12 @@
       networkmanager = true;
     };
     services = {
-      mongodb.enable = true;
-      ssh.enable = true;
+      mongodb = {
+        enable = true;
+      };
+      ssh = {
+        enable = true;
+      };
     };
     timezone = "Australia/Sydney";
   };

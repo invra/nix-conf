@@ -16,24 +16,31 @@
     };
   };
   system = {
-    hardware-module = ./hardware-configuration.nix;
+    hardware-module = ./hardware/mainpc-x86.nix;
     graphics = {
       blacklists = [
         "nouveau"
         "nvidia"
-        "amdgpu"
       ];
-      wanted = [ ];
+      wanted = [ "amdgpu" ];
     };
-    greeter = "sddm";
+    greeter = "gdm";
     hostname = "NixOS";
     interfaces = { };
     kernelParams = [ "intel_iommu=on" ];
     locale = "en_AU.UTF-8";
     networking = {
-      dhcpEnabled = true;
+      dhcpEnabled = false;
       firewallEnabled = false;
       networkmanager = true;
+      interfaces = [
+        {
+          type = "BRIDGE";
+          name = "br0";
+          interfaces = [ "enp6s0" ];
+          dhcpEnabled = true;
+        }
+      ];
     };
     services = {
       mongodb = {
