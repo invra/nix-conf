@@ -22,7 +22,7 @@ let
     extraOverlays = with flakeInputs; [
       discord-rpc-lsp.overlays.default
       sketchierbar.overlays.default
-      ghostty.overlays.default
+      # ghostty.overlays.default // Currently the comp version is really unstable.
       zen-browser.overlay
       ip.overlay
     ];
