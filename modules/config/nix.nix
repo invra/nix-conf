@@ -3,7 +3,7 @@
 }:
 {
   nix.settings = {
-    cores = 8;
+    cores = 6;
     max-jobs = "auto";
 
     experimental-features = [
