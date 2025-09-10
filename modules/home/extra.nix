@@ -6,9 +6,9 @@
   home.packages =
     with pkgs;
     [
-      postman
+      insomnia
+      dbgate
       prismlauncher
-      parsec-bin
       pgadmin4-desktopmode
       viu
       chromium
@@ -23,18 +23,13 @@
       tldr
       yazi
       wget
+      obs-studio
     ]
     ++ lib.optionals pkgs.stdenv.isDarwin [
       utm
-      tart
       pika
       steam
-      raycast
-      obs-studio
       linearmouse
-      jankyborders
-      alt-tab-macos
-      betterdisplay
     ]
     ++ lib.optionals pkgs.stdenv.isLinux [
       wl-clipboard
@@ -45,9 +40,8 @@
       gimp3
       pavucontrol
       # davinci-resolve
-      signal-desktop-bin
       wayvnc
-      libreoffice-qt-fresh
+      libreoffice-qt6-still
       winetricks
       kdePackages.kdeconnect-kde
       wineWowPackages.waylandFull
