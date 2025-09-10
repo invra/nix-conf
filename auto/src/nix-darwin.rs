@@ -20,6 +20,7 @@ use {
 pub enum Error {
     IncompatibleSystem,
     NoFlakeProvided,
+    AlreadyDisplayed,
 }
 
 #[derive(Parser, Debug)]
@@ -37,6 +38,10 @@ struct Args {
 
 fn iprintln(msg: &str) {
     println!("{} {msg}", "[INFO]".yellow());
+}
+
+fn eprintln(msg: &str) {
+    println!("{} {msg}", "[ERROR]".red());
 }
 
 fn run_patch_plist() -> Result<(), String> {
@@ -133,7 +138,8 @@ fn main() -> Result<(), String> {
             if std::env::var("USER") == Ok("root".into()) {
                 return patch_plist().map_err(|e| e.to_string());
             } else {
-                return Err("Patch plist needs to be run as root".into());
+                eprintln("Patch plist needs to be run as root");
+                std::process::exit(1);
             }
         } else {
             iprintln("Patching is only required for macOS Tahoe and later, skipping.");
@@ -141,10 +147,13 @@ fn main() -> Result<(), String> {
         return Ok(());
     }
 
-    let flake = args
-        .flake
-        .ok_or(Error::NoFlakeProvided)
-        .expect("Flake argument is required for normal operation");
+    let flake = match args.flake {
+        Some(f) => f,
+        None => {
+            eprintln("Flake argument is required for normal operation");
+            std::process::exit(1);
+        }
+    };
     if !nix_installed() {
         iprintln("Nix is not installed. Installing Nix...");
         run_command(
