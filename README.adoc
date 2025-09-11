@@ -23,7 +23,7 @@ This Nix flake is your all-in-one system configuration toolkit. It provides:
 * Rose-pine rice
 * Vencord pre-configured for better stuff
 * Lower chance for PulseAudio to destroy your ears.
-** macOS workflow fixers
+* macOS workflow fixers
 ** Linear Mouse
 ** AeroSpace
 ====
