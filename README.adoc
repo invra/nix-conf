@@ -18,7 +18,7 @@ This Nix flake is your all-in-one system configuration toolkit. It provides:
 ====
 
 .Out-of-box configs
-[%collapsible]
+[%collapsible%open]
 ====
 * Rose-pine rice
 * Vencord pre-configured for better stuff
