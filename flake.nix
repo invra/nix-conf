@@ -1,4 +1,5 @@
 {
+  nixConfig.extra-experimental-features = [ "pipe-operators" ];
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     flake-utils.url = "github:numtide/flake-utils";
@@ -31,8 +32,6 @@
       url = "github:KaylorBen/nixcord";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    nixConfig.extra-experimental-features = [ "pipe-operators" ];
   };
 
   outputs =
@@ -63,13 +62,8 @@
                 inherit pkgs flakeInputs flakeConfig;
                 configName = name;
               };
-              inherit (custils.builders)
-                mkNixConfig
-                mkHomeConfig
-                mkDarwinConfig
-                ;
             in
-            {
+            with custils.builders; {
               nixosConfigurations.${name} = mkNixConfig system;
               homeConfigurations.${name} = mkHomeConfig system;
               darwinConfigurations.${name} = mkDarwinConfig system;
