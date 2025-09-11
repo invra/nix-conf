@@ -6,9 +6,10 @@
 let
   dockPkgs = import ../../modules/dock/packages.nix { inherit pkgs; };
   dock = dockPkgs.dock;
+  buildRustPackage = pkgs.rustPlatform.buildRustPackage;
 
   auto = {
-    test = pkgs.rustPlatform.buildRustPackage {
+    test = buildRustPackage {
       pname = "test";
       version = "0.1.0";
       src = ../../auto;
@@ -17,7 +18,7 @@ let
       };
     };
 
-    bootstrap-darwin = pkgs.rustPlatform.buildRustPackage {
+    bootstrap-darwin = buildRustPackage {
       pname = "bootstrap-darwin";
       version = "0.1.0";
       src = ../../auto;
