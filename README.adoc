@@ -10,7 +10,7 @@ This Nix flake is your all-in-one system configuration toolkit. It provides:
 
 == Features
 .Simple to change configurations
-[%collapsible]
+[%collapsible%open]
 ====
 * Edit in link:./hosts[`hosts`] folder
 * Have Quick settings
@@ -18,7 +18,7 @@ This Nix flake is your all-in-one system configuration toolkit. It provides:
 ====
 
 .Out-of-box configs
-[%collapsible%open]
+[%collapsible]
 ====
 * Rose-pine rice
 * Vencord pre-configured for better stuff
