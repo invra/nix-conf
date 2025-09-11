@@ -51,7 +51,7 @@ in
   cmd-8 = "workspace 8"
   cmd-9 = "workspace 9"
   cmd-alt-h = []
-  cmd-enter = ["exec-and-forget open -n /nix/store/h15zin2s0rp2m5qc5c4haidq1wml2qh4-ghostty-bin-1.1.3/Applications/Ghostty.app", "mode main"]
+  cmd-enter = ["exec-and-forget open -n ${pkgs.ghostty-bin}/Applications/Ghostty.app", "mode main"]
   cmd-esc = ["reload-config", "mode main"]
   cmd-h = []
   cmd-shift-1 = ["move-node-to-workspace 1", "workspace 1"]
