@@ -8,48 +8,61 @@ This Nix flake is your all-in-one system configuration toolkit. It provides:
 
 ---
 
-== .Key Features
+== Features
+.Simple to change configurations
 [%collapsible]
 ====
-
-* Simple to change configurations
-** Edit in link:./hosts[=hosts=] folder
-** Have Quick settings
-** Git and Mercurial common settings editable in one file
-
-* Out-of-box configs
-** Rose-pine rice
-** Vencord pre-configured for better stuff
-** Lower chance for PulseAudio to destroy your ears.
-** macOS workflow fixers
-*** Linear Mouse
-*** AeroSpace
-
-* Customisable networking
-** Disable NetworkManager
-** Enable Bridging to let VM's allow your whole network
-
-* Music Production & Pro Audio
-** JACK2
-** Bitwig Studio
-** VST Support (theoretically)
-
-* Multimedia
-** Zen Browser
-** Chromium
-** OBS Studio
-** V4l2loopback
-** yt-dlp
-** Discord (or Vesktop on aarch64-linux)
-
-* Terminal-based workflows
-** Git
-** Mercurial
-** gh (GitHub CLI)
-** glab (Gitlab CLI)
-** btop
+* Edit in link:./hosts[=hosts=] folder
+* Have Quick settings
+* Git and Mercurial common settings editable in one file
 ====
 
+.Out-of-box configs
+[%collapsible]
+====
+* Rose-pine rice
+* Vencord pre-configured for better stuff
+* Lower chance for PulseAudio to destroy your ears.
+** macOS workflow fixers
+** Linear Mouse
+** AeroSpace
+====
+
+.Customisable networking
+[%collapsible]
+====
+* Disable NetworkManager
+* Enable Bridging to let VM's allow your whole network
+====
+
+.Music Production & Pro Audio
+[%collapsible]
+====
+* JACK2
+* Bitwig Studio
+* VST Support (theoretically)
+====
+
+.Multimedia
+[%collapsible]
+====
+* Zen Browser
+* Chromium
+* OBS Studio
+* V4l2loopback
+* yt-dlp
+* Discord (or Vesktop on aarch64-linux)
+====
+
+.Terminal-based workflows
+[%collapsible]
+====
+* Git
+* Mercurial
+* gh (GitHub CLI)
+* glab (Gitlab CLI)
+* btop
+====
 ---
 
 == Examples
