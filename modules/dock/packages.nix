@@ -1,6 +1,7 @@
 { pkgs, ... }:
+
 let
-  osVers = pkgs.rustPlatform.buildRustPackage {
+  os_vers = pkgs.rustPlatform.buildRustPackage {
     pname = "os_vers";
     version = "0.1.0";
     src = ./.;
@@ -9,24 +10,22 @@ let
     };
   };
 
-  checkVersion = builtins.derivation {
-    name = "check-version";
-    builder = "${pkgs.bashInteractive}/bin/bash";
-    inherit (pkgs) system;
-    args = [
-      "-c"
-      ''
-        PATH=${pkgs.uutils-coreutils-noprefix}/bin
-        mkdir -p $out
-        versionStr=$(${osVers}/bin/os_vers)
+  checkVersion = pkgs.runCommand "check-version" { } ''
+    PATH=${pkgs.uutils-coreutils-noprefix}/bin:${pkgs.coreutils}/bin
+    versionStr=$(${os_vers}/bin/os_vers)
+    if [ "$versionStr" -ge 26 ]; then
+      echo true > $out
+    else
+      echo false > $out
+    fi
+  '';
 
-        if [ "$versionStr" -ge 26 ]; then
-          echo true > $out/result.txt
-        else
-          echo false > $out/result.txt
-        fi
-      ''
-    ];
+  isAppDrawerCompliant = builtins.readFile checkVersion == "true\n";
+
+in {
+  dock = {
+    inherit os_vers checkVersion;
   };
-in
-builtins.readFile "${checkVersion}/result.txt" == "true\n"
+
+  inherit isAppDrawerCompliant;
+}

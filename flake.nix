@@ -88,6 +88,7 @@
         };
       in
       {
+        packages = custils.development.packages;
         formatter = custils.development.formatter;
         devShells.default = custils.development.devShell;
       }
