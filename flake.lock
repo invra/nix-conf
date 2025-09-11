@@ -776,11 +776,11 @@
         "treefmt-nix": "treefmt-nix"
       },
       "locked": {
-        "lastModified": 1757511214,
-        "narHash": "sha256-k/uvDgUOlETJEAz3nLx+5qgCBcPEgMnPI+TQKaVyI4o=",
+        "lastModified": 1757586766,
+        "narHash": "sha256-0BUx0l10/tl6Yobh1NnLHULegUoXOuD9DNeUuvPS2Xs=",
         "owner": "invra",
         "repo": "sketchierbar",
-        "rev": "4c9810679e58431c31b0ae75cd8ac5d17a685f69",
+        "rev": "8cdce1e2c63a590aa69bfffbd29eb97ec71488e7",
         "type": "gitlab"
       },
       "original": {
