@@ -8,7 +8,7 @@ This Nix flake is your all-in-one system configuration toolkit. It provides:
 
 ---
 
-.== Key Features
+== .Key Features
 [%collapsible]
 ====
 
