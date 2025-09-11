@@ -10,73 +10,42 @@ This Nix flake is your all-in-one system configuration toolkit. It provides:
 
 == Key Features
 
-* **Advanced Networking for Virtualization**
-  - Full bridging support
-* **Pro Audio Setup**
-  - JACK2 with OOB support for Bitwig Studio
-* **Terminal-based Workflow**
-  - helix, spotify_player
-  - git, gh, glab
-  - btop
-* **Multimedia Suite**
-  - zen-browser, chromium, OBS Studio, yt-dlp
-  - Discord (Vesktop for Linux aarch64)
-* **Remote Software**
-  - Parsec, Wayvnc
-* **Out-of-the-Box Configurations**
-  - Rose-pine theme for aesthetic congruency
-  - Sensible Discord settings
-  - Lower chance of PulseAudio earrape
-  - macOS-specific apps:
-    - Linear Mouse
-    - Raycast
-    - AeroSpace
+* Simple to change configurations
+** Edit in link:./hosts[=hosts=] folder
+** Have Quick settings
+** Git and Mercurial common settings editable in one file
 
----
+* Out-of-box configs
+** Rose-pine rice
+** Vencord pre-configured for better stuff
+** Lower chance for PulseAudio to destroy your ears.
+** macOS workflow fixers
+*** Linear Mouse
+*** AeroSpace
 
-== Supported Platforms
+* Customisable networking
+** Disable NetworkManager
+** Enable Bridging to let VM's allow your whole network
 
-This flake guarantees support for:
+* Music Production & Pro Audio
+** JACK2
+** Bitwig Studio
+** VST Support (theoretically)
 
-* aarch64-linux
-* x86_64-linux
-* aarch64-darwin
+* Multimedia
+** Zen Browser
+** Chromium
+** OBS Studio
+** V4l2loopback
+** yt-dlp
+** Discord (or Vesktop on aarch64-linux)
 
----
-
-== Examples
-
-.NixOS – Spotify + WezTerm + Hyprland
-[%collapsible%open]
-====
-image::./.res/demo_1.png[Demo 1]
-====
-
-.Nix-darwin – YouTube Music (Zen Browser) + Ghostty
-[%collapsible]
-====
-image::./.res/demo_2.png[Demo 2]
-====
-
-.NixOS – Vesktop + Browsing + PiP
-[%collapsible]
-====
-image::./.res/demo_3.png[Demo 3]
-====
-
-.Nix-darwin – Rust Dev - Helix + Browsing + PiP
-[%collapsible]
-====
-image::./.res/demo_4.png[Demo 4]
-====
-
-.NixOS – Neovim + Mako
-[%collapsible]
-====
-image::./.res/demo_5.png[Demo 5]
-====
-
----
+* Terminal-based workflows
+** Git
+** Mercurial
+** gh (GitHub CLI)
+** glab (Gitlab CLI)
+** btop
 
 == Documentation
 You can find the docs
