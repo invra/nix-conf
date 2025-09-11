@@ -1,6 +1,4 @@
 {
-  nixConfig.extra-experimental-features = [ "pipe-operators" ];
-
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     flake-utils.url = "github:numtide/flake-utils";
@@ -33,6 +31,8 @@
       url = "github:KaylorBen/nixcord";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    nixConfig.extra-experimental-features = [ "pipe-operators" ];
   };
 
   outputs =
