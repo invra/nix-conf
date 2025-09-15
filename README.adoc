@@ -12,7 +12,7 @@ This Nix flake is your all-in-one system configuration toolkit. It provides:
 .Simple to change configurations
 [%collapsible%open]
 ====
-* Edit in link:./hosts[`hosts`] folder
+* Using the flake you can configure your system
 * Have Quick settings
 * Git and Mercurial common settings editable in one file
 ====
