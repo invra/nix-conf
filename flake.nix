@@ -39,63 +39,56 @@
     { flake-utils, nixpkgs, ... }@flakeInputs:
     let
       inherit (nixpkgs) lib;
-
-      mkConfigs =
-        configs:
-        let
-          mkOne =
-            name: flakeConfig:
-            let
-              system =
-                if lib.strings.hasSuffix "x86" name then
-                  "x86_64-linux"
-                else if lib.strings.hasSuffix "aarch64" name then
-                  "aarch64-linux"
-                else
-                  "aarch64-darwin";
-
-              pkgs = import nixpkgs { inherit system; };
-
-              custils = import ./utils {
-                inherit (nixpkgs) lib;
-                inherit pkgs flakeInputs flakeConfig;
-                configName = name;
-              };
-            in
-            with custils.builders;
-            {
-              homeConfigurations.${name} = mkHomeConfig system;
-            }
-            // (lib.optionalAttrs (lib.strings.hasSuffix "linux" system) {
-              nixosConfigurations.${name} = mkNixConfig system;
-            })
-            // (lib.optionalAttrs (lib.strings.hasSuffix "darwin" system) {
-              darwinConfigurations.${name} = mkDarwinConfig system;
-            });
-        in
-        builtins.foldl' lib.attrsets.recursiveUpdate { } (builtins.attrValues (lib.mapAttrs mkOne configs));
     in
-    let
-      devShellsAll = flake-utils.lib.eachDefaultSystem (
-        system:
+    rec {
+      mkConfig =
+        name: flakeConfig:
         let
+          system =
+            if lib.strings.hasSuffix "x86" name then
+              "x86_64-linux"
+            else if lib.strings.hasSuffix "aarch64" name then
+              "aarch64-linux"
+            else
+              "aarch64-darwin";
           pkgs = import nixpkgs { inherit system; };
           custils = import ./utils {
             inherit (nixpkgs) lib;
-            inherit pkgs flakeInputs;
-            flakeConfig = { };
-            configName = "devshell";
+            inherit pkgs flakeInputs flakeConfig;
+            configName = name;
           };
         in
+        with custils.builders;
         {
-          packages = custils.development.packages;
-          formatter = custils.development.formatter;
-          devShells.default = custils.development.devShell;
+          homeConfigurations.${name} = mkHomeConfig system;
         }
-      );
-    in
-    {
-      mkConfigs = mkConfigs;
+        // (lib.optionalAttrs (lib.strings.hasSuffix "linux" system) {
+          nixosConfigurations.${name} = mkNixConfig system;
+        })
+        // (lib.optionalAttrs (lib.strings.hasSuffix "darwin" system) {
+          darwinConfigurations.${name} = mkDarwinConfig system;
+        });
+      mkConfigs =
+        configs:
+        builtins.foldl' lib.attrsets.recursiveUpdate { } (
+          builtins.attrValues (lib.mapAttrs mkConfig configs)
+        );
     }
-    // devShellsAll;
+    // (flake-utils.lib.eachDefaultSystem (
+      system:
+      let
+        pkgs = import nixpkgs { inherit system; };
+        custils = import ./utils {
+          inherit (nixpkgs) lib;
+          inherit pkgs flakeInputs;
+          flakeConfig = { };
+          configName = "devshell";
+        };
+      in
+      {
+        packages = custils.development.packages;
+        formatter = custils.development.formatter;
+        devShells.default = custils.development.devShell;
+      }
+    ));
 }
