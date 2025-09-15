@@ -64,13 +64,16 @@
             in
             with custils.builders;
             {
-              nixosConfigurations.${name} = mkNixConfig system;
               homeConfigurations.${name} = mkHomeConfig system;
+            }
+            // (lib.optionalAttrs (lib.strings.hasSuffix "linux" system) {
+              nixosConfigurations.${name} = mkNixConfig system;
+            })
+            // (lib.optionalAttrs (lib.strings.hasSuffix "darwin" system) {
               darwinConfigurations.${name} = mkDarwinConfig system;
-            };
+            });
         in
         builtins.foldl' lib.attrsets.recursiveUpdate { } (builtins.attrValues (lib.mapAttrs mkOne configs));
-
     in
     let
       devShellsAll = flake-utils.lib.eachDefaultSystem (
