@@ -72,24 +72,27 @@
         builtins.foldl' lib.attrsets.recursiveUpdate { } (builtins.attrValues (lib.mapAttrs mkOne configs));
 
     in
+    let
+      devShellsAll = flake-utils.lib.eachDefaultSystem (
+        system:
+        let
+          pkgs = import nixpkgs { inherit system; };
+          custils = import ./utils {
+            inherit (nixpkgs) lib;
+            inherit pkgs flakeInputs;
+            flakeConfig = { };
+            configName = "devshell";
+          };
+        in
+        {
+          packages = custils.development.packages;
+          formatter = custils.development.formatter;
+          devShells.default = custils.development.devShell;
+        }
+      );
+    in
     {
       mkConfigs = mkConfigs;
     }
-    // flake-utils.lib.eachDefaultSystem (
-      system:
-      let
-        pkgs = import nixpkgs { inherit system; };
-        custils = import ./utils {
-          inherit (nixpkgs) lib;
-          inherit pkgs flakeInputs;
-          flakeConfig = { };
-          configName = "devshell";
-        };
-      in
-      {
-        packages = custils.development.packages;
-        formatter = custils.development.formatter;
-        devShells.default = custils.development.devShell;
-      }
-    );
+    // devShellsAll;
 }
