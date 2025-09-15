@@ -22,7 +22,8 @@ let
 
   isAppDrawerCompliant = builtins.readFile checkVersion == "true\n";
 
-in {
+in
+{
   dock = {
     inherit os_vers checkVersion;
   };

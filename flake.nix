@@ -1,5 +1,6 @@
 {
   nixConfig.extra-experimental-features = [ "pipe-operators" ];
+
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     flake-utils.url = "github:numtide/flake-utils";
@@ -35,18 +36,14 @@
   };
 
   outputs =
-    {
-      flake-utils,
-      nixpkgs,
-      ...
-    }@flakeInputs:
+    { flake-utils, nixpkgs, ... }@flakeInputs:
     let
       inherit (nixpkgs) lib;
-    in
-    (builtins.foldl' lib.attrsets.recursiveUpdate { } (
-      builtins.attrValues (
-        builtins.mapAttrs
-          (
+
+      mkConfigs =
+        configs:
+        let
+          mkOne =
             name: flakeConfig:
             let
               system =
@@ -56,26 +53,28 @@
                   "aarch64-linux"
                 else
                   "aarch64-darwin";
+
               pkgs = import nixpkgs { inherit system; };
+
               custils = import ./utils {
                 inherit (nixpkgs) lib;
                 inherit pkgs flakeInputs flakeConfig;
                 configName = name;
               };
             in
-            with custils.builders; {
+            with custils.builders;
+            {
               nixosConfigurations.${name} = mkNixConfig system;
               homeConfigurations.${name} = mkHomeConfig system;
               darwinConfigurations.${name} = mkDarwinConfig system;
-            }
-          )
-          (
-            lib.mapAttrs' (name: _: lib.nameValuePair (lib.removeSuffix ".nix" name) (import ./hosts/${name})) (
-              lib.filterAttrs (name: type: type == "regular") (builtins.readDir ./hosts)
-            )
-          )
-      )
-    ))
+            };
+        in
+        builtins.foldl' lib.attrsets.recursiveUpdate { } (builtins.attrValues (lib.mapAttrs mkOne configs));
+
+    in
+    {
+      mkConfigs = mkConfigs;
+    }
     // flake-utils.lib.eachDefaultSystem (
       system:
       let

@@ -1,6 +1,5 @@
 {
   pkgs,
-  lib ? pkgs.lib,
   ...
 }:
 let
@@ -27,7 +26,7 @@ let
       };
     };
   };
-in 
+in
 {
   inherit dock auto;
 }
