@@ -1,4 +1,4 @@
-= INF (Invra's Nix Flake) Configuration Template
+= Invra's Nix Configuration
 
 This Nix flake is your all-in-one system configuration toolkit. It provides:
 
