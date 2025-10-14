@@ -83,11 +83,11 @@
     },
     "configs": {
       "locked": {
-        "lastModified": 1760423957,
-        "narHash": "sha256-Lpl4dGmf6pzf28EbC9UKuKgaGtnzTxZbZ1Vb6XAYd1E=",
+        "lastModified": 1760429352,
+        "narHash": "sha256-v8bRD0NGSQr6w687CRbsZQ363enOo164VHLKfbwoOB0=",
         "owner": "invra",
         "repo": "nix-conf",
-        "rev": "defec8e19d41f031a2c31030e44de99d8fcfeae7",
+        "rev": "9205e53d5739583ffaf7ad0e5501de54b9746ad8",
         "type": "gitlab"
       },
       "original": {
