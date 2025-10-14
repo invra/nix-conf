@@ -18,10 +18,12 @@
       url = "github:lnl7/nix-darwin";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    
     plasma-manager = {
       url = "github:nix-community/plasma-manager/a53af7f1514ef4cce8620a9d6a50f238cdedec8b";
       inputs = {
@@ -29,18 +31,19 @@
         home-manager.follows = "home-manager";
       };
     };
+    
     nixcord = {
       url = "github:KaylorBen/nixcord";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    configs.url = "gitlab:invra/nix-conf";
   };
 
   outputs =
-    { flake-utils, nixpkgs, ... }@flakeInputs:
+    { flake-utils, nixpkgs, configs,  ... }@flakeInputs:
     let
       inherit (nixpkgs) lib;
-    in
-    rec {
       mkConfig =
         name: flakeConfig:
         let
@@ -73,7 +76,8 @@
         builtins.foldl' lib.attrsets.recursiveUpdate { } (
           builtins.attrValues (lib.mapAttrs mkConfig configs)
         );
-    }
+    in
+    (mkConfigs configs)
     // (flake-utils.lib.eachDefaultSystem (
       system:
       let
@@ -86,7 +90,6 @@
         };
       in
       {
-        packages = custils.development.packages;
         formatter = custils.development.formatter;
         devShells.default = custils.development.devShell;
       }
