@@ -18,7 +18,6 @@ in
   enable-normalization-opposite-orientation-for-nested-containers = true
   exec-on-workspace-change = ['${pkgs.bashInteractive}/bin/bash', '-c', '${pkgs.sketchierbar}/bin/sketchierbar --trigger aerospace_change $AEROSPACE_FOCUSED_WORKSPACE']
   on-focus-changed = []
-  on-focused-monitor-changed = ["move-mouse monitor-lazy-center"]
   on-window-detected = []
   start-at-login = false
 
