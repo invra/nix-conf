@@ -42,7 +42,7 @@ in
         name = gitConfig.username or "default-username";
         email = gitConfig.email or "default@example.com";
       };
-      aliases = {
+      alias = {
         p = "push -v";
         c = "commit";
         a = "commit --amend";
