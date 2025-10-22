@@ -8,7 +8,8 @@ in
 ''
   accordion-padding = 30
   after-startup-command = [
-    'exec-and-forget ${pkgs.sketchierbar}/bin/sketchierbar'
+    'exec-and-forget ${pkgs.sketchierbar}/bin/sketchierbar',
+    'exec-and-forget ${pkgs.ffm}/bin/ffm'
   ]
   automatically-unhide-macos-hidden-apps = true
   default-root-container-layout = "tiles"
