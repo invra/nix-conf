@@ -37,16 +37,18 @@ in
 
   programs.git = {
     enable = true;
-    userName = gitConfig.username or "default-username";
-    userEmail = gitConfig.email or "default@example.com";
-    extraConfig = {
+    settings = {
+      user = {
+        name = gitConfig.username or "default-username";
+        email = gitConfig.email or "default@example.com";
+      };
+      aliases = {
+        p = "push -v";
+        c = "commit";
+        a = "commit --amend";
+      };
       init.defaultBranch = gitConfig.defaultBranch or "main";
       core.quotepath = "off";
-    };
-    aliases = {
-      p = "push -v";
-      c = "commit";
-      a = "commit --amend";
     };
   };
 
