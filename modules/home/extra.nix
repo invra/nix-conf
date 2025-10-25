@@ -7,7 +7,7 @@
     with pkgs;
     [
       dbgate
-      prismlauncher
+      # prismlauncher
       viu
       chromium
       ffmpeg
