@@ -2,6 +2,7 @@
   lib,
   pkgs,
   linux,
+  config,
   flakeConfig,
   ...
 }:
@@ -91,12 +92,12 @@ lib.optionalAttrs linux {
       # Keybinds
       bind = [
         "SUPER, Return, exec, ${pkgs.ghostty}/bin/ghostty"
-        "SUPER, D, exec, ${if pkgs.stdenv.isAarch64 then pkgs.vesktop else pkgs.discord}"
+        "SUPER, D, exec, ${if pkgs.stdenv.isAarch64 then "${config.home.homeDirectory}/.nix-profile/bin/vesktop" else "${config.home.homeDirectory}/.nix-profile/bin/discord"}"
         "SUPER, V, exec, clipman pick -t rofi"
         "SUPER, B, exec, ${pkgs.zen}/bin/zen"
         "SUPER, Q, killactive"
         "SUPER ALT SHIFT, Q, exit"
-        "SUPER LSHIFT, S, exec, ${pkgs.hyprshot} -m region --clipboard-only"
+        "SUPER LSHIFT, S, exec, ${pkgs.hyprshot}/bin/hyprshot -m region --clipboard-only"
         "SUPER LSHIFT, Space, togglefloating"
         "SUPER, C, togglesplit"
         "ALT, Return, fullscreen"
