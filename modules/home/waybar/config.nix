@@ -72,7 +72,7 @@
         "max-length": 35
     },
     "network": {
-        "format": "↕{bandwidthTotalBytes}",
+        "format": "↕ {bandwidthTotalBytes}",
         "format-disconnected": "{icon} No Internet",
         "format-linked": " {ifname} (No IP)",
         "format-alt": "↕{bandwidthUpBytes} | ↕{bandwidthDownBytes}",
