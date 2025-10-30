@@ -92,23 +92,23 @@
         "interval": 2
     },
     "pulseaudio": {
-        "format": "{icon} {volume}%",
+        "format": "{icon}  {volume}%",
         "format-bluetooth": "{icon} {volume}%",
         "format-bluetooth-muted": "",
-        "format-muted": "",
         "format-source": "{volume}% ",
         "format-source-muted": "",
+        "format-muted": "",
         "format-icons": {
-            "headphone": "",
-            "headset": "",
+            "alsa_output.pci-0000_00_1f.3.analog-stereo": "",
+            "alsa_output.pci-0000_00_1f.3.analog-stereo-muted": "",
+            "headphones": "",
+            "handsfree": "",
+            "headset": "",
             "phone": "",
+            "phone-muted": "",
             "portable": "",
-            "car": " ",
-            "default": [
-                "",
-                "",
-                ""
-            ]
+            "car": "",
+            "default": ["", ""]
         },
         "on-click": "pavucontrol"
     },
