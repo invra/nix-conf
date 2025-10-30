@@ -68,7 +68,13 @@ lib.optionalAttrs linux {
         };
       };
 
-      animations.enabled = true;
+      animation = [
+        "workspaces, 0, 5, default"
+        "windows, 0, 5, default"
+        "fade, 0, 5, default"
+        "windowsOut, 0, 5, default"
+        "border, 0, 5, default"
+      ];
 
       # Inputs (keyboard & mouse)
       input = {
