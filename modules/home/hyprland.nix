@@ -8,7 +8,7 @@
 }:
 
 let
-  hyprland = flakeConfig.desktop.hyprland or {};
+  hyprland = flakeConfig.desktop.hyprland or { };
 
   monitors = builtins.map (monitor: {
     name = monitor.name;
@@ -16,7 +16,7 @@ let
     refreshRate = monitor.refreshRate;
     position = monitor.position;
     scale = monitor.scale;
-  }) hyprland.monitors or [];
+  }) hyprland.monitors or [ ];
 in
 lib.optionalAttrs linux {
   stylix.targets.hyprland.enable = false;
@@ -98,7 +98,12 @@ lib.optionalAttrs linux {
       # Keybinds
       bind = [
         "SUPER, Return, exec, ${pkgs.ghostty}/bin/ghostty"
-        "SUPER, D, exec, ${if pkgs.stdenv.isAarch64 then "${config.home.homeDirectory}/.nix-profile/bin/vesktop" else "${config.home.homeDirectory}/.nix-profile/bin/discord"}"
+        "SUPER, D, exec, ${
+          if pkgs.stdenv.isAarch64 then
+            "${config.home.homeDirectory}/.nix-profile/bin/vesktop"
+          else
+            "${config.home.homeDirectory}/.nix-profile/bin/discord"
+        }"
         "SUPER, V, exec, clipman pick -t rofi"
         "SUPER, B, exec, ${pkgs.zen}/bin/zen"
         "SUPER, Q, killactive"
@@ -154,4 +159,3 @@ lib.optionalAttrs linux {
 
   home.sessionVariables.NIXOS_OZONE_WL = "1";
 }
-
