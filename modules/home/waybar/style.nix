@@ -220,7 +220,6 @@
 /* PulseAudio Module */
 #pulseaudio {
   color: @mauve;
-  border-radius: 0;
 }
 
 /* =============================== */
@@ -230,7 +229,6 @@
 /* Battery Module */
 #battery {
   color: @green;
-  border-radius: 0;
 }
 
 #battery.charging {
