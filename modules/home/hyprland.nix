@@ -69,11 +69,11 @@ lib.optionalAttrs linux {
       };
 
       animation = [
-        "workspaces, 0, 5, default"
-        "windows, 0, 5, default"
-        "fade, 0, 5, default"
-        "windowsOut, 0, 5, default"
-        "border, 0, 5, default"
+        "workspaces, 1, 3, default"
+        "windows, 1, 3, default"
+        "fade, 1, 5, default"
+        "windowsOut, 1, 5, default"
+        "border, 1, 5, default"
       ];
 
       # Inputs (keyboard & mouse)
@@ -109,7 +109,7 @@ lib.optionalAttrs linux {
         "SUPER, Q, killactive"
         "SUPER ALT SHIFT, Q, exit"
         "SUPER LSHIFT, S, exec, ${pkgs.hyprshot}/bin/hyprshot -m region --clipboard-only"
-        "SUPER LSHIFT, Space, togglefloating"
+        "ALT, Space, togglefloating"
         "SUPER, C, togglesplit"
         "ALT, Return, fullscreen"
         "SUPER, 1, workspace, 1"
@@ -140,6 +140,7 @@ lib.optionalAttrs linux {
       # Mouse bindings
       bindm = [
         "SUPER, mouse:272, movewindow"
+        "ALT, mouse:272, resizewindow"
         "SUPER, mouse:273, resizewindow"
       ];
 
