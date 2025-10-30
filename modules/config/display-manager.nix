@@ -24,5 +24,9 @@ lib.optionalAttrs linux {
       enable = true;
       package = pkgs.swayfx;
     };
+    hyprland = {
+      enable = true;
+      xwayland.enable = true;
+    };
   };
 }
