@@ -124,7 +124,6 @@
   min-width: 14px;
   margin: 5px 8px;
   padding: 0px;
-  transition: all 0.5s cubic-bezier(.55, -0.68, .48, 1.68);
   box-shadow: rgba(0, 0, 0, 0.288) 2px 2px 5px 2px;
 }
 
