@@ -11,7 +11,7 @@
       font-awesome
       liberation_ttf
       noto-fonts
-      noto-fonts-emoji
+      noto-fonts-color-emoji
     ];
   }
   // lib.optionalAttrs linux {
