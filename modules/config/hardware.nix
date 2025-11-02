@@ -1,5 +1,6 @@
 {
   lib,
+  pkgs,
   linux,
   config,
   flakeConfig,
@@ -8,6 +9,7 @@
 lib.optionalAttrs linux {
   hardware = with flakeConfig; {
     graphics.enable = true;
+    graphics.enable32Bit = pkgs.stdenv.isx86_64;
     amdgpu.opencl.enable = lib.mkForce (builtins.elem "amdgpu" (system.graphics.wanted or [ ]));
 
     nvidia = {

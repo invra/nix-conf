@@ -44,7 +44,7 @@
   programs = lib.optionalAttrs linux {
     nix-ld.enable = true;
     steam = {
-      enable = pkgs.stdenv.isx86_64;
+      enable = (!pkgs.stdenv.isx86_64);
       remotePlay.openFirewall = true;
       dedicatedServer.openFirewall = true;
       localNetworkGameTransfers.openFirewall = true;
