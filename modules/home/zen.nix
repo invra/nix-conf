@@ -64,14 +64,9 @@ in
         };
         extensions = [ bitwarden ];
       };
-      "qnqmadke.Default (release)-8" = {
-        dontCreate = true;
-      };
       "help" = {
         name = "help";
-        settings = {
-
-        };
+        settings = { };
         extensions = [ ublock-origin ];
       };
     };
