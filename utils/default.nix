@@ -8,7 +8,7 @@
 }:
 let
   getModulesFromDirRec = import ./lib/getModulesFromDirRec.nix { inherit lib; };
-  specialArgs = {
+  specialArgs = rec {
     inherit (flakeInputs)
       nixpkgs-24_11
       home-manager
@@ -28,6 +28,7 @@ let
       ip.overlay
     ];
     linux = (lib.strings.hasSuffix "x86" configName || lib.strings.hasSuffix "aarch64" configName);
+    darwin = (!linux);
     allowUnfreePredicate =
       pkg:
       builtins.elem (lib.getName pkg) [

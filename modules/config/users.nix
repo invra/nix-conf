@@ -2,6 +2,7 @@
   lib,
   pkgs,
   linux,
+  darwin,
   flakeConfig,
   ...
 }:
@@ -25,15 +26,15 @@ in
         "audio"
       ];
     }
-    // lib.optionalAttrs (!linux) {
+    // lib.optionalAttrs darwin {
       home = "/Users/${flakeConfig.user.username}";
       uid = 501;
     };
   }
-  // lib.optionalAttrs (!linux) {
-    knownUsers = lib.optionals (!linux) [ flakeConfig.user.username ];
+  // lib.optionalAttrs darwin {
+    knownUsers = [ flakeConfig.user.username ];
   };
 }
-// lib.optionalAttrs (!linux) {
+// lib.optionalAttrs darwin {
   system.primaryUser = user.username;
 }

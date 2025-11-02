@@ -18,9 +18,6 @@
         git
         helix
         home-manager
-        uutils-diffutils
-        uutils-findutils
-        uutils-coreutils-noprefix
       ]
       ++ lib.optionals linux [
         ghostty

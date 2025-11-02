@@ -21,6 +21,9 @@
       tldr
       yazi
       wget
+      uutils-diffutils
+      uutils-findutils
+      uutils-coreutils-noprefix
     ]
     ++ lib.optionals (!(stdenv.isLinux && stdenv.isAarch64)) [
       insomnia
