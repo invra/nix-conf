@@ -12,6 +12,13 @@ lib.optionalAttrs linux {
       wayland = true;
     };
 
+    ly = {
+      enable = (greeter == "ly");
+      settings = {
+        
+      };
+    };
+
     sddm = {
       enable = (greeter == "sddm");
       enableHidpi = true;
@@ -19,13 +26,13 @@ lib.optionalAttrs linux {
     };
   };
   programs = {
-    niri.enable = true;
+    niri.enable = flakeConfig.desktop.niri.enable or false;
     sway = {
-      enable = true;
+      enable = flakeConfig.desktop.swayfx.enable or false;
       package = pkgs.swayfx;
     };
     hyprland = {
-      enable = true;
+      enable = flakeConfig.desktop.hyprland.enable or false;
       xwayland.enable = true;
     };
   };
