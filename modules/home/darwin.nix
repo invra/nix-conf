@@ -26,6 +26,7 @@ lib.optionalAttrs (!linux) {
     defaults = {
       NSGlobalDomain = {
         AppleShowAllExtensions = false;
+        NSWindowShouldDragOnGesture = true; # Cmd + Ctrl to drag from window anywhere not needing it's chrome
         NSAutomaticSpellingCorrectionEnabled = false;
         NSDocumentSaveNewDocumentsToCloud = false; # Default save files to disk not iCloud
         NSTableViewDefaultSizeMode = 2; # Force set icon size to default value
