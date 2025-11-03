@@ -15,7 +15,7 @@ lib.optionalAttrs linux {
     ly = {
       enable = (greeter == "ly");
       settings = {
-        
+
       };
     };
 

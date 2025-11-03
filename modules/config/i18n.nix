@@ -1,12 +1,17 @@
 {
   lib,
   linux,
+  flakeConfig,
   ...
 }:
 lib.optionalAttrs linux {
+  time.timeZone = flakeConfig.system.timezone or "Australia/Sydney";
   i18n = {
     defaultLocale = "en_AU.UTF-8";
-    supportedLocales = [ "en_AU.UTF-8/UTF-8" "en_US.UTF-8/UTF-8" ];
+    supportedLocales = [
+      "en_AU.UTF-8/UTF-8"
+      "en_US.UTF-8/UTF-8"
+    ];
 
     extraLocaleSettings = {
       LC_CTYPE = "en_AU.UTF-8";
