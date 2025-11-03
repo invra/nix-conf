@@ -77,18 +77,20 @@ lib.optionalAttrs linux {
       ];
 
       # Inputs (keyboard & mouse)
-      input = {
-        kb_layout = "us";
-        follow_mouse = 1;
-        sensitivity = 0.5;
-        touchpad = {
-          natural_scroll = true;
-        };
-      };
+      # CURRENTLY DISABLED TO BUG-FIND
 
-      gesture = [
-        "3, horizontal, workspace"
-      ];
+      # input = {
+      #   kb_layout = "us";
+      #   follow_mouse = 1;
+      #   sensitivity = 0.5;
+      #   touchpad = {
+      #     natural_scroll = true;
+      #   };
+      # };
+
+      # gesture = [
+      #   "3, horizontal, workspace"
+      # ];
 
       dwindle = {
         pseudotile = true;
