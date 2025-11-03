@@ -42,10 +42,11 @@ lib.optionalAttrs (!linux) {
         AppleMetricUnits = true;
         AppleHighlightColor = "0.968627 0.831373 1.000000 Purple";
         AppleAccentColor = 5;
+        KeyRepeat = 2;
       };
 
       "com.apple.screencapture" = {
-        location = "~/Desktop";
+        location = "~/Pictures";
         type = "png";
         target = "clipboard";
         disable-shadow = true;
