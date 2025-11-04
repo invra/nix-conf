@@ -134,13 +134,13 @@
     "darwin-universal-src": {
       "flake": false,
       "locked": {
-        "narHash": "sha256-98rcQGzpqnSmYvuGIfTDAcmHeBOl1vrGmBTcZfiNjOE=",
+        "narHash": "sha256-uCbqXI6sxtJ0IKR8r70yjMd1IzDPUacXFg8du/u9N7g=",
         "type": "file",
-        "url": "https://github.com/zen-browser/desktop/releases/download/1.17.1b/zen.macos-universal.dmg"
+        "url": "https://github.com/zen-browser/desktop/releases/download/1.17.4b/zen.macos-universal.dmg"
       },
       "original": {
         "type": "file",
-        "url": "https://github.com/zen-browser/desktop/releases/download/1.17.1b/zen.macos-universal.dmg"
+        "url": "https://github.com/zen-browser/desktop/releases/download/1.17.4b/zen.macos-universal.dmg"
       }
     },
     "discord-rpc-lsp": {
@@ -485,27 +485,27 @@
     "linux-aarch-src": {
       "flake": false,
       "locked": {
-        "lastModified": 1761155135,
-        "narHash": "sha256-Kwq2YaGxk7HcrhxIj98POag2HtXR47RaR46EI/Fqrpc=",
+        "lastModified": 1761831991,
+        "narHash": "sha256-5hXYJWqhBYWz2JAc7gDcv4NPDj9QwvaPzNFGykYX4ow=",
         "type": "tarball",
-        "url": "https://github.com/zen-browser/desktop/releases/download/1.17.1b/zen.linux-aarch64.tar.xz"
+        "url": "https://github.com/zen-browser/desktop/releases/download/1.17.4b/zen.linux-aarch64.tar.xz"
       },
       "original": {
         "type": "tarball",
-        "url": "https://github.com/zen-browser/desktop/releases/download/1.17.1b/zen.linux-aarch64.tar.xz"
+        "url": "https://github.com/zen-browser/desktop/releases/download/1.17.4b/zen.linux-aarch64.tar.xz"
       }
     },
     "linux-x86-src": {
       "flake": false,
       "locked": {
-        "lastModified": 1761165510,
-        "narHash": "sha256-cx/Osx4/p5vqWvsuaA6wkppVSr0Sez9AWsoiaMEvZVo=",
+        "lastModified": 1761842258,
+        "narHash": "sha256-HVQlnEGqgC7Bv4a1M4yrwiESuBKoo1MAftaUB2A0FeY=",
         "type": "tarball",
-        "url": "https://github.com/zen-browser/desktop/releases/download/1.17.1b/zen.linux-x86_64.tar.xz"
+        "url": "https://github.com/zen-browser/desktop/releases/download/1.17.4b/zen.linux-x86_64.tar.xz"
       },
       "original": {
         "type": "tarball",
-        "url": "https://github.com/zen-browser/desktop/releases/download/1.17.1b/zen.linux-x86_64.tar.xz"
+        "url": "https://github.com/zen-browser/desktop/releases/download/1.17.4b/zen.linux-x86_64.tar.xz"
       }
     },
     "nixcord": {
@@ -1167,11 +1167,11 @@
         "nixpkgs": "nixpkgs_12"
       },
       "locked": {
-        "lastModified": 1762178467,
-        "narHash": "sha256-7tU3+1qTBPeVJOm2gZdL3YXtydtGCDTnxgaFWQIQq+g=",
+        "lastModified": 1762269442,
+        "narHash": "sha256-8f8ylu5FdZrIiRQFHeETwbmACRzFAS5j/AcUvKtt6H4=",
         "owner": "invra",
         "repo": "zen-flake",
-        "rev": "37abcd7643200e6a5a8e6088fa011608ad79021f",
+        "rev": "175e4f332f8ad412ef7876bde86faf98c71196c5",
         "type": "gitlab"
       },
       "original": {
