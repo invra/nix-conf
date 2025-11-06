@@ -43,7 +43,7 @@ in
         truncation_symbol = "…/";
       };
       format = ''
-        [](fg:${colours.usernameBg})[ 󱄅  ](bg:${colours.usernameBg} fg:${colours.usernameFg})$username[](bg:${colours.directoryBg} fg:${colours.usernameBg})$directory[](fg:${colours.directoryBg} bg:${colours.gitBg})$git_branch$git_status[](fg:${colours.gitBg} bg:#26233a)$nodejs$rust$golang$php[](fg:#26233a bg:#2a273f)$time[](fg:#2a273f)
+        [](fg:${colours.usernameBg})[ 󱄅  ](bg:${colours.usernameBg} fg:${colours.usernameFg})$username[](bg:${colours.directoryBg} fg:${colours.usernameBg})$directory[](fg:${colours.directoryBg} bg:${colours.gitBg})$git_branch$git_status[](fg:${colours.gitBg} bg:#26233a)$nodejs$rust$golang$php$nix_shell[](fg:#26233a bg:#2a273f)$time[](fg:#2a273f)
         $character'';
       git_branch = {
         format = "[[ $symbol $branch ](fg:${colours.gitFg} bg:${colours.gitBg})]($style)";
@@ -72,6 +72,11 @@ in
         format = "[[ $symbol ($version) ](fg:#908caa bg:#26233a)]($style)";
         style = "bg:#26233a";
         symbol = "";
+      };
+      nix_shell = {
+        symbol = "  Dev Shell";
+        style = "bg:#26233a";
+        format = "[[ $symbol ($version) ](fg:#908caa bg:#26233a)]($style)";
       };
       time = {
         disabled = false;
