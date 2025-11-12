@@ -7,6 +7,11 @@
   security =
     if linux then
       {
+        tpm2 = {
+          enable = true;
+          pkcs11.enable = true;
+          tctiEnvironment.enable = true;
+        };
         doas = {
           enable = true;
           extraRules = [

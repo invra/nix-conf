@@ -24,6 +24,7 @@ in
         "wheel"
         "libvirtd"
         "audio"
+        "tss" # tss group has access to tpm devices
       ];
     }
     // lib.optionalAttrs darwin {

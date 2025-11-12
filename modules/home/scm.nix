@@ -43,9 +43,19 @@ in
         email = gitConfig.email or "default@example.com";
       };
       alias = {
+        a = "add";
+        lg = "lg1";
         p = "push -v";
-        c = "commit";
-        a = "commit --amend";
+        s = "status -s";
+        c = "commit -m";
+        b = "branch --all";
+        co = "checkout -b";
+        m = "commit --amend";
+        fp = "git fetch --prune";
+        la = "!git config -l | grep alias | cut -c 7-";
+        ca = "!sh -c 'git add -A && git commit -m \"$1\" && git push' -";
+        lg1 = "log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(auto)%d%C(reset)' --all";
+        lg2 = "log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(auto)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)'";
       };
       init.defaultBranch = gitConfig.defaultBranch or "main";
       core.quotepath = "off";
