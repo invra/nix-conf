@@ -154,6 +154,8 @@ lib.optionalAttrs linux {
         "float, title:Picture-in-Picture"
         "size 640 360, title:Picture-in-Picture"
         "pin, title:Picture-in-Picture"
+        "keepaspectratio, title:Picture-in-Picture"
+        "opacity 1 override 1 override, title:Picture-in-Picture"
       ];
     };
   };
