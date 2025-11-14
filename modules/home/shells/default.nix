@@ -3,9 +3,11 @@
   ...
 }:
 {
-  imports = [
-    ./starship.nix
-  ];
+  stylix.targets.starship.enable = false;
+  programs.starship = {
+    enable = true;
+    settings = (pkgs.lib.importTOML ./starship-config.toml);
+  };
 
   programs.nushell = {
     enable = true;
