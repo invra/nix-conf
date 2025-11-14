@@ -18,7 +18,7 @@ let
     else
       {
         type = "wm";
-        key = "    WM:";
+        key = "    WM:";
         keyColor = "yellow";
       };
 in
