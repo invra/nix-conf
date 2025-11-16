@@ -26,12 +26,6 @@ in
   programs.fastfetch = {
     enable = true;
     settings = {
-      logo = {
-        source = ./art.png;
-        width = 54;
-        height = 22;
-        type = "kitty-direct";
-      };
       display.separator = " ";
       modules = [
         {
