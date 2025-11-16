@@ -122,6 +122,14 @@ lib.optionalAttrs linux {
         "SUPER SHIFT, 4, movetoworkspace, 4"
         "SUPER, 5, workspace, 5"
         "SUPER SHIFT, 5, movetoworkspace, 5"
+        "SUPER, 6, workspace, 6"
+        "SUPER SHIFT, 6, movetoworkspace, 6"
+        "SUPER, 7, workspace, 7"
+        "SUPER SHIFT, 7, movetoworkspace, 7"
+        "SUPER, 8, workspace, 8"
+        "SUPER SHIFT, 8, movetoworkspace, 8"
+        "SUPER, 9, workspace, 9"
+        "SUPER SHIFT, 9, movetoworkspace, 9"
       ];
 
       bindl = [
