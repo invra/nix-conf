@@ -24,13 +24,16 @@
     };
 
     shellAliases = {
-      fuckoff = "exit";
-      ":q" = "exit";
       l = "ls -l";
       la = "ls-al";
+      ":q" = "exit";
+      fuckoff = "exit";
+      edit = "taskset -c 0-7 hx";
     };
 
-    extraEnv = ''
+    extraConfig = ''
+      #!/bin/nu
+      $env.LS_COLORS = (${pkgs.vivid}/bin/vivid generate rose-pine);
       $env.EDITOR = "${pkgs.helix}/bin/hx";
       $env.VISUAL = "${pkgs.helix}/bin/hx";
       $env.NH_FLAKE = $"($env.HOME)/.nix";
@@ -44,17 +47,12 @@
         ($"/etc/profiles/per-user/(whoami)/bin")
         "/run/current-system/sw/bin"
       ]
-    '';
 
-    extraConfig = ''
-      #!/bin/nu
-      $env.LS_COLORS = (${pkgs.vivid}/bin/vivid generate rose-pine)
-
-      if not ("NU_EXISTING_INSTANCE" in $env) {
+      if not ("NU_INIT" in $env) {
         ${pkgs.fastfetch}/bin/fastfetch
       }
 
-      $env.NU_EXISTING_INSTANCE = true
+      $env.NU_INIT = true
 
       mkdir ($nu.data-dir | path join "vendor/autoload")
       ${pkgs.starship}/bin/starship init nu | save -f ($nu.data-dir | path join "vendor/autoload/starship.nu")
