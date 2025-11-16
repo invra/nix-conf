@@ -41,11 +41,11 @@ in
       }
     ];
 
-    hotkeys.commands."launch-ghostty" = {
+    hotkeys.commands."launch-alacritty" = {
       key = "Meta+Return";
-      name = "Launch Ghostty";
-      command = "ghostty";
-      comment = "Launch Ghostty terminal.";
+      name = "Launch Alacritty";
+      command = "alacritty";
+      comment = "Launch the Alacritty terminal.";
     };
 
     shortcuts = {

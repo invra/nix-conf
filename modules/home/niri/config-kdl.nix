@@ -94,7 +94,7 @@
   binds {
       Mod+Shift+Slash { show-hotkey-overlay; }
 
-      Mod+Return hotkey-overlay-title="Open a Terminal: Ghostty" { spawn "ghostty"; }
+      Mod+Return hotkey-overlay-title="Open a Terminal: Alacritty" { spawn "alacritty"; }
       Mod+B hotkey-overlay-title="Open a browser: Zen Browser" { spawn "zen"; }
       Mod+D hotkey-overlay-title="Open Discord client: Discord" { spawn "discord"; }
       

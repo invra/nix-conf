@@ -39,7 +39,7 @@
   set $down j
   set $up k
   set $right l
-  set $term ghostty
+  set $term alacritty
 
   bindsym $mod+Return exec $term
   bindsym $mod+q kill

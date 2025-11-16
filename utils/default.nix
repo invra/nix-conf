@@ -23,7 +23,6 @@ let
       discord-rpc-lsp.overlays.default
       sketchierbar.overlays.default
       ffm.overlays.default
-      # ghostty.overlays.default // Currently the comp version is really unstable.
       zen-browser.overlay
       ip.overlay
     ];

@@ -97,7 +97,7 @@ lib.optionalAttrs linux {
 
       # Keybinds
       bind = [
-        "SUPER, Return, exec, ${pkgs.ghostty}/bin/ghostty"
+        "SUPER, Return, exec, ${pkgs.alacritty}/bin/alacritty"
         "SUPER, D, exec, ${
           if pkgs.stdenv.isAarch64 then
             "${config.home.homeDirectory}/.nix-profile/bin/vesktop"

@@ -13,13 +13,13 @@
         "x-scheme-handler/https" = "zen.desktop";
         "x-scheme-handler/about" = "zen.desktop";
         "x-scheme-handler/unknown" = "zen.desktop";
-        "application/x-desktop" = "ghostty.desktop";
+        "application/x-desktop" = "alacritty.desktop";
       };
     };
     desktopEntries = with pkgs; {
-      ghostty = {
-        name = "Ghostty";
-        exec = "${ghostty}/bin/ghostty";
+      alacritty = {
+        name = "Alacritty";
+        exec = "${alacritty}/bin/alacritty";
       };
     };
   };

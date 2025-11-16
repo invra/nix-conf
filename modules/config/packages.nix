@@ -20,7 +20,7 @@
         home-manager
       ]
       ++ lib.optionals linux [
-        ghostty
+        alacritty
         zen
         pciutils
         xwayland-satellite

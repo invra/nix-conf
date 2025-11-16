@@ -1,0 +1,36 @@
+{
+  ...
+}:
+{
+  stylix.targets.alacritty.enable = false;
+
+  programs.alacritty = {
+    enable = true;
+    theme = "rose_pine";
+
+    settings = {
+      keyboard.bindings = [
+        {
+          key = "+";
+          mods = "Shift|Control";
+          action = "IncreaseFontSize";
+        }
+        {
+          key = "_";
+          mods = "Shift|Control";
+          action = "DecreaseFontSize";
+        }
+      ];
+      window = {
+        opacity = 0.85;
+        decorations = "None";
+      };
+      colors.cursor = {
+        text = "#000000";
+        cursor = "#ffffff";
+      };
+      font.size = 16;
+    };
+  };
+}
+
