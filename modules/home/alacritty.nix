@@ -29,7 +29,21 @@
         text = "#000000";
         cursor = "#ffffff";
       };
-      font.size = 16;
+      font = {
+        normal = {
+          family = "JetBrainsMono Nerd Font";
+          style = "Regular";
+        };
+        bold = {
+          family = "JetBrainsMono Nerd Font";
+          style = "Bold";
+        };
+        italic = {
+          family = "JetBrainsMono Nerd Font";
+          style = "Italic";
+        };
+        size = 16;
+      };
     };
   };
 }
