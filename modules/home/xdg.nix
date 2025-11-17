@@ -16,11 +16,5 @@
         "application/x-desktop" = "alacritty.desktop";
       };
     };
-    desktopEntries = with pkgs; {
-      alacritty = {
-        name = "Alacritty";
-        exec = "${alacritty}/bin/alacritty";
-      };
-    };
   };
 }

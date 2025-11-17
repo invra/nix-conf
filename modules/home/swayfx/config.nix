@@ -52,10 +52,9 @@
   bindsym Mod1+Shift+F12 exec playerctl next
 
   bindsym $mod+Shift+space floating toggle
-  bindsym $mod+space exec bash -c 'pkill rofi  || rofi -show drun'
+  bindsym $mod+space exec bash -c 'pkill tofi-drun || tofi-drun --drun-launch=true'
 
   bindsym $mod+D exec discord
-  bindsym $mod+Z exec zeditor
   bindsym $mod+b exec zen
 
   floating_modifier $mod normal

@@ -104,7 +104,6 @@ lib.optionalAttrs linux {
           else
             "${config.home.homeDirectory}/.nix-profile/bin/discord"
         }"
-        "SUPER, V, exec, clipman pick -t rofi"
         "SUPER, B, exec, ${pkgs.zen}/bin/zen"
         "SUPER, Q, killactive"
         "SUPER ALT SHIFT, Q, exit"
@@ -142,7 +141,7 @@ lib.optionalAttrs linux {
       ];
 
       bindr = [
-        "SUPER, Space, exec, bash -c 'pkill rofi  || ${pkgs.rofi}/bin/rofi -show drun'"
+        "SUPER, Space, exec, bash -c 'pkill tofi-drun || ${pkgs.tofi}/bin/tofi-drun --drun-launch=true'"
       ];
 
       # Mouse bindings
