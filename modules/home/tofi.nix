@@ -1,8 +1,9 @@
 {
-  pkgs,
+  linux,
+  lib,
   ...
 }:
-{
+lib.optionalAttrs linux {
   stylix.targets.tofi.enable = false;
 
   programs.tofi = {
