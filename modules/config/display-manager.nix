@@ -6,26 +6,27 @@
   ...
 }:
 lib.optionalAttrs linux {
-  services.displayManager = with flakeConfig.system; {
-    gdm = {
-      enable = (greeter == "gdm");
-      wayland = true;
-    };
+  services = {
+    displayManager = with flakeConfig.system; {
+      gdm = {
+        enable = (greeter == "gdm");
+        wayland = true;
+      };
+      
+      ly.enable = (greeter == "ly");
 
-    ly = {
-      enable = (greeter == "ly");
-      settings = {
+      cosmic-greeter.enable = (greeter == "cosmic");
 
+      sddm = {
+        enable = (greeter == "sddm");
+        enableHidpi = true;
+        wayland.enable = true;
       };
     };
-
-    sddm = {
-      enable = (greeter == "sddm");
-      enableHidpi = true;
-      wayland.enable = true;
-    };
+    desktopManager.cosmic.enable = flakeConfig.desktop.cosmic.enable or false;
   };
   programs = {
+    river-classic.enable = true;
     niri.enable = flakeConfig.desktop.niri.enable or false;
     sway = {
       enable = flakeConfig.desktop.swayfx.enable or false;
@@ -37,5 +38,16 @@ lib.optionalAttrs linux {
     };
   };
 
-  xdg.portal.enable = true;
+  environment.sessionVariables.COSMIC_DATA_CONTROL_ENABLED = 1;
+
+  xdg.portal = {
+    enable = true;
+    extraPortals = with pkgs; [
+      # xdg-desktop-portal-gnome
+      # xdg-desktop-portal-gtk
+      xdg-desktop-portal-cosmic
+      # xdg-desktop-portal-wlr
+      # xdg-desktop-portal-hyprland
+    ];
+  };
 }

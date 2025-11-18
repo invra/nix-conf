@@ -98,7 +98,7 @@
       Mod+B hotkey-overlay-title="Open a browser: Zen Browser" { spawn "zen"; }
       Mod+D hotkey-overlay-title="Open Discord client: Discord" { spawn "discord"; }
       
-      Super+Space hotkey-overlay-title="Run an Application: fuzzel" { spawn "fuzzel"; }
+      Super+Space hotkey-overlay-title="Run an Application: tofi" { spawn "tofi-drun --drun-launch=true"; }
       Super+Alt+L hotkey-overlay-title="Lock the Screen: swaylock" { spawn "swaylock"; }
 
       XF86AudioRaiseVolume allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1+"; }
