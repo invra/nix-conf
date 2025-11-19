@@ -98,15 +98,15 @@
     },
     "damage-control": {
       "locked": {
-        "lastModified": 1748098817,
-        "narHash": "sha256-PFn0WEeIsjiFKrSJfkR1F9/ItVEs1nlrw1KwEexF+/0=",
-        "owner": "Invranet",
+        "lastModified": 1763519508,
+        "narHash": "sha256-Fhk5Gi61m+FSE/kCxY1jt5+1G5SSRzI+Q9MQ4mYRlSM=",
+        "owner": "Invra",
         "repo": "dmg-control-nix",
-        "rev": "60606f54d3bc4ab2c909f0863df7bceb64a537a4",
+        "rev": "d352453dc009815f2569d7da3fd9692ef72399f7",
         "type": "gitlab"
       },
       "original": {
-        "owner": "Invranet",
+        "owner": "Invra",
         "repo": "dmg-control-nix",
         "type": "gitlab"
       }
@@ -339,18 +339,6 @@
         "type": "github"
       }
     },
-    "ghostty": {
-      "flake": false,
-      "locked": {
-        "narHash": "sha256-bjN0K+aLTEglqKCFvvCJdqVRPKU0OPdxmmxoa2i3G2U=",
-        "type": "file",
-        "url": "https://release.files.ghostty.org/1.1.3/Ghostty.dmg"
-      },
-      "original": {
-        "type": "file",
-        "url": "https://release.files.ghostty.org/1.1.3/Ghostty.dmg"
-      }
-    },
     "gnome-shell": {
       "flake": false,
       "locked": {
@@ -394,20 +382,17 @@
       "inputs": {
         "chromium": "chromium",
         "damage-control": "damage-control",
-        "ghostty": "ghostty",
         "linearmouse": "linearmouse",
         "nixpkgs": "nixpkgs_4",
         "obs-studio": "obs-studio",
-        "parsec": "parsec",
-        "steam": "steam",
-        "wezterm": "wezterm"
+        "steam": "steam"
       },
       "locked": {
-        "lastModified": 1753330891,
-        "narHash": "sha256-qDJR//xHfmpkthaHSCvHGI88ThYYaDrJ5TwEqcriWyc=",
+        "lastModified": 1763519589,
+        "narHash": "sha256-c9roZGuIM49xzi7E5Y7Vm+O1t2WLnArUUYdsnEGJEo0=",
         "owner": "hiten-tandon",
         "repo": "some-nix-darwin-packages",
-        "rev": "56e1d4f24acfe55493cf65accbe25e9889a87682",
+        "rev": "7368928cf050296ce6cbb3de5f4eeed21043c2d6",
         "type": "gitlab"
       },
       "original": {
@@ -589,11 +574,11 @@
     },
     "nixpkgs_4": {
       "locked": {
-        "lastModified": 1751792365,
-        "narHash": "sha256-J1kI6oAj25IG4EdVlg2hQz8NZTBNYvIS0l4wpr9KcUo=",
+        "lastModified": 1763421233,
+        "narHash": "sha256-Stk9ZYRkGrnnpyJ4eqt9eQtdFWRRIvMxpNRf4sIegnw=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "1fd8bada0b6117e6c7eb54aad5813023eed37ccb",
+        "rev": "89c2b2330e733d6cdb5eae7b899326930c2c0648",
         "type": "github"
       },
       "original": {
@@ -718,18 +703,6 @@
       "original": {
         "type": "file",
         "url": "https://cdn-fastly.obsproject.com/downloads/obs-studio-31.0.2-macos-apple.dmg"
-      }
-    },
-    "parsec": {
-      "flake": false,
-      "locked": {
-        "narHash": "sha256-zrB98c8x3tdwObtIYOBx+ioTF4IO2u7EXAvvEqoKYQU=",
-        "type": "file",
-        "url": "https://builds.parsec.app/package/parsec-macos.pkg"
-      },
-      "original": {
-        "type": "file",
-        "url": "https://builds.parsec.app/package/parsec-macos.pkg"
       }
     },
     "plasma-manager": {
@@ -1048,19 +1021,6 @@
         "owner": "numtide",
         "repo": "treefmt-nix",
         "type": "github"
-      }
-    },
-    "wezterm": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1751946853,
-        "narHash": "sha256-AFWVn0kCe2/G3snFm1ZWivQeQSgWJtaIYceQt48fxTg=",
-        "type": "tarball",
-        "url": "https://github.com/wezterm/wezterm/releases/download/nightly/WezTerm-macos-nightly.zip"
-      },
-      "original": {
-        "type": "tarball",
-        "url": "https://github.com/wezterm/wezterm/releases/download/nightly/WezTerm-macos-nightly.zip"
       }
     },
     "zen-browser": {

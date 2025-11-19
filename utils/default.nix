@@ -35,7 +35,6 @@ let
         "nvidia-settings"
         "davinci-resolve"
         "steam-unwrapped"
-        "steam_osx"
         "steam"
         "bitwig-studio-unwrapped"
         "discord"
