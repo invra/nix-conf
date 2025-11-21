@@ -9,8 +9,8 @@
       "margin-right": 0,
       "modules-left": [
         "custom/launcher",
-        "hyprland/workspaces",
-        "hyprland/window"
+        "ext/workspaces",
+        "dwl/window"
       ],
       "modules-center": [
       ],
