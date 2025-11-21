@@ -7,8 +7,6 @@
   nil,
   zig,
   zls,
-  swift,
-  swiftformat,
   rustc,
   clippy,
   pkg-config,
@@ -35,9 +33,5 @@ mkShell {
     # Zig tools
     zig
     zls
-
-    # Swift
-    swift
-    swiftformat
   ];
 }
