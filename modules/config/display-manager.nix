@@ -26,7 +26,8 @@ lib.optionalAttrs linux {
     desktopManager.cosmic.enable = flakeConfig.desktop.cosmic.enable or false;
   };
   programs = {
-    river-classic.enable = true;
+    river-classic.enable = flakeConfig.desktop.river-classic.enable or false;
+    mango.enable = flakeConfig.desktop.mango.enable or true;
     niri.enable = flakeConfig.desktop.niri.enable or false;
     sway = {
       enable = flakeConfig.desktop.swayfx.enable or false;
@@ -42,12 +43,16 @@ lib.optionalAttrs linux {
 
   xdg.portal = {
     enable = true;
-    extraPortals = with pkgs; [
-      # xdg-desktop-portal-gnome
-      # xdg-desktop-portal-gtk
-      xdg-desktop-portal-cosmic
-      # xdg-desktop-portal-wlr
-      # xdg-desktop-portal-hyprland
-    ];
+    wlr.enable = true;
+
+    extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+
+    config = {
+      preferred = {
+        default = "gtk";
+        "org.freedesktop.impl.portal.ScreenCast" = "wlr";
+        "org.freedesktop.impl.portal.Screenshot" = "wlr";
+      };
+    };
   };
 }
