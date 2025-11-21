@@ -82,6 +82,7 @@ let
       modules = [
         ../modules/config
         flakeInputs.stylix.nixosModules.stylix
+        flakeInputs.mango.nixosModules.mango
       ];
       specialArgs = specialArgs;
     };
