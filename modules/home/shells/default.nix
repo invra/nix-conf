@@ -25,7 +25,7 @@
 
     shellAliases = {
       l = "ls -l";
-      la = "ls-al";
+      la = "ls -al";
       ":q" = "exit";
       fuckoff = "exit";
       edit = "taskset -c 0-7 hx";
