@@ -10,7 +10,11 @@
 
   programs.nixcord = {
     enable = true;
-    discord.enable = !(pkgs.stdenv.isLinux && pkgs.stdenv.isAarch64);
+    discord = {
+      enable = !(pkgs.stdenv.isLinux && pkgs.stdenv.isAarch64);
+      vencord.enable = false;
+      equicord.enable = true;
+    };
     vesktop.enable = (pkgs.stdenv.isLinux && pkgs.stdenv.isAarch64);
     quickCss = import ./quickcss.nix;
 
@@ -19,8 +23,8 @@
       themeLinks = [ ];
       frameless = false;
       plugins = {
+        iLoveSpam.enable = true;
         betterSettings.enable = true;
-        callTimer.enable = true;
         crashHandler.enable = true;
         fixSpotifyEmbeds = {
           enable = true;
@@ -29,10 +33,9 @@
         fixYoutubeEmbeds.enable = true;
         imageZoom.enable = true;
         noF1.enable = true;
-        onePingPerDM.enable = true;
+        onePingPerDm.enable = true;
         openInApp.enable = true;
         quickReply.enable = true;
-        spotifyControls.enable = true;
         spotifyCrack.enable = true;
         spotifyShareCommands.enable = true;
         voiceChatDoubleClick.enable = true;
@@ -44,7 +47,7 @@
         };
         volumeBooster = {
           enable = true;
-          multiplier = 2;
+          multiplier = 2.0;
         };
         messageClickActions = {
           enable = true;
