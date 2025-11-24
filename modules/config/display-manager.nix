@@ -27,7 +27,7 @@ lib.optionalAttrs linux {
   };
   programs = {
     river-classic.enable = flakeConfig.desktop.river-classic.enable or false;
-    mango.enable = flakeConfig.desktop.mango.enable or true;
+    mango.enable = flakeConfig.desktop.mangowc.enable or false;
     niri.enable = flakeConfig.desktop.niri.enable or false;
     sway = {
       enable = flakeConfig.desktop.swayfx.enable or false;

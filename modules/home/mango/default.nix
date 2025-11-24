@@ -1,11 +1,16 @@
 {
   lib,
+  pkgs,
   linux,
   flakeConfig,
   ...
 }:
 lib.optionalAttrs linux {
-  home.file = lib.optionalAttrs (flakeConfig.desktop.mango.enable or true) {
+  home.packages = with pkgs; [
+    hyprshot    
+  ];
+
+  home.file = lib.optionalAttrs (flakeConfig.desktop.mangowc.enable or false) {
     ".config/mango/config.conf".text =
       builtins.readFile ./config.conf;
     ".config/mango/startup.sh" = {
