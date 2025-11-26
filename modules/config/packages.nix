@@ -20,6 +20,7 @@
         home-manager
       ]
       ++ lib.optionals linux [
+        lsof
         alacritty
         zen
         pciutils
@@ -47,5 +48,15 @@
     dconf.enable = true;
     thunar.enable = true;
     nano.enable = false;
+    steam = {
+      enable = true;
+      extraPackages = with pkgs; [
+        qogir-icon-theme
+        steamtinkerlaunch
+      ];
+      extraCompatPackages = with pkgs; [
+        steamtinkerlaunch
+      ];
+    };
   };
 }

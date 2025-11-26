@@ -25,12 +25,12 @@
       uutils-diffutils
       uutils-findutils
       uutils-coreutils-noprefix
-      steam
     ]
     ++ lib.optionals (!(stdenv.isLinux && stdenv.isAarch64)) [
       insomnia
     ]
     ++ lib.optionals pkgs.stdenv.isDarwin [
+      steam
       utm
       pika
       linearmouse
