@@ -52,6 +52,9 @@
     ++ (lib.optionals (pkgs.stdenv.isLinux && pkgs.stdenv.isx86_64) [
       wineWowPackages.waylandFull
       winetricks
+      yabridge
+      (yabridgectl.override { wine = wineWowPackages.waylandFull; })
+      bitwig-studio
     ]);
 
   programs.ripgrep.enable = true;

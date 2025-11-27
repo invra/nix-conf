@@ -10,7 +10,6 @@ let
   getModulesFromDirRec = import ./lib/getModulesFromDirRec.nix { inherit lib; };
   specialArgs = rec {
     inherit (flakeInputs)
-      nixpkgs-24_11
       home-manager
       nixpkgs-stable
       plasma-manager
