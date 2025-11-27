@@ -2,6 +2,7 @@
   lib,
   pkgs,
   linux,
+  config,
   flakeConfig,
   ...
 }:
@@ -10,6 +11,7 @@
     enable = true;
     base16Scheme = "${pkgs.base16-schemes}/share/themes/rose-pine.yaml";
     image = flakeConfig.user.wallpaper or ../../wallpapers/flake.jpg;
+
     fonts = {
       serif = {
         package = pkgs.dejavu_fonts;
@@ -28,6 +30,8 @@
     };
   }
   // lib.optionalAttrs linux {
-    targets.qt.enable = false;
+    targets = {  
+      gtk.enable = true;
+    };
   };
 }
