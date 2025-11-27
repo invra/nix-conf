@@ -43,7 +43,16 @@
   };
 
   programs = lib.optionalAttrs linux {
-    nix-ld.enable = true;
+    nix-ld = {
+      enable = true;
+      libraries = with pkgs; [
+        libx11
+        libxcursor
+        libxkbcommon
+        libxrender
+        libxrandr
+      ];
+    };
     virt-manager.enable = true;
     dconf.enable = true;
     thunar.enable = true;
