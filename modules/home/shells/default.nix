@@ -49,6 +49,7 @@
       ]
 
       if not ("NU_INIT" in $env) {
+        sleep 100ms
         ${pkgs.fastfetch}/bin/fastfetch
       }
 
