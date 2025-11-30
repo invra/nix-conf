@@ -2,6 +2,7 @@
   lib,
   pkgs,
   linux,
+  # config,
   flakeConfig,
   ...
 }:
@@ -35,5 +36,19 @@
         name = "JetBrains Mono Nerd Font";
       };
     };
+  };
+
+  dconf.settings = {
+    "org/gnome/desktop/interface" = {
+      color-scheme = lib.mkForce "prefer-dark";
+    };
+  };
+
+  gtk = {
+    enable = true;
+    # theme = {
+    #   name = "Adwaita-dark";
+    #   package = pkgs.gnome.gnome-themes-extra;
+    # };
   };
 }
