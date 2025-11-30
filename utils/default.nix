@@ -15,14 +15,12 @@ let
       plasma-manager
       nixcord
       stylix
-      zen-browser
       ;
     inherit flakeConfig;
     extraOverlays = with flakeInputs; [
       discord-rpc-lsp.overlays.default
       sketchierbar.overlays.default
       ffm.overlays.default
-      zen-browser.overlay
       ip.overlay
     ];
     linux = (lib.strings.hasSuffix "x86" configName || lib.strings.hasSuffix "aarch64" configName);
@@ -56,7 +54,6 @@ let
       modules = [
         ../modules/home
         flakeInputs.plasma-manager.homeManagerModules.plasma-manager
-        flakeInputs.zen-browser.homeModules.zen-browser
         flakeInputs.nixcord.homeModules.nixcord
         flakeInputs.stylix.homeModules.stylix
       ];

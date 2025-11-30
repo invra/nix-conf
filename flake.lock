@@ -131,18 +131,6 @@
         "type": "github"
       }
     },
-    "darwin-universal-src": {
-      "flake": false,
-      "locked": {
-        "narHash": "sha256-WBcU0LoBBPPE7FWOutIga49Vl0kP1Hk4tlAoJI+I0ag=",
-        "type": "file",
-        "url": "https://github.com/zen-browser/desktop/releases/download/1.17.6b/zen.macos-universal.dmg"
-      },
-      "original": {
-        "type": "file",
-        "url": "https://github.com/zen-browser/desktop/releases/download/1.17.6b/zen.macos-universal.dmg"
-      }
-    },
     "discord-rpc-lsp": {
       "inputs": {
         "flake-utils": "flake-utils",
@@ -431,32 +419,6 @@
         "url": "https://dl.linearmouse.org/v0.10.0/LinearMouse.dmg"
       }
     },
-    "linux-aarch-src": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1762686492,
-        "narHash": "sha256-nUzCptiIm590p7t80bwgi921wBBeD65ZqkbH4pSBDHQ=",
-        "type": "tarball",
-        "url": "https://github.com/zen-browser/desktop/releases/download/1.17.6b/zen.linux-aarch64.tar.xz"
-      },
-      "original": {
-        "type": "tarball",
-        "url": "https://github.com/zen-browser/desktop/releases/download/1.17.6b/zen.linux-aarch64.tar.xz"
-      }
-    },
-    "linux-x86-src": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1762697774,
-        "narHash": "sha256-q1IK39GdPhO+/baGOO9A3aUehwCtwBfRkDVFXCthC54=",
-        "type": "tarball",
-        "url": "https://github.com/zen-browser/desktop/releases/download/1.17.6b/zen.linux-x86_64.tar.xz"
-      },
-      "original": {
-        "type": "tarball",
-        "url": "https://github.com/zen-browser/desktop/releases/download/1.17.6b/zen.linux-x86_64.tar.xz"
-      }
-    },
     "mango": {
       "inputs": {
         "flake-parts": "flake-parts",
@@ -559,22 +521,6 @@
       "original": {
         "owner": "NixOS",
         "ref": "nixos-25.05",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
-    "nixpkgs_10": {
-      "locked": {
-        "lastModified": 1757487488,
-        "narHash": "sha256-zwE/e7CuPJUWKdvvTCB7iunV4E/+G0lKfv4kk/5Izdg=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "ab0f3607a6c7486ea22229b92ed2d355f1482ee0",
-        "type": "github"
-      },
-      "original": {
-        "owner": "NixOS",
-        "ref": "nixos-unstable",
         "repo": "nixpkgs",
         "type": "github"
       }
@@ -784,8 +730,7 @@
         "plasma-manager": "plasma-manager",
         "sketchierbar": "sketchierbar",
         "stylix": "stylix",
-        "treefmt-nix": "treefmt-nix_3",
-        "zen-browser": "zen-browser"
+        "treefmt-nix": "treefmt-nix_3"
       }
     },
     "scenefx": {
@@ -1081,27 +1026,6 @@
         "owner": "numtide",
         "repo": "treefmt-nix",
         "type": "github"
-      }
-    },
-    "zen-browser": {
-      "inputs": {
-        "darwin-universal-src": "darwin-universal-src",
-        "linux-aarch-src": "linux-aarch-src",
-        "linux-x86-src": "linux-x86-src",
-        "nixpkgs": "nixpkgs_10"
-      },
-      "locked": {
-        "lastModified": 1763284718,
-        "narHash": "sha256-dN5TkivT1I3HKgPf3diKhX3aU9kr0tBIARYrMzY3psk=",
-        "owner": "invra",
-        "repo": "zen-flake",
-        "rev": "1c3d74108da867dd6e93f7174b50f3d0ea549cfa",
-        "type": "gitlab"
-      },
-      "original": {
-        "owner": "invra",
-        "repo": "zen-flake",
-        "type": "gitlab"
       }
     }
   },

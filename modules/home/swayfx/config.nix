@@ -55,7 +55,7 @@
   bindsym $mod+space exec bash -c 'pkill tofi-drun || tofi-drun --drun-launch=true'
 
   bindsym $mod+D exec discord
-  bindsym $mod+b exec zen
+  bindsym $mod+b exec librewolf
 
   floating_modifier $mod normal
 

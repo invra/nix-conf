@@ -22,7 +22,7 @@
       ++ lib.optionals linux [
         lsof
         alacritty
-        zen
+        librewolf
         pciutils
         xwayland-satellite
         swww

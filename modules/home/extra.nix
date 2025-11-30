@@ -10,6 +10,7 @@
       dbgate
       # prismlauncher
       viu
+      librewolf
       chromium
       ffmpeg
       file
