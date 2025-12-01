@@ -23,7 +23,7 @@
       ];
       window = {
         opacity = 0.85;
-        decorations = "None";
+        decorations = "Buttonless";
       };
       colors.cursor = {
         text = "#000000";
