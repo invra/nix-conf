@@ -5,10 +5,12 @@ use {
         io,
         path::{Path, PathBuf},
         process::{Command, Stdio},
-        str::FromStr,
     },
     sysinfo::{Process, ProcessExt, System, SystemExt},
 };
+
+#[cfg(not(target_os = "macos"))]
+use std::str::FromStr;
 
 #[inline]
 #[cfg(target_os = "macos")]
@@ -33,6 +35,7 @@ fn get_shell_mac() -> Option<Box<str>> {
 }
 
 #[inline]
+#[allow(dead_code)]
 fn get_shell_via_sys() -> Option<Box<str>> {
     std::fs::read_to_string("/etc/passwd")
         .ok()?
@@ -52,6 +55,7 @@ fn get_shell_via_sys() -> Option<Box<str>> {
 }
 
 #[inline]
+#[allow(dead_code)]
 fn get_shell_via_env() -> Option<Box<str>> {
     env::var("SHELL")
         .ok()
@@ -63,6 +67,7 @@ fn get_shell_via_env() -> Option<Box<str>> {
         .map(Into::into)
 }
 
+#[allow(dead_code)]
 fn get_shell_via_proc() -> Option<Box<str>> {
     let mut sys = System::new_all();
     sys.refresh_processes();
@@ -99,8 +104,8 @@ pub(crate) fn get_shell() -> Box<str> {
 
 #[cfg(target_os = "macos")]
 #[inline]
-pub(crate) fn get_shell() -> Shell {
-    get_shell_mac()
+pub(crate) fn get_shell() -> Box<str> {
+    get_shell_mac().unwrap_or_else(|| "/bin/bash".into())
 }
 
 fn main() -> io::Result<()> {
