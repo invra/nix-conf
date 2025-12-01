@@ -8,7 +8,7 @@
     [
       sl
       dbgate
-      # prismlauncher
+      prismlauncher
       viu
       librewolf
       chromium
