@@ -4,7 +4,7 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     flake-utils.url = "github:numtide/flake-utils";
-    nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-25.05";
+    nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-25.11";
     stylix.url = "github:danth/stylix";
     ip.url = "gitlab:hiten-tandon/some-nix-darwin-packages";
     discord-rpc-lsp.url = "gitlab:invra/discord-rpc-lsp";
