@@ -9,6 +9,7 @@
 {
   stylix = lib.optionalAttrs linux {
     enable = true;
+    enableReleaseChecks = false;
     base16Scheme = "${pkgs.base16-schemes}/share/themes/rose-pine.yaml";
     image = flakeConfig.user.wallpaper or ../../wallpapers/flake.jpg;
     icons = {
