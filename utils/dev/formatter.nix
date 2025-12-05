@@ -12,8 +12,6 @@ let
         rustfmt.enable = true;
         toml-sort.enable = true;
         shellcheck.enable = true;
-        shfmt.enable = true;
-        swift-format.enable = true;
       };
     }).config.build;
 in
