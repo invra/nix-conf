@@ -2,7 +2,6 @@
   lib,
   pkgs,
   linux,
-  config,
   flakeConfig,
   ...
 }:
@@ -30,7 +29,7 @@
     };
   }
   // lib.optionalAttrs linux {
-    targets = {  
+    targets = {
       gtk.enable = true;
     };
   };

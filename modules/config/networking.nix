@@ -18,12 +18,12 @@
         map (iface: {
           name = iface.name;
           value.useDHCP =
-            !(builtins.any (br: builtins.elem iface.name (br.interfaces or []))
-              (builtins.filter (br: br.type == "BRIDGE") (networking.interfaces or [])))
+            !(builtins.any (br: builtins.elem iface.name (br.interfaces or [ ])) (
+              builtins.filter (br: br.type == "BRIDGE") (networking.interfaces or [ ])
+            ))
             && (iface.dhcpEnabled or iface.type != "BRIDGE");
         }) (networking.interfaces or [ ])
       );
-
 
       bridges = builtins.listToAttrs (
         map (iface: {

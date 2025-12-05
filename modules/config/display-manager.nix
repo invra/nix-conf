@@ -12,7 +12,7 @@ lib.optionalAttrs linux {
         enable = (greeter == "gdm");
         wayland = true;
       };
-      
+
       ly.enable = (greeter == "ly");
 
       cosmic-greeter.enable = (greeter == "cosmic");
