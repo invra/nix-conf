@@ -97,6 +97,30 @@
       keys = {
         normal = {
           A-r = ":config-reload";
+          A-j = [
+            "keep_primary_selection"
+            "move_line_down"
+            "extend_to_line_bounds"
+            "extend_line_above"
+            "split_selection_on_newline"
+            "select_mode"
+            "goto_line_end_newline"
+            "normal_mode"
+            "rotate_selection_contents_forward"
+            "keep_primary_selection"
+            "move_line_down"
+          ];
+          A-k = [
+            "keep_primary_selection"
+            "extend_to_line_bounds"
+            "extend_line_above"
+            "split_selection_on_newline"
+            "select_mode"
+            "goto_line_end_newline"
+            "normal_mode"
+            "rotate_selection_contents_forward"
+            "keep_primary_selection"
+          ];
           space = {
             space = "@<space>f";
             w = ":wq!";
