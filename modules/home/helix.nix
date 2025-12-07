@@ -97,7 +97,6 @@
       keys = {
         normal = {
           A-r = ":config-reload";
-          y = ":clipboard-yank";
           space = {
             space = "@<space>f";
             w = ":wq!";
@@ -105,7 +104,6 @@
             q = ":bc";
           };
         };
-        select.y = ":clipboard-yank";
       };
     };
     extraPackages = with pkgs; [
