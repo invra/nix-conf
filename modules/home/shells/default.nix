@@ -3,12 +3,6 @@
   ...
 }:
 {
-  stylix.targets.starship.enable = false;
-  programs.starship = {
-    enable = true;
-    settings = (pkgs.lib.importTOML ./starship-config.toml);
-  };
-
   programs.nushell = {
     enable = true;
 
@@ -47,10 +41,14 @@
         ($"/etc/profiles/per-user/(whoami)/bin")
         "/run/current-system/sw/bin"
       ]
-
-      mkdir ($nu.data-dir | path join "vendor/autoload")
-      ${pkgs.starship}/bin/starship init nu | save -f ($nu.data-dir | path join "vendor/autoload/starship.nu")
     '';
+  };
+
+  stylix.targets.starship.enable = false;
+  programs.starship = {
+    enable = true;
+    enableNushellIntegration = true;
+    settings = (pkgs.lib.importTOML ./starship-config.toml);
   };
 
   programs.carapace = {
