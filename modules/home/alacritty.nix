@@ -24,6 +24,10 @@
       window = {
         opacity = 0.85;
         decorations = "Buttonless";
+        padding = {
+          x = 10;
+          y = 10;
+        };
       };
       colors.cursor = {
         text = "#000000";
