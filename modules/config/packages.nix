@@ -24,6 +24,7 @@
         alacritty
         librewolf
         pciutils
+        nautilus
         xwayland-satellite
         swww
       ];
@@ -55,7 +56,10 @@
     };
     virt-manager.enable = true;
     dconf.enable = true;
-    thunar.enable = true;
+    nautilus-open-any-terminal = {
+      enable = true;
+      terminal = "alactritty";
+    };
     nano.enable = false;
     steam = {
       enable = true;

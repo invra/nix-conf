@@ -14,7 +14,7 @@ in
   // lib.optionalAttrs linux {
     flatpak.enable = true;
     blueman.enable = true;
-    tailscale.enable = true;
+    gvfs.enable = true;
     qemuGuest.enable = true;
     spice-vdagentd.enable = true;
     xserver = {

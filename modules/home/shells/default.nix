@@ -48,13 +48,6 @@
         "/run/current-system/sw/bin"
       ]
 
-      if not ("NU_INIT" in $env) {
-        sleep 100ms
-        ${pkgs.fastfetch}/bin/fastfetch
-      }
-
-      $env.NU_INIT = true
-
       mkdir ($nu.data-dir | path join "vendor/autoload")
       ${pkgs.starship}/bin/starship init nu | save -f ($nu.data-dir | path join "vendor/autoload/starship.nu")
     '';
