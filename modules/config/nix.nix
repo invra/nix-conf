@@ -1,10 +1,17 @@
 {
+  # lib,
+  # config,
   ...
 }:
 {
   nix.settings = {
     cores = 6;
     max-jobs = "auto";
+
+    trusted-users = [
+      "root"
+      "@wheel"
+    ];
 
     experimental-features = [
       "nix-command"
