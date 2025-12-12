@@ -33,6 +33,7 @@ let
         "davinci-resolve"
         "steam-unwrapped"
         "steam"
+        "mongodb"
         "bitwig-studio-unwrapped"
         "discord"
       ];

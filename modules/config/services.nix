@@ -101,5 +101,10 @@ in
         };
       };
     };
+
+    mongodb = {
+      enable = true;
+      # user = "mongo";
+    };
   };
 }
