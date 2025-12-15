@@ -10,6 +10,7 @@
     discord-rpc-lsp.url = "gitlab:invra/discord-rpc-lsp";
     treefmt-nix.url = "github:numtide/treefmt-nix";
     sketchierbar.url = "gitlab:invra/sketchierbar";
+    helium.url = "gitlab:invra/helium";
     ffm.url = "gitlab:invra/ffm";
 
     darwin = {

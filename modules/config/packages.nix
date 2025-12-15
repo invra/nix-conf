@@ -22,7 +22,9 @@
       ++ lib.optionals linux [
         lsof
         alacritty
+        foot
         librewolf
+        helium
         pciutils
         nautilus
         xwayland-satellite

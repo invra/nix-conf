@@ -14,6 +14,7 @@ let
       nixpkgs-stable
       plasma-manager
       nixcord
+      helium
       stylix
       ;
     inherit flakeConfig;
@@ -21,6 +22,7 @@ let
       discord-rpc-lsp.overlays.default
       sketchierbar.overlays.default
       ffm.overlays.default
+      helium.overlay
       ip.overlay
     ];
     linux = (lib.strings.hasSuffix "x86" configName || lib.strings.hasSuffix "aarch64" configName);
