@@ -1,7 +1,9 @@
 {
+  lib,
+  darwin,
   ...
 }:
-{
+lib.optionalAttrs darwin {
   stylix.targets.alacritty.enable = false;
 
   programs.alacritty = {
