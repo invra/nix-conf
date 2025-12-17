@@ -13,6 +13,8 @@
       update_ms = 1000;
       truecolor = true;
       temp_scale = "celsius";
+
+      proc_aggregate = true;
     };
   };
 }
