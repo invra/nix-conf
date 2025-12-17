@@ -21,7 +21,6 @@
       ]
       ++ lib.optionals linux [
         lsof
-        alacritty
         foot
         librewolf
         helium

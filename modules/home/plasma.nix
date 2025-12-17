@@ -41,11 +41,11 @@ in
       }
     ];
 
-    hotkeys.commands."launch-alacritty" = {
+    hotkeys.commands."launch-foot" = {
       key = "Meta+Return";
-      name = "Launch Alacritty";
-      command = "alacritty";
-      comment = "Launch the Alacritty terminal.";
+      name = "Launch Foot";
+      command = "foot";
+      comment = "Launch Foot terminal.";
     };
 
     shortcuts = {

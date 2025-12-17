@@ -14,7 +14,6 @@
         "x-scheme-handler/https" = "LibreWolf.desktop";
         "x-scheme-handler/about" = "LibreWolf.desktop";
         "x-scheme-handler/unknown" = "LibreWolf.desktop";
-        "application/x-desktop" = "alacritty.desktop";
       };
     };
 
