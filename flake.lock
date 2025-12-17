@@ -134,25 +134,25 @@
     "darwin-aarch-src": {
       "flake": false,
       "locked": {
-        "narHash": "sha256-w5y53RwY1XzG4F2z7tdsmtKO/zLJ4Lq2YLF3aUbXjRE=",
+        "narHash": "sha256-WPcybhApAhHbRamMQLa5v2lpkW/QM/GJY72U/Um/PjM=",
         "type": "file",
-        "url": "https://github.com/imputnet/helium-macos/releases/download/0.7.4.1/helium_0.7.4.1_arm64-macos.dmg"
+        "url": "https://github.com/imputnet/helium-macos/releases/download/0.7.5.1/helium_0.7.5.1_arm64-macos.dmg"
       },
       "original": {
         "type": "file",
-        "url": "https://github.com/imputnet/helium-macos/releases/download/0.7.4.1/helium_0.7.4.1_arm64-macos.dmg"
+        "url": "https://github.com/imputnet/helium-macos/releases/download/0.7.5.1/helium_0.7.5.1_arm64-macos.dmg"
       }
     },
     "darwin-x86-src": {
       "flake": false,
       "locked": {
-        "narHash": "sha256-pIbYgQFhnMdPpCTlqm7gCs7WQ0eReUw8wwZXH/9hXNk=",
+        "narHash": "sha256-pz1+QjqorfrDRNkNCkGautu45rlyKxXuMHcFPCOxHno=",
         "type": "file",
-        "url": "https://github.com/imputnet/helium-macos/releases/download/0.7.4.1/helium_0.7.4.1_x86_64-macos.dmg"
+        "url": "https://github.com/imputnet/helium-macos/releases/download/0.7.5.1/helium_0.7.5.1_x86_64-macos.dmg"
       },
       "original": {
         "type": "file",
-        "url": "https://github.com/imputnet/helium-macos/releases/download/0.7.4.1/helium_0.7.4.1_x86_64-macos.dmg"
+        "url": "https://github.com/imputnet/helium-macos/releases/download/0.7.5.1/helium_0.7.5.1_x86_64-macos.dmg"
       }
     },
     "discord-rpc-lsp": {
@@ -397,11 +397,11 @@
         "nixpkgs": "nixpkgs_4"
       },
       "locked": {
-        "lastModified": 1765801354,
-        "narHash": "sha256-jZt0j/ldQqN/QRmYsN0EGvwTwTZIvXtW1Hm0fAnoy24=",
+        "lastModified": 1765913362,
+        "narHash": "sha256-rBhQH+gIBo5U+nf9nrnaqGTzlsxpRWn2h7iEGb3G7ZI=",
         "owner": "invra",
         "repo": "helium",
-        "rev": "af9a3a8b6f5aff1008a8e98b1b9421189e7f7f2d",
+        "rev": "96afab61e4a181fb000d59c940bcda285fd7c010",
         "type": "gitlab"
       },
       "original": {
@@ -468,25 +468,25 @@
     "linux-aarch-src": {
       "flake": false,
       "locked": {
-        "narHash": "sha256-mlmM/20YoTNiK3gpGqzZd8xzHZIkhnOyNuCG3UE1zq0=",
+        "narHash": "sha256-UvE2OPGvbkep9BPJ7mcEbSt47luIsYJRQlQTV9UYKbw=",
         "type": "file",
-        "url": "https://github.com/imputnet/helium-linux/releases/download/0.7.4.1/helium-0.7.4.1-arm64.AppImage"
+        "url": "https://github.com/imputnet/helium-linux/releases/download/0.7.5.1/helium-0.7.5.1-arm64.AppImage"
       },
       "original": {
         "type": "file",
-        "url": "https://github.com/imputnet/helium-linux/releases/download/0.7.4.1/helium-0.7.4.1-arm64.AppImage"
+        "url": "https://github.com/imputnet/helium-linux/releases/download/0.7.5.1/helium-0.7.5.1-arm64.AppImage"
       }
     },
     "linux-x86-src": {
       "flake": false,
       "locked": {
-        "narHash": "sha256-zRAiYAxXHiNmYz/36MNPsxHnRC4gucKOU5f9K3p50JI=",
+        "narHash": "sha256-6xzcXs/Ec7filuzynh7qjS47HliVu2hFzg5Ql0+r1Jk=",
         "type": "file",
-        "url": "https://github.com/imputnet/helium-linux/releases/download/0.7.4.1/helium-0.7.4.1-x86_64.AppImage"
+        "url": "https://github.com/imputnet/helium-linux/releases/download/0.7.5.1/helium-0.7.5.1-x86_64.AppImage"
       },
       "original": {
         "type": "file",
-        "url": "https://github.com/imputnet/helium-linux/releases/download/0.7.4.1/helium-0.7.4.1-x86_64.AppImage"
+        "url": "https://github.com/imputnet/helium-linux/releases/download/0.7.5.1/helium-0.7.5.1-x86_64.AppImage"
       }
     },
     "mango": {
