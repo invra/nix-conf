@@ -22,6 +22,7 @@
       tldr
       yazi
       wget
+      firefox
       uutils-diffutils
       uutils-findutils
       uutils-coreutils-noprefix
