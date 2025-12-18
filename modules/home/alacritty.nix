@@ -48,7 +48,7 @@ lib.optionalAttrs darwin {
           family = "JetBrainsMono Nerd Font";
           style = "Italic";
         };
-        size = 16;
+        size = 14;
       };
     };
   };
