@@ -21,11 +21,6 @@ in
 lib.optionalAttrs linux {
   stylix.targets.hyprland.enable = false;
 
-  home.packages = with pkgs; [
-    swww
-    playerctl
-  ];
-
   wayland.windowManager.hyprland = {
     enable = hyprland.enable or false;
 
@@ -40,7 +35,7 @@ lib.optionalAttrs linux {
 
       # Auto-launching
       exec-once = [
-        "swww-daemon &"
+        "${pkgs.swww}/bin/swww-daemon &"
         "waybar &"
         "mako &"
       ];
