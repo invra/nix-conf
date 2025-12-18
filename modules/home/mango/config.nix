@@ -147,11 +147,11 @@ tagrule=id:5,layout_name:tile
 bind=Super,R,reload_config
 
 # menu and terminal
-bind=Super,space,spawn,tofi-drun --drun-launch=true
+bind=Super,space,spawn,${pkgs.tofi}/bin/tofi-drun --drun-launch=true
 bind=Super+SHIFT,S,spawn,${pkgs.hyprshot}/bin/hyprshot -m region --clipboard-only
 bind=Super,Return,spawn,foot
 bind=Super,B,spawn,firefox
-bind=Super,F,spawn,nautilus
+bind=Super,F,spawn,${pkgs.nautilus}/bin/nautilus
 bind=Super,D,spawn,discord
 
 # exit
