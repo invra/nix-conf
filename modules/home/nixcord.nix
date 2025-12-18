@@ -3,11 +3,6 @@
   ...
 }:
 {
-  stylix.targets = {
-    nixcord.enable = false;
-    vencord.enable = false;
-  };
-
   programs.nixcord = {
     enable = true;
     discord = {
@@ -16,7 +11,6 @@
       equicord.enable = true;
     };
     vesktop.enable = (pkgs.stdenv.isLinux && pkgs.stdenv.isAarch64);
-    quickCss = import ./quickcss.nix;
 
     config = {
       useQuickCss = true;
