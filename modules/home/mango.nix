@@ -176,13 +176,6 @@ lib.optionalAttrs linux {
         "Super+Shift,Q,quit"
         "Super,q,killclient,"
 
-        # switch window focus
-        # "Super,Tab,focusstack,next"
-        # "ALT,Left,focusdir,left"
-        # "ALT,Right,focusdir,right"
-        # "ALT,Up,focusdir,up"
-        # "ALT,Down,focusdir,down"
-
         # swap window
         "Super+SHIFT,Up,exchange_client,up"
         "Super+SHIFT,Down,exchange_client,down"
@@ -201,20 +194,9 @@ lib.optionalAttrs linux {
         "Super+SHIFT,I,restore_minimized"
         "ALT,z,toggle_scratchpad"
 
-        # scroller layout
-        "ALT,e,set_proportion,1.0"
-        "ALT,x,switch_proportion_preset,"
-
-        # switch layout
-        "Super,n,switch_layout"
-
         # tag switch
-        "Super,Left,viewtoleft,0"
-        "CTRL,Left,viewtoleft_have_client,0"
-        "Super,Right,viewtoright,0"
-        "CTRL,Right,viewtoright_have_client,0"
-        "CTRL+Super,Left,tagtoleft,0"
-        "CTRL+Super,Right,tagtoright,0"
+        "CTRL+Super,Left,viewtoleft,0"
+        "CTRL+Super,Right,viewtoright,0"
 
         "Super,1,view,1,0"
         "Super,2,view,2,0"
@@ -260,12 +242,6 @@ lib.optionalAttrs linux {
         "Super,btn_left,moveresize,curmove"
         "Super,btn_right,moveresize,curresize"
         "NONE,btn_left,toggleoverview,1"
-      ];
-
-      # Axis Bindings
-      axisbind = [
-        "Super,UP,viewtoleft_have_client"
-        "Super,DOWN,viewtoright_have_client"
       ];
 
       # layer rule
