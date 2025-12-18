@@ -34,7 +34,7 @@
       $env.NH_OS_FLAKE = $"($env.HOME)/.nix";
       $env.NH_DARWIN_FLAKE = $"($env.HOME)/.nix";
       $env.NH_HOME_FLAKE = $"($env.HOME)/.nix";
-     
+
       $env.PATH = $env.PATH
       | append [
         "~/.nix-profile/bin"

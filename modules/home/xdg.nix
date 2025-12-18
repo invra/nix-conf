@@ -20,7 +20,7 @@
     userDirs = {
       enable = true;
       createDirectories = true;
-      
+
       desktop = "${config.home.homeDirectory}/desk";
       documents = "${config.home.homeDirectory}/docs";
       download = "${config.home.homeDirectory}/downloads";

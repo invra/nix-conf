@@ -56,12 +56,12 @@
         component_style = {
           selection = {
             bg = "#403d52";
-            modifiers = ["Bold"];  
+            modifiers = [ "Bold" ];
           };
           block_title.fg = "Magenta";
           playback_track = {
             fg = "#ebbcba";
-            modifiers = ["Bold"];
+            modifiers = [ "Bold" ];
           };
           playback_album.fg = "Yellow";
           playback_metadata.fg = "Blue";
@@ -71,21 +71,21 @@
           };
           current_playing = {
             fg = "#ebbcba";
-            modifiers = ["Bold"];
+            modifiers = [ "Bold" ];
           };
           page_desc = {
             fg = "#ebbcba";
-            modifiers = ["Bold"];
+            modifiers = [ "Bold" ];
           };
           table_header.fg = "Blue";
-          border = {};
+          border = { };
           playback_status = {
             fg = "#ebbcba";
-            modifiers = ["Bold"];
+            modifiers = [ "Bold" ];
           };
           playback_artists = {
             fg = "#ebbcba";
-            modifiers = ["Bold"];
+            modifiers = [ "Bold" ];
           };
           playlist_desc.fg = "Cyan";
         };
