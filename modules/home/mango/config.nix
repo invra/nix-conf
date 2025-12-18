@@ -1,5 +1,5 @@
-# More option see https://github.com/DreamMaoMao/mango/wiki/
-
+{ pkgs, ... }:
+''
 exec-once=~/.config/mango/startup.sh
 exec-once=waybar
 exec-once=mako
@@ -148,7 +148,7 @@ bind=Super,R,reload_config
 
 # menu and terminal
 bind=Super,space,spawn,tofi-drun --drun-launch=true
-bind=Super+SHIFT,S,spawn,hyprshot -m region --clipboard-only
+bind=Super+SHIFT,S,spawn,${pkgs.hyprshot}/bin/hyprshot -m region --clipboard-only
 bind=Super,Return,spawn,foot
 bind=Super,B,spawn,firefox
 bind=Super,F,spawn,nautilus
@@ -259,3 +259,4 @@ monitorrule=HDMI-A-1,0.55,1,tile,0,1,1925,0,2560,1440,180
 xkb_rules_layout=us,us
 xkb_rules_variant=,workman
 xkb_rules_options=grp:alt_shift_toggle,eurosign:e,caps:escape
+''
