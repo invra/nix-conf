@@ -7,8 +7,8 @@
     enable = true;
     discord = {
       enable = !(pkgs.stdenv.isLinux && pkgs.stdenv.isAarch64);
-      vencord.enable = false;
-      equicord.enable = true;
+      vencord.enable = !(pkgs.stdenv.isLinux);
+      equicord.enable = pkgs.stdenv.isLinux;
     };
     vesktop.enable = (pkgs.stdenv.isLinux && pkgs.stdenv.isAarch64);
 
