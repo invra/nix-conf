@@ -4,12 +4,11 @@
   linux,
   ...
 }:
-{
-  programs.obs-studio = lib.optionalAttrs linux (
-    with pkgs;
-    {
-      enable = true;
-      package = obs-studio;
-    }
-  );
+lib.optionalAttrs linux {
+  programs.obs-studio = {
+    enable = true;
+    package = (pkgs.obs-studio.override {
+      cudaSupport = true;
+    });
+  };
 }
