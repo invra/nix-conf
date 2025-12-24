@@ -80,7 +80,6 @@ in
   );
 
   home.packages = with pkgs; [
-    lazygit
     glab
     gh
   ];
