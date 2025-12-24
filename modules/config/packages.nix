@@ -22,12 +22,12 @@
       ++ lib.optionals linux [
         lsof
         foot
-        librewolf
         helium
         pciutils
         nautilus
-        xwayland-satellite
         swww
+        firefox
+        xwayland-satellite
       ];
   }
   // lib.optionalAttrs linux {

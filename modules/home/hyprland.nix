@@ -99,7 +99,7 @@ lib.optionalAttrs linux {
           else
             "${config.home.homeDirectory}/.nix-profile/bin/discord"
         }"
-        "SUPER, B, exec, ${pkgs.librewolf}/bin/librewolf"
+        "SUPER, B, exec, ${pkgs.firefox}/bin/firefox"
         "SUPER, Q, killactive"
         "SUPER ALT SHIFT, Q, exit"
         "SUPER LSHIFT, S, exec, ${pkgs.hyprshot}/bin/hyprshot -m region --clipboard-only"

@@ -10,7 +10,6 @@
       dbgate
       prismlauncher
       viu
-      librewolf
       ffmpeg
       file
       fd
