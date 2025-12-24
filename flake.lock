@@ -83,11 +83,11 @@
     },
     "configs": {
       "locked": {
-        "lastModified": 1764614544,
-        "narHash": "sha256-V/aiZUz+MbhFpQNMFWHFVILApmBfWI6WMQqKDu1pDgk=",
+        "lastModified": 1766614914,
+        "narHash": "sha256-zNc6TK1D2iXbDZf/X4QVXbgC+A5FBKP0n8dDTg1oTw0=",
         "owner": "invra",
         "repo": "nix-conf",
-        "rev": "750f0949be7fbc4629a4be88fad8885d259e24b3",
+        "rev": "9be8966c25e2cb9d4ae4b0d814d3c0b7e2a8ce1f",
         "type": "gitlab"
       },
       "original": {
@@ -520,11 +520,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1766247060,
-        "narHash": "sha256-DjPT/hE0L6av+ZWN2Dj8FOXRABM8WiR2PWJKu6PuePU=",
+        "lastModified": 1766536726,
+        "narHash": "sha256-C+a/blhcgJrvnDnxHO3vkstNo0b2h9KjM2ISfGXHFm8=",
         "owner": "KaylorBen",
         "repo": "nixcord",
-        "rev": "6c0a9e5cae6fb61a52198f5f73cd52941ebebb8b",
+        "rev": "867aabd9c47f2fff8005faca95a9a81e8f23450b",
         "type": "github"
       },
       "original": {
