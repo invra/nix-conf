@@ -26,6 +26,7 @@
         };
         fixYoutubeEmbeds.enable = true;
         imageZoom.enable = true;
+        spotifyControls.enable = true;
         noF1.enable = true;
         OnePingPerDM.enable = true;
         openInApp.enable = true;
