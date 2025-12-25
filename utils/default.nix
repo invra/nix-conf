@@ -30,14 +30,14 @@ let
     allowUnfreePredicate =
       pkg:
       builtins.elem (lib.getName pkg) [
-        "nvidia-x11"
+        "bitwig-studio-unwrapped"
+        "steam-unwrapped"
         "nvidia-settings"
         "davinci-resolve"
-        "steam-unwrapped"
-        "steam"
-        "mongodb"
-        "bitwig-studio-unwrapped"
+        "nvidia-x11"
         "discord"
+        "mongodb"
+        "steam"
       ];
     custils = import ./. {
       inherit
