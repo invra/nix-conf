@@ -41,7 +41,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    configs.url = "gitlab:invra/nix-conf";
+    configs.url = "git+file:./configs";
   };
 
   outputs =

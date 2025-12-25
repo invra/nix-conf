@@ -85,15 +85,15 @@
       "locked": {
         "lastModified": 1766614914,
         "narHash": "sha256-zNc6TK1D2iXbDZf/X4QVXbgC+A5FBKP0n8dDTg1oTw0=",
-        "owner": "invra",
-        "repo": "nix-conf",
+        "ref": "refs/heads/main",
         "rev": "9be8966c25e2cb9d4ae4b0d814d3c0b7e2a8ce1f",
-        "type": "gitlab"
+        "revCount": 37,
+        "type": "git",
+        "url": "file:./configs"
       },
       "original": {
-        "owner": "invra",
-        "repo": "nix-conf",
-        "type": "gitlab"
+        "type": "git",
+        "url": "file:./configs"
       }
     },
     "damage-control": {
