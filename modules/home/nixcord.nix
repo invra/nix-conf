@@ -26,7 +26,8 @@
         };
         fixYoutubeEmbeds.enable = true;
         imageZoom.enable = true;
-        spotifyControls.enable = true;
+        spotifyControls.enable = !(pkgs.stdenv.isLinux);
+        musicControls.enable = pkgs.stdenv.isLinux;
         noF1.enable = true;
         OnePingPerDM.enable = true;
         openInApp.enable = true;
