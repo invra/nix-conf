@@ -45,6 +45,7 @@
       gimp3
       pavucontrol
       # davinci-resolve
+      krita
       wayvnc
       libreoffice-qt6-still
       kdePackages.kdeconnect-kde
