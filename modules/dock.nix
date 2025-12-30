@@ -10,8 +10,10 @@ let
 
   checkVersion = pkgs.runCommand "check-version" { } ''
     PATH=${pkgs.uutils-coreutils-noprefix}/bin:${pkgs.coreutils}/bin
-    versionStr="sw_vers -productVersion"
-    if [ "$versionStr" -ge 26 ]; then
+    versionStr="$(sw_vers -productVersion)"
+    majorVersion="$${versionStr%%.*}"
+
+    if [ "$majorVersion" -ge 26 ]; then
       echo true > $out
     else
       echo false > $out
