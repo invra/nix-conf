@@ -14,7 +14,6 @@ let
       nixpkgs-stable
       plasma-manager
       nixcord
-      helium
       stylix
       ;
     inherit flakeConfig;
@@ -23,7 +22,6 @@ let
       sketchierbar.overlays.default
       nix-dev.overlays.default
       ffm.overlays.default
-      helium.overlay
       ip.overlay
     ];
     linux = (lib.strings.hasSuffix "x86" configName || lib.strings.hasSuffix "aarch64" configName);

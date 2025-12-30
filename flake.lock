@@ -127,30 +127,6 @@
         "type": "github"
       }
     },
-    "darwin-aarch-src": {
-      "flake": false,
-      "locked": {
-        "narHash": "sha256-WPcybhApAhHbRamMQLa5v2lpkW/QM/GJY72U/Um/PjM=",
-        "type": "file",
-        "url": "https://github.com/imputnet/helium-macos/releases/download/0.7.5.1/helium_0.7.5.1_arm64-macos.dmg"
-      },
-      "original": {
-        "type": "file",
-        "url": "https://github.com/imputnet/helium-macos/releases/download/0.7.5.1/helium_0.7.5.1_arm64-macos.dmg"
-      }
-    },
-    "darwin-x86-src": {
-      "flake": false,
-      "locked": {
-        "narHash": "sha256-pz1+QjqorfrDRNkNCkGautu45rlyKxXuMHcFPCOxHno=",
-        "type": "file",
-        "url": "https://github.com/imputnet/helium-macos/releases/download/0.7.5.1/helium_0.7.5.1_x86_64-macos.dmg"
-      },
-      "original": {
-        "type": "file",
-        "url": "https://github.com/imputnet/helium-macos/releases/download/0.7.5.1/helium_0.7.5.1_x86_64-macos.dmg"
-      }
-    },
     "discord-rpc-lsp": {
       "inputs": {
         "flake-utils": "flake-utils",
@@ -402,28 +378,6 @@
         "type": "gitlab"
       }
     },
-    "helium": {
-      "inputs": {
-        "darwin-aarch-src": "darwin-aarch-src",
-        "darwin-x86-src": "darwin-x86-src",
-        "linux-aarch-src": "linux-aarch-src",
-        "linux-x86-src": "linux-x86-src",
-        "nixpkgs": "nixpkgs_4"
-      },
-      "locked": {
-        "lastModified": 1765913362,
-        "narHash": "sha256-rBhQH+gIBo5U+nf9nrnaqGTzlsxpRWn2h7iEGb3G7ZI=",
-        "owner": "invra",
-        "repo": "helium",
-        "rev": "96afab61e4a181fb000d59c940bcda285fd7c010",
-        "type": "gitlab"
-      },
-      "original": {
-        "owner": "invra",
-        "repo": "helium",
-        "type": "gitlab"
-      }
-    },
     "home-manager": {
       "inputs": {
         "nixpkgs": [
@@ -449,7 +403,7 @@
         "chromium": "chromium",
         "damage-control": "damage-control",
         "linearmouse": "linearmouse",
-        "nixpkgs": "nixpkgs_5",
+        "nixpkgs": "nixpkgs_4",
         "obs-studio": "obs-studio",
         "steam": "steam"
       },
@@ -479,30 +433,6 @@
         "url": "https://dl.linearmouse.org/v0.10.0/LinearMouse.dmg"
       }
     },
-    "linux-aarch-src": {
-      "flake": false,
-      "locked": {
-        "narHash": "sha256-UvE2OPGvbkep9BPJ7mcEbSt47luIsYJRQlQTV9UYKbw=",
-        "type": "file",
-        "url": "https://github.com/imputnet/helium-linux/releases/download/0.7.5.1/helium-0.7.5.1-arm64.AppImage"
-      },
-      "original": {
-        "type": "file",
-        "url": "https://github.com/imputnet/helium-linux/releases/download/0.7.5.1/helium-0.7.5.1-arm64.AppImage"
-      }
-    },
-    "linux-x86-src": {
-      "flake": false,
-      "locked": {
-        "narHash": "sha256-6xzcXs/Ec7filuzynh7qjS47HliVu2hFzg5Ql0+r1Jk=",
-        "type": "file",
-        "url": "https://github.com/imputnet/helium-linux/releases/download/0.7.5.1/helium-0.7.5.1-x86_64.AppImage"
-      },
-      "original": {
-        "type": "file",
-        "url": "https://github.com/imputnet/helium-linux/releases/download/0.7.5.1/helium-0.7.5.1-x86_64.AppImage"
-      }
-    },
     "mango": {
       "inputs": {
         "flake-parts": "flake-parts",
@@ -528,7 +458,7 @@
     "nix-dev": {
       "inputs": {
         "flake-utils": "flake-utils_4",
-        "nixpkgs": "nixpkgs_6",
+        "nixpkgs": "nixpkgs_5",
         "treefmt-nix": "treefmt-nix_2"
       },
       "locked": {
@@ -631,22 +561,6 @@
     },
     "nixpkgs_10": {
       "locked": {
-        "lastModified": 1754340878,
-        "narHash": "sha256-lgmUyVQL9tSnvvIvBp7x1euhkkCho7n3TMzgjdvgPoU=",
-        "owner": "nixos",
-        "repo": "nixpkgs",
-        "rev": "cab778239e705082fe97bb4990e0d24c50924c04",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nixos",
-        "ref": "nixpkgs-unstable",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
-    "nixpkgs_11": {
-      "locked": {
         "lastModified": 1764517877,
         "narHash": "sha256-pp3uT4hHijIC8JUK5MEqeAWmParJrgBVzHLNfJDZxg4=",
         "owner": "NixOS",
@@ -661,7 +575,7 @@
         "type": "github"
       }
     },
-    "nixpkgs_12": {
+    "nixpkgs_11": {
       "locked": {
         "lastModified": 1761236834,
         "narHash": "sha256-+pthv6hrL5VLW2UqPdISGuLiUZ6SnAXdd2DdUE+fV2Q=",
@@ -711,22 +625,6 @@
     },
     "nixpkgs_4": {
       "locked": {
-        "lastModified": 1765472234,
-        "narHash": "sha256-9VvC20PJPsleGMewwcWYKGzDIyjckEz8uWmT0vCDYK0=",
-        "owner": "nixos",
-        "repo": "nixpkgs",
-        "rev": "2fbfb1d73d239d2402a8fe03963e37aab15abe8b",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nixos",
-        "ref": "nixos-unstable",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
-    "nixpkgs_5": {
-      "locked": {
         "lastModified": 1763421233,
         "narHash": "sha256-Stk9ZYRkGrnnpyJ4eqt9eQtdFWRRIvMxpNRf4sIegnw=",
         "owner": "NixOS",
@@ -741,7 +639,7 @@
         "type": "github"
       }
     },
-    "nixpkgs_6": {
+    "nixpkgs_5": {
       "locked": {
         "lastModified": 1766651565,
         "narHash": "sha256-QEhk0eXgyIqTpJ/ehZKg9IKS7EtlWxF3N7DXy42zPfU=",
@@ -757,7 +655,7 @@
         "type": "github"
       }
     },
-    "nixpkgs_7": {
+    "nixpkgs_6": {
       "locked": {
         "lastModified": 1761236834,
         "narHash": "sha256-+pthv6hrL5VLW2UqPdISGuLiUZ6SnAXdd2DdUE+fV2Q=",
@@ -773,7 +671,7 @@
         "type": "github"
       }
     },
-    "nixpkgs_8": {
+    "nixpkgs_7": {
       "locked": {
         "lastModified": 1766902085,
         "narHash": "sha256-coBu0ONtFzlwwVBzmjacUQwj3G+lybcZ1oeNSQkgC0M=",
@@ -789,7 +687,7 @@
         "type": "github"
       }
     },
-    "nixpkgs_9": {
+    "nixpkgs_8": {
       "locked": {
         "lastModified": 1757408970,
         "narHash": "sha256-aSgK4BLNFFGvDTNKPeB28lVXYqVn8RdyXDNAvgGq+k0=",
@@ -801,6 +699,22 @@
       "original": {
         "owner": "NixOS",
         "ref": "nixos-25.05",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs_9": {
+      "locked": {
+        "lastModified": 1754340878,
+        "narHash": "sha256-lgmUyVQL9tSnvvIvBp7x1euhkkCho7n3TMzgjdvgPoU=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "cab778239e705082fe97bb4990e0d24c50924c04",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "ref": "nixpkgs-unstable",
         "repo": "nixpkgs",
         "type": "github"
       }
@@ -873,13 +787,12 @@
         "discord-rpc-lsp": "discord-rpc-lsp",
         "ffm": "ffm",
         "flake-utils": "flake-utils_3",
-        "helium": "helium",
         "home-manager": "home-manager",
         "ip": "ip",
         "mango": "mango",
         "nix-dev": "nix-dev",
         "nixcord": "nixcord",
-        "nixpkgs": "nixpkgs_8",
+        "nixpkgs": "nixpkgs_7",
         "nixpkgs-stable": "nixpkgs-stable",
         "plasma-manager": "plasma-manager",
         "sketchierbar": "sketchierbar",
@@ -911,7 +824,7 @@
     "sketchierbar": {
       "inputs": {
         "flake-utils": "flake-utils_5",
-        "nixpkgs": "nixpkgs_9",
+        "nixpkgs": "nixpkgs_8",
         "treefmt-nix": "treefmt-nix_3"
       },
       "locked": {
@@ -949,7 +862,7 @@
         "firefox-gnome-theme": "firefox-gnome-theme",
         "flake-parts": "flake-parts_3",
         "gnome-shell": "gnome-shell",
-        "nixpkgs": "nixpkgs_11",
+        "nixpkgs": "nixpkgs_10",
         "nur": "nur",
         "systems": "systems_6",
         "tinted-foot": "tinted-foot",
@@ -1163,7 +1076,7 @@
     },
     "treefmt-nix_2": {
       "inputs": {
-        "nixpkgs": "nixpkgs_7"
+        "nixpkgs": "nixpkgs_6"
       },
       "locked": {
         "lastModified": 1766000401,
@@ -1181,7 +1094,7 @@
     },
     "treefmt-nix_3": {
       "inputs": {
-        "nixpkgs": "nixpkgs_10"
+        "nixpkgs": "nixpkgs_9"
       },
       "locked": {
         "lastModified": 1756662192,
@@ -1199,7 +1112,7 @@
     },
     "treefmt-nix_4": {
       "inputs": {
-        "nixpkgs": "nixpkgs_12"
+        "nixpkgs": "nixpkgs_11"
       },
       "locked": {
         "lastModified": 1766000401,

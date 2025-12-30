@@ -12,7 +12,6 @@
     treefmt-nix.url = "github:numtide/treefmt-nix";
     sketchierbar.url = "gitlab:invra/sketchierbar";
     nix-dev.url = "gitlab:invra/nix-dev";
-    helium.url = "gitlab:invra/helium";
     ffm.url = "gitlab:invra/ffm";
 
     darwin = {

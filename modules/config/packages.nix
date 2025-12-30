@@ -22,7 +22,6 @@
       ++ lib.optionals linux [
         lsof
         foot
-        helium
         pciutils
         nautilus
         swww
