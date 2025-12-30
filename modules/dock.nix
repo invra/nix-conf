@@ -7,9 +7,17 @@
 with lib;
 let
   cfg = config.targets.darwin.dock;
-  dockPkgs = import ./packages.nix { inherit pkgs; };
-  isAppDrawerCompliant = dockPkgs.isAppDrawerCompliant;
-  dockutil = pkgs.dockutil;
+
+  checkVersion = pkgs.runCommand "check-version" { } ''
+    PATH=${pkgs.uutils-coreutils-noprefix}/bin:${pkgs.coreutils}/bin
+    versionStr="sw_vers -productVersion"
+    if [ "$versionStr" -ge 26 ]; then
+      echo true > $out
+    else
+      echo false > $out
+    fi
+  '';
+  isAppDrawerCompliant = builtins.readFile checkVersion == "true\n";
 in
 {
   options = {
@@ -87,7 +95,7 @@ in
       home.activation.darwinDock = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
         #!/bin/bash
         (
-          haveURIs="$(${dockutil}/bin/dockutil --list | ${pkgs.coreutils}/bin/cut -f2 | ${pkgs.coreutils}/bin/sort)"
+          haveURIs="$(${pkgs.dockutil}/bin/dockutil --list | ${pkgs.coreutils}/bin/cut -f2 | ${pkgs.coreutils}/bin/sort)"
           wantURIs=""
           ${lib.optionalString (cfg.entries != [ ]) ''
             wantURIs="$(
@@ -113,7 +121,7 @@ in
 
           if ! diff -wu <(echo -n "$haveURIs") <(echo -n "$wantURIs") >/dev/null 2>&1; then
             echo "Dock URIs differ, updating Dock" >&2
-            ${dockutil}/bin/dockutil --no-restart --remove all >/dev/null 2>&1
+            ${pkgs.dockutil}/bin/dockutil --no-restart --remove all >/dev/null 2>&1
             ${lib.optionalString (cfg.entries != [ ]) ''
               ${lib.concatMapStringsSep "\n" (entry: ''
                 if [[ -z "${entry.path or ""}" || -z "${entry.section or ""}" ]]; then
@@ -128,7 +136,7 @@ in
                   echo "Error: Path '$resolved_path' is not an application bundle" >&2
                   exit 1
                 fi
-                ${dockutil}/bin/dockutil --no-restart --add "$resolved_path" --section ${entry.section} ${entry.options or ""} >/dev/null 2>&1
+                ${pkgs.dockutil}/bin/dockutil --no-restart --add "$resolved_path" --section ${entry.section} ${entry.options or ""} >/dev/null 2>&1
               '') cfg.entries}
             ''}
             ${pkgs.killall}/bin/killall Dock >/dev/null 2>&1

@@ -12,7 +12,7 @@ in
 lib.optionalAttrs (!linux) {
   imports = [
     ../wallpaper.nix
-    ../dock
+    ../dock.nix
   ];
 
   targets.darwin = {
