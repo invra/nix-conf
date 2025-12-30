@@ -23,9 +23,7 @@
       yazi
       wget
       firefox
-      uutils-diffutils
-      uutils-findutils
-      uutils-coreutils-noprefix
+      killall
     ]
     ++ lib.optionals (!(stdenv.isLinux && stdenv.isAarch64)) [
       insomnia
