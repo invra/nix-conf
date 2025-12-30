@@ -39,6 +39,7 @@
 
     nixcord = {
       url = "github:invra/nixcord";
+      # url = "github:FlameFlag/nixcord"; -- New input
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
