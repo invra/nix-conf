@@ -7,6 +7,7 @@
     with pkgs;
     [
       sl
+      dev
       dbgate
       prismlauncher
       viu

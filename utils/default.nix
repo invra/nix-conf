@@ -21,6 +21,7 @@ let
     extraOverlays = with flakeInputs; [
       discord-rpc-lsp.overlays.default
       sketchierbar.overlays.default
+      nix-dev.overlays.default
       ffm.overlays.default
       helium.overlay
       ip.overlay
