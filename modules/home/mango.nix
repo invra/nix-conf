@@ -20,6 +20,10 @@ lib.optionalAttrs linux {
         "swww-daemon"
       ];
 
+      exec = [
+        "swww img ${flakeConfig.user.wallpaper or ../../wallpapers/flake.jpg}"
+      ];
+
       # Window effect
       blur = "0";
       blur_layer = "0";
