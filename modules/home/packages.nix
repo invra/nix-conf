@@ -50,10 +50,10 @@
       kdePackages.kdeconnect-kde
     ]
     ++ (lib.optionals (pkgs.stdenv.isLinux && pkgs.stdenv.isx86_64) [
-      wineWowPackages.waylandFull
-      winetricks
-      yabridge
-      (yabridgectl.override { wine = wineWowPackages.waylandFull; })
+      # wineWowPackages.waylandFull
+      # winetricks
+      # yabridge
+      # (yabridgectl.override { wine = wineWowPackages.waylandFull; })
       bitwig-studio
     ]);
 
