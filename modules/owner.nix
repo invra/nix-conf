@@ -2,10 +2,10 @@
 {
   flake = {
     meta.owner = {
-      email = "mightyiampresence@gmail.com";
-      name = "Shahar \"Dawn\" Or";
-      username = "mightyiam";
-      matrix = "@mightyiam:matrix.org";
+      email = "identificationsucks@gmail.com";
+      name = "Invra";
+      username = "invra";
+      matrix = "@invranet:matrix.org";
     };
 
     modules = {
