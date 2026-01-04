@@ -13,8 +13,5 @@
         geoclue2.enableDemoAgent = lib.mkForce true;
       };
     };
-    nixOnDroid.base = {
-      time.timeZone = "Asia/Bangkok";
-    };
   };
 }
