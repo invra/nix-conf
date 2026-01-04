@@ -53,9 +53,5 @@
       ]
       |> lib.concatLines
       |> (s: s + "\n");
-
-    perSystem = psArgs: {
-      make-shells.default.packages = [ psArgs.config.files.writer.drv ];
-    };
   };
 }

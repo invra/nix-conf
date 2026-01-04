@@ -1,0 +1,88 @@
+format = """
+$username\
+$directory\
+$git_branch\
+$git_status\
+$bun\
+$deno\
+$rust\
+$golang\
+$haskell\
+$haxe\
+$zig\
+$c\
+$cpp\
+$cmake\
+$swift\
+$dotnet\
+$nix_shell\
+$time\n\
+$character
+"""
+continuation_prompt = "[.](bright-black) "
+
+[bun]
+symbol = "bun "
+
+[c]
+symbol = "C "
+
+[character]
+success_symbol = "[ 󱞪](bold green)"
+error_symbol = "[ 󱞪](bold red)"
+vimcmd_symbol = "[<](bold green)"
+vimcmd_visual_symbol = "[<](bold yellow)"
+vimcmd_replace_symbol = "[<](bold purple)"
+vimcmd_replace_one_symbol = "[<](bold purple)"
+
+[cmake]
+symbol = "cmake "
+
+[cpp]
+symbol = "C++ "
+
+[deno]
+symbol = "deno "
+
+[directory]
+read_only = " ro"
+
+[dotnet]
+format = "via [$symbol($version )(target $tfm )]($style)"
+symbol = ".NET "
+
+[git_branch]
+symbol = "git "
+truncation_symbol = "..."
+
+[git_commit]
+tag_symbol = " tag "
+
+[git_status]
+ahead = ">"
+behind = "<"
+diverged = "<>"
+renamed = "r"
+deleted = "x"
+
+[haskell]
+symbol = "haskell "
+
+[haxe]
+symbol = "hx "
+
+[nix_shell]
+symbol = "nix "
+
+[package]
+symbol = "pkg "
+
+[rust]
+symbol = "rs "
+
+[swift]
+symbol = "swift "
+
+[zig]
+symbol = "zig "
+
