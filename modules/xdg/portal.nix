@@ -1,6 +1,6 @@
 {
   flake.modules.homeManager.gui.xdg.portal = {
-    enable = true;
+    # enable = true;
     config.common.default = "*";
   };
 }
