@@ -46,27 +46,9 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nix-on-droid = {
-      url = "github:nix-community/nix-on-droid";
-      inputs = {
-        home-manager.follows = "home-manager";
-        nixpkgs-docs.follows = "nixpkgs";
-        nixpkgs-for-bootstrap.follows = "nixpkgs";
-        nixpkgs.follows = "nixpkgs";
-      };
-    };
-
     nixos-facter-modules.url = "github:numtide/nixos-facter-modules";
 
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-
-    nixvim = {
-      url = "github:nix-community/nixvim";
-      inputs = {
-        flake-parts.follows = "flake-parts";
-        nixpkgs.follows = "nixpkgs";
-      };
-    };
 
     refjump-nvim = {
       flake = false;
