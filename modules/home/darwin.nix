@@ -11,8 +11,8 @@ let
 in
 lib.optionalAttrs (!linux) {
   imports = [
-    ../wallpaper.nix
-    ../dock.nix
+    ../wallpaper-module.nix
+    ../dock-module.nix
   ];
 
   targets.darwin = {

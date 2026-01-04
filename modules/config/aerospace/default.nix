@@ -6,7 +6,7 @@
 }:
 lib.optionalAttrs (!linux) {
   imports = [
-    ../../aerospace.nix
+    ../../aerospace-module.nix
   ];
 
   services.airspace = {

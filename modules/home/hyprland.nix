@@ -10,7 +10,7 @@
 let
   hyprland = flakeConfig.desktop.hyprland or { };
 
-  monitors = builtins.map (monitor: {
+  monitors = map (monitor: {
     name = monitor.name;
     resolution = monitor.resolution;
     refreshRate = monitor.refreshRate;
@@ -25,9 +25,9 @@ lib.optionalAttrs linux {
     enable = hyprland.enable or false;
 
     settings = {
-      monitor = builtins.map (
+      monitor = map (
         monitor:
-        "${monitor.name},${monitor.resolution}@${builtins.toString monitor.refreshRate},${monitor.position},${builtins.toString monitor.scale}"
+        "${monitor.name},${monitor.resolution}@${toString monitor.refreshRate},${monitor.position},${toString monitor.scale}"
       ) monitors;
 
       # Disable Updated to * toast.

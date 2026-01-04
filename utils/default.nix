@@ -93,7 +93,6 @@ in
   };
 
   development = {
-    packages = pkgs.callPackage ./dev/packages.nix { };
     devShell = pkgs.callPackage ./dev/devsh.nix { };
     formatter = pkgs.callPackage ./dev/formatter.nix { inherit flakeInputs; };
   };

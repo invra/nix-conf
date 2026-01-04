@@ -14,22 +14,22 @@
       firewall.enable = networking.firewallEnabled;
       useDHCP = pkgs.lib.mkForce networking.dhcpEnabled;
 
-      interfaces = builtins.listToAttrs (
+      interfaces = listToAttrs (
         map (iface: {
           name = iface.name;
           value.useDHCP =
-            !(builtins.any (br: builtins.elem iface.name (br.interfaces or [ ])) (
-              builtins.filter (br: br.type == "BRIDGE") (networking.interfaces or [ ])
+            !(any (br: elem iface.name (br.interfaces or [ ])) (
+              filter (br: br.type == "BRIDGE") (networking.interfaces or [ ])
             ))
             && (iface.dhcpEnabled or iface.type != "BRIDGE");
         }) (networking.interfaces or [ ])
       );
 
-      bridges = builtins.listToAttrs (
+      bridges = listToAttrs (
         map (iface: {
           name = iface.name;
           value.interfaces = (iface.interfaces or [ ]);
-        }) (builtins.filter (iface: iface.type == "BRIDGE") networking.interfaces or [ ])
+        }) (filter (iface: iface.type == "BRIDGE") networking.interfaces or [ ])
       );
     }
   );

@@ -19,7 +19,7 @@ let
       echo false > $out
     fi
   '';
-  isAppDrawerCompliant = builtins.readFile checkVersion == "true\n";
+  isAppDrawerCompliant = readFile checkVersion == "true\n";
 in
 {
   options = {
@@ -104,7 +104,7 @@ in
               {
                 ${lib.concatMapStringsSep "\n" (entry: ''
                   if [[ -z "${entry.path or ""}" || -z "${entry.section or ""}" ]]; then
-                    echo "Error: Invalid entry in cfg.entries (missing path or section): ${builtins.toJSON entry}" >&2
+                    echo "Error: Invalid entry in cfg.entries (missing path or section): ${toJSON entry}" >&2
                     exit 1
                   fi
                   path="$(${pkgs.coreutils}/bin/realpath "${entry.path}")"
@@ -127,7 +127,7 @@ in
             ${lib.optionalString (cfg.entries != [ ]) ''
               ${lib.concatMapStringsSep "\n" (entry: ''
                 if [[ -z "${entry.path or ""}" || -z "${entry.section or ""}" ]]; then
-                  echo "Error: Invalid entry in cfg.entries (missing path or section): ${builtins.toJSON entry}" >&2
+                  echo "Error: Invalid entry in cfg.entries (missing path or section): ${toJSON entry}" >&2
                   exit 1
                 fi
                 resolved_path="$(${pkgs.coreutils}/bin/realpath "${entry.path}")"

@@ -22,14 +22,14 @@ in
   start-at-login = false
 
   [gaps.inner]
-  horizontal = ${builtins.toString gaps}
-  vertical = ${builtins.toString gaps}
+  horizontal = ${toString gaps}
+  vertical = ${toString gaps}
 
   [gaps.outer]
-  bottom = ${builtins.toString gaps}
-  left = ${builtins.toString gaps}
-  right = ${builtins.toString gaps}
-  top = ${builtins.toString (gaps + 2)}
+  bottom = ${toString gaps}
+  left = ${toString gaps}
+  right = ${toString gaps}
+  top = ${toString (gaps + 2)}
 
   [key-mapping]
   preset = "qwerty"

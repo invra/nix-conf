@@ -7,7 +7,7 @@
 }:
 lib.optionalAttrs linux {
   imports = [
-    ../mangowc.nix
+    ../mangowc-module.nix
   ];
 
   wayland.windowManager.mangowc = lib.optionalAttrs (flakeConfig.desktop.mangowc.enable or false) {
