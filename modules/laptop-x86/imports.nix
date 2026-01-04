@@ -5,7 +5,6 @@
       efi
       workstation
       nvidia-gpu
-      swap
     ];
   };
 }
