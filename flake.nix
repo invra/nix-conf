@@ -2,7 +2,6 @@
   nixConfig = {
     abort-on-warn = true;
     extra-experimental-features = [ "pipe-operators" ];
-    allow-import-from-derivation = false;
   };
 
   inputs.self.submodules = true;
