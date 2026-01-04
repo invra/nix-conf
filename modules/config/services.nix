@@ -22,7 +22,6 @@ in
       videoDrivers = system.graphics.wanted;
     };
 
-    desktopManager.plasma6.enable = desktop.plasma.enable or false;
     fwupd.enable = true;
     pipewire = {
       enable = true;

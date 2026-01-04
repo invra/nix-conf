@@ -12,7 +12,6 @@ let
     inherit (flakeInputs)
       home-manager
       nixpkgs-stable
-      plasma-manager
       nixcord
       stylix
       ;
@@ -55,7 +54,6 @@ let
       pkgs = import flakeInputs.nixpkgs { inherit system; };
       modules = [
         ../modules/home
-        flakeInputs.plasma-manager.homeManagerModules.plasma-manager
         flakeInputs.nixcord.homeModules.nixcord
         flakeInputs.stylix.homeModules.stylix
       ];
