@@ -12,6 +12,8 @@
       url = "github:platomav/CPUMicrocodes";
     };
 
+    dev-nix.url = "gitlab:invra/nix-dev";
+
     files.url = "github:mightyiam/files";
 
     flake-parts = {
@@ -39,6 +41,11 @@
     make-shell = {
       url = "github:nicknovitski/make-shell";
       inputs.flake-compat.follows = "dedupe_flake-compat";
+    };
+
+    mango = {
+      url = "github:DreamMaoMao/mango";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     nix-index-database = {

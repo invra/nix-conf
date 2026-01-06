@@ -7,7 +7,9 @@
 
   config = {
     nixpkgs.config.allowUnfreePredicate =
-      pkg: builtins.elem (lib.getName pkg) config.nixpkgs.allowedUnfreePackages;
+      pkg: builtins.elem (lib.getName pkg) [
+        "bitwig-studio-unwrapped"
+      ];
 
     text.readme.parts.unfree-packages = ''
       ## Unfree packages

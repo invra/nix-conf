@@ -2,8 +2,7 @@
 {
   configurations.nixos.laptop-x86.module = {
     imports = with config.flake.modules.nixos; [
-      efi
-      workstation
+      base
       nvidia-gpu
     ];
   };
