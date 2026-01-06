@@ -9,11 +9,6 @@
           pulseaudio
           gawk
         ];
-        text = ''
-          for source in $(pactl list short sources | awk "{print \$2}");
-          do pactl set-source-mute "$source" toggle;
-          done
-        '';
       };
     };
 
