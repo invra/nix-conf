@@ -1,4 +1,0 @@
-[submodule "configs"]
-	path = configs
-	url = https://gitlab.com/invra/nix-conf.git
-	branch = main
