@@ -11,8 +11,7 @@
     facter.reportPath = ./facter.json;
     hardware.nvidia.open = false;
     fileSystems = {
-      "/".device = "/dev/nvme0n1p3";
-      "/home".device = "/dev/nvme0n1p4";
+      "/".device = "/dev/vda2";
     };
     system.stateVersion = "24.11";
   };
