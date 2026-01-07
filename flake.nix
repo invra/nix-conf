@@ -30,11 +30,6 @@
 
     input-branches.url = "github:mightyiam/input-branches";
 
-    make-shell = {
-      url = "github:nicknovitski/make-shell";
-      inputs.flake-compat.follows = "dedupe_flake-compat";
-    };
-
     mango = {
       url = "github:DreamMaoMao/mango";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -75,9 +70,6 @@
       inputs.cpu-microcodes.follows = "cpu-microcodes";
     };
   };
-
-  # _additional_ `inputs` only for deduplication
-  inputs.dedupe_flake-compat.url = "github:edolstra/flake-compat";
 
   outputs =
     inputs:
