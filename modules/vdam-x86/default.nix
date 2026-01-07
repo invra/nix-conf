@@ -1,5 +1,5 @@
 { config, ... }: {
-  configurations.nixos.laptop-x86.module = {
+  configurations.nixos.vdam-x86.module = {
     imports = with config.flake.modules.nixos; [
       base
       nvidia-gpu
