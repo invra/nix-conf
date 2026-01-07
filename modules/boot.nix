@@ -13,8 +13,13 @@
         options v4l2loopback devices=1 video_nr=1 card_label="OBS Virtual Camera" exclusive_caps=1
       '';
 
-      loader.systemd-boot.enable = true;
-
+      loader = {
+        systemd-boot.enable = false;
+        grub = {
+          enable = true;
+          devices = [ "/dev/vda" ];
+        };
+      };  
       kernel.sysctl = {
         "vm.max_map_count" = 2147483642;
         "vm.swappiness" = 10;
