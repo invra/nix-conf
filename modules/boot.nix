@@ -14,11 +14,11 @@
       '';
 
       loader = {
-        systemd-boot.enable = false;
-        grub = {
-          enable = true;
-          devices = [ "/dev/vda" ];
-        };
+        systemd-boot.enable = true;
+        # grub = {
+        #   enable = true;
+        #   devices = [ "/dev/vda" ];
+        # };
       };  
       kernel.sysctl = {
         "vm.max_map_count" = 2147483642;
