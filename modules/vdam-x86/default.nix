@@ -1,5 +1,5 @@
 { config, ... }: {
-  configurations.nixos.vdam-x86.module = {
+  configurations.vdam-x86.module = {
     imports = with config.flake.modules.nixos; [ base ];
     networking = {
       hostId = "0e8e163d";

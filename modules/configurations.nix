@@ -1,6 +1,6 @@
-{ lib, config, ... }:
+{ lib, config, inputs, ... }:
 {
-  options.configurations.nixos = lib.mkOption {
+  options.configurations = lib.mkOption {
     type = lib.types.lazyAttrsOf (
       lib.types.submodule {
         options.module = lib.mkOption {
@@ -10,20 +10,38 @@
     );
   };
 
-  config.flake = {
-    nixosConfigurations = lib.flip lib.mapAttrs config.configurations.nixos (
-      name: { module }: lib.nixosSystem { modules = [ module ]; }
-    );
+  config.flake = let
+    outputs = lib.foldl' lib.recursiveUpdate {} (
+      lib.mapAttrsToList (name: cfg: 
+        let
+          isLinux = (lib.hasSuffix "x86" name) || (lib.hasSuffix "aarch64" name);
+          isDarwin = lib.hasPrefix "mac" name;
+        in {
+          nixosConfigurations = lib.optionalAttrs isLinux {
+            ${name} = lib.nixosSystem {
+              modules = [ cfg.module ];
+            };
+          };
 
-    checks =
-      config.flake.nixosConfigurations
-      |> lib.mapAttrsToList (
-        name: nixos: {
-          ${nixos.config.nixpkgs.hostPlatform.system} = {
-            "configurations/nixos/${name}" = nixos.config.system.build.toplevel;
+          darwinConfigurations = lib.optionalAttrs isDarwin {
+            ${name} = inputs.nix-darwin.lib.darwinSystem {
+              modules = [ cfg.module ];
+            };
           };
         }
-      )
-      |> lib.mkMerge;
-  };
+      ) config.configurations
+    );
+  in
+    lib.mkMerge [
+      outputs
+      {
+        checks = outputs.nixosConfigurations or {}
+          |> lib.mapAttrsToList (name: nixos: {
+            ${nixos.config.nixpkgs.hostPlatform.system} = {
+              "configurations/nixos/${name}" = nixos.config.system.build.toplevel;
+            };
+          })
+          |> lib.mkMerge;
+      }
+    ];
 }
