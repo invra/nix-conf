@@ -4,8 +4,6 @@
     extra-experimental-features = [ "pipe-operators" ];
   };
 
-  inputs.self.submodules = true;
-
   inputs = {
     cpu-microcodes = {
       flake = false;
@@ -13,8 +11,6 @@
     };
 
     dev-nix.url = "gitlab:invra/nix-dev";
-
-    files.url = "github:mightyiam/files";
 
     flake-parts = {
       url = "github:hercules-ci/flake-parts";
@@ -28,29 +24,14 @@
 
     import-tree.url = "github:vic/import-tree";
 
-    input-branches.url = "github:mightyiam/input-branches";
-
     mango = {
       url = "github:DreamMaoMao/mango";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    nix-index-database = {
-      url = "github:nix-community/nix-index-database";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
     nixos-facter-modules.url = "github:numtide/nixos-facter-modules";
 
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-
-    statix = {
-      url = "github:molybdenumsoftware/statix";
-      inputs = {
-        flake-parts.follows = "flake-parts";
-        nixpkgs.follows = "nixpkgs";
-      };
-    };
 
     stylix = {
       url = "github:danth/stylix";
@@ -71,8 +52,7 @@
     };
   };
 
-  outputs =
-    inputs:
+  outputs = inputs@{ ... }:
     inputs.flake-parts.lib.mkFlake { inherit inputs; } {
       imports = [ (inputs.import-tree ./modules) ];
 
