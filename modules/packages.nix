@@ -1,4 +1,7 @@
 { inputs, ... }: {
+  nixpkgs.allowedUnfreePackages = [
+    "bitwig-studio-unwrapped"
+  ];
   flake.modules.nixos.base =
     { pkgs, ... }:
     {

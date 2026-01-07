@@ -7,10 +7,7 @@
 
   config = {
     nixpkgs.config.allowUnfreePredicate =
-      pkg: builtins.elem (lib.getName pkg) [
-        "bitwig-studio-unwrapped"
-      ];
-
+      pkg: builtins.elem (lib.getName pkg) config.nixpkgs.allowedUnfreePackages;
     flake.meta.nixpkgs.allowedUnfreePackages = config.nixpkgs.allowedUnfreePackages;
   };
 }
