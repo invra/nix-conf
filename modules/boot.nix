@@ -1,5 +1,5 @@
 { inputs, ... }: {
-  flake.nixosModules.base = { pkgs, lib, config, ... }: {
+  flake.modules.nixos.base = { pkgs, lib, config, ... }: {
     imports = [ inputs.ucodenix.nixosModules.default ];
 
     boot = {
