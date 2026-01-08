@@ -29,6 +29,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    nixcord = {
+      url = "github:FlameFlag/nixcord";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     nixos-facter-modules.url = "github:numtide/nixos-facter-modules";
 
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
