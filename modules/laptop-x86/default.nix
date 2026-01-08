@@ -1,5 +1,5 @@
 { config, ... }: {
-  configurations.laptop-x86.module = {
+  configurations.laptop-x86.module = { pkgs, ... }: {
     imports = with config.flake.modules.nixos; [
       base
       nvidia-gpu
@@ -10,6 +10,12 @@
     };
     facter.reportPath = ./facter.json;
     hardware.nvidia.open = false;
+    services.desktopManager.gnome.enable = true;
+    environment.gnome.excludePackages = with pkgs; [
+      gnome-tour
+      gnome-user-docs
+    ];
+    #^ [NOTE]: Only desktop environment I can "use" which doesn't crash for dumb reasons, I will remove ASAP.
 
     boot = {
       initrd.availableKernelModules = [ "xhci_pci" "thunderbolt" "vmd" "ahci" "nvme" ];
