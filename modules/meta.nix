@@ -1,8 +1,12 @@
-{ config, inputs, lib, ... }:
+{
+  config,
+  inputs,
+  lib,
+  ...
+}:
 {
   imports = [ inputs.flake-parts.flakeModules.modules ];
 
-  
   options.flake.meta = lib.mkOption {
     type = lib.types.anything;
   };

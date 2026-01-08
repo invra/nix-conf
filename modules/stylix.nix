@@ -12,7 +12,6 @@ let
       # image = flakeConfig.user.wallpaper or ../../wallpapers/flake.jpg;
       image = ../wallpapers/flake.jpg;
 
-      
       icons = {
         enable = true;
         dark = "Papirus-Dark";
@@ -43,19 +42,23 @@ let
 in
 {
   flake.modules = {
-    nixos.base = { pkgs, ... }: {
-      imports = [
-        inputs.stylix.nixosModules.stylix
-        (polyModule pkgs)
-      ];
-      stylix.homeManagerIntegration.autoImport = false;
-    };
+    nixos.base =
+      { pkgs, ... }:
+      {
+        imports = [
+          inputs.stylix.nixosModules.stylix
+          (polyModule pkgs)
+        ];
+        stylix.homeManagerIntegration.autoImport = false;
+      };
 
-    homeManager.base = { pkgs, ... }: {
-      imports = [
-        inputs.stylix.homeModules.stylix
-        (polyModule pkgs)
-      ];
-    };
+    homeManager.base =
+      { pkgs, ... }:
+      {
+        imports = [
+          inputs.stylix.homeModules.stylix
+          (polyModule pkgs)
+        ];
+      };
   };
 }

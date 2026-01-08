@@ -9,7 +9,7 @@
         blueman.enable = true;
         gvfs.enable = true;
         qemuGuest.enable = true;
-        spice-vdagentd.enable = true;  
+        spice-vdagentd.enable = true;
         xserver = {
           enable = true;
           xkb = {

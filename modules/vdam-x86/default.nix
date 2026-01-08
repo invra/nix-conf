@@ -1,4 +1,5 @@
-{ config, ... }: {
+{ config, ... }:
+{
   configurations.vdam-x86.module = {
     imports = with config.flake.modules.nixos; [ base ];
     networking = {

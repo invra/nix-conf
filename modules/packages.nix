@@ -1,4 +1,5 @@
-{ inputs, ... }: {
+{ inputs, ... }:
+{
   nixpkgs.allowedUnfreePackages = [
     "bitwig-studio-unwrapped"
   ];
@@ -6,19 +7,22 @@
     { pkgs, ... }:
     {
       environment = {
-        systemPackages = with pkgs; [
-          jack2
-          git
-          home-manager
-        ] ++ lib.optionals pkgs.stdenv.isLinux [
-          lsof
-          foot
-          pciutils
-          nautilus
-          swww
-          firefox
-          xwayland-satellite
-        ];
+        systemPackages =
+          with pkgs;
+          [
+            jack2
+            git
+            home-manager
+          ]
+          ++ lib.optionals pkgs.stdenv.isLinux [
+            lsof
+            foot
+            pciutils
+            nautilus
+            swww
+            firefox
+            xwayland-satellite
+          ];
 
         shells = with pkgs; [
           bashInteractive
@@ -29,16 +33,17 @@
       programs.obs-studio = {
         enable = true;
         enableVirtualCamera = true;
-        package = (pkgs.obs-studio.override {
-          cudaSupport = true;
-        });
+        package = (
+          pkgs.obs-studio.override {
+            cudaSupport = true;
+          }
+        );
       };
     };
 
-  
   flake.modules.homeManager.base =
     { pkgs, ... }:
-    {   
+    {
       home.packages =
         with pkgs;
         [
@@ -101,7 +106,10 @@
             isDefault = true;
             settings = {
               "browser.newtab.pinned" = [
-                {title = "nixos"; url = "https://nixos.org";}
+                {
+                  title = "nixos";
+                  url = "https://nixos.org";
+                }
               ];
             };
           };

@@ -1,29 +1,31 @@
 {
-  flake.modules.homeManager.base = { pkgs, ... }: {
-    programs.git = {
-      enable = true;
-      settings = {
-        user = {
-          name = "Invra";
-          email = "identificationsucks@gmail.com";
+  flake.modules.homeManager.base =
+    { pkgs, ... }:
+    {
+      programs.git = {
+        enable = true;
+        settings = {
+          user = {
+            name = "Invra";
+            email = "identificationsucks@gmail.com";
+          };
+          alias = {
+            a = "add";
+            p = "push -v";
+            s = "status -s";
+            c = "commit -m";
+            b = "branch --all";
+            co = "checkout -b";
+            m = "commit --ammend";
+          };
+          init.defaultBranch = "main";
+          core.quotepath = "off";
         };
-        alias = {
-          a = "add";
-          p = "push -v";
-          s = "status -s";
-          c = "commit -m";
-          b = "branch --all";
-          co = "checkout -b";
-          m = "commit --ammend";
-        };
-        init.defaultBranch = "main";
-        core.quotepath = "off";
       };
-    };
 
-    home.packages = with pkgs; [
-      glab
-      gh
-    ];
-  };
+      home.packages = with pkgs; [
+        glab
+        gh
+      ];
+    };
 }

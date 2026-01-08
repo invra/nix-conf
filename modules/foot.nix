@@ -1,4 +1,5 @@
-{ lib, ... }: {
+{ lib, ... }:
+{
   flake.modules.homeManager.base = {
     programs.foot = {
       enable = true;

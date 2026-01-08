@@ -40,7 +40,7 @@
 
     flake.modules.nixos.base = nixosArgs: {
       nix.nixPath = [
-      "nixpkgs=${nixosArgs.config.nixpkgs.flake.source}"
+        "nixpkgs=${nixosArgs.config.nixpkgs.flake.source}"
       ];
       nixpkgs = {
         pkgs = withSystem nixosArgs.config.facter.report.system (psArgs: psArgs.pkgs);
@@ -49,4 +49,3 @@
     };
   };
 }
-
