@@ -8,6 +8,7 @@ let
       enable = true;
       enableReleaseChecks = false;
       base16Scheme = "${pkgs.base16-schemes}/share/themes/rose-pine.yaml";
+      polarity = "dark";
       # image = flakeConfig.user.wallpaper or ../../wallpapers/flake.jpg;
       image = ../wallpapers/flake.jpg;
 
