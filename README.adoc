@@ -4,7 +4,6 @@ This Nix flake is your all-in-one system configuration toolkit. It provides:
 
 * Home-manager configuration
 * NixOS configuration
-* Nix-darwin configuration
 
 ---
 
@@ -58,7 +57,6 @@ This Nix flake is your all-in-one system configuration toolkit. It provides:
 [%collapsible]
 ====
 * Git
-* Mercurial
 * gh (GitHub CLI)
 * glab (Gitlab CLI)
 * btop
@@ -73,22 +71,10 @@ This Nix flake is your all-in-one system configuration toolkit. It provides:
 image::./.res/demo_1.png[Demo 1]
 ====
 
-.Nix-darwin – YouTube Music (Zen Browser) + Ghostty
-[%collapsible]
-====
-image::./.res/demo_2.png[Demo 2]
-====
-
 .NixOS – Vesktop + Browsing + PiP
 [%collapsible]
 ====
 image::./.res/demo_3.png[Demo 3]
-====
-
-.Nix-darwin – Rust Dev - Helix + Browsing + PiP
-[%collapsible]
-====
-image::./.res/demo_4.png[Demo 4]
 ====
 
 .NixOS – Neovim + Mako

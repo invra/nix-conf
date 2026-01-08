@@ -1,5 +1,5 @@
 {
-  flake.modules.homeManager.base = {
+  flake.modules.homeManager.base = { pkgs, ... }: {
     programs.git = {
       enable = true;
       settings = {
@@ -20,5 +20,10 @@
         core.quotepath = "off";
       };
     };
+
+    home.packages = with pkgs; [
+      glab
+      gh
+    ];
   };
 }
