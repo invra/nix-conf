@@ -1,11 +1,6 @@
 = Invra's Nix Configuration
 
-This Nix flake is all-in-one. It provides:
-
-* Home-manager configuration
-* NixOS configuration
-
----
+This is a flake tailored for me, but should be able to work very nicely for people like me!
 
 == Features
 
@@ -13,7 +8,7 @@ This Nix flake is all-in-one. It provides:
 [%collapsible]
 ====
 * Rose-pine rice
-* Vencord pre-configured for better stuff
+* Vencord pre-configured for better workflow & looks
 ====
 
 .Music Production & Pro Audio
@@ -21,17 +16,11 @@ This Nix flake is all-in-one. It provides:
 ====
 * JACK2
 * Bitwig Studio
+* Helvum
+* Easy Effects (latest)
 * VST Support (theoretical, still needs testing)
 ====
 
-.Multimedia
-[%collapsible]
-====
-* Firefox
-* OBS Studio
-* yt-dlp
-* Discord (or Vesktop on aarch64-linux)
-====
 
 .Terminal-based workflows
 [%collapsible]
@@ -40,37 +29,5 @@ This Nix flake is all-in-one. It provides:
 * gh (GitHub CLI)
 * glab (Gitlab CLI)
 * btop
+* foot
 ====
----
-
-== Examples
-
-.NixOS – Spotify + WezTerm + Hyprland
-[%collapsible%open]
-====
-image::./.res/demo_1.png[Demo 1]
-====
-
-.NixOS – Vesktop + Browsing + PiP
-[%collapsible]
-====
-image::./.res/demo_3.png[Demo 3]
-====
-
-.NixOS – Neovim + Mako
-[%collapsible]
-====
-image::./.res/demo_5.png[Demo 5]
-====
-
----
-
-== Documentation
-You can find the docs
-link:https://gitlab.com/invra/nix-conf/-/wikis/home[here].
-
----
-
-== Contribution
-
-Check out the link:./CONTRIBUTING.adoc[Contributions write-up] and link:./TODO.org[Todo-list]
