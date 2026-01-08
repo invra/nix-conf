@@ -85,6 +85,25 @@
           bitwig-studio
         ]);
 
-      programs.ripgrep.enable = true;
+      programs = {
+        ripgrep.enable = true;
+        firefox = {
+          enable = true;
+
+          profiles = {
+            main = {
+              id = 0;
+              isDefault = true;
+              settings = {
+                "browser.newtab.pinned" = [
+                  {title = "nixos"; url = "https://nixos.org";}
+                ];
+              };
+            };
+          };
+        };
+      };
+
+      stylix.targets.firefox.profileNames = [ "main" ];
     };
 }
