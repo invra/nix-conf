@@ -1,14 +1,5 @@
-{ inputs, ... }: {
+{
   flake.modules.nixos.base = { pkgs,  ... }: {
-    imports = [
-      inputs.mango.nixosModules.mango
-    ];
-
-    # services.displayManager.ly.enable = true;
-    programs.mango.enable = true; 
-
-    environment.sessionVariables.COSMIC_DATA_CONTROL_ENABLED = 1;
-
     xdg.portal = {
       enable = true;
       wlr.enable = true;
