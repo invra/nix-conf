@@ -2,6 +2,8 @@
 {
   nixpkgs.allowedUnfreePackages = [
     "bitwig-studio-unwrapped"
+    "steam"
+    "steam-unwrapped"
   ];
   flake.modules.nixos.base =
     { pkgs, ... }:
@@ -30,14 +32,23 @@
         ];
       };
 
-      programs.obs-studio = {
-        enable = true;
-        enableVirtualCamera = true;
-        package = (
-          pkgs.obs-studio.override {
-            cudaSupport = true;
-          }
-        );
+      programs = {
+        obs-studio = {
+          enable = true;
+          enableVirtualCamera = true;
+          package = (
+            pkgs.obs-studio.override {
+              cudaSupport = true;
+            }
+          );
+        };
+
+        steam = {
+          enable = true;
+          remotePlay.openFirewall = true;
+          dedicatedServer.openFirewall = true;
+          localNetworkGameTransfers.openFirewall = true;
+        };
       };
     };
 
