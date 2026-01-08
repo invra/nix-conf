@@ -1,5 +1,7 @@
 {
   flake.modules.nixos.base = {
+    programs.virt-manager.enable = true;
+
     virtualisation = {
       docker.enable = true;
       libvirtd.enable = true;
