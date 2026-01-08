@@ -6,6 +6,7 @@
         nixosArgs.config.home-manager.users.${config.flake.meta.owner.username}.programs.nushell.package;
     };
   };
+
   flake.modules.homeManager.base = { pkgs, ... }: {
     programs.nushell = {
       enable = true;
@@ -53,7 +54,48 @@
     programs.starship = {
       enable = true;
       enableNushellIntegration = true;
-      settings = (pkgs.lib.importTOML ./starship-config.toml);
+      settings = {
+        character = {
+          error_symbol = "[ 󱞪](bold red)";
+          success_symbol = "[ 󱞪](bold green)";
+          vimcmd_replace_one_symbol = "[<](bold purple)";
+          vimcmd_replace_symbol = "[<](bold purple)";
+          vimcmd_symbol = "[<](bold green)";
+          vimcmd_visual_symbol = "[<](bold yellow)";
+        };
+        continuation_prompt = "[.](bright-black) ";
+        format = "$username$directory$git_branch$git_status$bun$deno$rust$golang$haskell$haxe$zig$c$cpp$cmake$swift$dotnet$nix_shell$time\n$character\n";
+
+        bun.symbol = "bun "; 
+        c.symbol = "C "; 
+        cmake.symbol = "cmake "; 
+        cpp.symbol = "C++ "; 
+        deno.symbol = "deno "; 
+        directory.read_only = " ro"; 
+        dotnet = {
+          format = "via [$symbol($version )(target $tfm )]($style)";
+          symbol = ".NET ";
+        };
+        git_branch = {
+          symbol = "git ";
+          truncation_symbol = "...";
+        };
+        git_commit.tag_symbol = " tag "; 
+        git_status = {
+          ahead = ">";
+          behind = "<";
+          deleted = "x";
+          diverged = "<>";
+          renamed = "r";
+        };
+        haskell.symbol = "haskell "; 
+        haxe.symbol = "haxe "; 
+        nix_shell.symbol = "nix "; 
+        package.symbol = "pkg "; 
+        rust.symbol = "rust "; 
+        swift.symbol = "swift "; 
+        zig.symbol = "zig "; 
+      };
     };
 
     programs.carapace = {
