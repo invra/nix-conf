@@ -9,7 +9,6 @@
         systemPackages = with pkgs; [
           jack2
           git
-          helix
           home-manager
         ] ++ lib.optionals pkgs.stdenv.isLinux [
           lsof
