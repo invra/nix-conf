@@ -17,9 +17,18 @@
       type = lib.types.listOf lib.types.unspecified;
       default = [ ];
     };
+    allowedUnfreePackages = lib.mkOption {
+      type = lib.types.listOf lib.types.singleLineStr;
+      default = [ ];
+    };
   };
 
   config = {
+    nixpkgs.config.allowUnfreePredicate =
+      pkg: builtins.elem (lib.getName pkg) config.nixpkgs.allowedUnfreePackages;
+
+    flake.meta.nixpkgs.allowedUnfreePackages = config.nixpkgs.allowedUnfreePackages;
+
     perSystem =
       { system, ... }:
       {
@@ -30,6 +39,9 @@
       };
 
     flake.modules.nixos.base = nixosArgs: {
+      nix.nixPath = [
+      "nixpkgs=${nixosArgs.config.nixpkgs.flake.source}"
+      ];
       nixpkgs = {
         pkgs = withSystem nixosArgs.config.facter.report.system (psArgs: psArgs.pkgs);
         hostPlatform = nixosArgs.config.facter.report.system;
@@ -37,3 +49,4 @@
     };
   };
 }
+
