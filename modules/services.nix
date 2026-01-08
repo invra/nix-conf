@@ -6,7 +6,6 @@
     nixos.base = {
       services = {
         tailscale.enable = true;
-        flatpak.enable = true;
         blueman.enable = true;
         gvfs.enable = true;
         qemuGuest.enable = true;
