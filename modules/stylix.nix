@@ -9,7 +9,7 @@ let
       enableReleaseChecks = false;
       base16Scheme = "${pkgs.base16-schemes}/share/themes/rose-pine.yaml";
       # image = flakeConfig.user.wallpaper or ../../wallpapers/flake.jpg;
-      image = ../../wallpapers/flake.jpg;
+      image = ../wallpapers/flake.jpg;
 
       
       icons = {
