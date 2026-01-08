@@ -1,12 +1,12 @@
 { lib, ... }: {
-  flake.modules.nixos.base = {
+  flake.modules.homeManager.base = {
     programs.foot = {
       enable = true;
 
-      settings = {
-        main.font = lib.mkForce "JetBrainsMono Nerd Font:size=14";
+      settings = with lib; {
+        main.font = mkForce "JetBrainsMono Nerd Font:size=14";
 
-        colors.alpha = lib.mkForce 0.85;
+        colors.alpha = mkForce 0.85;
       };
     };
   };

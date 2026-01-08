@@ -84,25 +84,43 @@
           bitwig-studio
         ]);
 
-      programs = {
-        ripgrep.enable = true;
-        firefox = {
-          enable = true;
+      programs.firefox = {
+        enable = true;
 
-          profiles = {
-            main = {
-              id = 0;
-              isDefault = true;
-              settings = {
-                "browser.newtab.pinned" = [
-                  {title = "nixos"; url = "https://nixos.org";}
-                ];
-              };
+        profiles = {
+          main = {
+            id = 0;
+            isDefault = true;
+            settings = {
+              "browser.newtab.pinned" = [
+                {title = "nixos"; url = "https://nixos.org";}
+              ];
             };
           };
         };
       };
 
-      stylix.targets.firefox.profileNames = [ "main" ];
+      stylix.targets = {
+        firefox.profileNames = [ "main" ];
+        btop.enable = false;
+      };
+
+      programs = {
+        ripgrep.enable = true;
+
+        btop = {
+          enable = true;
+          settings = {
+            theme_background = false;
+            color_theme = "TTY";
+            vim_keys = true;
+            update_ms = 1000;
+            truecolor = true;
+            temp_scale = "celsius";
+
+            proc_aggregate = true;
+          };
+        };
+      };
     };
 }
