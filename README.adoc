@@ -1,6 +1,6 @@
 = Invra's Nix Configuration
 
-This Nix flake is your all-in-one system configuration toolkit. It provides:
+This Nix flake is all-in-one. It provides:
 
 * Home-manager configuration
 * NixOS configuration
@@ -8,30 +8,12 @@ This Nix flake is your all-in-one system configuration toolkit. It provides:
 ---
 
 == Features
-.Simple to change configurations
-[%collapsible%open]
-====
-* Using the flake you can configure your system
-* Have Quick settings
-* Git and Mercurial common settings editable in one file
-====
 
 .Out-of-box configs
 [%collapsible]
 ====
 * Rose-pine rice
 * Vencord pre-configured for better stuff
-* Lower chance for PulseAudio to destroy your ears.
-* macOS workflow fixers
-** Linear Mouse
-** AeroSpace
-====
-
-.Customisable networking
-[%collapsible]
-====
-* Disable NetworkManager
-* Enable Bridging to let VM's allow your whole network
 ====
 
 .Music Production & Pro Audio
@@ -39,16 +21,14 @@ This Nix flake is your all-in-one system configuration toolkit. It provides:
 ====
 * JACK2
 * Bitwig Studio
-* VST Support (theoretically)
+* VST Support (theoretical, still needs testing)
 ====
 
 .Multimedia
 [%collapsible]
 ====
-* Zen Browser
-* Chromium
+* Firefox
 * OBS Studio
-* V4l2loopback
 * yt-dlp
 * Discord (or Vesktop on aarch64-linux)
 ====
