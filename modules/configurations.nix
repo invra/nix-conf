@@ -16,43 +16,58 @@
   };
 
   config.flake =
-    let
-      outputs = lib.foldl' lib.recursiveUpdate { } (
-        lib.mapAttrsToList (
-          name: cfg:
-          let
-            isLinux = (lib.hasSuffix "x86" name) || (lib.hasSuffix "aarch64" name);
-            isDarwin = lib.hasPrefix "mac" name;
-          in
-          {
-            nixosConfigurations = lib.optionalAttrs isLinux {
-              ${name} = lib.nixosSystem {
-                modules = [ cfg.module ];
-              };
+  lib.foldl' lib.recursiveUpdate { } (
+    lib.mapAttrsToList (
+      name: cfg:
+      let
+        isDarwin = lib.hasPrefix "mac" name;
+        
+        system = 
+          if isDarwin then "aarch64-darwin" 
+          else if lib.hasSuffix "x86" name then "x86_64-linux"
+          else if lib.hasSuffix "aarch64" name then "aarch64-linux"
+          else "x86_64-linux";
+
+        isLinux = lib.hasSuffix "linux" system;
+
+        extraSpecialArgs = {
+          inherit inputs;
+          linux = isLinux;
+          darwin = isDarwin;
+        };
+      in
+      {
+        homeConfigurations = lib.optionalAttrs (system != "") {
+          "${name}" = inputs.home-manager.lib.homeManagerConfiguration {
+            pkgs = import inputs.nixpkgs {
+              inherit system;
+              inherit (config.nixpkgs) config overlays;
             };
 
-            darwinConfigurations = lib.optionalAttrs isDarwin {
-              ${name} = inputs.nix-darwin.lib.darwinSystem {
-                modules = [ cfg.module ];
-              };
-            };
-          }
-        ) config.configurations
-      );
-    in
-    lib.mkMerge [
-      outputs
-      {
-        checks =
-          outputs.nixosConfigurations or { }
-          |> lib.mapAttrsToList (
-            name: nixos: {
-              ${nixos.config.nixpkgs.hostPlatform.system} = {
-                "configurations/nixos/${name}" = nixos.config.system.build.toplevel;
-              };
-            }
-          )
-          |> lib.mkMerge;
+            modules = [
+              {
+                home.stateVersion = "25.11"; 
+                nixpkgs.config = config.nixpkgs.config;
+              }
+              config.flake.modules.homeManager.base
+            ];
+            inherit extraSpecialArgs;
+          };
+        };
+
+        nixosConfigurations = lib.optionalAttrs isLinux {
+          "${name}" = lib.nixosSystem {
+            inherit system;
+            modules = [ cfg.module ];
+          };
+        };
+
+        darwinConfigurations = lib.optionalAttrs isDarwin {
+          "${name}" = inputs.nix-darwin.lib.darwinSystem {
+            modules = [ cfg.module ];
+          };
+        };
       }
-    ];
+    ) config.configurations
+  );
 }

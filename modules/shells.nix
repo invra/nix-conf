@@ -1,12 +1,9 @@
-{ config, ... }:
 {
   flake.modules = {
     nixos.base =
-      nixosArgs@{ pkgs, ... }:
+      { pkgs, ... }:
       {
         users.defaultUserShell = pkgs.nushell;
-        users.users.${config.flake.meta.owner.username}.shell =
-          nixosArgs.config.home-manager.users.${config.flake.meta.owner.username}.programs.nushell.package;
       };
   };
 
