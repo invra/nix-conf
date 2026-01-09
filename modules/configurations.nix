@@ -15,18 +15,21 @@
     );
   };
 
-  config.flake =
-  lib.foldl' lib.recursiveUpdate { } (
+  config.flake = lib.foldl' lib.recursiveUpdate { } (
     lib.mapAttrsToList (
       name: cfg:
       let
         isDarwin = lib.hasPrefix "mac" name;
-        
-        system = 
-          if isDarwin then "aarch64-darwin" 
-          else if lib.hasSuffix "x86" name then "x86_64-linux"
-          else if lib.hasSuffix "aarch64" name then "aarch64-linux"
-          else "x86_64-linux";
+
+        system =
+          if isDarwin then
+            "aarch64-darwin"
+          else if lib.hasSuffix "x86" name then
+            "x86_64-linux"
+          else if lib.hasSuffix "aarch64" name then
+            "aarch64-linux"
+          else
+            "x86_64-linux";
 
         isLinux = lib.hasSuffix "linux" system;
 
@@ -46,7 +49,7 @@
 
             modules = [
               {
-                home.stateVersion = "25.11"; 
+                home.stateVersion = "25.11";
                 nixpkgs.config = config.nixpkgs.config;
               }
               config.flake.modules.homeManager.base
