@@ -5,52 +5,60 @@
     "steam"
     "steam-unwrapped"
   ];
-  flake.modules.nixos.base =
-    { pkgs, ... }:
-    {
-      environment = {
-        systemPackages =
-          with pkgs;
-          [
-            jack2
-            git
-            home-manager
-          ]
-          ++ lib.optionals pkgs.stdenv.isLinux [
-            lsof
-            foot
-            pciutils
-            nautilus
-            swww
-            firefox
-            xwayland-satellite
-          ];
+  flake.modules.darwin.base = { pkgs, ... }: {
+    environment = {
+      systemPackages = with pkgs; [
+        jack2
+        git
+        home-manager
+      ];
+    
+      shells = with pkgs; [
+        bashInteractive
+        nushell
+      ];
+    };
+  };
+  flake.modules.nixos.base = { pkgs, ... }: {
+    environment = {
+      systemPackages = with pkgs; [
+        jack2
+        git
+        home-manager
+        lsof
+        foot
+        pciutils
+        nautilus
+        swww
+        firefox
+        xwayland-satellite
+      ];
 
-        shells = with pkgs; [
-          bashInteractive
-          nushell
-        ];
+      shells = with pkgs; [
+        bashInteractive
+        nushell
+      ];
+    };
+
+    programs = {
+      obs-studio = {
+        enable = true;
+        enableVirtualCamera = true;
+        package = (
+          pkgs.obs-studio.override {
+            cudaSupport = true;
+          }
+        );
       };
 
-      programs = {
-        obs-studio = {
-          enable = true;
-          enableVirtualCamera = true;
-          package = (
-            pkgs.obs-studio.override {
-              cudaSupport = true;
-            }
-          );
-        };
-
-        steam = {
-          enable = true;
-          remotePlay.openFirewall = true;
-          dedicatedServer.openFirewall = true;
-          localNetworkGameTransfers.openFirewall = true;
-        };
+      steam = {
+        enable = true;
+        remotePlay.openFirewall = true;
+        dedicatedServer.openFirewall = true;
+        localNetworkGameTransfers.openFirewall = true;
       };
     };
+  };
 
   flake.modules.homeManager.base =
     { pkgs, ... }:

@@ -1,10 +1,10 @@
 { config, ... }:
 {
   configurations.macbook.module = {
-    imports = with config.flake.modules.nixos; [
+    imports = with config.flake.modules.darwin; [
       base
     ];
 
-    system.stateVersion = "24.11";
+    system.stateVersion = 6;
   };
 }

@@ -47,5 +47,19 @@
         hostPlatform = nixosArgs.config.facter.report.system;
       };
     };
+
+    
+    flake.modules.darwin.base = args: {
+      nix.nixPath = [
+        "nixpkgs=${args.config.nixpkgs.flake.source}"
+      ];
+      nixpkgs = {
+        pkgs = import inputs.nixpkgs {
+          system = "aarch64-darwin";
+          inherit (config.nixpkgs) config overlays;
+        };
+        hostPlatform = "aarch64-darwin";
+      };
+    };
   };
 }
