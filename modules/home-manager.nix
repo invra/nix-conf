@@ -1,10 +1,12 @@
 { config, ... }:
 {
-  flake.modules.homeManager.base = args: {
+  flake.modules.homeManager.base = args@{ darwin, ... }: {
 
     home = {
       username = config.flake.meta.owner.username;
-      homeDirectory = "/home/${config.flake.meta.owner.username}";
+      homeDirectory = if darwin
+        then "/Users/${config.flake.meta.owner.username}"
+        else "/home/${config.flake.meta.owner.username}";
     };
     programs.home-manager.enable = true;
     systemd.user.startServices = "sd-switch";

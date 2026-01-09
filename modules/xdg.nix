@@ -1,38 +1,40 @@
-{
+{ lib, ... }: {
   flake.modules.homeManager.base =
-    { config, pkgs, ... }:
+    { config, pkgs, linux, ... }:
     {
-      xdg = {
-        enable = true;
-        mime.enable = true;
-        mimeApps = {
+      config = lib.optionalAttrs linux {
+        xdg = {
           enable = true;
-          defaultApplications = {
-            "text/html" = "LibreWolf.desktop";
-            "x-scheme-handler/http" = "LibreWolf.desktop";
-            "x-scheme-handler/https" = "LibreWolf.desktop";
-            "x-scheme-handler/about" = "LibreWolf.desktop";
-            "x-scheme-handler/unknown" = "LibreWolf.desktop";
+          mime.enable = true;
+          mimeapps = {
+            enable = true;
+            defaultapplications = {
+              "text/html" = "librewolf.desktop";
+              "x-scheme-handler/http" = "librewolf.desktop";
+              "x-scheme-handler/https" = "librewolf.desktop";
+              "x-scheme-handler/about" = "librewolf.desktop";
+              "x-scheme-handler/unknown" = "librewolf.desktop";
+            };
+          };
+
+          userdirs = {
+            enable = true;
+            createdirectories = true;
+
+            desktop = "${config.home.homedirectory}/desk";
+            documents = "${config.home.homedirectory}/docs";
+            download = "${config.home.homedirectory}/downloads";
+            music = "${config.home.homedirectory}/music";
+            pictures = "${config.home.homedirectory}/pics";
+            publicshare = "${config.home.homedirectory}/pub";
+            templates = "${config.home.homedirectory}/templates";
+            videos = "${config.home.homedirectory}/vids";
           };
         };
 
-        userDirs = {
-          enable = true;
-          createDirectories = true;
-
-          desktop = "${config.home.homeDirectory}/desk";
-          documents = "${config.home.homeDirectory}/docs";
-          download = "${config.home.homeDirectory}/downloads";
-          music = "${config.home.homeDirectory}/music";
-          pictures = "${config.home.homeDirectory}/pics";
-          publicShare = "${config.home.homeDirectory}/pub";
-          templates = "${config.home.homeDirectory}/templates";
-          videos = "${config.home.homeDirectory}/vids";
-        };
+        home.packages = with pkgs; [
+          xdg-utils
+        ];
       };
-
-      home.packages = with pkgs; [
-        xdg-utils
-      ];
     };
 }

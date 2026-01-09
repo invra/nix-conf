@@ -9,10 +9,11 @@
 
   flake.modules.homeManager.base =
     with lib;
-    { pkgs, config, ... }:
+    { pkgs, config, linux, ... }:
     let
       cfg = config.wayland.windowManager.mangowc;
     in
+    lib.optionalAttrs linux
     {
       options = {
         wayland.windowManager.mangowc = {

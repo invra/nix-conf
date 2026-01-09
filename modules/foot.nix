@@ -1,7 +1,7 @@
 { lib, ... }:
 {
-  flake.modules.homeManager.base = {
-    programs.foot = {
+  flake.modules.homeManager.base = { linux, ... }: {
+    programs.foot = lib.optionalAttrs linux {
       enable = true;
 
       settings = with lib; {

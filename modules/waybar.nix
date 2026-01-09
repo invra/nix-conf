@@ -1,8 +1,8 @@
-{
-  flake.modules.homeManager.base = {
+{ lib, ... }: {
+  flake.modules.homeManager.base = { linux, ... }: {
     stylix.targets.waybar.enable = false;
-    programs.waybar.enable = true;
-    home.file = {
+    programs.waybar.enable = lib.mkIf linux true;
+    home.file = lib.optionalAttrs linux {
       ".config/waybar/config".text = ''
         {
             "layer": "top",

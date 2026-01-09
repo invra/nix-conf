@@ -1,29 +1,29 @@
 {
   inputs,
+  lib,
   ...
 }:
 let
-  polyModule = pkgs: {
+  polyModule = pkgs: linux: {
     stylix = {
       enable = true;
       enableReleaseChecks = false;
       base16Scheme = "${pkgs.base16-schemes}/share/themes/rose-pine.yaml";
       polarity = "dark";
-      # image = flakeConfig.user.wallpaper or ../../wallpapers/flake.jpg;
       image = ../wallpapers/flake.jpg;
 
-      icons = {
+      icons = lib.mkIf linux {
         enable = true;
         dark = "Papirus-Dark";
         light = "Papirus-Light";
         package = pkgs.papirus-icon-theme;
       };
-      cursor = {
+      cursor = lib.mkIf linux {
         package = pkgs.bibata-cursors;
         name = "Bibata-Modern-Classic";
         size = 24;
       };
-      fonts = {
+      fonts = lib.mkIf linux {
         serif = {
           package = pkgs.dejavu_fonts;
           name = "DejaVu Serif";
@@ -47,17 +47,17 @@ in
       {
         imports = [
           inputs.stylix.nixosModules.stylix
-          (polyModule pkgs)
+          (polyModule pkgs true)
         ];
         stylix.homeManagerIntegration.autoImport = false;
       };
 
     homeManager.base =
-      { pkgs, ... }:
+      { pkgs, linux, ... }:
       {
         imports = [
           inputs.stylix.homeModules.stylix
-          (polyModule pkgs)
+          (polyModule pkgs linux)
         ];
       };
   };

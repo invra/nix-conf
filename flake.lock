@@ -68,6 +68,19 @@
         "type": "github"
       }
     },
+    "chromium": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1750719077,
+        "narHash": "sha256-fH7HIBHZugKk6EdetxQmu6E6o263KaYsvU5SkG8diyg=",
+        "type": "tarball",
+        "url": "https://commondatastorage.googleapis.com/chromium-browser-snapshots/Mac_Arm/1477591/chrome-mac.zip"
+      },
+      "original": {
+        "type": "tarball",
+        "url": "https://commondatastorage.googleapis.com/chromium-browser-snapshots/Mac_Arm/1477591/chrome-mac.zip"
+      }
+    },
     "cpu-microcodes": {
       "flake": false,
       "locked": {
@@ -82,6 +95,21 @@
         "owner": "platomav",
         "repo": "CPUMicrocodes",
         "type": "github"
+      }
+    },
+    "damage-control": {
+      "locked": {
+        "lastModified": 1763519508,
+        "narHash": "sha256-Fhk5Gi61m+FSE/kCxY1jt5+1G5SSRzI+Q9MQ4mYRlSM=",
+        "owner": "Invra",
+        "repo": "dmg-control-nix",
+        "rev": "d352453dc009815f2569d7da3fd9692ef72399f7",
+        "type": "gitlab"
+      },
+      "original": {
+        "owner": "Invra",
+        "repo": "dmg-control-nix",
+        "type": "gitlab"
       }
     },
     "dev-nix": {
@@ -315,6 +343,41 @@
         "type": "github"
       }
     },
+    "ip": {
+      "inputs": {
+        "chromium": "chromium",
+        "damage-control": "damage-control",
+        "linearmouse": "linearmouse",
+        "nixpkgs": "nixpkgs_4",
+        "obs-studio": "obs-studio",
+        "steam": "steam"
+      },
+      "locked": {
+        "lastModified": 1763519589,
+        "narHash": "sha256-c9roZGuIM49xzi7E5Y7Vm+O1t2WLnArUUYdsnEGJEo0=",
+        "owner": "hiten-tandon",
+        "repo": "some-nix-darwin-packages",
+        "rev": "7368928cf050296ce6cbb3de5f4eeed21043c2d6",
+        "type": "gitlab"
+      },
+      "original": {
+        "owner": "hiten-tandon",
+        "repo": "some-nix-darwin-packages",
+        "type": "gitlab"
+      }
+    },
+    "linearmouse": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-XrUQ6t/cFUO2JlOenRuFRSi/X/wrMCZPBmezoibTzHg=",
+        "type": "file",
+        "url": "https://dl.linearmouse.org/v0.10.0/LinearMouse.dmg"
+      },
+      "original": {
+        "type": "file",
+        "url": "https://dl.linearmouse.org/v0.10.0/LinearMouse.dmg"
+      }
+    },
     "mango": {
       "inputs": {
         "flake-parts": "flake-parts_2",
@@ -454,6 +517,22 @@
     },
     "nixpkgs_4": {
       "locked": {
+        "lastModified": 1763421233,
+        "narHash": "sha256-Stk9ZYRkGrnnpyJ4eqt9eQtdFWRRIvMxpNRf4sIegnw=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "89c2b2330e733d6cdb5eae7b899326930c2c0648",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs_5": {
+      "locked": {
         "lastModified": 1767116409,
         "narHash": "sha256-5vKw92l1GyTnjoLzEagJy5V5mDFck72LiQWZSOnSicw=",
         "owner": "NixOS",
@@ -493,6 +572,18 @@
         "type": "github"
       }
     },
+    "obs-studio": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-pJlYvbh0FH/NTgNgzw3e+7odWDUKG7PM5pAzJ67ogXk=",
+        "type": "file",
+        "url": "https://cdn-fastly.obsproject.com/downloads/obs-studio-31.0.2-macos-apple.dmg"
+      },
+      "original": {
+        "type": "file",
+        "url": "https://cdn-fastly.obsproject.com/downloads/obs-studio-31.0.2-macos-apple.dmg"
+      }
+    },
     "root": {
       "inputs": {
         "cpu-microcodes": "cpu-microcodes",
@@ -501,10 +592,11 @@
         "flake-parts": "flake-parts",
         "home-manager": "home-manager",
         "import-tree": "import-tree",
+        "ip": "ip",
         "mango": "mango",
         "nixcord": "nixcord",
         "nixos-facter-modules": "nixos-facter-modules",
-        "nixpkgs": "nixpkgs_4",
+        "nixpkgs": "nixpkgs_5",
         "stylix": "stylix",
         "treefmt-nix": "treefmt-nix_2",
         "ucodenix": "ucodenix"
@@ -529,6 +621,18 @@
         "owner": "wlrfx",
         "repo": "scenefx",
         "type": "github"
+      }
+    },
+    "steam": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-UViORKVgOZIh/cC6LWzohksn02pvGJROk0e65CZy8Rc=",
+        "type": "file",
+        "url": "https://cdn.fastly.steamstatic.com/client/installer/steam.dmg"
+      },
+      "original": {
+        "type": "file",
+        "url": "https://cdn.fastly.steamstatic.com/client/installer/steam.dmg"
       }
     },
     "stylix": {

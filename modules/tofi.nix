@@ -1,8 +1,8 @@
-{
-  flake.modules.homeManager.base = {
+{ lib, ... }: {
+  flake.modules.homeManager.base = { linux, ... }: {
     stylix.targets.tofi.enable = false;
 
-    programs.tofi = {
+    programs.tofi = lib.optionalAttrs linux {
       enable = true;
 
       settings = {

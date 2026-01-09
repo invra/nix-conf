@@ -80,11 +80,11 @@
           insomnia
         ]
         ++ lib.optionals pkgs.stdenv.isDarwin [
-          steam
+          (inputs.ip.packages.${pkgs.stdenv.hostPlatform.system}.steam)
           utm
           pika
-          linearmouse
-          obs-studio
+          (inputs.ip.packages.${pkgs.stdenv.hostPlatform.system}.linearmouse)
+          alacritty
         ]
         ++ lib.optionals pkgs.stdenv.isLinux [
           wl-clipboard
