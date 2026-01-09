@@ -30,7 +30,15 @@
         openssh.enable = true;
         mongodb.enable = true;
       };
-
+      networking.firewall = {
+        enable = false;
+        allowedTCPPorts = [
+          22
+          80
+          443
+          8080
+        ];
+      };
     };
 
     darwin.base.services.tailscale.enable = true;
