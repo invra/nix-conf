@@ -6,9 +6,9 @@
         xdg = {
           enable = true;
           mime.enable = true;
-          mimeapps = {
+          mimeApps = {
             enable = true;
-            defaultapplications = {
+            defaultApplications = {
               "text/html" = "librewolf.desktop";
               "x-scheme-handler/http" = "librewolf.desktop";
               "x-scheme-handler/https" = "librewolf.desktop";
@@ -17,18 +17,18 @@
             };
           };
 
-          userdirs = {
+          userDirs = {
             enable = true;
-            createdirectories = true;
+            createDirectories = true;
 
-            desktop = "${config.home.homedirectory}/desk";
-            documents = "${config.home.homedirectory}/docs";
-            download = "${config.home.homedirectory}/downloads";
-            music = "${config.home.homedirectory}/music";
-            pictures = "${config.home.homedirectory}/pics";
-            publicshare = "${config.home.homedirectory}/pub";
-            templates = "${config.home.homedirectory}/templates";
-            videos = "${config.home.homedirectory}/vids";
+            desktop = "${config.home.homeDirectory}/desk";
+            documents = "${config.home.homeDirectory}/docs";
+            download = "${config.home.homeDirectory}/downloads";
+            music = "${config.home.homeDirectory}/music";
+            pictures = "${config.home.homeDirectory}/pics";
+            publicShare = "${config.home.homeDirectory}/pub";
+            templates = "${config.home.homeDirectory}/templates";
+            videos = "${config.home.homeDirectory}/vids";
           };
         };
 
