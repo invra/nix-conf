@@ -1,11 +1,6 @@
-{ inputs, ... }:
-{
-  nixpkgs.allowedUnfreePackages = [
-    "bitwig-studio-unwrapped"
-    "steam"
-    "steam-unwrapped"
-  ];
-  flake.modules.darwin.base = { pkgs, ... }: {
+{ lib, inputs, ... }:
+let
+  polyModule = pkgs: {
     environment = {
       systemPackages = with pkgs; [
         jack2
@@ -19,46 +14,50 @@
       ];
     };
   };
-  flake.modules.nixos.base = { pkgs, ... }: {
-    environment = {
-      systemPackages = with pkgs; [
-        jack2
-        git
-        home-manager
-        lsof
-        foot
-        pciutils
-        nautilus
-        swww
-        firefox
-        xwayland-satellite
-      ];
 
-      shells = with pkgs; [
-        bashInteractive
-        nushell
-      ];
-    };
-
-    programs = {
-      obs-studio = {
-        enable = true;
-        enableVirtualCamera = true;
-        package = (
-          pkgs.obs-studio.override {
-            cudaSupport = true;
-          }
-        );
+in
+{
+  nixpkgs.allowedUnfreePackages = [
+    "bitwig-studio-unwrapped"
+    "steam"
+    "steam-unwrapped"
+  ];
+  flake.modules.darwin.base = { pkgs, ... }: polyModule pkgs;
+  flake.modules.nixos.base = { pkgs, ... }: lib.mkMerge [
+    (polyModule pkgs)
+    {
+      environment = {
+        systemPackages = with pkgs; [
+          lsof
+          foot
+          pciutils
+          nautilus
+          swww
+          firefox
+          xwayland-satellite
+        ];
       };
 
-      steam = {
-        enable = true;
-        remotePlay.openFirewall = true;
-        dedicatedServer.openFirewall = true;
-        localNetworkGameTransfers.openFirewall = true;
+      programs = {
+        obs-studio = {
+          enable = true;
+          enableVirtualCamera = true;
+          package = (
+            pkgs.obs-studio.override {
+              cudaSupport = true;
+            }
+          );
+        };
+
+        steam = {
+          enable = true;
+          remotePlay.openFirewall = true;
+          dedicatedServer.openFirewall = true;
+          localNetworkGameTransfers.openFirewall = true;
+        };
       };
-    };
-  };
+    }
+  ];
 
   flake.modules.homeManager.base =
     { pkgs, ... }:
