@@ -7,4 +7,8 @@
       "systemd-journal"
     ];
   };
+
+  flake.modules.darwin.base = {
+    security.pam.services.sudo_local.touchIdAuth = true;
+  };
 }
