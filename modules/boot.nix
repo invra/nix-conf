@@ -11,7 +11,8 @@
       imports = [ inputs.ucodenix.nixosModules.default ];
 
       boot = {
-        kernelPackages = pkgs.linuxPackages_latest;
+        kernelPackages = pkgs.linuxPackages_zen;
+        
         kernelParams = lib.optional config.services.ucodenix.enable "microcode.amd_sha_check=off";
         loader.systemd-boot.enable = true;
 
