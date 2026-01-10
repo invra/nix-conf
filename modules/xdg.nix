@@ -6,6 +6,12 @@
         xdg = {
           enable = true;
           mime.enable = true;
+          terminal-exec = {
+            enable = true;
+            settings = {
+              default = [ "foot.desktop" ];
+            };
+          };
           mimeApps = {
             enable = true;
             defaultApplications = {

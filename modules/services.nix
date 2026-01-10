@@ -3,7 +3,7 @@
     "mongodb"
   ];
   flake.modules = {
-    nixos.base = {
+    nixos.base = { pkgs, ... }: {
       services = {
         tailscale.enable = true;
         blueman.enable = true;
@@ -12,6 +12,7 @@
         spice-vdagentd.enable = true;
         xserver = {
           enable = true;
+          excludePackages = with pkgs; [ xterm ];
           xkb = {
             layout = "us,us";
             options = "grp:alt_shift_toggle,caps:escape";
