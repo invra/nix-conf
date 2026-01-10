@@ -1,7 +1,10 @@
 { config, ... }:
 {
   flake.modules.nixos.base = {
-    security.sudo-rs.enable = true;
+    security = {
+      sudo-rs.enable = true;
+      rtkit.enable = true;
+    };
     users.users.${config.flake.meta.owner.username}.extraGroups = [
       "wheel"
       "systemd-journal"

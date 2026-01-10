@@ -1,9 +1,10 @@
-{
+{ config, ... }: {
   nixpkgs.allowedUnfreePackages = [
     "mongodb"
   ];
   flake.modules = {
     nixos.base = { pkgs, ... }: {
+      users.users.${config.flake.meta.owner.username}.extraGroups = [ "audio" "video" ];
       services = {
         tailscale.enable = true;
         blueman.enable = true;
@@ -22,7 +23,10 @@
         fwupd.enable = true;
         pipewire = {
           enable = true;
-          alsa.enable = true;
+          alsa = {
+            enable = true;
+            support32Bit = true;
+          };
           pulse.enable = true;
           jack.enable = true;
         };
