@@ -13,12 +13,6 @@
       };
       facter.reportPath = ./facter.json;
       hardware.nvidia.open = false;
-      services.desktopManager.gnome.enable = true;
-      environment.gnome.excludePackages = with pkgs; [
-        gnome-tour
-        gnome-user-docs
-      ];
-      #^ [NOTE]: Only desktop environment I can "use" which doesn't crash for dumb reasons, I will remove ASAP.
 
       boot = {
         initrd.availableKernelModules = [
