@@ -16,8 +16,8 @@ let
         '';
       };
       environment.systemPackages = with pkgs; [ fastfetch ]
-        ++ lib.optionals stdenv.isLinux [ ghostty ]
-        ++ lib.optionals stdenv.isDarwin [ ghostty-bin ];
+        ++ lib.optionals stdenv.hostPlatform.isLinux [ ghostty ]
+        ++ lib.optionals stdenv.hostPlatform.isDarwin [ ghostty-bin ];
     };
 in
 {
@@ -71,7 +71,7 @@ in
       programs = {
         ghostty = {
           enable = true;
-          package = if pkgs.stdenv.isLinux then pkgs.ghostty else pkgs.ghostty-bin;
+          package = if linux then pkgs.ghostty else pkgs.ghostty-bin;
           settings = {
             theme = "Rose Pine";
             font-size = 16.0;

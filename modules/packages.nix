@@ -78,19 +78,19 @@ in
             wget
             killall
             prismlauncher
-            blender
           ]
-          ++ lib.optionals pkgs.stdenv.isDarwin [
+          ++ lib.optionals pkgs.stdenv.hostPlatform.isDarwin [
             utm
           ]
-          ++ lib.optionals pkgs.stdenv.isLinux [
+          ++ lib.optionals pkgs.stdenv.hostPlatform.isLinux [
             wl-clipboard
             pavucontrol
             crosspipe
+            blender
             wayvnc
             vlc
           ]
-          ++ (lib.optionals (pkgs.stdenv.isLinux && pkgs.stdenv.isx86_64) [
+          ++ (lib.optionals (pkgs.stdenv.hostPlatform.isLinux && pkgs.stdenv.hostPlatform.isx86_64) [
             wineWow64Packages.stable
             bitwig-studio
             yabridgectl

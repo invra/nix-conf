@@ -13,7 +13,7 @@
           amdgpu.opencl.enable = true;
           graphics = {
             enable = true;
-            enable32Bit = pkgs.stdenv.isx86_64;
+            enable32Bit = pkgs.stdenv.hostPlatform.isx86_64;
           };
         };
         services = {
