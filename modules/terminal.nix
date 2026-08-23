@@ -97,7 +97,7 @@ in
               eza = "${pkgs.eza}/bin/eza";
             in
             {
-              ls = "${eza} --icons";
+              ls = "${eza} --icons always";
               l = "${eza} --icons -l";
               la = "${eza} --icons -al";
               tree = "${eza} --icons --tree";
