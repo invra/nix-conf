@@ -100,7 +100,7 @@ in
               ls = "${eza} --icons always";
               l = "${eza} --icons -l";
               la = "${eza} --icons -al";
-              tree = "${eza} --icons --tree";
+              tree = "${eza} --icons --tree --ignore-glob='_darcs|.git|target|bin|obj|Release|Debug'";
               edit = "taskset -c 0-7 hx";
               fuckoff = "exit";
               doas = if darwin then "sudo" else "${pkgs.doas-sudo-shim}/bin/sudo";
