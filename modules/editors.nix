@@ -70,7 +70,7 @@ in
               normal = {
                 A-r = ":config-reload";
                 space = {
-                  w = ":w!";
+                  w = ":wq!";
                   q = ":bc";
                 };
               };
